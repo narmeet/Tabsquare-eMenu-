@@ -1,0 +1,377 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql
+END
+ZIMSqlDropViewStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropViewStatement.m
+END
+ZIMSqlDataManipulationCommand.h
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDataManipulationCommand.h
+END
+ZIMSqlAttachStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlAttachStatement.h
+END
+ZIMSqlDeleteStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDeleteStatement.m
+END
+ZIMSqlPreparedStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlPreparedStatement.m
+END
+ZIMSqlAttachStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlAttachStatement.m
+END
+ZIMSqlDropTableStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropTableStatement.h
+END
+ZIMSqlStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlStatement.h
+END
+ZIMSqlDropTableStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropTableStatement.m
+END
+ZIMSqlDropTriggerStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropTriggerStatement.h
+END
+ZIMSqlDetachStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDetachStatement.h
+END
+ZIMSqlDropIndexStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropIndexStatement.h
+END
+ZIMSqlSdk.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlSdk.h
+END
+ZIMSqlDropTriggerStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropTriggerStatement.m
+END
+ZIMSqlDetachStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDetachStatement.m
+END
+ZIMSqlTruncateTableStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlTruncateTableStatement.h
+END
+ZIMSqlShowGrantsStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowGrantsStatement.h
+END
+ZIMSqlExplainStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlExplainStatement.h
+END
+ZIMSqlDropIndexStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropIndexStatement.m
+END
+ZIMSqlTruncateTableStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlTruncateTableStatement.m
+END
+ZIMSqlAnalyzeStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlAnalyzeStatement.h
+END
+ZIMSqlInsertStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlInsertStatement.h
+END
+ZIMSqlShowGrantsStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowGrantsStatement.m
+END
+ZIMSqlExplainStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlExplainStatement.m
+END
+ZIMSqlAnalyzeStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlAnalyzeStatement.m
+END
+ZIMSqlInsertStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlInsertStatement.m
+END
+ZIMSqlExpression.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlExpression.h
+END
+ZIMSqlCreateTableStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateTableStatement.h
+END
+ZIMSqlShowTablesStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowTablesStatement.h
+END
+ZIMSqlAlterTableStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlAlterTableStatement.h
+END
+ZIMSqlExpression.m
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlExpression.m
+END
+ZIMSqlSelectStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlSelectStatement.h
+END
+ZIMSqlCreateTableStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateTableStatement.m
+END
+ZIMSqlShowTablesStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowTablesStatement.m
+END
+ZIMSqlShowColumnsStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowColumnsStatement.h
+END
+ZIMSqlUpdateStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlUpdateStatement.h
+END
+ZIMSqlUpsertStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlUpsertStatement.h
+END
+ZIMSqlAlterTableStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlAlterTableStatement.m
+END
+ZIMSqlDataControlCommand.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDataControlCommand.h
+END
+ZIMSqlSelectStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlSelectStatement.m
+END
+ZIMSqlTokenizer.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlTokenizer.h
+END
+ZIMSqlShowColumnsStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowColumnsStatement.m
+END
+ZIMSqlCreateTriggerStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateTriggerStatement.h
+END
+ZIMSqlShowTriggersStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowTriggersStatement.h
+END
+ZIMSqlUpdateStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlUpdateStatement.m
+END
+ZIMSqlUpsertStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlUpsertStatement.m
+END
+ZIMSqlTokenizer.m
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlTokenizer.m
+END
+ZIMSqlCreateIndexStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateIndexStatement.h
+END
+ZIMSqlCreateTriggerStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateTriggerStatement.m
+END
+ZIMSqlDataDefinitionCommand.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDataDefinitionCommand.h
+END
+ZIMSqlShowTriggersStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowTriggersStatement.m
+END
+ZIMSqlCreateViewStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateViewStatement.h
+END
+ZIMSqlReindexStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlReindexStatement.h
+END
+ZIMSqlShowViewsStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowViewsStatement.h
+END
+ZIMSqlDropViewStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDropViewStatement.h
+END
+ZIMSqlCreateIndexStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateIndexStatement.m
+END
+ZIMSqlTransactionControlCommand.h
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlTransactionControlCommand.h
+END
+ZIMSqlDeleteStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlDeleteStatement.h
+END
+ZIMSqlPreparedStatement.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlPreparedStatement.h
+END
+ZIMSqlCreateViewStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlCreateViewStatement.m
+END
+ZIMSqlReindexStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlReindexStatement.m
+END
+ZIMSqlShowViewsStatement.m
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tabsquare-product-development/!svn/ver/8/Demo%20App/DemoAPP_22Feb/Classes/src/sql/ZIMSqlShowViewsStatement.m
+END

@@ -5,8 +5,8 @@
 #define DISH_TAG      @"dishtagkey"
 #define SERVER_URL    @"serverurlkey"
 #define APP_KEY       @"appkey"
-#define DEFAULT_URL   @"http://192.168.1.90/central" //for moghul mahal
-//#define DEFAULT_URL   @"http://192.168.1.90/central"
+#define DEFAULT_URL   @"http://192.168.0.138/central" //for moghul mahal
+//#define DEFAULT_URL   @"http://192.168.0.138/central"
 #define DEFAULT_KEY   @"511dcaa2b99651360906914"
 #define PRE_NAME      @"tabsquare_"
 

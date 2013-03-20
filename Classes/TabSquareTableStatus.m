@@ -104,7 +104,7 @@
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.1.90/Raptor/AllVoid.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/Raptor/AllVoid.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -284,7 +284,7 @@
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.1.90/central/webs/get_temp_order"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/central/webs/get_temp_order"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -363,7 +363,7 @@
             // [tempCust addObject:dataitm2[@"customisations"]];
             // [[TabSquareDBFile sharedDatabase] closeDatabaseConnection];
             //  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-            //  [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.90/kinaraEx/getOptions.php?tempid=%@",dataitem[@"id"]]]];
+            //  [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/kinaraEx/getOptions.php?tempid=%@",dataitem[@"id"]]]];
             
             // NSError *error;
             //   NSURLResponse *response;

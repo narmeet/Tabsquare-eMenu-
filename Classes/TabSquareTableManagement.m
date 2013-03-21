@@ -1921,6 +1921,7 @@ bool funcCalled = NO;
     else
     {
         [self getTotalNumberofTable];
+        [self checkSections];
         [self getTables];
        // [self performSelector:@selector(getTables) withObject:nil];
 

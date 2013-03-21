@@ -1171,7 +1171,9 @@ bool funcCalled = NO;
                                     
                                     //[self presentModalViewController:homeView animated:YES];
                                     // [self presentViewController:homeView animated:YES completion:Nil];
-                                    [self.navigationController pushViewController:homeView animated:YES];
+                                   // [self.navigationController pushViewController:homeView animated:YES];
+                                    [self gotoDishMenuLIst2];
+
                                 }
 
                             }
@@ -1922,7 +1924,7 @@ bool funcCalled = NO;
     {
         [self getTotalNumberofTable];
         [self getTables];
-       // [self performSelector:@selector(getTables) withObject:nil];
+        //[self performSelector:@selector(getTables) withObject:nil afterDelay:0.3];
 
       //  [self getTableStatusView];
         //[self getTaxesList];

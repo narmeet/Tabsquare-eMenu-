@@ -4,7 +4,7 @@
 //
 //  Created by ManojRai on 4/2/13.
 //  Copyright (c) 2013 Trendsetterz. All rights reserved.
-// OMkara      bhrwirhherehiherigegergegueargu
+// OMkara
 
 #ifndef TabSquareMenu_Global_h
 #define TabSquareMenu_Global_h

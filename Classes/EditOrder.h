@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-
+#import "Reachability.h"
 @interface EditOrder : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
 {
     MBProgressHUD *progressHud;

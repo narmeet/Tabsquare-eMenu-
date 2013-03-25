@@ -43,7 +43,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{742, 720}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="817094788"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -59,7 +58,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{267, 38}, {209, 28}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="17314523"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -92,7 +90,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 338}, {300, 34}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="52298568"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="973198226">
@@ -132,7 +129,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{219, 418}, {302, 31}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="263353118"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="973198226"/>
@@ -161,7 +157,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{163, 43}, {415, 78}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="710419242"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -196,7 +191,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{42, 190}, {658, 96}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1045070127"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -223,7 +217,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{50, 535}, {658, 78}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="417891350"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -250,7 +243,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 310}, {245, 22}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="921495778"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -283,7 +275,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 391}, {134, 21}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="256060508"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -307,7 +298,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{219, 610}, {315, 48}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="517497448"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -342,8 +332,6 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{427, 666}, {151, 48}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -367,7 +355,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{219, 467}, {149, 46}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="79026578"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -392,7 +379,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{374, 467}, {145, 46}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="270210952"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -417,7 +403,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{232, 111}, {276, 61}}</string>
 						<reference key="NSSuperview" ref="818990567"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="42255050"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">1</int>
@@ -431,7 +416,6 @@
 				</array>
 				<string key="NSFrameSize">{741, 720}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="320579223"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -656,56 +640,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">115</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">TabSquareFeedbackLLViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="LoginButtonClick:">id</string>
-						<string key="RegisterButtonClick:">id</string>
-						<string key="facebookLoginBtnClicked">id</string>
-						<string key="twitterBtnClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="LoginButtonClick:">
-							<string key="name">LoginButtonClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="RegisterButtonClick:">
-							<string key="name">RegisterButtonClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="facebookLoginBtnClicked">
-							<string key="name">facebookLoginBtnClicked</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="twitterBtnClicked:">
-							<string key="name">twitterBtnClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="txtLogin">UITextField</string>
-						<string key="txtPassword">UITextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="txtLogin">
-							<string key="name">txtLogin</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="txtPassword">
-							<string key="name">txtPassword</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TabSquareFeedbackLLViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

@@ -15,7 +15,6 @@
 #import "Reachability.h"
 #import "TabSquareTableManagement.h"
 #import "TabSquareQuickOrder.h"
-#import "PrintBillAndCheckOutFinal.h"
 #import "TabSquareCommonClass.h"
 
 NSString *kNameColorKey= @"nameColorKey";

@@ -119,6 +119,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{457, 582}, {50, 40}}</string>
 						<reference key="NSSuperview" ref="850242920"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -322,6 +323,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{106, 29}, {529, 640}}</string>
 						<reference key="NSSuperview" ref="705509340"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -637,7 +639,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="add_btn.png">{115, 53}</string>
-			<string key="backtrans.png">{1536, 1469}</string>
+			<string key="backtrans.png">{16, 16}</string>
 			<string key="close_confirm.png">{418, 62}</string>
 			<string key="left_arrow1.png">{64, 59}</string>
 			<string key="menu_back.png">{1478, 1390}</string>

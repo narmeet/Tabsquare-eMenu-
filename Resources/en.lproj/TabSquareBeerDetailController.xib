@@ -538,7 +538,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="backtrans.png">{1536, 1469}</string>
+			<string key="backtrans.png">{16, 16}</string>
 			<string key="close_confirm.png">{418, 62}</string>
 			<string key="kingfisher.png">{196, 677}</string>
 			<string key="left_arrow1.png">{64, 59}</string>

@@ -955,7 +955,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="KAddDiscount.png">{450, 130}</string>
 			<string key="KVoildDiscount.png">{460, 130}</string>
-			<string key="demo_logo.png">{637, 417}</string>
+			<string key="demo_logo.png">{16, 16}</string>
 			<string key="menu_back.png">{1478, 1390}</string>
 			<string key="menu_bg_new.png">{1536, 2048}</string>
 		</dictionary>

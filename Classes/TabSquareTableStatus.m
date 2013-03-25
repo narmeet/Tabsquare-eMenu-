@@ -11,8 +11,6 @@
 #import "EditOrder.h"
 #import <QuartzCore/CALayer.h>
 #import "TabSquareTableManagement.h"
-//#import "PrintBillAndCheckOut.h"
-#import "PrintBillAndCheckOutFinal.h"
 #import "EditOrder.h"
 #import "TabSquareDBFile.h"
 #import "ShareableData.h"
@@ -104,7 +102,7 @@
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/Raptor/AllVoid.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/AllVoid.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -284,7 +282,7 @@
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/central/webs/get_temp_order"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/central/webs/get_temp_order"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -363,7 +361,7 @@
             // [tempCust addObject:dataitm2[@"customisations"]];
             // [[TabSquareDBFile sharedDatabase] closeDatabaseConnection];
             //  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-            //  [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/kinaraEx/getOptions.php?tempid=%@",dataitem[@"id"]]]];
+            //  [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/getOptions.php?tempid=%@",dataitem[@"id"]]]];
             
             // NSError *error;
             //   NSURLResponse *response;
@@ -835,10 +833,10 @@
     else if(taskType==3)
     {
         [ShareableData sharedInstance].isTakeaway=@"0";
-        PrintBillAndCheckOutFinal *SalesReport1=[[PrintBillAndCheckOutFinal alloc]initWithNibName:@"PrintBillAndCheckOutFinal" bundle:nil];
-        SalesReport1.tableNumber=tableNumber;
-        //[self dismissModalViewControllerAnimated:NO];
-        [self.navigationController pushViewController:SalesReport1 animated:YES];
+//        PrintBillAndCheckOutFinal *SalesReport1=[[PrintBillAndCheckOutFinal alloc]initWithNibName:@"PrintBillAndCheckOutFinal" bundle:nil];
+//        SalesReport1.tableNumber=tableNumber;
+//        //[self dismissModalViewControllerAnimated:NO];
+//        [self.navigationController pushViewController:SalesReport1 animated:YES];
     }
     else if(taskType==4)
     {

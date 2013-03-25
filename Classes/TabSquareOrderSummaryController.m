@@ -18,7 +18,6 @@
 #import "TabSquareMenuController.h"
 #import "TabMainDetailView.h"
 #import "UYLGenericPrintPageRenderer.h"
-#import "TakeWayEditOrder.h"
 #import "TabSquareBeerController.h"
 #import "TabSquareBeerDetailController.h"
 
@@ -220,7 +219,7 @@ static int tapCount = 0;
 -(NSString*)loadWebViewDish
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/kinaraEx/printDishes.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/printDishes.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
     
     NSError *error;
     NSURLResponse *response;
@@ -233,7 +232,7 @@ static int tapCount = 0;
 -(NSString*)loadWebViewDrink
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/kinaraEx/printDrinks.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/printDrinks.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
     
     NSError *error;
     NSURLResponse *response;
@@ -290,7 +289,7 @@ static int tapCount = 0;
         else
         {
             /*NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-             [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/kinaraEx/removeTempOrders.php?orderid=%@",[ShareableData sharedInstance].OrderId]]];
+             [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/removeTempOrders.php?orderid=%@",[ShareableData sharedInstance].OrderId]]];
              
              NSError *error;
              NSURLResponse *response;
@@ -460,7 +459,7 @@ static int tapCount = 0;
     {
         
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/kinaraEx/printRequest.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/printRequest.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -491,9 +490,9 @@ static int tapCount = 0;
         }else if( [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"2"]){
             [ShareableData sharedInstance].IsEditOrder=@"0";
             [ShareableData sharedInstance].isQuickOrder=@"0";
-            TakeWayEditOrder *SalesReport1=[[TakeWayEditOrder alloc]initWithNibName:@"TakeWayEditOrder" bundle:nil];
-            [ShareableData sharedInstance].isTakeaway=@"1";
-            [self.navigationController pushViewController:SalesReport1 animated:YES];
+//            TakeWayEditOrder *SalesReport1=[[TakeWayEditOrder alloc]initWithNibName:@"TakeWayEditOrder" bundle:nil];
+//            [ShareableData sharedInstance].isTakeaway=@"1";
+//            [self.navigationController pushViewController:SalesReport1 animated:YES];
         }
         //[self performSelector:@selector(loadWebViewDish) withObject:nil afterDelay:.1];
         //[self performSelector:@selector(printWebView) withObject:nil afterDelay:.9];
@@ -678,7 +677,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -701,7 +700,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/Raptor/ForcePrint.php?SalesNo=%@&SplitNo=%@",[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/ForcePrint.php?SalesNo=%@&SplitNo=%@",[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -724,7 +723,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.138/Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -752,7 +751,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/Raptor/OpenItem.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/OpenItem.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -784,7 +783,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/Raptor/OrderItem.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/OrderItem.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -816,7 +815,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/Raptor/CustomModifier.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/CustomModifier.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -863,7 +862,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.138/mm/webs/set_temp_order"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/mm/webs/set_temp_order"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];

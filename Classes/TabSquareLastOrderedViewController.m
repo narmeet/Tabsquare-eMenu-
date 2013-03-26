@@ -53,10 +53,15 @@
    itemDetailView=[[TabMainMenuDetailViewController alloc]initWithNibName:@"TabMainMenuDetailViewController" bundle:nil];
     
 }
--(void)viewDidAppear:(BOOL)animated
-{     
-    [self loadlastOrdereddata];
+//-(void)viewDidAppear:(BOOL)animated
+//{     
+//    [self loadlastOrdereddata];
+//    
+//}
+-(void)viewWillAppear:(BOOL)animated{
     
+    [self loadlastOrdereddata];
+
 }
 
 - (void)viewDidLoad

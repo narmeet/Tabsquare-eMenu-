@@ -1051,7 +1051,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    NSLog(@"json = %@",json);
+   // NSLog(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1165,13 +1165,14 @@ bool funcCalled = NO;
 //                                    [self.navigationController pushViewController:homeView animated:YES];
 //                                }
                                 if (guests.text.intValue >0 ){
-                                    [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"0"];
+                                    [ShareableData sharedInstance].IsEditOrder =@"0";
+//                                    [ShareableData sharedInstance].AddItemFromTakeaway=@"0";
+//
+//                                    [ShareableData sharedInstance].isConfromHomePage=@"1";
+//
                                     [self AssignData:guests.text];
                                     
-                                    //[self presentModalViewController:homeView animated:YES];
-                                    // [self presentViewController:homeView animated:YES completion:Nil];
-                                   // [self.navigationController pushViewController:homeView animated:YES];
-                                    [self gotoDishMenuLIst2];
+                                     [self gotoDishMenuLIst2];
 
                                 }
 
@@ -1548,7 +1549,7 @@ bool funcCalled = NO;
     
     [ShareableData sharedInstance].salesNo=data;
     [ShareableData sharedInstance].splitNo = @"0";
-    DLog(@"Bill Number :%@",data);
+   // DLog(@"Bill Number :%@",data);
     
 }
 

@@ -531,9 +531,10 @@
     
     if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"0"]){
     
-    [self performSelector:@selector(loadOverview) withObject:nil afterDelay:0.10];
+    //[self performSelector:@selector(loadOverview) withObject:nil afterDelay:0.10];
+        [self loadOverview];
     }else{
-      [self performSelector:@selector(loadQuickOrder) withObject:nil afterDelay:0.3];
+      [self performSelector:@selector(loadQuickOrder) withObject:nil afterDelay:0.1];
     }
     
    /* [self.view addSubview:overviewMenuView];
@@ -3350,7 +3351,7 @@
     CABasicAnimation* rotationAnimation =
     [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     [rotationAnimation setToValue:[NSNumber numberWithFloat:100]];
-    [rotationAnimation setDuration:5.0];
+    [rotationAnimation setDuration:20.0];
     [rotationAnimation setRepeatCount:3]; // Repeat forever
     [rotationAnimation setAutoreverses:YES]; // Return to starting point
     

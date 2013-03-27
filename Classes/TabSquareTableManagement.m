@@ -12,6 +12,10 @@
 #import "TabSquarePlaogramView.h"
 #import "TabSquareCommonClass.h"
 #import "Reachability.h"
+#import "TSAlertView.h"
+
+#define NUMBERS_ONLY @"1234567890"
+#define CHARACTER_LIMIT 3
 
 @implementation TabSquareTableManagement
 
@@ -1115,7 +1119,7 @@ bool funcCalled = NO;
                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
                 
-                UITextField *guests = [alertView textFieldAtIndex:0];
+                UITextField *guests = (UITextField*)[alertView viewWithTag:3698];
                 if (guests.text.intValue >0 ){
                     [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"0"];
                     [self AssignData:guests.text];
@@ -1154,8 +1158,8 @@ bool funcCalled = NO;
                                 [[ShareableData sharedInstance].OrderCustomizationDetail removeAllObjects];
                                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
-                                UITextField *guests = [alertView textFieldAtIndex:0];
-
+                                //UITextField *guests = [alertView textFieldAtIndex:0];
+ UITextField *guests = (UITextField*)[alertView viewWithTag:3698];
 //                                if (numberOfGuests.text.intValue >0 ){
 //                                    [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"0"];
 //                                    [self AssignData:numberOfGuests.text];
@@ -1860,13 +1864,57 @@ bool funcCalled = NO;
                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
                 [[ShareableData sharedInstance].TempOrderID removeAllObjects];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Enter no. of Guests:"
+              
+                
+//                TSAlertView* av = [[TSAlertView alloc] init];
+//                av.title = @"manoj";
+//                av.message =@"bamabm";
+//                
+//                for ( int i = 0 ; i < 2 ; i++ )
+//                {
+//                    [av addButtonWithTitle: [NSString stringWithFormat: @"Button %d", i]];
+//                }
+//                
+//                av.style =  TSAlertViewStyleInput ;
+//                av.buttonLayout = TSAlertViewButtonLayoutStacked;
+//                av.usesMessageTextView = _usesTextViewSwitch.on;
+//                
+//                av.width = [@"300" floatValue];
+//                av.maxHeight = [@"180" floatValue];
+//                [self.view addSubview:av];
+//                [self.view bringSubviewToFront:av];
+//                
+//                [av show];
+
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"\n\n\n\n\n\n"
                                                                delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Assign", nil];
-                alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-                UITextField * alertTextField = [alert textFieldAtIndex:0];
-                alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+                ///seting up the UIimage on UIalert box
+                UIImage *alertBoxImage = [UIImage imageNamed:@"paxbox.png"];
+                
+                UIImageView *_backgroundImageView = [[UIImageView alloc] initWithImage:alertBoxImage];
+                _backgroundImageView.frame = CGRectMake(0, 0, 282, 205);
+                _backgroundImageView.contentMode = UIViewContentModeScaleToFill;
+                [alert addSubview:_backgroundImageView];
+                [alert sendSubviewToBack:_backgroundImageView];
+                
+                UITextField *myTextField = [[UITextField alloc] initWithFrame:CGRectMake(116.0, 115.0, 45.0, 25.0)];
+                [myTextField setBackgroundColor:[UIColor whiteColor]];
+                myTextField.keyboardType = UIKeyboardTypeNumberPad;
+                myTextField.tag=3698;
+                myTextField.textAlignment = 	NSTextAlignmentCenter;
+                myTextField.delegate=self;
+                
+                [alert addSubview:myTextField];
+                
+               // UITextField * alertTextField = [alert textFieldAtIndex:0];
+                
+                //alertTextField.placeholder=@"Please enter no. of Guests";
+                //alertTextField.frame = CGRectMake(1, 1, 10, 10);
+                //[alertTextField sizeThatFits:CGSizeMake(10, 10)];
                 [alert show];
-                // [self presentModalViewController:assignTableView animated:YES];
+                
+                
+                
             }else{
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Confirm switch to this table?"
@@ -2078,7 +2126,12 @@ bool funcCalled = NO;
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
+    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
+}
 
 
 

@@ -12,7 +12,6 @@
 #import "TabSquarePlaogramView.h"
 #import "TabSquareCommonClass.h"
 #import "Reachability.h"
-#import "TSAlertView.h"
 
 #define NUMBERS_ONLY @"1234567890"
 #define CHARACTER_LIMIT 3

@@ -103,7 +103,7 @@
     NSString *imageUrl = [NSString stringWithFormat:@"%@/img/product/%@", @"http://54.251.56.111/central",[NSString stringWithFormat:@"%@",data]];  // do not change
     
     [ShareableData sharedInstance].feedDishImage=imageUrl;
-    //DLog(@"Result : %@",data);
+    NSLog(@"imageUrl =====%@",imageUrl);
 }
 
 
@@ -301,7 +301,7 @@
 -(IBAction)facebookBtnClick:(id)sender
 {
     UIButton *btn=(UIButton*)sender;
-    [ShareableData sharedInstance].feedDishName=[NSString stringWithFormat:@"I Love the %@ at Banana Leaf",foodList[btn.tag]];
+    [ShareableData sharedInstance].feedDishName=[NSString stringWithFormat:@"I Love the %@ at " kFacebbokNameString,foodList[btn.tag]];
     [ShareableData sharedInstance].feedDishRating=[NSString stringWithFormat:@"I give it a %.02f star rating", [FoodRating[btn.tag]floatValue]];
     [self getImageUrl:foodId[btn.tag]];
     

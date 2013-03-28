@@ -15,6 +15,8 @@
     TabFeedbackViewController* feedbackView;
     IBOutlet UIButton* submitFeedbackBtn;
     IBOutlet UIImageView *bgImage;
+    IBOutlet UILabel *thankYouLabel;
+    
     
 }
 

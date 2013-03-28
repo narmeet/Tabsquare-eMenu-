@@ -8,7 +8,7 @@
 
 //#define kAppId  @"345487292205652"
 //#define   kAppId  @"218172004987897"/////for Moghul mahal
-#define   kAppId  @"567350413284422"/////for Banana Leaf
+//#define   kAppId  @"567350413284422"/////for Banana Leaf
 //#define kAppId  @"411662998896412"
 
 #import "FacebookViewC.h"

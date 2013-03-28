@@ -214,6 +214,9 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
+    
+    thankYouLabel.text=kThankYouLabelText;
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Ex/printBillText.php?tableid=%@&key=%@", [ShareableData serverURL],tableNumber, [ShareableData appKey]]]];
     

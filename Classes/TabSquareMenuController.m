@@ -695,7 +695,8 @@
     
     [subcatScroller setShowsHorizontalScrollIndicator:NO];
     [subcatScroller setShowsVerticalScrollIndicator:NO];
-    
+    CGSize scrollableSize = CGSizeMake(self.view.frame.size.width, 61);
+    [subcatScroller setContentSize:scrollableSize];
     [subcatScroller setScrollEnabled:YES];
     
     
@@ -3351,7 +3352,7 @@
     CABasicAnimation* rotationAnimation =
     [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     [rotationAnimation setToValue:[NSNumber numberWithFloat:100]];
-    [rotationAnimation setDuration:20.0];
+    [rotationAnimation setDuration:2.0];
     [rotationAnimation setRepeatCount:3]; // Repeat forever
     [rotationAnimation setAutoreverses:YES]; // Return to starting point
     

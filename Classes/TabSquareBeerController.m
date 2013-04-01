@@ -600,7 +600,7 @@
     DLog(@"%d",total);
     if(total<3)
     {
-        return 4;
+        return 4; // changed from 3 to 4 due to more visible row in rack view
     }
     else
     {

@@ -239,7 +239,7 @@
                                    kAppId, @"api_key",
                                    imageurl, @"picture",
                                    dishName, @"name",
-                                   @"Powered by Tabsquare",@"caption",
+                                   @"Powered by Tabsquare",@"caption", /// changed for hide the IP while posting the image
                                    rate, @"description",
                                    nil];
     

@@ -79,7 +79,7 @@
 }
 
 
--(void)getImageUrl:(NSString*)foodid 
+-(void)getImageUrl:(NSString*)foodid //// posting image to FB
 {
     NSString *post =[NSString stringWithFormat:@"id=%@&key=%@",foodid, [ShareableData appKey]];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];

@@ -28,6 +28,8 @@
     int totalPrintItm;
     
     id mParent;
+    
+    IBOutlet UIImageView *bgImage;
 }
 @property (nonatomic) id mParent;
 

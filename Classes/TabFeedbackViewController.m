@@ -302,7 +302,7 @@
 {
     UIButton *btn=(UIButton*)sender;
     [ShareableData sharedInstance].feedDishName=[NSString stringWithFormat:@"I Love the %@ at " kFacebbokNameString,foodList[btn.tag]];
-    [ShareableData sharedInstance].feedDishRating=[NSString stringWithFormat:@"I give it a %.02f star rating", [FoodRating[btn.tag]floatValue]];
+    [ShareableData sharedInstance].feedDishRating=[NSString stringWithFormat:@"I give it a %d star rating", [FoodRating[btn.tag]intValue]];
     [self getImageUrl:foodId[btn.tag]];
     
     
@@ -508,7 +508,7 @@
 
 -(void)sendFeedback:(NSString*)qid cid:(NSString*)cid rating:(NSString*)rating comments:(NSString*)comments order_id:(NSString*)order_id
 {
-    NSString *Key=@"kinara123";
+   // NSString *Key=@"kinara123";
     
     NSString *post =[NSString stringWithFormat:@"key=%@&question_id=%@&customer_id=%@&rating=%@&comments=%@&order_id=%@", [ShareableData appKey],qid,cid,rating,comments,order_id];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
@@ -530,7 +530,7 @@
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     
-    DLog(@"Result : %@",data);
+    //DLog(@"Result : %@",data);
 }
 
 -(void) showIndicator

@@ -820,18 +820,8 @@ float totalPriceMinusDrinks;
 }
 -(void)getBackgroundImage
 {
-    /*
-     CGPoint _point = [self.view center];
-     CGRect _frm = CGRectMake(_point.x-11, _point.y-12, 25, 25);
-     UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:_frm];
-     [self.view addSubview:act];
-     [act startAnimating];
-     */
-    
-    
-    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT
-    //, 0), ^{
-    
+        
+      
     NSString *img_name = [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, BACKGROUND_IMAGE, [ShareableData appKey]];
     
     UIImage *img = [[TabSquareDBFile sharedDatabase] getImage:img_name];
@@ -846,17 +836,7 @@ float totalPriceMinusDrinks;
     }
     
     [bgImage setImage:img];
-    /*
-     
-     dispatch_sync(dispatch_get_main_queue(), ^{
-     
-     [self.bgImage setImage:img];
-     [act removeFromSuperview];
-     });
-     */
-    
-    //});
-    
+        
     
 }
 

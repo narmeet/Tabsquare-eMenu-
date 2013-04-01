@@ -239,7 +239,7 @@
                                    kAppId, @"api_key",
                                    imageurl, @"picture",
                                    dishName, @"name",
-                                   @"",@"caption",
+                                   @"Powered by Tabsquare",@"caption",
                                    rate, @"description",
                                    nil];
     

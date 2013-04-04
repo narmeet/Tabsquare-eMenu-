@@ -3417,7 +3417,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1786"
          endingLineNumber = "1786"
-         landmarkName = "-minusClicked:"
+         landmarkName = "-plusClicked:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3859,8 +3859,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "594"
          endingLineNumber = "594"
-         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
-         landmarkType = "5">
+         landmarkName = "@implementation TabSquareTableManagement"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -4561,8 +4561,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "693"
          endingLineNumber = "693"
-         landmarkName = "@implementation TabSquareTableManagement"
-         landmarkType = "3">
+         landmarkName = "-initTABtns"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -4855,12 +4855,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "384864034.32165"
+         timestampString = "386767370.017467"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1752"
-         endingLineNumber = "1752"
-         landmarkName = "-AssignData:"
+         startingLineNumber = "1781"
+         endingLineNumber = "1781"
+         landmarkName = "-assignTableRaptor:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -4981,7 +4981,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
@@ -5059,7 +5059,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
@@ -5069,6 +5069,19 @@
          startingLineNumber = "123"
          endingLineNumber = "123"
          landmarkName = "-getTables"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableStatus.m"
+         timestampString = "386764784.49255"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "300"
+         endingLineNumber = "300"
+         landmarkName = "-getTableDetails:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

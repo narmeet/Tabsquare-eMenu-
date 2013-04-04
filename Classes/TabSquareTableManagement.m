@@ -1616,7 +1616,7 @@ bool funcCalled = NO;
         [[ShareableData sharedInstance].OrderItemID addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]]];
         [[ShareableData sharedInstance].OrderItemName addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_name"]]];
         [[ShareableData sharedInstance].OrderItemQuantity addObject:[NSString stringWithFormat:@"%@",dataitem[@"quantity"]]];
-        [[ShareableData sharedInstance].OrderItemRate addObject:[NSString stringWithFormat:@"%@",dataitem[@"price"]]];
+        [[ShareableData sharedInstance].OrderItemRate addObject:[NSString stringWithFormat:@"%.2f",[dataitem[@"price"] floatValue]*[dataitem[@"quantity"] floatValue]]];
         
         [[ShareableData sharedInstance].confirmOrder addObject:[NSString stringWithFormat:@"%@",dataitem[@"1"]]];
         
@@ -1718,6 +1718,35 @@ bool funcCalled = NO;
     [ShareableData sharedInstance].assignedTable3=@"-1";
     [ShareableData sharedInstance].assignedTable4=@"-1";
     [self assignTableRaptor:guests ];
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        /*  [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemID forKey:@"OrderItemID"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemName forKey:@"OrderItemName"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemRate forKey:@"OrderItemRate"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderCatId forKey:@"OrderCatId"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].IsOrderCustomization forKey:@"IsOrderCustomization"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderCustomizationDetail forKey:@"OrderCustomizationDetail"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderSpecialRequest forKey:@"OrderSpecialRequest"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemQuantity forKey:@"OrderItemQuantity"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].confirmOrder forKey:@"confirmOrder"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderId forKey:@"OrderId"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable1"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable2"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable3"];
+         [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable4"];*/
+        NSArray *array=@[[ShareableData sharedInstance].OrderItemID,[ShareableData sharedInstance].OrderItemName,[ShareableData sharedInstance].OrderItemRate,[ShareableData sharedInstance].OrderCatId,[ShareableData sharedInstance].IsOrderCustomization,[ShareableData sharedInstance].OrderCustomizationDetail,[ShareableData sharedInstance].OrderSpecialRequest,[ShareableData sharedInstance].OrderItemQuantity,[ShareableData sharedInstance].confirmOrder];
+        NSArray *array2 = @[[ShareableData sharedInstance].OrderId,[ShareableData sharedInstance].assignedTable1,[ShareableData sharedInstance].assignedTable2,[ShareableData sharedInstance].assignedTable3,[ShareableData sharedInstance].assignedTable4,[ShareableData sharedInstance].salesNo];;
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+        NSString *libraryDirectory = [paths lastObject];
+        NSString *location = [libraryDirectory stringByAppendingString:@"/orderarrays.plist"];
+        NSString *location2 = [libraryDirectory stringByAppendingString:@"/orderstrings.plist"];
+        [array writeToFile:location atomically:YES];
+        [array2 writeToFile:location2 atomically:YES];
+        DLog(@"Added to Temp");
+        
+        // [[NSUserDefaults standardUserDefaults] synchronize];
+    });
+
     NSString *post =[NSString stringWithFormat:@"table1=%@&table2=%@&table3=%@&table4=%@&ipad_id=%@&no_of_guests=%@&key=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"],@"-1",@"-1",@"-1",@"0",guests, [ShareableData appKey]];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     

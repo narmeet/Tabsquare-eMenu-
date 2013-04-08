@@ -128,6 +128,7 @@
 @property(nonatomic,strong)NSString *serverUrl;
 @property(nonatomic,strong)NSString *dishTag;
 @property(nonatomic,strong)NSString *categoryID;
+@property(nonatomic,strong)NSString *bevCat;  ////changing the @"8"zugad to "is_beverage" item from database and replace @"8" by [ShareableData sharedInstance].bevCat
 
 
 +(ShareableData*) sharedInstance;

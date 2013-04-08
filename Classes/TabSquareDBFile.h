@@ -22,6 +22,7 @@
 @property(nonatomic,strong)NSString* OldVersion;
 @property(nonatomic,strong)NSString* NewVersion;
 
+
 + (TabSquareDBFile*) sharedDatabase;
 -(void) createEditableCopyOfDatabaseIfNeeded;
 -(void) openDatabaseConnection ;
@@ -47,7 +48,7 @@
 
 -(void)updateDishRecordTable:(NSString*)DishId DishName:(NSString*)name  CategoryId:(NSString*)category SubCategoryId:(NSString*)subcategory price:(NSString*)price price2:(NSString*)price2 description:(NSString*)description customization:(NSString*)cust itemtags:(NSString*)tag DishSequence:(NSString*)dishSeq SubSubCatId:(NSString*)sub_sub_id;
 
--(void)updateCategoryRecordTable:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage;
+-(void)updateCategoryRecordTable:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage is_beverage:(NSString *)is_beverage;
 -(void)updateCustomizationRecordTable:(NSString*)custId CustName:(NSString*)name Custheader:(NSString*)headertxt custType:(NSString*)type totalSelection:(NSString*)selection ;
 
 -(void)updateOptionRecordTable:(NSString*)optionId optionName:(NSString*)name optionprice:(NSString*)price custId:(NSString*)custid optionQty:(NSString*)qty;
@@ -56,7 +57,7 @@
 -(void)updateBeverageContainerRecordTable:(NSString*)Id beverageId:(NSString*)beverageid containerId:(NSString*)containerid price:(NSString*)price  ;
 -(void)updateHomeImageRecordTable:(NSString*)Id imageData:(NSData*)imagedata;
 -(void)updateSubCategoryRecordTable:(NSString*)Id SubcategoryName:(NSString*)subcatName categoryId:(NSString*)catId subCatSequence:(NSString*)catSeq displayType:(NSString*)display catImage:(NSString *)catImage;
--(void)insertIntoCategoryTableWithRecord:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage;
+-(void)insertIntoCategoryTableWithRecord:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage is_beverage:(NSString *)is_beverage;
 -(void)updateHomeCategoryRecordTable:(NSString*)Id categoryId:(NSString*)catId subcategoryId:(NSString*)SubcatId;
 -(void)updateSubSubCategoryRecordTable:(NSString*)Id SubSubcategoryName:(NSString*)subcatName categoryId:(NSString*)catId subCatId:(NSString*)subcatId sequence:(NSString*)seq catImage:(NSString *)catImage;
 -(NSData*)getHomeImageData:(NSString*)imageId;

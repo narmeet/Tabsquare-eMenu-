@@ -15,7 +15,7 @@
 @synthesize IsGetCMSData,IsViewPage,isFBLogin,OrderSpecialRequest;
 @synthesize feedDishName,feedDishRating,feedDishImage,isInternetConnected,AddItemFromTakeaway,isTwitterLogin,OrderDishImage;
 @synthesize IsEditOrder,tableNumber,TempOrderID,isQuickOrder,rootLoaded,salesNo,splitNo;
-@synthesize serverUrl, dishTag, categoryID;
+@synthesize serverUrl, dishTag, categoryID,bevCat;
 
 
 static ShareableData *abc;
@@ -91,6 +91,7 @@ static ShareableData *abc;
     tableNumber=[[NSString alloc]init];
     salesNo=[[NSString alloc]init];
     splitNo=[[NSString alloc]init];
+    bevCat=[[NSString alloc]init];
     
     Discount=@"0";
     
@@ -115,6 +116,7 @@ static ShareableData *abc;
     Customer=@"";
     isFeedbackDone=@"0";
     categoryID=@"1";
+    bevCat=@"-1";
     
 }
 

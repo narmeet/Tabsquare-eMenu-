@@ -300,11 +300,11 @@ int toUpdate = 0;
 
         if([querytype isEqualToString:@"0"])
         {
-            [[TabSquareDBFile sharedDatabase]insertIntoCategoryTableWithRecord:catId categoryName:catName categorySequence:catSequence catImage:dataitem[@"image"]];
+            [[TabSquareDBFile sharedDatabase]insertIntoCategoryTableWithRecord:catId categoryName:catName categorySequence:catSequence catImage:dataitem[@"image"] is_beverage:dataitem[@"is_beverage"]];
         }
         else if([querytype isEqualToString:@"2"])
         {
-            [[TabSquareDBFile sharedDatabase]updateCategoryRecordTable:catId categoryName:catName categorySequence:catSequence  catImage:dataitem[@"image"]];
+            [[TabSquareDBFile sharedDatabase]updateCategoryRecordTable:catId categoryName:catName categorySequence:catSequence  catImage:dataitem[@"image"] is_beverage:dataitem[@"is_beverage"]];
         }
         else if ([querytype isEqualToString:@"1"]) 
         {

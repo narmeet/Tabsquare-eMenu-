@@ -620,7 +620,7 @@ imgView.clipsToBounds = NO;
 
     imageView = (UIImageView *)[flowView dequeueReusableCell];
     
-    if ([KDishCatId isEqualToString:@"8"]) { ///////for beverages
+    if ([KDishCatId isEqualToString:[ShareableData sharedInstance].bevCat]) { ///////for beverages
         
         if (!imageView) {
             imageView = [[UIImageView alloc] init];

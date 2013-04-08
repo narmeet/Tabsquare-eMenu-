@@ -247,13 +247,13 @@ int enableClose = 1;
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)insertIntoCategoryTableWithRecord:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage
+-(void)insertIntoCategoryTableWithRecord:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage is_beverage:(NSString *)is_beverage
 {
     [self saveImage:catImage];
     catName = [catName stringByReplacingOccurrencesOfString:@"'" withString:@""];
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
    // NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO Categories(id,name,sequence) VALUES (?,?,?);" withValues: Id,catName,catSeq, nil];
-     NSString *statement = [NSString stringWithFormat:@"INSERT INTO Categories(id,name,sequence,'image') VALUES (%@,'%@',%@,'%@');",Id,catName,catSeq,catImage];
+     NSString *statement = [NSString stringWithFormat:@"INSERT INTO Categories(id,name,sequence,'image',is_beverage) VALUES (%@,'%@',%@,'%@',%@);",Id,catName,catSeq,catImage,is_beverage];
     //NSLOG(@"query Logg 1 = %@", statement);
     
     [connection execute: statement];
@@ -369,13 +369,13 @@ int enableClose = 1;
 }
 
 
--(void)updateCategoryRecordTable:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage
+-(void)updateCategoryRecordTable:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage is_beverage:(NSString *)is_beverage
 {
     [self saveImage:catImage];
     catName = [catName stringByReplacingOccurrencesOfString:@"'" withString:@""];
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     //NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"Update Categories set name = ?,sequence = ? where id = ? ;" withValues: catName,catSeq,Id, nil];
-    NSString *statement = [NSString stringWithFormat:@"Update Categories set name = '%@',sequence = %@,image = '%@' where id = %@ ;",catName,catSeq, catImage,Id ];
+    NSString *statement = [NSString stringWithFormat:@"Update Categories set name = '%@',sequence = %@,image = '%@' , is_beverage = %@ where id = %@ ;",catName,catSeq, catImage,is_beverage,Id ];
     [connection execute: statement];
     
     
@@ -1823,322 +1823,12 @@ int enableClose = 1;
 	return finalCust;
 }
 
-////////////// before sahid code...............///////////
-
-//-(NSMutableArray*)getDishData:(NSString*)catId subCatId:(NSString*)subCatId
-//{
-//    ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
-//    NSString* statement;
-//   /* if ([subCatId isEqualToString:@"48"]){
-//        statement = [ZIMSqlPreparedStatement preparedStatement: @"select * from dishes, sub_sub_categories where dishes.sub_sub_category = sub_sub_categories.id and category = ? and sub_category = ? order by sub_sub_categories.sequence ASC;" withValues: catId,subCatId, nil];
-//    }else{*/
-//    
-//    /*
-//     (SELECT col1,col2,col3, from dishes) UNION ALL (select col1,col2,col3 from combos)
-//     */
-//    
-//    //statement = [ZIMSqlPreparedStatement preparedStatement: @"select * from Dishes where category = ? and sub_category = ? order by sub_sub_category,name;" withValues: catId,subCatId, nil];
-//    
-//    //(SELECT id, name,image, description from dishes WHERE category=? AND sub_category=? AND sub_sub_category=?) UNION ALL (SELECT id, name,image, description from combos WHERE category=? AND sub_category=? AND sub_sub_category=?)
-//    
-//    //NSString *query = @"SELECT id, name,image, category, sub_category, price, description, sub_sub_category from dishes WHERE category=? AND sub_category=? UNION ALL SELECT id, name,image, category, sub_category, price, description, sub_sub_category from combos WHERE category=? AND sub_category=? order by sub_sub_category,name;";
-//    
-//    NSString *query = @"SELECT id, name,image, category, sub_category, price, description, sub_sub_category, tags,0 AS jugaad from dishes WHERE category=? AND sub_category=? UNION ALL SELECT id, name,image, category, sub_category, price, description, sub_sub_category, tags,1 AS jugad from combos WHERE category=? AND sub_category=? order by sub_sub_category,name;";
-//    
-//    if([catId intValue] == 8)
-//        statement = [ZIMSqlPreparedStatement preparedStatement: @"select * from Dishes where category = ? and sub_category = ? order by sub_sub_category,name;" withValues: catId,subCatId, nil];
-//    else
-//        statement = [ZIMSqlPreparedStatement preparedStatement:query  withValues: catId,subCatId, catId, subCatId, nil];
-//    
-//   // }
-//    NSArray *records = [connection query: statement];
-//    
-//    
-//    if([catId intValue] == 8)
-//    {
-//        NSMutableArray *dishData=[[NSMutableArray alloc]init];
-//        for (id element in records){
-//            
-//            
-//            NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-//            NSString *dishId=(NSString*)[element objectForKey:@"id"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
-//            NSString *dishname=(NSString*)[element objectForKey:@"name"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-//            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-//            NSString *libraryDirectory = paths[0];
-//            NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,(NSString*)[element objectForKey:@"image"] ];
-//            NSString *dishdata = location;//[UIImage imageNamed:location]; //[NSData dataWithContentsOfFile:location];//(NSString*)[element objectForKey:@"image"];//[NSData dataWithBytes:sqlite3_column_blob(addStmt, 2) length:sqlite3_column_bytes(addStmt,2)];
-//            NSString *dishcat=(NSString*)[element objectForKey:@"category"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-//            NSString *dishsubcat=(NSString*)[element objectForKey:@"sub_category"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-//            NSString *dishprice=(NSString*)[element objectForKey:@"price"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,5)];
-//            NSString *dishprice2=(NSString*)[element objectForKey:@"price2"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
-//            NSString *dishdescription=(NSString*)[element objectForKey:@"description"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
-//            NSString *dishcustomization=(NSString*)[element objectForKey:@"customization"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-//            NSString *dishSubSubId=(NSString*)[element objectForKey:@"sub_sub_category"];//[NSString
-//            if ([dishcustomization isEqualToString:@"<null>" ]) {
-//                
-//                dishcustomization =@"";
-//            }
-//            NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-//            // enableClose = 1;
-//            
-//            NSString *tag_str = (NSString *)[element objectForKey:@"tags"];
-//            
-//            /*==========Fetching dish tag items============*/
-//            NSMutableArray *tag_array = [[NSMutableArray alloc] init];
-//            if(tag_str != NULL && ![tag_str isEqualToString:@"<null>"] && [tag_str length] > 0) {
-//                
-//                NSString *val = [NSString stringWithFormat:@"0%@0", tag_str];
-//                
-//                ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
-//                NSString *query = [NSString stringWithFormat:@"select icon, name FROM tags WHERE id IN(%@) and icon!='' AND icon!='<null>' order by name ;", val];
-//                NSArray *records2 = [connection query: query];
-//                for(id dat in records2)
-//                {
-//                    [tag_array addObject:[dat objectForKey:@"icon"]];
-//                }
-//            }
-//            /*============================================*/
-//            
-//            
-//            NSString *cust=@"0";
-//            
-//            if(![dishcustomization isEqualToString:@""])
-//            {
-//                cust=@"1";
-//            }
-//            
-//            dishDic[@"cust"] = cust;
-//            dishDic[@"id"] = dishId;
-//            dishDic[@"name"] = dishname;
-//            dishDic[@"images"] = dishdata;
-//            dishDic[@"category"] = dishcat;
-//            dishDic[@"sub_category"] = dishsubcat;
-//            dishDic[@"price"] = dishprice;
-//            dishDic[@"price2"] = dishprice2;
-//            dishDic[@"description"] = dishdescription;
-//            dishDic[@"customisations"] = customizationdata;
-//            dishDic[@"sub_sub_category"] = dishSubSubId;
-//            [dishDic setObject:tag_array forKey:@"tag_icons"];
-//
-//            [dishData addObject:dishDic];
-//  
-//        }
-//        return dishData;
-//    }
-//    
-//    NSMutableArray *dishData = [[NSMutableArray alloc]init];
-//    //NSMutableArray * tags = [[NSMutableArray alloc]init];
-//    
-//    for (id element in records){
-//        
-//
-//        NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-//        NSString *dishId=(NSString*)[element objectForKey:@"[id]"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
-//        
-//        NSString *dishname=(NSString*)[element objectForKey:@"[name]"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-//        NSString *jugad_key = [element objectForKey:@"jugaad"];
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-//        
-//        NSString *libraryDirectory = paths[0];
-//        
-//        NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,(NSString*)[element objectForKey:@"[image]"] ];
-//        
-//        NSString *dishdata = location;//[UIImage imageNamed:location]; //[NSData dataWithContentsOfFile:location];//(NSString*)[element objectForKey:@"image"];//[NSData dataWithBytes:sqlite3_column_blob(addStmt, 2) length:sqlite3_column_bytes(addStmt,2)];
-//        
-//        NSString *dishcat=(NSString*)[element objectForKey:@"[category]"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-//        
-//        NSString *dishsubcat=(NSString*)[element objectForKey:@"[sub_category]"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-//        
-//        NSString *dishprice=(NSString*)[element objectForKey:@"[price]"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,5)];
-//        
-//        //NSString *dishprice2=(NSString*)[element objectForKey:@"price2"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
-//        
-//        NSString *dishprice2 = @"0.0";
-//       
-//        NSString *dishdescription=(NSString*)[element objectForKey:@"[description]"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
-//        
-//        
-//        NSString *dishcustomization=(NSString*)[element objectForKey:@"customization"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-//        
-//       // NSString *dishcustomization = @"";
-//        if ([dishcustomization isEqualToString:@"<null>" ]) {
-//            
-//            dishcustomization =@"";
-//        }
-//        
-//        NSString *dishSubSubId=(NSString*)[element objectForKey:@"[sub_sub_category]"];//[NSString stringWithFormat:@"%s",(char*)(char*)sqlite3_column_text(addStmt,11)];
-//        //  enableClose = 0;
-//        
-//        NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-//        // enableClose = 1;
-//        NSString *tag_str = (NSString *)[element objectForKey:@"[tags]"];
-//        
-//        /*==========Fetching dish tag items============*/
-//        NSMutableArray *tag_array = [[NSMutableArray alloc] init];
-//        NSMutableArray *tag_names = [[NSMutableArray alloc] init];
-//        if(tag_str != NULL && ![tag_str isEqualToString:@"<null>"] && [tag_str length] > 0) {
-//            ////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
-//
-//            NSString *val = [NSString stringWithFormat:@"0%@0", tag_str];
-//            ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
-//            NSString *query = [NSString stringWithFormat:@"select icon, name FROM tags WHERE id IN(%@) and icon!='' AND icon!='<null>' ;", val];
-//            NSArray *records2 = [connection query: query];
-//
-//            for(id dat in records2)
-//            {
-//                [tag_array addObject:[dat objectForKey:@"icon"]];
-//                [tag_names addObject:[dat objectForKey:@"name"]];
-//            }
-//
-//        }
-//        //[tags addObject:tag_array];
-//        /*============================================*/
-//
-//        
-//        NSString *cust=@"0";
-//        
-//        if(![dishcustomization isEqualToString:@""])
-//        {
-//            cust=@"1";
-//        }
-//        
-//        dishDic[@"cust"] = cust;
-//        dishDic[@"id"] = dishId;
-//        dishDic[@"name"] = dishname;
-//        dishDic[@"images"] = dishdata;
-//        dishDic[@"category"] = dishcat;
-//        dishDic[@"sub_category"] = dishsubcat;
-//        dishDic[@"price"] = dishprice;
-//        dishDic[@"price2"] = dishprice2;
-//        dishDic[@"description"] = dishdescription;
-//        dishDic[@"customisations"] = customizationdata;
-//        dishDic[@"sub_sub_category"] = dishSubSubId;
-//        [dishDic setObject:jugad_key forKey:@"is_set"];
-//        [dishDic setObject:tag_array forKey:@"tag_icons"];
-//        [dishDic setObject:tag_names forKey:@"tag_names"];
-//
-//        [dishData addObject:dishDic];
-//        // [dishDic release];
-//        // dishdata = nil;
-//    }
-//
-//    return dishData;
-//
-//    /*
-//    //@autoreleasepool {
-//   // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-//    [self openDatabaseConnection];
-//   
-//   const char *sql;
-//   // NSString* tmpstr = [NSString stringWithFormat:@"%@%@",catId,subCatId ];
-//   
-//   // if ([[NSUserDefaults standardUserDefaults] objectForKey:tmpstr] !=nil){
-//        
-//  //  }else{
-//    
-//    
-//    
-//   // if ([catId isEqualToString:@"8"]){
-//        sql =[[NSString stringWithFormat:@"select * from Dishes where category=%@ and sub_category='%@' order by sub_sub_category,name",catId,subCatId]cStringUsingEncoding:NSUTF8StringEncoding];
-//  //  }else{
-//   //     sql =[[NSString stringWithFormat:@"select * from Dishes where category=%@ and sub_category='%@'",catId,subCatId]cStringUsingEncoding:NSUTF8StringEncoding];
-//   // }
-//    
-//	NSMutableArray *dishData=[[NSMutableArray alloc]init];
-//     
-//	sqlite3_stmt *addStmt;
-//	int  i=0;
-//	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-//	{
-//		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-//	}
-//	else
-//	{
-//        
-//		while (sqlite3_step(addStmt) == SQLITE_ROW)
-//		{
-//            if(i==0)
-//            {
-//                NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-//                NSString *dishId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-//                NSString *dishname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-//                NSData *dishdata = [NSData dataWithBytes:sqlite3_column_blob(addStmt, 2) length:sqlite3_column_bytes(addStmt,2)];
-//                NSString *dishcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-//                NSString *dishsubcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-//                NSString *dishprice=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,5)];
-//                NSString *dishprice2=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
-//                NSString *dishdescription=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
-//                NSString *dishcustomization=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-//                NSString *dishSubSubId=[NSString stringWithFormat:@"%s",(char*)(char*)sqlite3_column_text(addStmt,11)];
-//                enableClose = 0;
-//                NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-//                enableClose = 1;
-//                NSString *cust=@"0";
-//                if(![dishcustomization isEqualToString:@""])
-//                {
-//                    cust=@"1";
-//                }
-//                dishDic[@"cust"] = cust;
-//                dishDic[@"id"] = dishId;
-//                dishDic[@"name"] = dishname;
-//                dishDic[@"images"] = dishdata;
-//                dishDic[@"category"] = dishcat;
-//                dishDic[@"sub_category"] = dishsubcat;
-//                dishDic[@"price"] = dishprice;
-//                dishDic[@"price2"] = dishprice2;
-//                dishDic[@"description"] = dishdescription;
-//                dishDic[@"customisations"] = customizationdata;
-//                dishDic[@"sub_sub_category"] = dishSubSubId;
-//                [dishData addObject:dishDic];
-//               // [dishDic release];
-//                dishdata = nil;
-//                
-//            }
-//            
-//			            
-//        }
-//        
-//		 
-//	}
-//         
-//         //sqlite3_reset(addStmt);
-//	sqlite3_finalize(addStmt);
-//    addStmt = nil;
-//        // sqlite3_free((char*)sql);
-//         //sqlite3_free(
-//  //  [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
-//    
-//  //  [[NSUserDefaults standardUserDefaults] setObject:dishData forKey:tmpstr];
-//      //  [[NSUserDefaults standardUserDefaults] synchronize];
-//	
-//   // }
-//    
-//    //return [[NSUserDefaults standardUserDefaults] objectForKey:tmpstr];
-//    
-//   //sqlite3_free((char*)sql);
-//    [self closeDatabaseConnection];*/
-//   // [connection close];
-////}
-//}*/
-
 
 -(NSMutableArray*)getDishData:(NSString*)catId subCatId:(NSString*)subCatId
 {
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSString* statement;
-    /* if ([subCatId isEqualToString:@"48"]){
-     statement = [ZIMSqlPreparedStatement preparedStatement: @"select * from dishes, sub_sub_categories where dishes.sub_sub_category = sub_sub_categories.id and category = ? and sub_category = ? order by sub_sub_categories.sequence ASC;" withValues: catId,subCatId, nil];
-     }else{*/
-    
-    /*
-     (SELECT col1,col2,col3, from dishes) UNION ALL (select col1,col2,col3 from combos)
-     */
-    
-    //statement = [ZIMSqlPreparedStatement preparedStatement: @"select * from Dishes where category = ? and sub_category = ? order by sub_sub_category,name;" withValues: catId,subCatId, nil];
-    
-    //(SELECT id, name,image, description from dishes WHERE category=? AND sub_category=? AND sub_sub_category=?) UNION ALL (SELECT id, name,image, description from combos WHERE category=? AND sub_category=? AND sub_sub_category=?)
-    
-    //NSString *query = @"SELECT id, name,image, category, sub_category, price, description, sub_sub_category from dishes WHERE category=? AND sub_category=? UNION ALL SELECT id, name,image, category, sub_category, price, description, sub_sub_category from combos WHERE category=? AND sub_category=? order by sub_sub_category,name;";
+   
     
     NSString *query = @"SELECT id, name,image, category, sub_category, price, description, customization, sub_sub_category, tags,0 AS jugaad from dishes WHERE category=? AND sub_category=? UNION ALL SELECT id, name,image, category, sub_category, price,0 AS customization, description, sub_sub_category, tags,1 AS jugad from combos WHERE category=? AND sub_category=? order by sub_sub_category,name;";
     
@@ -2383,64 +2073,7 @@ int enableClose = 1;
     }
     
     
-	/*const char *sql =[[NSString stringWithFormat:@"select * from Dishes where id='%@'",DishId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *dishData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	int  i=0;
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            if(i==0)
-            {
-                NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-                NSString *dishId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-                NSString *dishname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-                NSData *dishdata = [NSData dataWithBytes:sqlite3_column_blob(addStmt, 2) length:sqlite3_column_bytes(addStmt,2)];
-                NSString *dishcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-                NSString *dishsubcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-                NSString *dishprice=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,5)];
-                NSString *dishprice2=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
-                NSString *dishdescription=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
-                NSString *dishcustomization=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-                NSString *dishSubSubId=[NSString stringWithFormat:@"%s",(char*)(char*)sqlite3_column_text(addStmt,11)];
-                enableClose = 0;
-                NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-                enableClose = 1;
-                NSString *cust=@"0";
-                if(![dishcustomization isEqualToString:@""])
-                {
-                    cust=@"1";
-                }
-                dishDic[@"cust"] = cust;
-                dishDic[@"id"] = dishId;
-                dishDic[@"name"] = dishname;
-                dishDic[@"images"] = dishdata;
-                dishDic[@"category"] = dishcat;
-                dishDic[@"sub_category"] = dishsubcat;
-                dishDic[@"price"] = dishprice;
-                dishDic[@"price2"] = dishprice2;
-                dishDic[@"description"] = dishdescription;
-                dishDic[@"customisations"] = customizationdata;
-                dishDic[@"sub_sub_category"] = dishSubSubId;
-                [dishData addObject:dishDic];
-                
-            }
-            
-            
-        }
-        
-        
-	}
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return dishData;
+		return dishData;
 }
 
 -(NSMutableArray*)getBeverageSkuDetail:(NSString*)beverageId
@@ -2466,37 +2099,7 @@ int enableClose = 1;
         
     }
     
-    
-   /* const char *sql =[[NSString stringWithFormat:@"select BeverageContainers.id,Containers.name,BeverageContainers.price from Containers,BeverageContainers WHERE BeverageContainers.beverage_id=%@ and Containers.id=BeverageContainers.container_id group by Containers.name",beverageId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *beverageSku=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            NSMutableDictionary *SkuDic=[NSMutableDictionary dictionary];
-            NSString *skuId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)]; 
-            NSString *skuName=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];	
-            NSString *skuPrice=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)];
-            if(![skuPrice isEqualToString:@"0.00"])
-            {
-                SkuDic[@"sku_id"] = skuId;
-                SkuDic[@"sku_name"] = skuName;
-                SkuDic[@"sku_price"] = skuPrice;
-                [beverageSku addObject:SkuDic];
-            }
-        }
-	}
-    
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return beverageSku;
+  	return beverageSku;
 }
 
 
@@ -2518,26 +2121,7 @@ int enableClose = 1;
         
     }
 
-    
-    /*const char *sql =[[NSString stringWithFormat:@"select beverage_id from BeverageContainers where id=%@",beverageContainerId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSString *beverageId=@"";
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            beverageId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)]; 
-        }
-	}
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return beverageId;
+   	return beverageId;
 }
 
 
@@ -2595,67 +2179,6 @@ int enableClose = 1;
     
     
 
-
-    
-
-   /* const char *sql =[[NSString stringWithFormat:@"SELECT * FROM Dishes where name like '%%%@%%%' or description like '%%%@%%%'",key,key]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *dishData=[[NSMutableArray alloc]init];
-
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	int  i=0;
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            if(i==0)
-            {
-                NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-                NSString *dishId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-                NSString *dishname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-                NSString *libraryDirectory = paths[0];
-                NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)] ];
-                NSData *dishdata = [NSData dataWithContentsOfFile:location];
-                
-               // NSData *dishdata = [[NSData alloc] initWithBytes:sqlite3_column_blob(addStmt, 2) length:sqlite3_column_bytes(addStmt,2)];
-                NSString *dishcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-                NSString *dishsubcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-                NSString *dishprice=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,5)];
-                NSString *dishprice2=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
-                NSString *dishdescription=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
-                NSString *dishcustomization=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-                enableClose =0;
-                NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-                enableClose = 1;
-                NSString *cust=@"0";
-                if(![dishcustomization isEqualToString:@""])
-                {
-                    cust=@"1";
-                }
-                dishDic[@"cust"] = cust;
-                dishDic[@"id"] = dishId;
-                dishDic[@"name"] = dishname;
-                dishDic[@"images"] = dishdata;
-                dishDic[@"category"] = dishcat;
-                dishDic[@"sub_category"] = dishsubcat;
-                dishDic[@"price"] = dishprice;
-                dishDic[@"price2"] = dishprice2;
-                dishDic[@"description"] = dishdescription;
-                dishDic[@"customisations"] = customizationdata;
-                
-                [dishData addObject:dishDic];
-            }
-            
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
 	return dishData;
 }
 
@@ -2721,74 +2244,7 @@ int enableClose = 1;
         [dishData addObject:dishDic];
     }
     
-    
-    
-   /* const char *sql;
-    [self openDatabaseConnection];
-    if([tag1 isEqualToString:@"-1"]&&[tag2 isEqualToString:@"-1"]&&[tag3 isEqualToString:@"-1"])
-    {
-        sql =[[NSString stringWithFormat:@"SELECT * FROM Dishes where category = %@",catID]cStringUsingEncoding:NSUTF8StringEncoding];
-    }
-    else 
-    {
-        sql =[[NSString stringWithFormat:@"SELECT * FROM Dishes where category = %@ and (tags like '%%,%@%,%%' or tags like '%%,%@%,%%' or tags like '%%,%@%,%%') ",catID,tag1,tag2,tag3]cStringUsingEncoding:NSUTF8StringEncoding];
-    }
-   	NSMutableArray *dishData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt = nil;		
-	int  i=0;
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            if(i==0)
-            {
-                NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-                NSString *dishId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-                NSString *dishname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-                NSString *libraryDirectory = paths[0];
-                NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)] ];
-                NSData *dishdata = [NSData dataWithContentsOfFile:location];
-                NSString *dishcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-                NSString *dishsubcat=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-                NSString *dishprice=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,5)];
-                NSString *dishprice2=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
-                NSString *dishdescription=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
-                NSString *dishcustomization=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-                enableClose = 0;
-                NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-                enableClose = 1;
-                NSString *cust=@"0";
-                if(![dishcustomization isEqualToString:@""])
-                {
-                    cust=@"1";
-                }
-                dishDic[@"cust"] = cust;
-                dishDic[@"id"] = dishId;
-                dishDic[@"name"] = dishname;
-                dishDic[@"images"] = dishdata;
-                dishDic[@"category"] = dishcat;
-                dishDic[@"sub_category"] = dishsubcat;
-                dishDic[@"price"] = dishprice;
-                dishDic[@"price2"] = dishprice2;
-                dishDic[@"description"] = dishdescription;
-                dishDic[@"customisations"] = customizationdata;
-                
-                [dishData addObject:dishDic];
-                
-            }
-            
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return dishData;
+    	return dishData;
 }
 
 -(NSMutableArray*)getCategoryData
@@ -2808,43 +2264,20 @@ int enableClose = 1;
         NSMutableDictionary *catDic=[NSMutableDictionary dictionary];
         NSString *catId=(NSString*)[element objectForKey:@"id"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
         NSString *catname=(NSString*)[element objectForKey:@"name"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
+        NSString *isBeverage=(NSString*)[element objectForKey:@"is_beverage"];
         
         catDic[@"id"] = catId;
         catDic[@"name"] = catname;
+        catDic[@"is_beverage"] = isBeverage;
+        
+        if ([isBeverage intValue] ==1){
+            [ShareableData sharedInstance].bevCat = [catId copy];
+        }
         
         [CategoryData addObject:catDic];
     }
 
-    
-    
-   /*
-    const char *sql =[[NSString stringWithFormat:@"SELECT * FROM Categories order by sequence,name"]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *CategoryData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-                NSMutableDictionary *catDic=[NSMutableDictionary dictionary];
-                NSString *catId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-                NSString *catname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-                
-                catDic[@"id"] = catId;
-                catDic[@"name"] = catname;
-                              
-                [CategoryData addObject:catDic];
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return CategoryData;
+  	return CategoryData;
 }
 
 -(NSMutableArray*)getSubCategoryData:(NSString*)catId
@@ -2869,39 +2302,7 @@ int enableClose = 1;
         subcatDic[@"display"] = display;
         [SubCategoryData addObject:subcatDic];
     }
-    
-    
-    /*
-    const char *sql =[[NSString stringWithFormat:@"SELECT * FROM SubCategories where category_id=%@ order by sequence,name",catId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *SubCategoryData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            NSMutableDictionary *subcatDic=[NSMutableDictionary dictionary];
-            NSString *subcatId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-            NSString *subcatname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-            NSString *catid=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)];
-            NSString *display=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-            
-            subcatDic[@"id"] = subcatId;
-            subcatDic[@"name"] = subcatname;
-            subcatDic[@"category_id"] = catid;
-            subcatDic[@"display"] = display;
-            [SubCategoryData addObject:subcatDic];
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return SubCategoryData;
+    	return SubCategoryData;
 }
 
 -(NSString*)getSubCategoryIdData:(NSString*)catId
@@ -2916,27 +2317,7 @@ int enableClose = 1;
         //NSString *optionId=(NSString*)[element objectForKey:@"id"];//[NSString
       subId=(NSString*)[element objectForKey:@"sub_category"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
     }
-    /*
-    const char *sql =[[NSString stringWithFormat:@"SELECT sub_category FROM Dishes where id =%@",catId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSString *subId=@"";
     
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-           
-            subId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-                        
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
 	return subId;
 }
 -(NSString*)getComboSubCategoryIdData:(NSString*)catId
@@ -2951,27 +2332,7 @@ int enableClose = 1;
         //NSString *optionId=(NSString*)[element objectForKey:@"id"];//[NSString
         subId=[NSString stringWithFormat:@"%@", [element objectForKey:@"sub_category"]];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
     }
-    /*
-     const char *sql =[[NSString stringWithFormat:@"SELECT sub_category FROM Dishes where id =%@",catId]cStringUsingEncoding:NSUTF8StringEncoding];
-     NSString *subId=@"";
-     
-     sqlite3_stmt *addStmt;
-     [self openDatabaseConnection];
-     if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK)
-     {
-     DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-     }
-     else
-     {
-     while (sqlite3_step(addStmt) == SQLITE_ROW)
-     {
-     
-     subId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
-     
-     }
-     }
-     sqlite3_finalize(addStmt);
-     [self closeDatabaseConnection];*/
+    
 	return subId;
 }
 
@@ -2981,23 +2342,7 @@ int enableClose = 1;
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     
     
-  //  NSString *statement = [NSString stringWithFormat:@"SELECT sub_sub_category,(select name from Sub_Sub_Categories Where Sub_Sub_Categories.id=sub_sub_category order by Sub_Sub_Categories.sequence ASC ) as name, Sub_Sub_Categories.sequence FROM Dishes, Sub_Sub_Categories where category='%@' and sub_category='%@' group by sub_sub_category order by Sub_Sub_Categories.sequence ASC",catId,subId];
-    //
-   /* NSString* statement2 = [NSString stringWithFormat:@"select name, id as sub_sub_category from sub_sub_categories where  category_id = %@ and sub_category_id = %@ order by sequence ASC",catId,subId];
-    NSArray *records2 = [connection query: statement2];
-    NSMutableArray *SubCategoryData2=[[NSMutableArray alloc]init];
-    
-    for (id element in records2){
-        
-        NSMutableDictionary *subcatDic=[NSMutableDictionary dictionary];
-        NSString *subsubcatId=(NSString*)[element objectForKey:@"sub_sub_category"];
-        NSString *subcatname=(NSString*)[element objectForKey:@"name"];
-        subcatDic[@"id"] = subsubcatId;
-        subcatDic[@"name"] = subcatname;
-        // [subcatDic setObject:catid forKey:@"category_id"];
-        //[subcatDic setObject:subCatId forKey:@"sub_category_id"];
-        [SubCategoryData2 addObject:subcatDic];
-    }*/
+ 
     NSString *statement = [NSString stringWithFormat:@"SELECT sub_sub_category, (select name from sub_sub_categories Where sub_sub_categories.id=sub_sub_category order by sub_sub_categories.sequence ASC ) as name,sub_sub_categories.sequence FROM dishes, sub_sub_categories where category = %@ and sub_category = %@ and dishes.sub_sub_category = sub_sub_categories.id group by sub_sub_category order by sub_sub_categories.sequence ASC",catId,subId];
     //NSString *subId=@"";
     NSArray *records = [connection query: statement];
@@ -3017,34 +2362,7 @@ int enableClose = 1;
     }
     
     
-    /*const char *sql =[[NSString stringWithFormat:@"SELECT sub_sub_category,(select name from Sub_Sub_Categories Where Sub_Sub_Categories.id=sub_sub_category ) as name FROM Dishes, Sub_Sub_Categories where category=%@ and sub_category=%@ group by sub_sub_category",catId,subId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *SubCategoryData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            NSMutableDictionary *subcatDic=[NSMutableDictionary dictionary];
-            NSString *subsubcatId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-            NSString *subcatname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-            //NSString *catid=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)];
-            //NSString *subCatId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-            subcatDic[@"id"] = subsubcatId;
-            subcatDic[@"name"] = subcatname;
-           // [subcatDic setObject:catid forKey:@"category_id"];
-            //[subcatDic setObject:subCatId forKey:@"sub_category_id"];
-            [SubCategoryData addObject:subcatDic];
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+   
 	return SubCategoryData;
 }
 
@@ -3109,43 +2427,6 @@ int enableClose = 1;
     return [subcatId intValue];
 }
 
-
-
-/*===================================================== code before sahid change the method
-
--(void)updateUIImages:(NSMutableArray *)array
-{
-    for(int i = 0; i < [array count]; i++)
-    {
-        NSString *img = [NSString stringWithFormat:@"%@_%@.png", [array objectAtIndex:i], [ShareableData appKey]];
-        NSString *img_name = [NSString stringWithFormat:@"%@%@", PRE_NAME, img];
-        NSString *img_url = [NSString stringWithFormat:@"%@/app/webroot/img/product/app_image/%@", [ShareableData serverURL], img];
-        
-        ////NSLOG(@"Log 3 Image url is = %@", img_url);
-        
-        //@autoreleasepool
-        {
-            
-            UIImage  *imageData = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:img_url]]];
- 
-            ////NSLOG(@"image obj home 1 = %@", imageData);
-            CGSize size = imageData.size;
-            BOOL hd_device = [TabSquareCommonClass isHDDevice];
-            if(!hd_device) {
-                imageData = [TabSquareCommonClass resizeImage:imageData scaledToSize:CGSizeMake(size.width, size.height)];
-            }
-            
-            
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-            NSString *libraryDirectory = paths[0];
-            NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,img_name];//[libraryDirectory stringByAppendingString:@"/@%",dishImage];
-            ////NSLOG(@"image location = %@", location);
-            ////NSLOG(@"Log 4 img location after downloading = %@", location);
-            NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(imageData)];
-            [data1 writeToFile:location atomically:YES];
-        }
-    }
-}*/
 
 -(void)updateUIImages:(NSMutableArray *)array
 {

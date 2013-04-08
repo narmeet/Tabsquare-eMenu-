@@ -45,7 +45,7 @@
         {
             bool flag=false;
             NSString *ItemId=([ShareableData sharedInstance].OrderItemID)[i];
-            if([([ShareableData sharedInstance].OrderCatId)[i]isEqualToString:@"8"])
+            if([([ShareableData sharedInstance].OrderCatId)[i]isEqualToString:[ShareableData sharedInstance].bevCat])
             {
                // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
                 ItemId=[[TabSquareDBFile sharedDatabase]getBeverageId:ItemId];
@@ -62,7 +62,7 @@
             if(flag==false)
             {
                 NSString *dishId=([ShareableData sharedInstance].OrderItemID)[i];
-                if([([ShareableData sharedInstance].OrderCatId)[i]isEqualToString:@"8"])
+                if([([ShareableData sharedInstance].OrderCatId)[i]isEqualToString:[ShareableData sharedInstance].bevCat])
                 {
                   //  [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
                     dishId=[[TabSquareDBFile sharedDatabase]getBeverageId:dishId];

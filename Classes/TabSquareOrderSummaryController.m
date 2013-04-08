@@ -830,7 +830,7 @@ static int tapCount = 0;
 -(void)insertInTempOrderService:(NSString*)tableNumber1 DishID:(NSString*)DishID1 DishName:(NSString*)DishName1 DishQuantity:(NSString*)DishQuantity1 DishRate:(NSString*)DishRate1 OrderSpecialRequest:(NSString*)OrderSpecialRequest1 OrderCustomizationDetail:(NSString*)OrderCustomizationDetail1 OrderBeverageContainerId:(NSString*)OrderBeverageContainerId1 OrderCatId:(NSString*)OrderCatId1 confirmOrder:(NSString*)confirmOrder1 IsOrderCustomization:(NSString*)IsOrderCustomization1
 {
     if (DishID1.length!=15){
-        if ([OrderCatId1 isEqualToString:@"8"]){
+        if ([OrderCatId1 isEqualToString:[ShareableData sharedInstance].bevCat]){
             [self insertInOpenItemRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000172" Qty:DishQuantity1 PLUName:DishName1 Amount:DishRate1];
             if (OrderSpecialRequest1.length<2){
                 OrderSpecialRequest1 = @"";
@@ -909,7 +909,7 @@ static int tapCount = 0;
             
             // soupView.goToMenuBtn.tag = [[NSString stringWithFormat:@"%@1001%@",orderCatId,subCatId ] intValue];
             ////manoj
-            soupView.goToMenuBtn.tag = [[NSString stringWithFormat:@"%@1001%@",@"8",@"149" ] intValue];
+            soupView.goToMenuBtn.tag = [[NSString stringWithFormat:@"%@1001%@",[ShareableData sharedInstance].bevCat,@"149" ] intValue];
             
             
             // UILabel *titleX=[self KinaraaddCategoryTitle:[orderCatId intValue] labelValue:orderCatName];
@@ -1080,7 +1080,7 @@ static int tapCount = 0;
             NSString *dishId=([ShareableData sharedInstance].OrderItemID)[sortIndex];
             
             
-            if([currentCatId isEqualToString:@"8"])
+            if([currentCatId isEqualToString:[ShareableData sharedInstance].bevCat])
             {
                 if ([displayId isEqualToString:@"1"]|| [dishId length]<15){
                     dishId=[[TabSquareDBFile sharedDatabase]getBeverageId:dishId];
@@ -1604,7 +1604,7 @@ static int tapCount = 0;
     // [ShareableData sharedInstance].or
     //get data from DB
     // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-    if([([ShareableData sharedInstance].OrderCatId)[selectedItemIndex]isEqualToString:@"8"])
+    if([([ShareableData sharedInstance].OrderCatId)[selectedItemIndex]isEqualToString:[ShareableData sharedInstance].bevCat])
     {
         NSString *temp=[[TabSquareDBFile sharedDatabase]getBeverageId:orderId];
         if (temp.intValue != 0){
@@ -1619,9 +1619,9 @@ static int tapCount = 0;
     NSString *dishSubCatId2 = [NSString stringWithFormat:@"%@",resultFromPost[0][@"sub_category"]];
     int bevDisplay = 0;
     
-    if([dishCatId2 isEqualToString:@"8"]){
+    if([dishCatId2 isEqualToString:[ShareableData sharedInstance].bevCat]){
         [ShareableData sharedInstance].TaskType = @"3";
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:@"8"];
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
             NSString *subId=subCategory[@"id"];

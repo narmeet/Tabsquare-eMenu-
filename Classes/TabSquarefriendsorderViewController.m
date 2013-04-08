@@ -348,10 +348,10 @@
     // NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:selectedItem];
     int bevDisplay = 0;
     TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
-    if([DishCatId isEqualToString:@"8"]){
+    if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
         [ShareableData sharedInstance].TaskType = @"3";
         
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:@"8"];
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
             NSString *subId=subCategory[@"id"];
@@ -465,8 +465,8 @@
   //  NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:tag];
     int bevDisplay = 0;
     TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
-    if([DishCatId isEqualToString:@"8"]){
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:@"8"];
+    if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
             NSString *subId=subCategory[@"id"];

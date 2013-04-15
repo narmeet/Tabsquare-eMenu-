@@ -691,6 +691,7 @@
     
     subcatScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, 61)];
     subcatScroller.delegate=self;
+    //subcatScroller.scrollEnabled=NO;//narmeet for fha
     [subcatScroller setHidden:TRUE];
     
     [subcatScroller setShowsHorizontalScrollIndicator:NO];

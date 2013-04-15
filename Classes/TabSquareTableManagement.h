@@ -34,7 +34,7 @@
     int totalTable;
     NSTimer* tt;
     
-    
+    UITextField *myTextField;
     MBProgressHUD *progressHud;
     
     int taskType;

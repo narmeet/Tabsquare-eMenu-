@@ -1071,6 +1071,7 @@ bool funcCalled = NO;
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [myTextField resignFirstResponder];
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
@@ -1424,6 +1425,8 @@ bool funcCalled = NO;
         alertTextField.keyboardType = UIKeyboardTypeNumberPad;
         
         [alert show];
+        
+        
         
     }
     
@@ -1855,14 +1858,15 @@ bool funcCalled = NO;
                 [alert addSubview:_backgroundImageView];
                 [alert sendSubviewToBack:_backgroundImageView];
                 
-                UITextField *myTextField = [[UITextField alloc] initWithFrame:CGRectMake(116.0, 115.0, 45.0, 25.0)];
+                 myTextField = [[UITextField alloc] initWithFrame:CGRectMake(116.0, 115.0, 45.0, 25.0)];
                 [myTextField setBackgroundColor:[UIColor whiteColor]];
                 myTextField.keyboardType = UIKeyboardTypeNumberPad;
                 myTextField.tag=3698;
                 myTextField.textAlignment = 	NSTextAlignmentCenter;
                 myTextField.delegate=self;
-                
+                [myTextField becomeFirstResponder];
                 [alert addSubview:myTextField];
+                
                 
                // UITextField * alertTextField = [alert textFieldAtIndex:0];
                 
@@ -1870,8 +1874,6 @@ bool funcCalled = NO;
                 //alertTextField.frame = CGRectMake(1, 1, 10, 10);
                 //[alertTextField sizeThatFits:CGSizeMake(10, 10)];
                 [alert show];
-                
-                
                 
             }else{
                 

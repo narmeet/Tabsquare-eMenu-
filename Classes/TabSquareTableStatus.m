@@ -321,7 +321,7 @@
         [[ShareableData sharedInstance].OrderItemID addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]]];
         [[ShareableData sharedInstance].OrderItemName addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_name"]]];
         [[ShareableData sharedInstance].OrderItemQuantity addObject:[NSString stringWithFormat:@"%@",dataitem[@"quantity"]]];
-        [[ShareableData sharedInstance].OrderItemRate addObject:[NSString stringWithFormat:@"%@",dataitem[@"price"]]];
+        [[ShareableData sharedInstance].OrderItemRate addObject:[NSString stringWithFormat:@"%.2f",[dataitem[@"price"] floatValue]*[dataitem[@"quantity"] floatValue]]];
         
         [[ShareableData sharedInstance].confirmOrder addObject:[NSString stringWithFormat:@"%@",dataitem[@"1"]]];
         

@@ -531,9 +531,10 @@
     
     if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"0"]){
     
-    [self performSelector:@selector(loadOverview) withObject:nil afterDelay:0.10];
+    //[self performSelector:@selector(loadOverview) withObject:nil afterDelay:0.10];
+        [self loadOverview];
     }else{
-      [self performSelector:@selector(loadQuickOrder) withObject:nil afterDelay:0.3];
+      [self performSelector:@selector(loadQuickOrder) withObject:nil afterDelay:0.1];
     }
     
    /* [self.view addSubview:overviewMenuView];
@@ -694,7 +695,8 @@
     
     [subcatScroller setShowsHorizontalScrollIndicator:NO];
     [subcatScroller setShowsVerticalScrollIndicator:NO];
-    
+    CGSize scrollableSize = CGSizeMake(self.view.frame.size.width, 61);
+    [subcatScroller setContentSize:scrollableSize];
     [subcatScroller setScrollEnabled:YES];
     
     
@@ -1532,215 +1534,7 @@
     
 }
 
-/*- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    
-    if(scrollView==swipeView)
-    {
-        CGFloat pageWidth = swipeView.frame.size.width; 
-        float fractionalPage = swipeView.contentOffset.x / pageWidth;
-        NSInteger nearestNumber = lround(fractionalPage);
-        int catId= KinaraSelectedCategoryID;
-        if(catId==8&&flag==false)
-        {
-            if(beveragesBeerView1.pageIndex!=nearestNumber)
-            {
-                currentSubTag=beveragesBeerView2.pageIndex;
-                KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                [self KinaraStartSubCategory:KinaraSubCategory subID:[subcategoryIdList objectAtIndex:currentSubTag]];
-                [self swapBeverageView];
-            }
-            //code for circular
-             else 
-             {
-                 if(nearestNumber==[subcategoryList count]-1)
-                 {
-                     
-                     categorytag++;
-                     if(categorytag==[categoryIdList count])
-                     {
-                         categorytag=0;
-                     }
-                     KinaraSelectedCategoryID=[[categoryIdList objectAtIndex:categorytag]intValue];
-                     [self KinaraGetSubCategoryData:[categoryIdList objectAtIndex:categorytag]];
-                     //[self KinaraRollCategory:KinaraCategory subID:selectedCategoryID];
-                     if([subcategoryIdList count]!=0)
-                     {
-                         currentSubTag=0;
-                         KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                         KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                         [self removeSwipeSubviews];
-                         [self setSwipeView];
-                         //[self applyNewIndex:0 pageController:menulistView1];
-                         [self applyNewIndex:0 pageController:menulistView2];
-                         [self mainSubCategoryClicked:0 sub:[NSString stringWithFormat:@"%d",KinaraSelectedSubCategoryID]];
-                     }
-                                    
-                 }
-        
-             }
-        }
-        else 
-        {
-            if (menulistView1.pageIndex != nearestNumber)
-            {
-                if([subcategoryIdList count]==0)
-                {
-                    categorytag++;
-                    if(categorytag==[categoryIdList count])
-                    {
-                        categorytag=0;
-                    }
-                    KinaraSelectedCategoryID=[[categoryIdList objectAtIndex:categorytag]intValue];
-                    [self KinaraGetSubCategoryData:[categoryIdList objectAtIndex:categorytag]];
-                    //[self KinaraRollCategory:KinaraCategory subID:selectedCategoryID];
-                    if([subcategoryIdList count]!=0)
-                    {
-                        currentSubTag=0;
-                        KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                        KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                        //[self removeSwipeSubviews];
-                        [self setSwipeView];
-                        if([self.selectedCategoryID isEqualToString:@"8"])
-                        {
-                            [self removeSwipeSubviews];
-                            [self setSwipeView];
-                            [self applyNewIndex1:0 pageController:beveragesBeerView1];
-                            [self applyNewIndex1:1 pageController:beveragesBeerView2];
-                            [self beveragesSubCategoryClicked:0 sub:[NSString stringWithFormat:@"%d",KinaraSelectedSubCategoryID]];
-                        }
-                        else 
-                        {
-                            [self applyNewIndex:0 pageController:menulistView2];
-                            [self swapMenuView];
 
-                        }
-                    }
-                    else
-                    {
-                        [self setSwipeView];
-                        //[self applyNewIndex:0 pageController:menulistView1];
-                        [self applyNewIndex:0 pageController:menulistView2];
-                        [self swapMenuView1];
-                        
-                    }
-                }
-                else 
-                {
-                    currentSubTag=menulistView2.pageIndex;
-                    KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                    KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                    [self KinaraStartSubCategory:KinaraSubCategory subID:[subcategoryIdList objectAtIndex:currentSubTag]];
-                    [self swapMenuView];
-
-                }
-                
-                //this is for slow move from current position
-                //[KinaraSubCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPointSub.x+180,KinaraCurrentScrollPositionPointSub.y) animated:YES];
-                //KinaraCurrentScrollPositionPointSub=KinaraSubCategory.contentOffset;
-                
-            }
-            else
-            {
-                if(nearestNumber==[subcategoryIdList count]-1)
-                {
-                     categorytag++;
-                    if(categorytag==[categoryIdList count])
-                    {
-                        categorytag=0;
-                    }
-                     self.selectedCategoryID=[categoryIdList objectAtIndex:categorytag];
-                    [self KinaraGetSubCategoryData:[categoryIdList objectAtIndex:categorytag]];
-                    [self KinaraRollCategory:KinaraCategory subID:selectedCategoryID];
-                    if([subcategoryIdList count]!=0)
-                    {
-                        currentSubTag=0;
-                        KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                        KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                        //[self removeSwipeSubviews];
-                        [self setSwipeView];
-                        [self applyNewIndex:0 pageController:menulistView2];
-                        [self swapMenuView];
-                    }
-                    else
-                    {
-                        [self setSwipeView];
-                        //[self applyNewIndex:0 pageController:menulistView1];
-                        [self applyNewIndex:0 pageController:menulistView2];
-                        [self swapMenuView1];
-
-                    }
-                                     
-                    
-                }
-            }
-            
-        }
-        
-    }
-    else if(scrollView==KinaraCategory)
-    {
-        KinaraSubcategoryBtnClick=false;
-        @try 
-        {
-            [KinaraSubCategory removeFromSuperview]; 
-            [KinaraSelectorSubCategory removeFromSuperview];
-        }
-        @catch (NSException *exception)
-        {
-            DLog(@"Exception");
-        }
-        @finally
-        {
-            
-            [self KinarafindingSelectedCategory:scrollView];
-            
-            [self KinaraGetSubCategoryData:self.selectedCategoryID];
-            
-            KinaraSelectorSubCategory=[UIButton buttonWithType:UIButtonTypeCustom];
-            [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected.png"] forState:UIControlStateNormal];
-            [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected.png"] forState:UIControlStateHighlighted];
-            [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected.png"] forState:UIControlStateSelected];
-            
-            if([self.subcategoryList count]>0)
-            {
-                KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-90, KinaraCategory.frame.origin.y+65, 180, 50);
-                KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(0, KinaraCategory.frame.origin.y+65,[UIScreen mainScreen].bounds.size.width, 50)];
-                [self KinaracreateSubCategoryScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 180,50) scrollView:KinaraSubCategory];
-            }
-            else
-            {
-                KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(0,KinaraCategory.frame.origin.y+65,0, 0)];
-                [self KinaracreateSubCategoryScrollView:0  frame:CGRectMake(0,0, 0,0) scrollView:KinaraSubCategory];
-                KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-90,  KinaraCategory.frame.origin.y+65, 0, 0);
-            }
-            
-            
-            [self.view bringSubviewToFront:KinaraSelectorSubCategory];
-            [self.view addSubview:KinaraSelectorSubCategory];
-            
-            [self KinarafindingSelectedCategory:KinaraSubCategory];
-            
-            [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
-            
-            if([self.subcategoryList count]>0)
-                [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
-            
-        }
-        
-        if(KinaraSelectorCategory.hidden)
-        {
-            KinaraSelectorCategory.hidden=NO;
-            [self UnselectedBottomMenu];
-        }
-    }
-    else if(scrollView==KinaraSubCategory)
-    {
-        [self KinarafindingSelectedCategory:scrollView];
-        [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
-    }
-}*/
 
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
@@ -1763,21 +1557,7 @@
                 [self KinaraStartSubCategory:KinaraSubCategory subID:subcategoryIdList[currentSubTag]];
                 [self swapBeverageView];
             }
-            //code for circular
-            /* else 
-             {
-             if(nearestNumber==[subcategoryList count]-1)
-             {
-             [self setSwipeView];
-             [self applyNewIndex1:0 pageController:beveragesBeerView2];
-             currentSubTag=beveragesBeerView2.pageIndex;
-             KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-             KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-             [self KinaraStartSubCategory:KinaraSubCategory subID:[subcategoryIdList objectAtIndex:currentSubTag]];
-             [self swapBeverageView];
-             }
-             
-             }*/
+            
         }
         else 
         {
@@ -1790,9 +1570,7 @@
                 [KinaraSubCategory setHidden:TRUE];
                 [self KinaraStartSubCategory:KinaraSubCategory subID:subcategoryIdList[currentSubTag]];
                 
-                //this is for slow move from current position
-                //[KinaraSubCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPointSub.x+180,KinaraCurrentScrollPositionPointSub.y) animated:YES];
-                //KinaraCurrentScrollPositionPointSub=KinaraSubCategory.contentOffset;
+              
                
                 [self swapMenuView];
                 
@@ -2437,31 +2215,7 @@
 
 -(void)waiterLogOutClicked
 {
-    /* NSString *post =[NSString stringWithFormat:@"order_id=%@",[ShareableData sharedInstance].OrderId];
     
-    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-    
-    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-    [request setURL:[NSURL URLWithString:@"http://108.178.27.242/luigi/webs/staff_logout"]];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/x-www-form-urlencoded charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSError *error;
-    NSURLResponse *response;
-    NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Enter a 4 digit password:"
-                                                   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
-    [alert show];
-    [alert release];
-    DLog(@"%@",data);*/
     
     [ShareableData sharedInstance].assignedTable1=@"-1";
     [ShareableData sharedInstance].assignedTable2=@"-1";
@@ -2592,35 +2346,13 @@
             if ([pwdText.text isEqualToString:@"1234"]) {
                 
                 [ShareableData sharedInstance].ViewMode=2;
-                /* [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemID"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemName"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemRate"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderCatId"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"IsOrderCustomization"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderCustomizationDetail"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderSpecialRequest"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemQuantity"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"confirmOrder"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderId"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable1"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable2"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable3"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable4"];*/
-                // [[NSUserDefaults standardUserDefaults] synchronize];
+               
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
                 NSString *libraryDirectory = [paths lastObject];
                 NSString *location = [libraryDirectory stringByAppendingString:@"/orderarrays.plist"];
                 
-                //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"orderarrays" ofType:@"plist"];
-                // NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-                // NSArray *array = [[NSArray alloc] initWithContentsOfFile:location];
-                // NSString *filePath2 = [[NSBundle mainBundle] pathForResource:@"orderstrings" ofType:@"plist"];
-                // NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-                // NSString *libraryDirectory = [paths objectAtIndex:0];
                 NSString *location2 = [libraryDirectory stringByAppendingString:@"/orderstrings.plist"];
-                // NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-                //  NSArray *array2 = [[NSArray alloc] initWithContentsOfFile:location2];
-                
+               
                 [[NSFileManager defaultManager] removeItemAtPath:location error:nil];
                 [[NSFileManager defaultManager] removeItemAtPath:location2 error:nil];
                 
@@ -2640,9 +2372,6 @@
                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
                 [[ShareableData sharedInstance].TempOrderID removeAllObjects];
-                //  TabSquareTableManagement *assignTable=[[TabSquareTableManagement alloc]initWithNibName:@"TabSquareTableManagement" bundle:nil];
-                // [self presentModalViewController:assignTable animated:YES];
-                // [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:Nil];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
 
@@ -2699,8 +2428,7 @@
             [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
             [[ShareableData sharedInstance].TempOrderID removeAllObjects];
             
-           // [self presentModalViewController:assignTable animated:YES];
-            //[self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:Nil];
+           
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
@@ -3199,20 +2927,10 @@
     UIImage *img = [UIImage imageWithContentsOfFile:[firstImages objectAtIndex:indexPath.row]];
     dish_image.frame = img_frm;
     
-    /*
-     if([[category lowercaseString] isEqualToString:@"beverage"]) {
-     dish_image.frame= [TabSquareCommonClass setImageInFrame:dish_image.frame :img];
-     float _y1 = (background.frame.size.height-dish_image.frame.size.height)/2;
-     
-     dish_image.frame = CGRectMake(img_frm.origin.x, _y1, dish_image.frame.size.width, dish_image.frame.size.height);
-     }
-     */
-    
+      
     [dish_image setImage:img];
-    //[dish_image.layer setShadowOpacity:1.0];
-    //[dish_image.layer setMasksToBounds:NO];
-    //[dish_image.layer setShadowOffset:CGSizeMake(4.0, 2.0)];
-	[cell.contentView addSubview:dish_image];
+  
+    [cell.contentView addSubview:dish_image];
     
     [cell.contentView setTag:[[categoryIdList objectAtIndex:indexPath.row] intValue]];
     
@@ -3317,15 +3035,7 @@
     
     
     
-    /*
-    for(int i = 0; i < [categoryList count]; i++) {
-        NSIndexPath *index_path = [NSIndexPath indexPathForRow:i inSection:0];
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:index_path];
-        [self runSpinAnimationWithDuration:1.0 onView:cell];
-    }
-    //[self alphaAnimation:menuTable dutarion:1.0];
-    */
-       
+          
 }
 
 
@@ -3350,7 +3060,7 @@
     CABasicAnimation* rotationAnimation =
     [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     [rotationAnimation setToValue:[NSNumber numberWithFloat:100]];
-    [rotationAnimation setDuration:5.0];
+    [rotationAnimation setDuration:2.0];
     [rotationAnimation setRepeatCount:3]; // Repeat forever
     [rotationAnimation setAutoreverses:YES]; // Return to starting point
     

@@ -5,9 +5,6 @@
 #define DISH_TAG      @"dishtagkey"
 #define SERVER_URL    @"serverurlkey"
 #define APP_KEY       @"appkey"
-#define DEFAULT_URL   @"http://192.168.0.148/central" //for moghul mahal
-//#define DEFAULT_URL   @"http://192.168.0.148/central"
-#define DEFAULT_KEY   @"511dcaa2b99651360906914"
 #define PRE_NAME      @"tabsquare_"
 
 /*==========UI Images===========*/
@@ -131,6 +128,7 @@
 @property(nonatomic,strong)NSString *serverUrl;
 @property(nonatomic,strong)NSString *dishTag;
 @property(nonatomic,strong)NSString *categoryID;
+@property(nonatomic,strong)NSString *bevCat;  ////changing the @"8"zugad to "is_beverage" item from database and replace @"8" by [ShareableData sharedInstance].bevCat
 
 
 +(ShareableData*) sharedInstance;

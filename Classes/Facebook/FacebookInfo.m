@@ -5,7 +5,7 @@
 #import "SBJSON.h"
 
 //#define kAppId @"218172004987897"///Moghual mahal
-#define   kAppId  @"567350413284422"/////for Banana Leaf
+//#define   kAppId  @"567350413284422"/////for Banana Leaf
 
 @implementation FacebookInfo
 

@@ -34,13 +34,15 @@
     int totalTable;
     NSTimer* tt;
     
-    
+    UITextField *myTextField;
     MBProgressHUD *progressHud;
     
     int taskType;
     UITextField *numberOfGuests;
     IBOutlet UISwitch *quickOrderSwitch;
+    
 }
+
 @property(nonatomic,strong) UISwitch *quickOrderSwitch;;
 -(IBAction)quickOrderSwitch:(id)sender;
 -(IBAction)gotoDishViewMode;

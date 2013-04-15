@@ -120,7 +120,7 @@
                                                         delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert4 show];
         
-      /*  if([selectedCatId isEqualToString:@"8"])
+      /*  if([selectedCatId isEqualToString:[ShareableData sharedInstance].bevCat])
         {
             [self.view addSubview:BeverageView.view];
             [BeverageView reloadDataOfSubCat:@"0" cat:selectedCatId];  

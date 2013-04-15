@@ -219,7 +219,7 @@ static int tapCount = 0;
 -(NSString*)loadWebViewDish
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/printDishes.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"kinaraEx/printDishes.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
     
     NSError *error;
     NSURLResponse *response;
@@ -232,7 +232,7 @@ static int tapCount = 0;
 -(NSString*)loadWebViewDrink
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/printDrinks.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"kinaraEx/printDrinks.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
     
     NSError *error;
     NSURLResponse *response;
@@ -288,13 +288,7 @@ static int tapCount = 0;
         }
         else
         {
-            /*NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-             [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/removeTempOrders.php?orderid=%@",[ShareableData sharedInstance].OrderId]]];
-             
-             NSError *error;
-             NSURLResponse *response;
-             NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-             //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];*/
+            
             [self confirmOrder];
         }
         
@@ -459,7 +453,7 @@ static int tapCount = 0;
     {
         
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/printRequest.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"kinaraEx/printRequest.php?tableid=%@&request=%@",[ShareableData sharedInstance].assignedTable1,[specialRequest.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -677,7 +671,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -700,7 +694,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/ForcePrint.php?SalesNo=%@&SplitNo=%@",[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ForcePrint.php?SalesNo=%@&SplitNo=%@",[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -723,7 +717,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -751,7 +745,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/OpenItem.php"]];
+    [request setURL:[NSURL URLWithString:kURL@"Raptor/OpenItem.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -783,7 +777,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/OrderItem.php"]];
+    [request setURL:[NSURL URLWithString:kURL@"Raptor/OrderItem.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -815,7 +809,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/CustomModifier.php"]];
+    [request setURL:[NSURL URLWithString:kURL@"Raptor/CustomModifier.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -836,7 +830,7 @@ static int tapCount = 0;
 -(void)insertInTempOrderService:(NSString*)tableNumber1 DishID:(NSString*)DishID1 DishName:(NSString*)DishName1 DishQuantity:(NSString*)DishQuantity1 DishRate:(NSString*)DishRate1 OrderSpecialRequest:(NSString*)OrderSpecialRequest1 OrderCustomizationDetail:(NSString*)OrderCustomizationDetail1 OrderBeverageContainerId:(NSString*)OrderBeverageContainerId1 OrderCatId:(NSString*)OrderCatId1 confirmOrder:(NSString*)confirmOrder1 IsOrderCustomization:(NSString*)IsOrderCustomization1
 {
     if (DishID1.length!=15){
-        if ([OrderCatId1 isEqualToString:@"8"]){
+        if ([OrderCatId1 isEqualToString:[ShareableData sharedInstance].bevCat]){
             [self insertInOpenItemRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000172" Qty:DishQuantity1 PLUName:DishName1 Amount:DishRate1];
             if (OrderSpecialRequest1.length<2){
                 OrderSpecialRequest1 = @"";
@@ -862,7 +856,7 @@ static int tapCount = 0;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/mm/webs/set_temp_order"]];
+    [request setURL:[NSURL URLWithString:kURL@"mm/webs/set_temp_order"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -915,7 +909,7 @@ static int tapCount = 0;
             
             // soupView.goToMenuBtn.tag = [[NSString stringWithFormat:@"%@1001%@",orderCatId,subCatId ] intValue];
             ////manoj
-            soupView.goToMenuBtn.tag = [[NSString stringWithFormat:@"%@1001%@",@"8",@"149" ] intValue];
+            soupView.goToMenuBtn.tag = [[NSString stringWithFormat:@"%@1001%@",[ShareableData sharedInstance].bevCat,@"149" ] intValue];
             
             
             // UILabel *titleX=[self KinaraaddCategoryTitle:[orderCatId intValue] labelValue:orderCatName];
@@ -1086,7 +1080,7 @@ static int tapCount = 0;
             NSString *dishId=([ShareableData sharedInstance].OrderItemID)[sortIndex];
             
             
-            if([currentCatId isEqualToString:@"8"])
+            if([currentCatId isEqualToString:[ShareableData sharedInstance].bevCat])
             {
                 if ([displayId isEqualToString:@"1"]|| [dishId length]<15){
                     dishId=[[TabSquareDBFile sharedDatabase]getBeverageId:dishId];
@@ -1610,7 +1604,7 @@ static int tapCount = 0;
     // [ShareableData sharedInstance].or
     //get data from DB
     // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-    if([([ShareableData sharedInstance].OrderCatId)[selectedItemIndex]isEqualToString:@"8"])
+    if([([ShareableData sharedInstance].OrderCatId)[selectedItemIndex]isEqualToString:[ShareableData sharedInstance].bevCat])
     {
         NSString *temp=[[TabSquareDBFile sharedDatabase]getBeverageId:orderId];
         if (temp.intValue != 0){
@@ -1625,9 +1619,9 @@ static int tapCount = 0;
     NSString *dishSubCatId2 = [NSString stringWithFormat:@"%@",resultFromPost[0][@"sub_category"]];
     int bevDisplay = 0;
     
-    if([dishCatId2 isEqualToString:@"8"]){
+    if([dishCatId2 isEqualToString:[ShareableData sharedInstance].bevCat]){
         [ShareableData sharedInstance].TaskType = @"3";
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:@"8"];
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
             NSString *subId=subCategory[@"id"];

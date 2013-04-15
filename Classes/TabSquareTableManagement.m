@@ -13,6 +13,9 @@
 #import "TabSquareCommonClass.h"
 #import "Reachability.h"
 
+#define NUMBERS_ONLY @"1234567890"
+#define CHARACTER_LIMIT 3
+
 @implementation TabSquareTableManagement
 
 @synthesize tableNoView,statusView,TotalTableNo,takeawayButton,takeawayAssignBtn, tableNumber,oldTableNumber, bgImage,sectionID;
@@ -100,7 +103,7 @@ bool funcCalled = NO;
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-    NSString *url_string = [NSString stringWithFormat:@"http://192.168.0.148/Raptor/GetTableStatus.php"];
+    NSString *url_string = [NSString stringWithFormat:kURL@"Raptor/GetTableStatus.php"];
     [request setURL:[NSURL URLWithString:url_string]];
     
     [request setHTTPMethod:@"POST"];
@@ -357,7 +360,7 @@ bool funcCalled = NO;
 }
 -(void)checkSections{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/GetTableLayout.php"]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/GetTableLayout.php"]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -1045,13 +1048,13 @@ bool funcCalled = NO;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    NSLog(@"json = %@",json);
+   // NSLog(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1068,6 +1071,7 @@ bool funcCalled = NO;
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [myTextField resignFirstResponder];
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
@@ -1115,7 +1119,7 @@ bool funcCalled = NO;
                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
                 
-                UITextField *guests = [alertView textFieldAtIndex:0];
+                UITextField *guests = (UITextField*)[alertView viewWithTag:3698];
                 if (guests.text.intValue >0 ){
                     [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"0"];
                     [self AssignData:guests.text];
@@ -1154,8 +1158,8 @@ bool funcCalled = NO;
                                 [[ShareableData sharedInstance].OrderCustomizationDetail removeAllObjects];
                                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
-                                UITextField *guests = [alertView textFieldAtIndex:0];
-
+                                //UITextField *guests = [alertView textFieldAtIndex:0];
+ UITextField *guests = (UITextField*)[alertView viewWithTag:3698];
 //                                if (numberOfGuests.text.intValue >0 ){
 //                                    [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"0"];
 //                                    [self AssignData:numberOfGuests.text];
@@ -1165,13 +1169,14 @@ bool funcCalled = NO;
 //                                    [self.navigationController pushViewController:homeView animated:YES];
 //                                }
                                 if (guests.text.intValue >0 ){
-                                    [[ShareableData sharedInstance].IsEditOrder isEqualToString:@"0"];
+                                    [ShareableData sharedInstance].IsEditOrder =@"0";
+//                                    [ShareableData sharedInstance].AddItemFromTakeaway=@"0";
+//
+//                                    [ShareableData sharedInstance].isConfromHomePage=@"1";
+//
                                     [self AssignData:guests.text];
                                     
-                                    //[self presentModalViewController:homeView animated:YES];
-                                    // [self presentViewController:homeView animated:YES completion:Nil];
-                                   // [self.navigationController pushViewController:homeView animated:YES];
-                                    [self gotoDishMenuLIst2];
+                                     [self gotoDishMenuLIst2];
 
                                 }
 
@@ -1309,7 +1314,7 @@ bool funcCalled = NO;
         UITextField *guests = [alertView textFieldAtIndex:0];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/ChangeCover.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1381,27 +1386,14 @@ bool funcCalled = NO;
         
         [[ShareableData sharedInstance].OrderSpecialRequest removeAllObjects];
         [[ShareableData sharedInstance].OrderCatId removeAllObjects];
-        //[[ShareableData sharedInstance].OrderBeverageContainerId removeAllObjects];
         [[ShareableData sharedInstance].OrderCustomizationDetail removeAllObjects];
         [[ShareableData sharedInstance].confirmOrder removeAllObjects];
         [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
         
-        // taskType=0;
-        
-        
-        //lblTableNumber.text=tableNumber;
-        
-        // v1.layer.cornerRadius=12.0;
-        
-        // [self roundLabelCorner];
-        
+               
         [super viewDidLoad];
-        // lblTableNumber.text=tableNumber;
-        //[self getTaxesList];
-        // Do any additional setup after loading the view from its nib.
-        // [self getCustomerDetails:tableNumber];
-        //lblTableNumber.text=tableNumber;
-        [self getTableDetails:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]; //Change
+      
+            [self getTableDetails:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]; //Change
                 
         [self gotoDishMenuLIst2];
             }
@@ -1434,6 +1426,8 @@ bool funcCalled = NO;
         
         [alert show];
         
+        
+        
     }
     
     if ([title isEqualToString:@"Choose Table"]){
@@ -1450,8 +1444,7 @@ bool funcCalled = NO;
             
         [self getSalesNumber:[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"]];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        // [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/changeTable.php?newtableid=%@&oldtableid=%@",tableNumber,oldTableNumber]]];
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/ChangeTable.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
+       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1548,7 +1541,7 @@ bool funcCalled = NO;
     
     [ShareableData sharedInstance].salesNo=data;
     [ShareableData sharedInstance].splitNo = @"0";
-    DLog(@"Bill Number :%@",data);
+   // DLog(@"Bill Number :%@",data);
     
 }
 
@@ -1587,7 +1580,7 @@ bool funcCalled = NO;
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/central/webs/get_temp_order"]];
+    [request setURL:[NSURL URLWithString:kURL@"central/webs/get_temp_order"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -1646,33 +1639,6 @@ bool funcCalled = NO;
         NSString *orderId = dataitem[@"dish_id"];
         if ([customString count]>1){
             NSMutableArray *tempCust= [[NSMutableArray alloc]init];
-            
-            /*  DLog(@"WTF1: %@",tempCust);
-             if([trimmedString isEqualToString:@"8"])
-             {
-             //  [[TabSquareDBFile sharedDatabase] openDatabaseConnection];
-             NSString *temp=[[TabSquareDBFile sharedDatabase]getBeverageId:orderId];
-             //  [[TabSquareDBFile sharedDatabase] closeDatabaseConnection];
-             if (temp.intValue != 0){
-             orderId = [temp copy];
-             }
-             }*/
-            
-            
-            // [[TabSquareDBFile sharedDatabase] openDatabaseConnection];
-            //  NSMutableArray *resultFromPostt=[[TabSquareDBFile sharedDatabase]getDishDataDetail:[NSString stringWithFormat:@"%@",orderId]];
-            // NSMutableDictionary *dataitm2 = resultFromPostt[0];
-            //DLog(@"Data FOr Dish :%@",resultFromPostt);
-            // [tempCust addObject:dataitm2[@"customisations"]];
-            // [[TabSquareDBFile sharedDatabase] closeDatabaseConnection];
-            //  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-            //  [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/getOptions.php?tempid=%@",dataitem[@"id"]]]];
-            
-            // NSError *error;
-            //   NSURLResponse *response;
-            //   NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
-            //  NSArray *stringArray = [data componentsSeparatedByString: @","];
             NSMutableArray *customizationDetail=[[NSMutableArray alloc]init];
             for(int i=0;i<[customString count]-1;i++)
             {
@@ -1784,7 +1750,7 @@ bool funcCalled = NO;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/OpenTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&CustFirstName=%@&CustLastName=%@&CustAddress=%@&CustRemark=%@&OrderRemark=%@&Cover=%@",@"POS001",@"1",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"],@"",@"",@"",@"",@"",user]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/OpenTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&CustFirstName=%@&CustLastName=%@&CustAddress=%@&CustRemark=%@&OrderRemark=%@&Cover=%@",@"POS001",@"1",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"],@"",@"",@"",@"",@"",user]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -1809,7 +1775,7 @@ bool funcCalled = NO;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -1859,13 +1825,56 @@ bool funcCalled = NO;
                 [[ShareableData sharedInstance].confirmOrder removeAllObjects];
                 [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
                 [[ShareableData sharedInstance].TempOrderID removeAllObjects];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Enter no. of Guests:"
+              
+                
+//                TSAlertView* av = [[TSAlertView alloc] init];
+//                av.title = @"manoj";
+//                av.message =@"bamabm";
+//                
+//                for ( int i = 0 ; i < 2 ; i++ )
+//                {
+//                    [av addButtonWithTitle: [NSString stringWithFormat: @"Button %d", i]];
+//                }
+//                
+//                av.style =  TSAlertViewStyleInput ;
+//                av.buttonLayout = TSAlertViewButtonLayoutStacked;
+//                av.usesMessageTextView = _usesTextViewSwitch.on;
+//                
+//                av.width = [@"300" floatValue];
+//                av.maxHeight = [@"180" floatValue];
+//                [self.view addSubview:av];
+//                [self.view bringSubviewToFront:av];
+//                
+//                [av show];
+
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"\n\n\n\n\n\n"
                                                                delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Assign", nil];
-                alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-                UITextField * alertTextField = [alert textFieldAtIndex:0];
-                alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+                ///seting up the UIimage on UIalert box
+                UIImage *alertBoxImage = [UIImage imageNamed:@"paxbox.png"];
+                
+                UIImageView *_backgroundImageView = [[UIImageView alloc] initWithImage:alertBoxImage];
+                _backgroundImageView.frame = CGRectMake(0, 0, 282, 205);
+                _backgroundImageView.contentMode = UIViewContentModeScaleToFill;
+                [alert addSubview:_backgroundImageView];
+                [alert sendSubviewToBack:_backgroundImageView];
+                
+                 myTextField = [[UITextField alloc] initWithFrame:CGRectMake(116.0, 115.0, 45.0, 25.0)];
+                [myTextField setBackgroundColor:[UIColor whiteColor]];
+                myTextField.keyboardType = UIKeyboardTypeNumberPad;
+                myTextField.tag=3698;
+                myTextField.textAlignment = 	NSTextAlignmentCenter;
+                myTextField.delegate=self;
+                [myTextField becomeFirstResponder];
+                [alert addSubview:myTextField];
+                
+                
+               // UITextField * alertTextField = [alert textFieldAtIndex:0];
+                
+                //alertTextField.placeholder=@"Please enter no. of Guests";
+                //alertTextField.frame = CGRectMake(1, 1, 10, 10);
+                //[alertTextField sizeThatFits:CGSizeMake(10, 10)];
                 [alert show];
-                // [self presentModalViewController:assignTableView animated:YES];
+                
             }else{
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Confirm switch to this table?"
@@ -2077,7 +2086,12 @@ bool funcCalled = NO;
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
+    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
+}
 
 
 

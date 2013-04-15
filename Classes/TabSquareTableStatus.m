@@ -102,7 +102,7 @@
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/Raptor/AllVoid.php"]];
+    [request setURL:[NSURL URLWithString:kURL@"Raptor/AllVoid.php"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -282,7 +282,7 @@
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.148/central/webs/get_temp_order"]];
+    [request setURL:[NSURL URLWithString:kURL@"central/webs/get_temp_order"]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -342,32 +342,6 @@
         if ([customString count]>1){
             NSMutableArray *tempCust= [[NSMutableArray alloc]init];
             
-            /*  DLog(@"WTF1: %@",tempCust);
-             if([trimmedString isEqualToString:@"8"])
-             {
-             //  [[TabSquareDBFile sharedDatabase] openDatabaseConnection];
-             NSString *temp=[[TabSquareDBFile sharedDatabase]getBeverageId:orderId];
-             //  [[TabSquareDBFile sharedDatabase] closeDatabaseConnection];
-             if (temp.intValue != 0){
-             orderId = [temp copy];
-             }
-             }*/
-            
-            
-            // [[TabSquareDBFile sharedDatabase] openDatabaseConnection];
-            //  NSMutableArray *resultFromPostt=[[TabSquareDBFile sharedDatabase]getDishDataDetail:[NSString stringWithFormat:@"%@",orderId]];
-            // NSMutableDictionary *dataitm2 = resultFromPostt[0];
-            //DLog(@"Data FOr Dish :%@",resultFromPostt);
-            // [tempCust addObject:dataitm2[@"customisations"]];
-            // [[TabSquareDBFile sharedDatabase] closeDatabaseConnection];
-            //  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-            //  [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.148/kinaraEx/getOptions.php?tempid=%@",dataitem[@"id"]]]];
-            
-            // NSError *error;
-            //   NSURLResponse *response;
-            //   NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
-            //  NSArray *stringArray = [data componentsSeparatedByString: @","];
             NSMutableArray *customizationDetail=[[NSMutableArray alloc]init];
             for(int i=0;i<[customString count]-1;i++)
             {

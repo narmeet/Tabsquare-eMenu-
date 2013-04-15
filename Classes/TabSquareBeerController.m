@@ -163,6 +163,34 @@
     }
    
 }
+-(void)viewWillAppear:(BOOL)animated{
+    
+    self.view.backgroundColor =[UIColor whiteColor];//changed to white color
+    
+   // [self getBackgroundImage]; ///setting up the backgroung image dynamically
+}
+
+-(void)getBackgroundImage
+{
+    
+    
+    NSString *img_name = [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, BACKGROUND_IMAGE, [ShareableData appKey]];
+    
+    UIImage *img = [[TabSquareDBFile sharedDatabase] getImage:img_name];
+    
+    if(img == nil || img == NULL) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        [arr addObject:BACKGROUND_IMAGE];
+        
+        [[TabSquareDBFile sharedDatabase] updateUIImages:arr];
+        
+        img = [[TabSquareDBFile sharedDatabase] getImage:img_name];
+    }
+    
+    [bgImage setImage:img];
+    
+    
+}
 
 - (void)viewDidLoad
 {
@@ -572,7 +600,7 @@
     DLog(@"%d",total);
     if(total<3)
     {
-        return 3;
+        return 4; // changed from 3 to 4 due to more visible row in rack view
     }
     else
     {
@@ -602,7 +630,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 245;
+    return 220;
 }
 
 

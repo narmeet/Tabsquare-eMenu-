@@ -34,6 +34,11 @@
 #define EDIT_ORDER                  @"edit_order"
 #define ACCESS_TABLE_NAMAGEMENT     @"access_table_management"
 #define MODIFY_DISCOUNTS            @"modify_discounts"
+
+/*==============================*/
+#define SEARCH_DATA          @"search_data"
+#define BEST_SELLERS         @"Bestsellers"
+
 /*==============================*/
 
 
@@ -138,6 +143,7 @@
 +(NSString *)appKey;
 +(BOOL)dishTagStatus;
 +(BOOL)hasAccess:(NSString *)password level:(NSString *)access;
++(BOOL)bestSellersON;
 
 
 @end

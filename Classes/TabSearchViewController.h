@@ -11,7 +11,7 @@
 @class TabSquareMenuController;
 @class TabSquareBeerController;
 
-@interface TabSearchViewController : UIViewController<UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface TabSearchViewController : UIViewController <UITextFieldDelegate>
 {
     NSMutableArray *categoryId;
     NSMutableArray *categoryName;
@@ -20,6 +20,8 @@
     NSMutableArray *dishId;
     NSMutableArray *dishName;
     NSMutableArray *dishprice;
+    
+    UIImageView *backgroundImage;
     
 }
 
@@ -32,12 +34,19 @@
 @property(nonatomic,strong)NSString *selectedSubCatId;
 @property(nonatomic,strong)NSString *selectedDishId;
 
-@property(nonatomic,strong)IBOutlet UITextView* searchTextView;
+@property(nonatomic,strong)IBOutlet UIImageView *backgroundImage;
+@property(nonatomic,strong)IBOutlet UITextField* searchTextField;
 @property(nonatomic,strong)IBOutlet UIPickerView* filterPickerView;
 @property(nonatomic,strong)IBOutlet UIButton* filterBtn;
 @property(nonatomic,strong)IBOutlet UIButton* keywordBtn;
+@property(nonatomic,strong)IBOutlet UILabel *headingLabel;
+@property(nonatomic,strong)IBOutlet UILabel *headingLabel2;
+@property(nonatomic,strong)IBOutlet UIScrollView *scroller;
 
 -(IBAction)searchClicked:(id)sender;
 -(void)getPickerData;
+-(void)callTosearch:(id)sender;
+-(BOOL)hasTagData;
+
 
 @end

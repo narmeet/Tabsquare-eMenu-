@@ -102,6 +102,12 @@
     
     
     int main_cat_id;
+    
+    BOOL searchStatus;
+    NSString *searhKeyword;
+    
+    BOOL bestsellers;
+
 }
 
 @property(nonatomic,strong) UIScrollView    *subcatScroller;

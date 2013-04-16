@@ -9,7 +9,7 @@
 
 @implementation TabSearchViewController
 
-@synthesize searchTextView;
+@synthesize searchTextField, backgroundImage, headingLabel, headingLabel2, scroller;
 @synthesize filterBtn,keywordBtn,filterPickerView,HomePage;
 @synthesize selectedCatId,selectedSubCatId,selectedDishId,selectedDishPrice,menulistView1,BeverageView;
 
@@ -88,64 +88,6 @@
     
 }
 
--(void)getDishData
-{
-    
-    [[ShareableData sharedInstance].SearchAllItemData removeAllObjects];
-    
-    [ShareableData sharedInstance].TaskType=@"2";
-    
-  //  [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-    
-    [ShareableData sharedInstance].SearchAllItemData =[[TabSquareDBFile sharedDatabase] getDishKeyTag:selectedCatId tagA:selectedSubCatId tagB:selectedDishId tagC:selectedDishPrice];
-    //DLog(@"Serach Result : %@",result);
-    // for(int i=0;i<[result count];i++)
-    {
-        // NSMutableDictionary *dataItem=[result objectAtIndex:i];
-        // DLog(@"Data : %@",dataItem);
-    }
-  //  [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
-    
-    if([[ShareableData sharedInstance].SearchAllItemData count]==0)
-    {
-        UIAlertView *alert4 = [[UIAlertView alloc] initWithTitle:nil message:@"Items not found"
-                                                        delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alert4 show];
-    }
-    else
-    {
-        int totalfound=[[ShareableData sharedInstance].SearchAllItemData count];
-        
-        UIAlertView *alert4 = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%d Items Found",totalfound]
-                                                        delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alert4 show];
-        
-      /*  if([selectedCatId isEqualToString:[ShareableData sharedInstance].bevCat])
-        {
-            [self.view addSubview:BeverageView.view];
-            [BeverageView reloadDataOfSubCat:@"0" cat:selectedCatId];  
-            [BeverageView.beverageView reloadData]; 
-        }
-        else
-        {*/
-        //[self.view removeFromSuperview];
-            //[HomePage.view addSubview:menulistView1.view];
-            menulistView1.view.frame=CGRectMake(-10, 10, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
-            [menulistView1 reloadDataOfSubCat:@"0" cat:selectedCatId];
-        
-            [self.view.superview addSubview:menulistView1.view];
-        [menulistView1.DishList reloadData];
-        [self.view removeFromSuperview];
-            //[menulistView1 reloadDataOfSubCat:@"0" cat:selectedCatId];
-            
-       // }
-        
-    }
-    
-    
-    
-}
-
 
 -(void)createArrayData
 {
@@ -175,10 +117,201 @@
 
 - (void)viewDidLoad
 {
-    searchTextView.layer.cornerRadius=3.0;
-    [self createArrayData];
     [super viewDidLoad];
+    
+    /*===============Customizing Font Appearance================*/
+    [self.keywordBtn.titleLabel setFont:[UIFont fontWithName:@"Century Gothic" size:20.0]];
+    [self.headingLabel setFont:[UIFont fontWithName:@"Century Gothic" size:22.0]];
+    [self.headingLabel2 setFont:[UIFont fontWithName:@"Century Gothic" size:22.0]];
+    [self.searchTextField.layer setBorderColor:[UIColor blackColor].CGColor];
+    [self.searchTextField.layer setBorderWidth:1.0];
+
+    
+    if(![self hasTagData]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT
+                                             , 0), ^{
+                [self getSearchTags];
+        
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                [self addQuickSearchButtons];
+                [self createArrayData];
+            });
+        
+        });
+    }
+    else {
+
+        [self addQuickSearchButtons];
+        [self createArrayData];
+    }
+    
+    
+    NSString *img_name = [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, POPUP_IMAGE, [ShareableData appKey]];
+    UIImage *img = [[TabSquareDBFile sharedDatabase] getImage:img_name];
+    if(img != nil)
+        [self.backgroundImage setImage:img];
+
 }
+
+
+-(void)getSearchTags
+{
+    NSString *post =[NSString stringWithFormat:@"key=%@", [ShareableData appKey]];
+    //NSLOG(@"request = %@", date);
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    NSString *url_string = [NSString stringWithFormat:@"%@/webs/get_all_tags", [ShareableData serverURL]];
+    [request setURL:[NSURL URLWithString:url_string]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/x-www-form-urlencoded charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error;
+    NSURLResponse *response;
+    NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
+    //NSLog(@"original data = %@", data);
+    
+    SBJSON *parser = [[SBJSON alloc] init];
+    NSMutableDictionary *resultFromPost = [parser objectWithString:data error:nil];
+    NSLog(@"Response data = %@", resultFromPost);
+    [[NSUserDefaults standardUserDefaults] setObject:resultFromPost forKey:SEARCH_DATA];
+    
+}
+
+
+-(void)callTosearch:(id)sender
+{
+    NSString *search_text = @"";
+    
+    if(sender == nil) {
+        search_text = [NSString stringWithFormat:@"%@", self.searchTextField.text];
+    }
+    else {
+        UIButton *btn = (UIButton *)sender;
+        search_text = [btn titleForState:UIControlStateNormal];
+    }
+
+    search_text = [search_text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    NSString *to_filter = @"!@$&%^&(*^(_()*/48";
+    NSString *finalSearchString = [NSString stringWithFormat:@"%@", search_text];
+    
+    for(int i = 0; i < [to_filter length]; i++) {
+        NSString *search = [NSString stringWithFormat:@"%c", [to_filter characterAtIndex:i]];
+        [finalSearchString stringByReplacingOccurrencesOfString:search withString:@""];
+    }
+
+    if([search_text length] == 0 || (![search_text isEqualToString:finalSearchString])) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please enter any valid keyword !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        
+        return;
+    }
+
+    /*===========Preform Search Operation Finally=============*/
+    NSMutableArray *search_data = [[TabSquareDBFile sharedDatabase] getDishKeyData:search_text];
+    [[ShareableData sharedInstance].SearchAllItemData removeAllObjects];
+    [ShareableData sharedInstance].SearchAllItemData= search_data;
+    [ShareableData sharedInstance].TaskType=@"2";
+    self.searchTextField.text = @"";
+
+    if([search_data count] > 0) {
+        menulistView1.view.frame=CGRectMake(0, 191, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
+        [menulistView1 reloadDataOfSubCat:@"0" cat:selectedCatId];
+        [self.HomePage.view addSubview:menulistView1.view];
+        [menulistView1.view setHidden:FALSE];
+        [self.HomePage setSearchOn:search_text];
+        [menulistView1.DishList reloadData];
+        [self.view removeFromSuperview];
+    }
+    else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Search" message:@"No items found !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+    }
+}
+
+
+-(void)addQuickSearchButtons
+{
+    NSMutableDictionary *tags_data = [[NSUserDefaults standardUserDefaults] objectForKey:SEARCH_DATA];
+    NSMutableArray *tags = tags_data[[ShareableData sharedInstance].currentLanguage];
+    
+    
+    /*
+    tags = [[NSMutableArray alloc] init];
+    [tags addObject:@"Vegetarian"];
+    [tags addObject:@"Paneer"];
+    [tags addObject:@"Fish"];
+    [tags addObject:@"Roti"];
+    
+    [tags addObject:@"Vegetarian"];
+    [tags addObject:@"Paneer"];
+    [tags addObject:@"Fish"];
+    [tags addObject:@"Roti"];
+    [tags addObject:@"Spicy"];
+     */
+
+    
+    int x_gap = 7;
+    int y_gap = 15;
+    
+    int x_shift = -1;
+    int max_in_row = 4;
+    float last_y = 0;
+    
+    CGSize size = CGSizeMake(175.0, 58.0);
+    
+    for(int i = 0; i < [tags count]; i++)
+    {
+        if(i > 0 && (i % max_in_row) == 0)
+            x_shift -= (max_in_row-1);
+        else
+            x_shift++;
+
+        float x = (x_shift * x_gap) + (x_shift * size.width);
+        int mult = (i/max_in_row);
+        float y =  (mult * y_gap) + (mult * size.height);
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setBackgroundImage:[UIImage imageNamed:@"quicksearchbutton.png"] forState:UIControlStateNormal];
+        [btn setFrame:CGRectMake(x, y, size.width, size.height)];
+        [btn setTitle:tags[i] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn.titleLabel setFont:[UIFont fontWithName:@"Century Gothic" size:20.0]];
+        [btn addTarget:self action:@selector(callTosearch:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [btn.layer setShadowOpacity:0.8];
+        [btn.layer setShadowOffset:CGSizeMake(1.0, 1.0)];
+        
+        last_y = btn.frame.size.height + btn.frame.origin.y;
+        [self.scroller addSubview:btn];
+        
+
+    }
+    
+    [self.scroller setContentSize:CGSizeMake(self.scroller.contentSize.width, last_y)];
+    
+}
+
+
+-(BOOL)hasTagData
+{
+    BOOL status = TRUE;
+    
+    if([[NSUserDefaults standardUserDefaults] objectForKey:SEARCH_DATA] == nil)
+        status = FALSE;
+    
+    return status;
+}
+
 
 - (void)viewDidUnload
 {
@@ -194,66 +327,15 @@
 
 -(IBAction)searchClicked:(id)sender
 {
-    [searchTextView resignFirstResponder];
-    [self getDishData];
+    //[searchTextField resignFirstResponder];
+    //[self getDishData];
 }
 
 
--(void)getDishDataByText
-{
-    NSString *trimmedString = [searchTextView.text stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    if([trimmedString isEqualToString:@""])
-    {
-        UIAlertView *alert4 = [[UIAlertView alloc] initWithTitle:nil message:@"Please enter any word"
-                                                        delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alert4 show];
-    }
-    else
-    {
-        
-     //   [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-        
-        [ShareableData sharedInstance].SearchAllItemData=[[TabSquareDBFile sharedDatabase] getDishKeyData:trimmedString];
-        //DLog(@"Serach Result : %@",result);
-        // for(int i=0;i<[result count];i++)
-        {
-            // NSMutableDictionary *dataItem=[result objectAtIndex:i];
-            // DLog(@"Data : %@",dataItem);
-        }
-       // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
-        
-        [ShareableData sharedInstance].TaskType=@"2";
-        int total=[[ShareableData sharedInstance].SearchAllItemData count];
-        if(total>0)
-        {
-            menulistView1.view.frame=CGRectMake(-10, 10, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
-            [menulistView1 reloadDataOfSubCat:@"0" cat:selectedCatId];
-            [self.view addSubview:menulistView1.view];
-            //[menulistView1 reloadDataOfSubCat:@"0" cat:selectedCatId];
-            [menulistView1.DishList reloadData];
-            
-            UIAlertView *alert4 = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%d Records Found",total]
-                                                            delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            
-            [alert4 show];
-        }
-        else 
-        {
-            UIAlertView *alert4 = [[UIAlertView alloc] initWithTitle:nil message:@"Records not found"
-                                                            delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [alert4 show];
-            
-        }
-        
-        
-    }
-}
 -(IBAction)searchClicked1:(id)sender
 {
-    [searchTextView resignFirstResponder];
-    [self getDishDataByText];
+    [self.searchTextField resignFirstResponder];
+    [self callTosearch:nil];
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView 
@@ -333,4 +415,6 @@
     [filterPickerView reloadComponent:3];
     
 }
+
+
 @end

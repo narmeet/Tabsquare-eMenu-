@@ -452,6 +452,8 @@
     [self.logoImage setImage:logo_img];
      */
 
+    searchStatus = FALSE;
+    bestsellers = [ShareableData bestSellersON];
     isRecon = 0;
     hasLoaded = 0;
     categoryList=[[NSMutableArray alloc]init];
@@ -1085,7 +1087,7 @@
 }
 -(IBAction)displayOverview{
 
-    
+    searchStatus = FALSE;
     [self hideUnhideComponents:TRUE];
     [mainMenu setHidden:FALSE];
     
@@ -2820,6 +2822,9 @@
     
     firstImages =[[TabSquareDBFile sharedDatabase]getFirstImages:categoryIdList];
     
+    /*=======Adding bestsellers as a hardcode category=======*/
+    [self addBestsellers];
+
     CGRect frame = CGRectMake(35,30, mainMenu.frame.size.width-70, mainMenu.frame.size.height+5);
     menuTable               = [[UITableView alloc] initWithFrame:frame];
 	menuTable.delegate      = self;
@@ -2836,6 +2841,28 @@
     ////NSLOG(@"coming in here...");
 	
 }
+
+
+-(void)addBestsellers
+{
+    /*===========Returns if Bestsellers set to off=============*/
+    if(![ShareableData bestSellersON])
+        return;
+    
+    NSString *dishImage = @"bestseller.png";
+    UIImage *imageData = [UIImage imageNamed:dishImage];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryDirectory = paths[0];
+    NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,dishImage];
+    NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(imageData)];
+    [data1 writeToFile:location atomically:YES];
+    
+    [firstImages insertObject:location atIndex:0];
+    [categoryList insertObject:BEST_SELLERS atIndex:0];
+    
+}
+
+
 -(void)badgeRefresh{
     int totalQty = 0;
     
@@ -2935,11 +2962,16 @@
       
     [dish_image setImage:img];
   
-    [cell.contentView addSubview:dish_image];
-    
-    [cell.contentView setTag:[[categoryIdList objectAtIndex:indexPath.row] intValue]];
-    
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell.contentView addSubview:dish_image];
+        
+        /*=======Check for Bstsellers========*/
+        int indx = indexPath.row;
+        if([ShareableData bestSellersON] && indx != 0) {
+            indx --;
+        }
+        [cell.contentView setTag:[[categoryIdList objectAtIndex:indx] intValue]];
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     [cell setNeedsDisplay];
 
@@ -3023,26 +3055,38 @@
                                                                            
                                                                            NSString *tag_val = [NSString stringWithFormat:@"%d1001%d", main_cat_id, sub_cat_id];
                                                                            
-                                                                           UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-                                                                           [btn setTag:[tag_val intValue]];
-                                                                           [self overviewBtnClicked:btn];
+                                                                           /*========Setting Bestsellers off=========*/
+                                                                           BOOL best_flag = FALSE;
+                                                                           if(![ShareableData bestSellersON] && indexPath.row == 0) {
+                                                                               [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"0"];
+                                                                           }
+                                                                           else if([ShareableData bestSellersON] && indexPath.row == 0) {
+                                                                               
+                                                                               [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"1"];
+                                                                               
+                                                                               best_flag = TRUE;
+                                                                               [self searchBetseellers];
+                                                                           }
+                                                                           
+                                                                           if(!best_flag) {
+                                                                               
+                                                                               UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                                                                               [btn setTag:[tag_val intValue]];
+                                                                               [self overviewBtnClicked:btn];
+                                                                           }
+                                                                           
+                                                                           /*========================================*/
                                                                            
                                                                            [mainMenu setHidden:TRUE];
                                                                            [self hideUnhideComponents:FALSE];
-
+                                                                           
                                                                        }
                                                        ];}
                                               }
                               ];}
                      }];
     
-    
-    
-    
-    
-          
 }
-
 
 -(void)hideUnhideComponents:(BOOL)status
 {
@@ -3110,4 +3154,86 @@
     self.overviewMenuButton.userInteractionEnabled=TRUE;
     self.KinaraLogo.userInteractionEnabled=TRUE;
 }
+
+
+/*Activating search table list view*/
+-(void)setSearchOn:(NSString *)keyword
+{
+    searchStatus = TRUE;
+    searhKeyword = [NSString stringWithFormat:@"%@", keyword];
+    
+    [subCatbg setHidden:FALSE];
+    [subcatScroller setHidden:FALSE];
+    
+    for(UIView *sub_view in subcatScroller.subviews)
+        [sub_view removeFromSuperview];
+    
+    UILabel *searchLbl = [[UILabel alloc] initWithFrame:subcatScroller.bounds];
+    
+    /*================If Bestsellers on============*/
+    if([[TabSquareCommonClass getValueInUserDefault:BEST_SELLERS] intValue] == 1) {
+        [searchLbl setText:keyword];
+        [searchLbl setFont:[UIFont fontWithName:@"Copperplate" size:20.0]];
+        [searchLbl setTextColor:COLOR_DARK_GRAY];
+        [searchLbl setTextAlignment:NSTextAlignmentCenter];
+        
+        float scaleSize = 1.5f;
+        searchLbl.transform = CGAffineTransformMakeScale(scaleSize, scaleSize);
+        
+    }
+    else {
+        [searchLbl setText:[NSString stringWithFormat:@"SEARCH RESULTS FOR %@", [keyword uppercaseString]]];
+        [searchLbl setTextAlignment:NSTextAlignmentCenter];
+        [searchLbl setFont:[UIFont fontWithName:@"Century Gothic" size:31.0]];
+        searchLbl.shadowColor = [UIColor colorWithWhite:0.7 alpha:1];
+        searchLbl.shadowOffset = CGSizeMake(1, 2);
+    }
+    
+    [searchLbl setBackgroundColor:[UIColor clearColor]];
+    
+    [subcatScroller addSubview:searchLbl];
+    
+}
+
+/*==========Searching Bestsellers===========*/
+
+-(void)searchBetseellers
+{
+    NSMutableArray *search_data = [[TabSquareDBFile sharedDatabase] getDishKeyData:@""];
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    
+    /*========Sort By Catgegory==========*/
+    for(int i = 0; i < [categoryIdList count]; i++) {
+        
+        NSString *key_id = categoryIdList[i];
+        
+        for(int j = 0; j < [search_data count]; j++) {
+            
+            NSMutableDictionary *dict = search_data[j];
+            NSString *search_id = dict[@"category"];
+            
+            if([key_id isEqualToString:search_id]) {
+                [temp addObject:dict];
+            }
+        }
+    }
+    
+    [[ShareableData sharedInstance].SearchAllItemData removeAllObjects];
+    [ShareableData sharedInstance].SearchAllItemData= temp;
+    [ShareableData sharedInstance].TaskType=@"2";
+    
+    //NSLog(@"Search Data = %@", temp);
+    
+    menulistView1.view.frame=CGRectMake(0, 191, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
+    [self.menulistView1 reloadDataOfSubCat:@"0" cat:@"1"];
+    [self.view addSubview:menulistView1.view];
+    [menulistView1.view setHidden:FALSE];
+    [self setSearchOn:@"Best of the Best"];
+    [menulistView1.DishList reloadData];
+    
+}
+
+
+
 @end

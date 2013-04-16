@@ -203,4 +203,10 @@ static ShareableData *abc;
 }
 
 
++(BOOL)bestSellersON
+{
+    return TRUE;
+}
+
+
 @end

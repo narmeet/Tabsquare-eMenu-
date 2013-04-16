@@ -2138,9 +2138,16 @@ int enableClose = 1;
 -(NSMutableArray*)getDishKeyData:(NSString*)key
 {
     
+    char c = '%';
+    NSString *sp_char = [NSString stringWithFormat:@"%c", c];
+    
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
-    NSString *statement = [NSString stringWithFormat:@"SELECT * FROM Dishes where name like '%%%@%%%' or description like '%%%@%%%'",key,key];
-    //NSString *beverageId=@"";
+    NSString *statement = [NSString stringWithFormat:@"SELECT * FROM 'dishes' WHERE %@ LIKE '%@%@%@' OR %@ LIKE '%@%@%@' OR tags LIKE '%@,' ||(SELECT id FROM 'tags' WHERE %@ LIKE '%@%@' LIMIT 1) || ',%@' GROUP BY category ;", @"name", sp_char, key, sp_char, @"description", sp_char, key, sp_char, sp_char, @"name", key, sp_char, sp_char];
+    
+    if([key length] == 0 && [[TabSquareCommonClass getValueInUserDefault:BEST_SELLERS] intValue] == 1 && [ShareableData bestSellersON]) {
+        statement = [NSString stringWithFormat:@"SELECT *FROM dishes WHERE tags LIKE '%@,' ||(SELECT id FROM tags WHERE name LIKE '%@Bestseller%@' LIMIT 1) || ',%@'", sp_char, sp_char, sp_char, sp_char];
+    }
+    
     NSArray *records = [connection query: statement];
    NSMutableArray *dishData=[[NSMutableArray alloc]init];
     for (id element in records){

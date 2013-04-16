@@ -14,6 +14,11 @@
 		0FF3ACB515A57A6F00FB1300 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3ACB415A57A6F00FB1300 /* QuartzCore.framework */; };
 		860535D516C38DE300F4A0FB /* TabSquareComboScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 860535D416C38DE300F4A0FB /* TabSquareComboScroller.m */; };
 		860842E516B80F010012DE1E /* menu_bg_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 860842E416B80F010012DE1E /* menu_bg_new.png */; };
+		861E15A0171D5D8700F8FDDE /* searchbutton_tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 861E159B171D5D8700F8FDDE /* searchbutton_tags.png */; };
+		861E15A1171D5D8700F8FDDE /* quicksearchbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 861E159C171D5D8700F8FDDE /* quicksearchbutton.png */; };
+		861E15A2171D5D8700F8FDDE /* TabSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861E159E171D5D8700F8FDDE /* TabSearchViewController.m */; };
+		861E15A3171D5D8700F8FDDE /* TabSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861E159F171D5D8700F8FDDE /* TabSearchViewController.xib */; };
+		861E15A5171D61D300F8FDDE /* bestseller.png in Resources */ = {isa = PBXBuildFile; fileRef = 861E15A4171D61D300F8FDDE /* bestseller.png */; };
 		8637615C16884767006A3BC7 /* TabSquareTableManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8637615B16884767006A3BC7 /* TabSquareTableManagement.m */; };
 		8637616416884A68006A3BC7 /* TabSquareTableManagement.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8637616316884A68006A3BC7 /* TabSquareTableManagement.xib */; };
 		8637617416885297006A3BC7 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8637616F16885297006A3BC7 /* libFlurry.a */; };
@@ -703,7 +708,6 @@
 		DD74361D167AB6DA00190CD7 /* TabFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435DA167AB6DA00190CD7 /* TabFeedbackViewController.xib */; };
 		DD74361F167AB6DA00190CD7 /* TabMainDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435DE167AB6DA00190CD7 /* TabMainDetailView.xib */; };
 		DD743620167AB6DA00190CD7 /* TabMainMenuDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435E0167AB6DA00190CD7 /* TabMainMenuDetailViewController.xib */; };
-		DD743621167AB6DA00190CD7 /* TabSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435E2167AB6DA00190CD7 /* TabSearchViewController.xib */; };
 		DD743623167AB6DA00190CD7 /* TabSquareBeerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435E6167AB6DA00190CD7 /* TabSquareBeerController.xib */; };
 		DD743624167AB6DA00190CD7 /* TabSquareBeerDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435E8167AB6DA00190CD7 /* TabSquareBeerDetailController.xib */; };
 		DD743625167AB6DA00190CD7 /* TabSquareBeerListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7435EA167AB6DA00190CD7 /* TabSquareBeerListController.xib */; };
@@ -728,7 +732,6 @@
 		DD7436A3167AB74800190CD7 /* TabFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD743655167AB74800190CD7 /* TabFeedbackViewController.m */; };
 		DD7436A5167AB74800190CD7 /* TabMainDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD743659167AB74800190CD7 /* TabMainDetailView.m */; };
 		DD7436A6167AB74800190CD7 /* TabMainMenuDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD74365B167AB74800190CD7 /* TabMainMenuDetailViewController.m */; };
-		DD7436A7167AB74800190CD7 /* TabSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD74365D167AB74800190CD7 /* TabSearchViewController.m */; };
 		DD7436A8167AB74800190CD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD74365F167AB74800190CD7 /* AppDelegate.m */; };
 		DD7436A9167AB74800190CD7 /* TabSquareAssignTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DD743661167AB74800190CD7 /* TabSquareAssignTable.m */; };
 		DD7436AA167AB74800190CD7 /* TabSquareBeerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD743663167AB74800190CD7 /* TabSquareBeerController.m */; };
@@ -761,6 +764,12 @@
 		860535D316C38DE300F4A0FB /* TabSquareComboScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSquareComboScroller.h; sourceTree = "<group>"; };
 		860535D416C38DE300F4A0FB /* TabSquareComboScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabSquareComboScroller.m; sourceTree = "<group>"; };
 		860842E416B80F010012DE1E /* menu_bg_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_bg_new.png; sourceTree = "<group>"; };
+		861E159B171D5D8700F8FDDE /* searchbutton_tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchbutton_tags.png; sourceTree = "<group>"; };
+		861E159C171D5D8700F8FDDE /* quicksearchbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quicksearchbutton.png; sourceTree = "<group>"; };
+		861E159D171D5D8700F8FDDE /* TabSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSearchViewController.h; sourceTree = "<group>"; };
+		861E159E171D5D8700F8FDDE /* TabSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabSearchViewController.m; sourceTree = "<group>"; };
+		861E159F171D5D8700F8FDDE /* TabSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabSearchViewController.xib; sourceTree = "<group>"; };
+		861E15A4171D61D300F8FDDE /* bestseller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bestseller.png; sourceTree = "<group>"; };
 		8637615A16884767006A3BC7 /* TabSquareTableManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSquareTableManagement.h; sourceTree = "<group>"; };
 		8637615B16884767006A3BC7 /* TabSquareTableManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabSquareTableManagement.m; sourceTree = "<group>"; };
 		8637616316884A68006A3BC7 /* TabSquareTableManagement.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabSquareTableManagement.xib; path = ../Resources/TabSquareTableManagement.xib; sourceTree = "<group>"; };
@@ -1531,7 +1540,6 @@
 		DD7435DB167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabFeedbackViewController.xib; sourceTree = "<group>"; };
 		DD7435DF167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabMainDetailView.xib; sourceTree = "<group>"; };
 		DD7435E1167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabMainMenuDetailViewController.xib; sourceTree = "<group>"; };
-		DD7435E3167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabSearchViewController.xib; sourceTree = "<group>"; };
 		DD7435E7167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabSquareBeerController.xib; sourceTree = "<group>"; };
 		DD7435E9167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabSquareBeerDetailController.xib; sourceTree = "<group>"; };
 		DD7435EB167AB6DA00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TabSquareBeerListController.xib; sourceTree = "<group>"; };
@@ -1566,8 +1574,6 @@
 		DD743659167AB74800190CD7 /* TabMainDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabMainDetailView.m; sourceTree = "<group>"; };
 		DD74365A167AB74800190CD7 /* TabMainMenuDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabMainMenuDetailViewController.h; sourceTree = "<group>"; };
 		DD74365B167AB74800190CD7 /* TabMainMenuDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabMainMenuDetailViewController.m; sourceTree = "<group>"; };
-		DD74365C167AB74800190CD7 /* TabSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSearchViewController.h; sourceTree = "<group>"; };
-		DD74365D167AB74800190CD7 /* TabSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabSearchViewController.m; sourceTree = "<group>"; };
 		DD74365E167AB74800190CD7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DD74365F167AB74800190CD7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DD743660167AB74800190CD7 /* TabSquareAssignTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSquareAssignTable.h; sourceTree = "<group>"; };
@@ -2648,9 +2654,11 @@
 		CD631A1516FC41E800D78B9E /* TabSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DD74365C167AB74800190CD7 /* TabSearchViewController.h */,
-				DD74365D167AB74800190CD7 /* TabSearchViewController.m */,
-				DD7435E2167AB6DA00190CD7 /* TabSearchViewController.xib */,
+				861E159B171D5D8700F8FDDE /* searchbutton_tags.png */,
+				861E159C171D5D8700F8FDDE /* quicksearchbutton.png */,
+				861E159D171D5D8700F8FDDE /* TabSearchViewController.h */,
+				861E159E171D5D8700F8FDDE /* TabSearchViewController.m */,
+				861E159F171D5D8700F8FDDE /* TabSearchViewController.xib */,
 			);
 			name = TabSearchViewController;
 			sourceTree = "<group>";
@@ -2678,6 +2686,7 @@
 		CDE49D0416F2CD5500E890B3 /* MenuController */ = {
 			isa = PBXGroup;
 			children = (
+				861E15A4171D61D300F8FDDE /* bestseller.png */,
 				8637618D16887ED8006A3BC7 /* TabSquareMenuController.h */,
 				8637618E16887ED8006A3BC7 /* TabSquareMenuController.m */,
 				86765B7C16B7FE2E0000CDFF /* TabSquareMenuController.xib */,
@@ -3248,7 +3257,6 @@
 				DD74361D167AB6DA00190CD7 /* TabFeedbackViewController.xib in Resources */,
 				DD74361F167AB6DA00190CD7 /* TabMainDetailView.xib in Resources */,
 				DD743620167AB6DA00190CD7 /* TabMainMenuDetailViewController.xib in Resources */,
-				DD743621167AB6DA00190CD7 /* TabSearchViewController.xib in Resources */,
 				DD743623167AB6DA00190CD7 /* TabSquareBeerController.xib in Resources */,
 				DD743624167AB6DA00190CD7 /* TabSquareBeerDetailController.xib in Resources */,
 				DD743625167AB6DA00190CD7 /* TabSquareBeerListController.xib in Resources */,
@@ -3705,6 +3713,10 @@
 				C201CB7216E78F5100271379 /* Plusbutton.png in Resources */,
 				CDA1A3B516E929A1005E51DA /* tabsquare1Logo.png in Resources */,
 				CDD1F5F117019B1100103EF6 /* paxbox.png in Resources */,
+				861E15A0171D5D8700F8FDDE /* searchbutton_tags.png in Resources */,
+				861E15A1171D5D8700F8FDDE /* quicksearchbutton.png in Resources */,
+				861E15A3171D5D8700F8FDDE /* TabSearchViewController.xib in Resources */,
+				861E15A5171D61D300F8FDDE /* bestseller.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3806,7 +3818,6 @@
 				DD7436A3167AB74800190CD7 /* TabFeedbackViewController.m in Sources */,
 				DD7436A5167AB74800190CD7 /* TabMainDetailView.m in Sources */,
 				DD7436A6167AB74800190CD7 /* TabMainMenuDetailViewController.m in Sources */,
-				DD7436A7167AB74800190CD7 /* TabSearchViewController.m in Sources */,
 				DD7436A8167AB74800190CD7 /* AppDelegate.m in Sources */,
 				DD7436A9167AB74800190CD7 /* TabSquareAssignTable.m in Sources */,
 				DD7436AA167AB74800190CD7 /* TabSquareBeerController.m in Sources */,
@@ -3883,6 +3894,7 @@
 				CD0123E016D2457900D04C90 /* TabSquareNewBeerScrollController.m in Sources */,
 				CD0123E216D2457900D04C90 /* ViewController.m in Sources */,
 				CD23D90016E5AA3700EC73DC /* Reachability.m in Sources */,
+				861E15A2171D5D8700F8FDDE /* TabSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4001,15 +4013,6 @@
 				DD7435E1167AB6DA00190CD7 /* en */,
 			);
 			name = TabMainMenuDetailViewController.xib;
-			path = ../Resources;
-			sourceTree = "<group>";
-		};
-		DD7435E2167AB6DA00190CD7 /* TabSearchViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD7435E3167AB6DA00190CD7 /* en */,
-			);
-			name = TabSearchViewController.xib;
 			path = ../Resources;
 			sourceTree = "<group>";
 		};

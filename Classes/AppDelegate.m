@@ -32,6 +32,10 @@ NSString *kNameColorKey= @"nameColorKey";
 
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SEARCH_DATA];
+    [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"0"];
+
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     
     TabSquareFlurryTracking *flurry = [TabSquareFlurryTracking flurryTracking];

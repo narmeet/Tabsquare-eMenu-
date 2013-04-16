@@ -26,6 +26,7 @@
 #import "TabSquareCommonClass.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Flurry.h"
+#import "ADLivelyTableView.h"
 
 #define FONT_GRILLED_CHEESE         @"GrilledCheeseBTNToasted"
 #define FONT_CALIBRI_BOLD           @"Calibri"

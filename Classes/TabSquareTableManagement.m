@@ -20,7 +20,7 @@
 
 @synthesize tableNoView,statusView,TotalTableNo,takeawayButton,takeawayAssignBtn, tableNumber,oldTableNumber, bgImage,sectionID;
 @synthesize numberOfGuests;
-@synthesize quickOrderSwitch;
+@synthesize quickOrderSwitch,specialReqSwitch;
 
 int switchMode = 0;
 
@@ -323,6 +323,7 @@ bool funcCalled = NO;
 
 -(void)viewWillAppear:(BOOL)animated{
     quickOrderSwitch.on=NO;
+    specialReqSwitch.on = NO;
     
     [[ShareableData sharedInstance].OrderItemID removeAllObjects];
     [[ShareableData sharedInstance].OrderItemName removeAllObjects];
@@ -792,6 +793,19 @@ bool funcCalled = NO;
         [ShareableData sharedInstance].isQuickOrder=@"0";
     }
 }
+-(IBAction)specialReqSwitch:(id)sender{
+    
+    if (specialReqSwitch.on) {
+        
+        
+        [ShareableData sharedInstance].isSpecialReq=@"1";
+    }
+    else{
+        
+        [ShareableData sharedInstance].isSpecialReq=@"0";
+    }
+}
+
 
 -(int)totalrows
 {

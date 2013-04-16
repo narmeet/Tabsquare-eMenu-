@@ -124,6 +124,7 @@
 @property(nonatomic,strong)NSString *tableNumber;
 @property(nonatomic,strong)NSString *salesNo;
 @property(nonatomic,strong)NSString *splitNo;
+@property(nonatomic,strong)NSString *isSpecialReq;
 
 @property(nonatomic,strong)NSString *serverUrl;
 @property(nonatomic,strong)NSString *dishTag;

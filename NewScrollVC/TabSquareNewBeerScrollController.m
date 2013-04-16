@@ -62,6 +62,32 @@
     bgImage.image = img1;
     
 }
+-(void)addBlankCustomizationView
+{
+    NSMutableDictionary *skudetail=beverageSKUDetail[beverageSkuIndex];
+    customizationView.KKselectedID  =skudetail[@"sku_id"];
+    NSString *beverageName=[NSString stringWithFormat:@"%@(%@)",(beverageView.beverageName)[[self.selectedIndex intValue]],skudetail[@"sku_name"]];
+    customizationView.KKselectedName=beverageName;
+    customizationView.KKselectedRate=skudetail[@"sku_price"];
+    customizationView.KKselectedCatId=beverageCatId;
+    customizationView.DishCustomization=(beverageView.beverageCustomization)[[selectedIndex intValue]];
+    customizationView.KKselectedImage=(beverageView.beverageImageData)[[selectedIndex intValue]];
+    customizationView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    customizationView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    customizationView.detailImageView.contentMode = UIViewContentModeRedraw;
+    
+    
+    customizationView.detailImageView.clipsToBounds=YES;
+    [customizationView.customizationView reloadData];
+    customizationView.requestView.text=@"";
+    customizationView.swipeIndicator=@"0";
+    customizationView.isView=@"beverageinfo";
+    if([customizationView.DishCustomization count]!=0)
+    {
+        [self.view addSubview:customizationView.view];
+    }
+}
+
 -(void)addCustomizationView
 {
     NSMutableDictionary *skudetail=beverageSKUDetail[beverageSkuIndex];
@@ -231,7 +257,12 @@
     // NSString *type=[beverageCutType objectAtIndex:[selectedIndex intValue]];
     if([(beverageView.beverageCustomization)[[selectedIndex intValue]]count]==0)
     {
-        [self addImageAnimation:frame btnView:view];
+        //[self addImageAnimation:frame btnView:view];
+        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+            [self addImageAnimation:frame btnView:view];
+        }else{
+            [self addBlankCustomizationView];
+        }
     }
     else
     {

@@ -75,7 +75,7 @@
 @synthesize swipeIndicator,FeedbackDisabled,helpOverlay,favouriteView,menulistView1,subcategoryDisplayList, isRecon, backgroundImage;
 
 @synthesize KinaraSelectorCategory,KinaraCategory,KinaraSelectedCategoryName;
-@synthesize KinaraSubCategory,KinaraSubategoryNameList,KinaraSelectedSubCategoryName,KinaraSelectorSubCategory,assignTable;
+@synthesize KinaraSubCategory,KinaraSubategoryNameList,KinaraSelectedSubCategoryName,KinaraSelectorSubCategory;
 
 @synthesize subcatScroller,subCatbg;
 
@@ -264,7 +264,7 @@
     {
         pageCount=2;
     }
-    swipeView.pagingEnabled=true;
+    swipeView.pagingEnabled=FALSE;
     swipeView.contentSize =
     CGSizeMake(
                swipeView.frame.size.width *pageCount,
@@ -472,8 +472,8 @@
                                                  withScale:1.2
                                                withShining:YES];
     [summaryTotalBadge setFrame:CGRectMake(OrderSummaryButton.frame.size.width-summaryTotalBadge.frame.size.width/2 - 15,(summaryTotalBadge.frame.size.width/2 * -1) +3 , self.view.frame.size.width, self.view.frame.size.height)];
-    [KinaraCategory setHidden:TRUE];
-    assignTable=[[TabSquareTableManagement alloc]initWithNibName:@"TabSquareTableManagement" bundle:nil];
+  //  [KinaraCategory setHidden:TRUE]; // Narmeet
+   // assignTable=[[TabSquareTableManagement alloc]initWithNibName:@"TabSquareTableManagement" bundle:nil];
     @try 
     {
         [self GetCategoryData];
@@ -483,7 +483,7 @@
         
         self.view.clipsToBounds = NO;
         [super viewDidLoad];
-        [ShareableData sharedInstance].swipeView=swipeView;
+      //  [ShareableData sharedInstance].swipeView=swipeView; Narmeet
         [NSTimer scheduledTimerWithTimeInterval:0.10
                                          target:self
                                        selector:@selector(onTick:)
@@ -524,10 +524,10 @@
     KinaraNumberOfButton = 100; // subcategoryIdList
     
     KinaraCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(0,87,[UIScreen mainScreen].bounds.size.width, 50)];
-    [self KinaracreateScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 153,50) scrollView:KinaraCategory];
-    [KinaraCategory setHidden:TRUE];
+    //[self KinaracreateScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 153,50) scrollView:KinaraCategory];
+   // [KinaraCategory setHidden:TRUE];
     
-    [self KinaraStartCategory:KinaraCategory];
+   // [self KinaraStartCategory:KinaraCategory];
     
     if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"0"]){
     
@@ -611,7 +611,7 @@
     ScrollView.userInteractionEnabled = YES;
     [ScrollView setShowsHorizontalScrollIndicator:NO];
     [ScrollView setShowsVerticalScrollIndicator:NO];
-    ScrollView.scrollEnabled=YES;
+    ScrollView.scrollEnabled=NO;
     ScrollView.backgroundColor=[UIColor clearColor];
     ScrollView.clipsToBounds = NO;
   //  ScrollView.canCancelContentTouches = YES;
@@ -682,7 +682,7 @@
     ScrollView.userInteractionEnabled = YES;
     [ScrollView setShowsHorizontalScrollIndicator:NO];
     [ScrollView setShowsVerticalScrollIndicator:NO];
-    ScrollView.scrollEnabled=YES;
+    ScrollView.scrollEnabled=NO;
     ScrollView.backgroundColor=[UIColor clearColor];
     ScrollView.clipsToBounds = NO;
     
@@ -1181,43 +1181,43 @@
     [subcategoryIdList removeAllObjects];
     
     KinaraCategoryBtnClick=true;
-    NSArray *subviews = [KinaraCategory subviews];
+   // NSArray *subviews = [KinaraCategory subviews];
     
-    UIButton *btn=(UIButton *)[self.view viewWithTag:sender];
+   // UIButton *btn=(UIButton *)[self.view viewWithTag:sender];
    // [KinaraCategory setContentOffset:KinaraOriginalScrollPositionPoint animated:YES];
   //  KinaraCurrentScrollPositionPoint=KinaraCategory.contentOffset;
-    for(id subview in subviews ){
-        
-        if ([subview isKindOfClass:[UIButton class]] && [subview tag] ==btn.tag && [subview frame].origin.x >764){
-            btn = (UIButton*)subview;
-            break;
-        }
-        
-        
-    }
-
-    
-    
-    KinaraSelectedCategoryName=btn.titleLabel.text;
+//    for(id subview in subviews ){
+//        
+//        if ([subview isKindOfClass:[UIButton class]] && [subview tag] ==btn.tag && [subview frame].origin.x >764){
+//            btn = (UIButton*)subview;
+//            break;
+//        }
+//        
+//        
+//    }
+//
+//    
+//    
+//    KinaraSelectedCategoryName=btn.titleLabel.text;
     KinaraSelectedCategoryID=sender;
     
     self.selectedCategoryID=[NSString stringWithFormat:@"%d",KinaraSelectedCategoryID];
     
-    float move1=KinaraCurrentScrollPositionPoint.x+(([UIScreen mainScreen].bounds.size.width/2));
-    float move2=btn.frame.origin.x+(btn.frame.size.width/2);
-    
-    float diff=move1-move2;
-    
-    if(KinaraCategory.contentOffset.x+[UIScreen mainScreen].bounds.size.width-diff+153 > KinaraCategory.contentSize.width || KinaraCategory.contentOffset.x-153-diff < 0)
-    {
-        [KinaraCategory setContentOffset:KinaraOriginalScrollPositionPoint animated:NO];
-    }
-    else
-    {
-        [KinaraCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPoint.x-diff,KinaraCurrentScrollPositionPoint.y) animated:NO];
-    }
-    
-    KinaraCurrentScrollPositionPoint=KinaraCategory.contentOffset;
+//    float move1=KinaraCurrentScrollPositionPoint.x+(([UIScreen mainScreen].bounds.size.width/2));
+//    float move2=btn.frame.origin.x+(btn.frame.size.width/2);
+//    
+//    float diff=move1-move2;
+//    
+//    if(KinaraCategory.contentOffset.x+[UIScreen mainScreen].bounds.size.width-diff+153 > KinaraCategory.contentSize.width || KinaraCategory.contentOffset.x-153-diff < 0)
+//    {
+//        [KinaraCategory setContentOffset:KinaraOriginalScrollPositionPoint animated:NO];
+//    }
+//    else
+//    {
+//        [KinaraCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPoint.x-diff,KinaraCurrentScrollPositionPoint.y) animated:NO];
+//    }
+//    
+//    KinaraCurrentScrollPositionPoint=KinaraCategory.contentOffset;
     KinaraCategoryBtnClick=false;
     
     KinaraSubcategoryBtnClick=false;
@@ -1233,38 +1233,39 @@
     @finally
     {
         //if ([isRecon isEqualToString:@"0"]){
-        [self KinarafindingSelectedCategory:KinaraCategory];
+        //[self KinarafindingSelectedCategory:KinaraCategory];
         // }
         
         [self KinaraGetSubCategoryData:self.selectedCategoryID];
         
-        KinaraSelectorSubCategory=[UIButton buttonWithType:UIButtonTypeCustom];
-        [KinaraSelectorSubCategory setHidden:TRUE];
-        [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected1.png"] forState:UIControlStateNormal];
-        [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected1.png"] forState:UIControlStateHighlighted];
-        [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected1.png"] forState:UIControlStateSelected];
+//        KinaraSelectorSubCategory=[UIButton buttonWithType:UIButtonTypeCustom];
+//        [KinaraSelectorSubCategory setHidden:TRUE];
+//        [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected1.png"] forState:UIControlStateNormal];
+//        [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected1.png"] forState:UIControlStateHighlighted];
+//        [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected1.png"] forState:UIControlStateSelected];
         
-        if([self.subcategoryList count]>0)
-        {
-            KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-76.5, KinaraCategory.frame.origin.y+65, 153, 50);
+       if([self.subcategoryList count]>0)
+       {
+//            KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-76.5, KinaraCategory.frame.origin.y+65, 153, 50);
             KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(-25, KinaraCategory.frame.origin.y+65,[UIScreen mainScreen].bounds.size.width, 50)];
             [self KinaracreateSubCategoryScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 153,50) scrollView:KinaraSubCategory];
         }
-        else
-        {
-            KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(-25,KinaraCategory.frame.origin.y+65,0, 0)];
-            [KinaraSubCategory setHidden:TRUE];
+       else
+       {
+           KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(-25,KinaraCategory.frame.origin.y+65,0, 0)];
+           [KinaraSubCategory setHidden:TRUE];
             [self KinaracreateSubCategoryScrollView:0  frame:CGRectMake(0,0, 0,0) scrollView:KinaraSubCategory];
-            KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-76.5,  KinaraCategory.frame.origin.y+65, 0, 0);
+//            KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-76.5,  KinaraCategory.frame.origin.y+65, 0, 0);
         }
+//        
+//        [KinaraSelectorSubCategory setAlpha:0.5];
+//        
+//        CGRect frm = KinaraSelectorSubCategory.frame;
+//        [KinaraSelectorSubCategory setFrame:CGRectMake(frm.origin.x+1, frm.origin.y, frm.size.width-2, frm.size.height-2)];
+//
+//        [self.view bringSubviewToFront:KinaraSelectorSubCategory];
+//        [self.view addSubview:KinaraSelectorSubCategory];
         
-        [KinaraSelectorSubCategory setAlpha:0.5];
-        
-        CGRect frm = KinaraSelectorSubCategory.frame;
-        [KinaraSelectorSubCategory setFrame:CGRectMake(frm.origin.x+1, frm.origin.y, frm.size.width-2, frm.size.height-2)];
-
-        [self.view bringSubviewToFront:KinaraSelectorSubCategory];
-        [self.view addSubview:KinaraSelectorSubCategory];
         
         [KinaraSubCategory setHidden:TRUE];
         [self KinarafindingSelectedCategory:KinaraSubCategory];
@@ -1272,16 +1273,17 @@
         [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
         
         if([self.subcategoryList count]>0)
+            KinaraSelectedSubCategoryID = [subcategoryIdList[0] intValue];
             [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
         
     }
     
-    if(KinaraSelectorCategory.hidden)
-    {
+//    if(KinaraSelectorCategory.hidden)
+//    {
         //KinaraSelectorCategory.hidden=NO;
         [self UnselectedBottomMenu];
           OrderSummaryButton.selected=NO;
-    }
+//    }
 
 //[self performSelector:@selector(subCatAction:) withObject:prev_btn afterDelay:8.0];
     [self subCatAction:temp_btn];
@@ -1702,7 +1704,8 @@
 
 -(void)KinarasetCategoryClicked:(int)tag
 {
-    [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
+    //[ShareableData sharedInstance].swipeView.scrollEnabled=NO;
+    swipeView.scrollEnabled=NO;
     hasLoaded = 0;
     DLog(@"Tag = %d",tag);
     categorytag=[self getCategoryArrayIndex:tag];
@@ -2267,7 +2270,7 @@
     maincourseImage=nil;
     orderSummaryView=nil;
     menuQuick=nil;
-    assignTable=nil;
+   // assignTable=nil;
     
     search=nil;
   feedback=nil;
@@ -2772,7 +2775,7 @@
     self.maincourseImage = nil;
     self.orderSummaryView = nil;
     self.menuQuick = nil;
-    self.assignTable = nil;
+   // self.assignTable = nil;
     self.search = nil;
     self.feedback = nil;
     self.favourite = nil;

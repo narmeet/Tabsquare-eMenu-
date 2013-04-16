@@ -815,7 +815,7 @@ int toUpdate = 0;
   //  {
        // [self updateHomeImageInDB];
    // }
-    //[[TabSquareDBFile sharedDatabase]optimizeDB];
+   // [[TabSquareDBFile sharedDatabase]optimizeDB];
     //Remved temporarily, find way to optimize this process
 }
 

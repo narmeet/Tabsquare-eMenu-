@@ -15,7 +15,7 @@
 @synthesize IsGetCMSData,IsViewPage,isFBLogin,OrderSpecialRequest;
 @synthesize feedDishName,feedDishRating,feedDishImage,isInternetConnected,AddItemFromTakeaway,isTwitterLogin,OrderDishImage;
 @synthesize IsEditOrder,tableNumber,TempOrderID,isQuickOrder,rootLoaded,salesNo,splitNo;
-@synthesize serverUrl, dishTag, categoryID,bevCat;
+@synthesize serverUrl, dishTag, categoryID,bevCat,isSpecialReq;
 
 
 static ShareableData *abc;
@@ -51,6 +51,7 @@ static ShareableData *abc;
     IsGetCMSData=[[NSMutableArray alloc]init];
     TempOrderID=[[NSMutableArray alloc]init];
     IsEditOrder=[[NSString alloc]init];
+    isSpecialReq=[[NSString alloc]init];
     
     OrderSpecialRequest=[[NSMutableArray alloc]init];
     [IsGetCMSData addObject:@"0"];
@@ -110,6 +111,7 @@ static ShareableData *abc;
     rootLoaded=@"0";
     
     isConfromHomePage=@"0";
+    isSpecialReq=@"0";
     
     isTakeaway=@"0";
     AddItemFromTakeaway=@"0";

@@ -173,6 +173,30 @@
     }
     [frdOrderView reloadData];
 }
+-(void)addBlankCustomizationView
+{
+    menudetailView.menuDetailView=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    //customizationView2=menuView2.menulistView1.menudetailView.menuDetailView;
+    menudetailView.menuDetailView.KKselectedID  =DishID;
+    menudetailView.menuDetailView.KKselectedName=DishName;
+    menudetailView.menuDetailView.KKselectedRate=DishPrice;
+    menudetailView.menuDetailView.KKselectedCatId=DishCatId;
+    menudetailView.menuDetailView.backImage.hidden=NO;
+    menudetailView.menuDetailView.DishCustomization=DishCustomization;
+    menudetailView.menuDetailView.KKselectedImage=DishImage;
+    [menudetailView.menuDetailView.customizationView reloadData];
+    menudetailView.menuDetailView.requestView.text=@"";
+    menudetailView.menuDetailView.swipeIndicator=@"1";
+    menudetailView.menuDetailView.isView=@"main";
+    menudetailView.menuDetailView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    menudetailView.menuDetailView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    menudetailView.menuDetailView.detailImageView.contentMode = UIViewContentModeRedraw;
+    
+    
+    menudetailView.menuDetailView.detailImageView.clipsToBounds=YES;
+    [self.view addSubview:menudetailView.menuDetailView.view];
+    [self.view bringSubviewToFront:menudetailView.menuDetailView.view];
+}
 
 -(void)addCustomizationView
 {
@@ -504,7 +528,12 @@
         
         if([custType isEqualToString:@"0"])
         {
-            [self addImageAnimation:frame btnView:view];
+            //[self addImageAnimation:frame btnView:view];
+            if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+                [self addImageAnimation:frame btnView:view];
+            }else{
+                [self addBlankCustomizationView];
+            }
         }
         else
         {

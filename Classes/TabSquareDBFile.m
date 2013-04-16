@@ -298,14 +298,16 @@ int enableClose = 1;
     }
     if(sqlite3_exec(dataBaseConnection, "VACUUM;", 0, 0, NULL)==SQLITE_OK) {      DLog(@"Vacuumed DataBase");    }
     [self closeDatabaseConnection];
-   /* const char *sql =[[NSString stringWithFormat:@"CREATE INDEX sub_sub_category_index ON Dishes(name,category,sub_category,sub_sub_category ASC)"]cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *sql =[[NSString stringWithFormat:@"CREATE INDEX sub_sub_category_index ON Dishes(name,category,sub_category,sub_sub_category ASC)"]cStringUsingEncoding:NSUTF8StringEncoding];
     const char *sql2 =[[NSString stringWithFormat:@"CREATE INDEX sub_category_index ON Dishes(category,sub_category,sub_sub_category ASC)"]cStringUsingEncoding:NSUTF8StringEncoding];
     const char *sql3 =[[NSString stringWithFormat:@"CREATE INDEX category_index ON Dishes(category,sub_category ASC)"]cStringUsingEncoding:NSUTF8StringEncoding];
     const char *sql4 =[[NSString stringWithFormat:@"CREATE INDEX sub_category_index_2 ON Dishes(sub_category,sub_sub_category ASC)"]cStringUsingEncoding:NSUTF8StringEncoding];
+      const char *sql5 =[[NSString stringWithFormat:@"CREATE INDEX sub_category_index_3 ON Dishes(name ASC)"]cStringUsingEncoding:NSUTF8StringEncoding];
 	sqlite3_stmt *deleteStmt = nil;
     sqlite3_stmt *deleteStmt2 = nil;
     sqlite3_stmt *deleteStmt3 = nil;
     sqlite3_stmt *deleteStmt4 = nil;
+    sqlite3_stmt *deleteStmt5 = nil;
 	
 	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK)
 	{
@@ -323,23 +325,31 @@ int enableClose = 1;
 	{
 		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
 	}
+    if (sqlite3_prepare_v2(dataBaseConnection, sql5, -1, &deleteStmt5, NULL) != SQLITE_OK)
+	{
+    DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
+	}
     
     int success = sqlite3_step(deleteStmt);
     int success2 = sqlite3_step(deleteStmt2);
     int success3 = sqlite3_step(deleteStmt3);
     int success4 = sqlite3_step(deleteStmt4);
+     int success5 = sqlite3_step(deleteStmt5);
 	DLog(@"success full Indexed==%d",success);
     DLog(@"success full Indexed2==%d",success2);
     DLog(@"success full Indexed3==%d",success3);
     DLog(@"success full Indexed4==%d",success4);
+    DLog(@"success full Indexed5==%d",success5);
 	sqlite3_reset(deleteStmt);
     sqlite3_reset(deleteStmt2);
     sqlite3_reset(deleteStmt3);
     sqlite3_reset(deleteStmt4);
+    sqlite3_reset(deleteStmt5);
 	sqlite3_finalize(deleteStmt);
     sqlite3_finalize(deleteStmt2);
     sqlite3_finalize(deleteStmt3);
-    sqlite3_finalize(deleteStmt4);*/
+    sqlite3_finalize(deleteStmt4);
+    sqlite3_finalize(deleteStmt5);
 
     
    // sqlite3_exec

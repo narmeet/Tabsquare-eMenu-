@@ -411,11 +411,54 @@
     }
     else 
     {
-        [self addImageAnimation:frame btnView:view];
+       // [self addImageAnimation:frame btnView:view];
+        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+            [self addImageAnimation:frame btnView:view];
+        }else{
+            [self addBlankCustomizationView];
+        }
     }
     
 }
 
+-(void)addBlankCustomizationView
+{
+    menuDetailView=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    // menuDetailView
+    if([Viewtype isEqualToString:@"1"])
+    {
+        int index = [self.selectedID intValue];
+        menuDetailView.KKselectedID=DishID[index];
+        menuDetailView.KKselectedName=DishName[index];
+        menuDetailView.KKselectedRate=DishPrice[index];
+        menuDetailView.KKselectedCatId=DishCatId[index];
+        menuDetailView.DishCustomization=DishCustomization[index];
+    }
+    else if([Viewtype isEqualToString:@"2"])
+    {
+        menuDetailView.KKselectedID=kDishId;
+        menuDetailView.KKselectedName=KDishName.text;
+        menuDetailView.KKselectedRate=[NSString stringWithFormat:@"%@",KDishRate.text];
+        menuDetailView.KKselectedCatId=KDishCatId;
+        menuDetailView.DishCustomization=KDishCust[0];
+    }
+    
+    menuDetailView.KKselectedImage=self.KDishImage.image;
+    [menuDetailView.customizationView reloadData];
+    menuDetailView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    menuDetailView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    menuDetailView.detailImageView.contentMode = UIViewContentModeRedraw;
+    
+    
+    menuDetailView.detailImageView.clipsToBounds=YES;
+
+    
+    [menuBaseView.view addSubview:menuDetailView.view];
+    menuDetailView.requestView.text=@"";
+    menuDetailView.swipeIndicator=@"0";
+    menuDetailView.isView=@"maininfo";
+    [menuBaseView.view bringSubviewToFront:menuDetailView.view];
+}
 
 
 

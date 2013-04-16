@@ -40,11 +40,14 @@
     int taskType;
     UITextField *numberOfGuests;
     IBOutlet UISwitch *quickOrderSwitch;
+     IBOutlet UISwitch *specialReqSwitch;
     
 }
 
-@property(nonatomic,strong) UISwitch *quickOrderSwitch;;
+@property(nonatomic,strong) UISwitch *quickOrderSwitch;
+@property(nonatomic,strong) UISwitch *specialReqSwitch;
 -(IBAction)quickOrderSwitch:(id)sender;
+-(IBAction)specialReqSwitch:(id)sender;
 -(IBAction)gotoDishViewMode;
 -(IBAction)infoButton:(id)sender;
 -(void)viewDidDisappear:(BOOL)animated;

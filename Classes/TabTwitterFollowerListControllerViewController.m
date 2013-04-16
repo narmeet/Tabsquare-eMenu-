@@ -413,7 +413,29 @@
     DishImage=[UIImage imageWithContentsOfFile: resultFromDB[@"images"]];//resultFromDB[@"images"];
 }
 
-
+-(void)addBlankCustomizationView
+{
+    menuView.menulistView1.menudetailView.menuDetailView=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    customizationView=menuView.menulistView1.menudetailView.menuDetailView;
+    customizationView.KKselectedID  =DishID;
+    customizationView.KKselectedName=DishName;
+    customizationView.KKselectedRate=DishPrice;
+    customizationView.KKselectedCatId=DishCatId;
+    customizationView.backImage.hidden=NO;
+    customizationView.DishCustomization=DishCustomization;
+    customizationView.KKselectedImage=DishImage;
+    [customizationView.customizationView reloadData];
+    customizationView.requestView.text=@"";
+    customizationView.swipeIndicator=@"1";
+    customizationView.isView=@"main";
+    customizationView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    customizationView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    customizationView.detailImageView.contentMode = UIViewContentModeRedraw;
+    
+    
+    customizationView.detailImageView.clipsToBounds=YES;
+    [self.view addSubview:customizationView.view];
+}
 
 -(void)addCustomizationView
 {
@@ -609,7 +631,12 @@
     NSString *type=[NSString stringWithFormat:@"%@",resultFromDB[@"cust"]];
     if([type isEqualToString:@"0"])
     {
-        [self addImageAnimation:frame btnView:view];
+       // [self addImageAnimation:frame btnView:view];
+        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+            [self addImageAnimation:frame btnView:view];
+        }else{
+            [self addBlankCustomizationView];
+        }
     }
     else 
     {

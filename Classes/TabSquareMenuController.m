@@ -1066,7 +1066,12 @@
 }
 -(IBAction)displayOverview{
 
-    searchStatus = FALSE;
+    //searchStatus = FALSE;
+    if(searchStatus) {
+       [self.search sendActionsForControlEvents:UIControlEventTouchUpInside];
+        searchStatus = FALSE;
+        return;
+        }
     [self hideUnhideComponents:TRUE];
     [mainMenu setHidden:FALSE];
     

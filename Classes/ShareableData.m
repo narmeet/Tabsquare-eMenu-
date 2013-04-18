@@ -111,7 +111,7 @@ static ShareableData *abc;
     rootLoaded=@"0";
     
     isConfromHomePage=@"0";
-    isSpecialReq=@"0";
+    isSpecialReq=@"1";
     
     isTakeaway=@"0";
     AddItemFromTakeaway=@"0";

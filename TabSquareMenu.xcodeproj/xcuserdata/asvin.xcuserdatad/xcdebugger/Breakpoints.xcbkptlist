@@ -3211,8 +3211,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "2228"
          endingLineNumber = "2228"
-         landmarkName = "-waiterLogOutClicked"
-         landmarkType = "5">
+         landmarkName = "@implementation TabSquareMenuController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3272,8 +3272,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1674"
          endingLineNumber = "1674"
-         landmarkName = "-scrollViewDidEndScrollingAnimation:"
-         landmarkType = "5">
+         landmarkName = "@implementation TabSquareMenuController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3504,7 +3504,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1506"
          endingLineNumber = "1506"
-         landmarkName = "-swapBeverageView"
+         landmarkName = "-scrollViewDidScroll:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -4735,7 +4735,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1042"
          endingLineNumber = "1042"
-         landmarkName = "-KinaraCategoryClicked:"
+         landmarkName = "-overviewBtnClicked:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -4761,7 +4761,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "3206"
          endingLineNumber = "3206"
-         landmarkName = "-setSearchOn:"
+         landmarkName = "-UnhideTheScrollerAndSubCatBgOnMenuController"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -4916,7 +4916,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "3201"
          endingLineNumber = "3201"
-         landmarkName = "-setSearchOn:"
+         landmarkName = "-hideTheScrollerAndSubCatBgOnMenuController"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -5215,7 +5215,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "3022"
          endingLineNumber = "3022"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkName = "-overviewBtnClicked2:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -5254,7 +5254,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1276"
          endingLineNumber = "1276"
-         landmarkName = "-KinaraCategoryClicked3:"
+         landmarkName = "-resetSubCat"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -5280,7 +5280,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1782"
          endingLineNumber = "1782"
-         landmarkName = "-getSubCategoryArrayIndex:"
+         landmarkName = "-KinarasetSubCategoryClicked:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

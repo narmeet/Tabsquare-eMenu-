@@ -391,25 +391,25 @@ static int tapCount = 0;
                 lblSplReq.hidden=NO;
                 specialRequest.hidden=NO;
                 [ShareableData sharedInstance].isFeedbackDone=@"0";
-                NSString* temp1 = [self loadWebViewDish];
-                NSString* temp2 = [self loadWebViewDrink];
-                if (![temp1 isEqualToString:@"pass"] && ![temp2 isEqualToString:@"pass"]){
-                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Drinks & Dishes order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                    alert.tag=2;
-                    [alert show];
-                }else if (![temp1 isEqualToString:@"pass"]){
-                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Dishes order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                    alert.tag=2;
-                    [alert show];
-                }else if (![temp2 isEqualToString:@"pass"]){
-                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Drinks order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                    alert.tag=2;
-                    [alert show];
-                }else{
+//                NSString* temp1 = [self loadWebViewDish];
+//                NSString* temp2 = [self loadWebViewDrink];
+//                if (![temp1 isEqualToString:@"pass"] && ![temp2 isEqualToString:@"pass"]){
+//                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Drinks & Dishes order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+//                    alert.tag=2;
+//                    [alert show];
+//                }else if (![temp1 isEqualToString:@"pass"]){
+//                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Dishes order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+//                    alert.tag=2;
+//                    [alert show];
+//                }else if (![temp2 isEqualToString:@"pass"]){
+//                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Drinks order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+//                    alert.tag=2;
+//                    [alert show];
+//                }else{
                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Thank you" message:@"Your order have been succesfully placed" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
                     alert.tag=2;
                     [alert show];
-                }
+               // }
                 [ShareableData sharedInstance].isConfermOrder=TRUE;
                 [OrderList reloadData];
                 /* [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemID"];

@@ -1377,7 +1377,7 @@ static int tapCount = 0;
             {
                 OptionY=OptionY+35;
             }
-            UILabel *specialrequest=[self addOptionName:special OptionFrame:CGRectMake(60, OptionY, 150, 40)];
+            UILabel *specialrequest=[self addOptionName:special OptionFrame:CGRectMake(60, OptionY, 180, 40)];
             [cell.contentView addSubview:specialrequest];
         }
     }@catch(NSException *ex){

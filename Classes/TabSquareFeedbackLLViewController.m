@@ -463,13 +463,13 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    if(twiterTask==2)
-    {
-        twiterTask=3;
-        self.view.frame=CGRectMake(13, 160, 741, 720);
-        [self createtwitterView];
-        [twitfollowerView defaultServicesCalling];
-    }
+//    if(twiterTask==2)
+//    {
+//        twiterTask=3;
+//        self.view.frame=CGRectMake(13, 160, 741, 720);
+//        [self createtwitterView];
+//        [twitfollowerView defaultServicesCalling];
+//    }
 }
 
 - (void) getAllFollowers:(NSString *)cursor

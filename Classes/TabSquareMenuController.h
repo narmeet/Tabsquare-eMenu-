@@ -54,6 +54,7 @@
     NSString    *subId;
     int         catIndex;
     int         TaskType;
+    int bestSellersLoadedOnce;
     float prevX;
     int initLoading;
     UISwipeGestureRecognizerDirection swipeDirection;
@@ -178,6 +179,7 @@
 -(NSString *)filterString:(NSString *)str pattern:(NSString *)pattern;
 -(void)alphaAnimation:(UIView *)view dutarion:(CGFloat)time;
 -(void)overviewBtnClicked2:(id) sender;
+-(void)setSearchOn:(NSString *)keyword;
 
 -(void)hideTheScrollerAndSubCatBgOnMenuController;
 -(void)UnhideTheScrollerAndSubCatBgOnMenuController;

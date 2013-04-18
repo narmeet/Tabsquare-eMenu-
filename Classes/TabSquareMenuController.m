@@ -26,6 +26,7 @@
 #import "TabSquareCommonClass.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Flurry.h"
+#import "ADLivelyTableView.h"
 
 #define FONT_GRILLED_CHEESE         @"GrilledCheeseBTNToasted"
 #define FONT_CALIBRI_BOLD           @"Calibri"
@@ -680,7 +681,7 @@
     //size1 = [subcategoryIdList count];
     [ScrollView setHidden:TRUE];
 
-    ////NSLOG(@"Coming here again sub-cat %@, simze1 = %d", subcategoryIdList, size1);
+    //////NSLOG(@"Coming here again sub-cat %@, simze1 = %d", subcategoryIdList, size1);
     ScrollView.userInteractionEnabled = YES;
     [ScrollView setShowsHorizontalScrollIndicator:NO];
     [ScrollView setShowsVerticalScrollIndicator:NO];
@@ -698,7 +699,7 @@
     
     [subcatScroller setShowsHorizontalScrollIndicator:NO];
     [subcatScroller setShowsVerticalScrollIndicator:NO];
-    CGSize scrollableSize = CGSizeMake(self.view.frame.size.width, 61);
+    CGSize scrollableSize = CGSizeMake(self.view.frame.size.width, 40);
     [subcatScroller setContentSize:scrollableSize];
     [subcatScroller setScrollEnabled:YES];
     
@@ -875,7 +876,7 @@
         content_size = frm.origin.x + frm.origin.y;
     }
 
-    [subcatScroller setContentSize:CGSizeMake(content_size+500 , subcatScroller.contentSize.height)];
+    [subcatScroller setContentSize:CGSizeMake(content_size+450 , subcatScroller.contentSize.height-100)];
     
     //subcatScroller.pagingEnabled=YES;
     [prev_btn sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -912,7 +913,8 @@
         }
     }
     
-    
+  //  [subcatScroller setContentSize:CGSizeMake(subcatScroller.contentSize.width+100 , subcatScroller.contentSize.height-100)];
+
     [KinaraSubCategory setContentOffset:CGPointMake(btn.frame.origin.x - 332, KinaraSubCategory.contentOffset.y) animated:YES];
     prev_btn = sender;
     initLoading = 0;
@@ -968,29 +970,7 @@
     [subcatScroller setContentOffset:CGPointMake(test*-1, btn.frame.origin.y) animated:YES];
     [self changeFontSize:btn];
     
-    /*float move1=KinaraCurrentScrollPositionPointSub.x+(([UIScreen mainScreen].bounds.size.width/2));
-    float move2=btn.frame.origin.x+(btn.frame.size.width/2);
-    
-    float diff=move1-move2;
-    
-    if(KinaraSubCategory.contentOffset.x+[UIScreen mainScreen].bounds.size.width-diff+153 > KinaraSubCategory.contentSize.width || KinaraSubCategory.contentOffset.x-153-diff < 0)
-    {
-        // [KinaraSubCategory setContentOffset:KinaraOriginalScrollPositionPointSub animated:YES];
-        
-        [subcatScroller setContentOffset:KinaraOriginalScrollPositionPointSub animated:YES];
-        
-        [KinaraSubCategory setContentOffset:KinaraOriginalScrollPositionPointSub animated:YES];
-    }
-    else
-    {
-        [subcatScroller setContentOffset:CGPointMake(btn.frame.origin.x, btn.frame.origin.y) animated:YES];
-        [KinaraSubCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPointSub.x-diff-24.5,KinaraCurrentScrollPositionPointSub.y) animated:YES];
-    }
-    KinaraCurrentScrollPositionPointSub=subcatScroller.contentOffset;//KinaraSubCategory.contentOffset;
-    KinaraSubcategoryBtnClick=false;*/
-    //[subcatScroller setContentOffset:CGPointMake(btn.frame.origin.x, btn.frame.origin.y) animated:YES];
-
-    
+       
 
 }
 
@@ -1347,7 +1327,7 @@
 -(IBAction)KinaraSubCategoryClicked:(id)sender
 {
     
-    ////NSLOG(@"sub cat clicked, btn = %@,   title = %@", sender, [(UIButton *)sender titleForState:UIControlStateNormal]);
+    //////NSLOG(@"sub cat clicked, btn = %@,   title = %@", sender, [(UIButton *)sender titleForState:UIControlStateNormal]);
     KinaraSubcategoryBtnClick=true;
     
     UIButton *btn=(UIButton*)sender;
@@ -1385,7 +1365,7 @@
 
 -(IBAction)KinaraSubCategoryClicked2:(int)sender
 {
-    ////NSLOG(@"copy of subcat action clicked");
+    //////NSLOG(@"copy of subcat action clicked");
     KinaraSubcategoryBtnClick=true;
     
     UIButton *btn=(UIButton *)[KinaraSubCategory viewWithTag:sender];
@@ -1517,7 +1497,7 @@
     UIScrollView *swipe=(UIScrollView*)sender;
     if(swipe==swipeView)
     {
-        ////NSLOG(@"Does come in scrollview did scroll...");
+        //////NSLOG(@"Does come in scrollview did scroll...");
 
         CGFloat pageWidth = swipeView.frame.size.width;
         float fractionalPage = swipeView.contentOffset.x / pageWidth;
@@ -1569,7 +1549,7 @@
             if (menulistView1.pageIndex != nearestNumber)
             {
                 currentSubTag=menulistView2.pageIndex;
-                ////NSLOG(@"Current sub tag 1= %d", currentSubTag);
+                //////NSLOG(@"Current sub tag 1= %d", currentSubTag);
                 KinaraSelectedSubCategoryID=[subcategoryIdList[currentSubTag]intValue];
                 KinaraSelectedSubCategoryName=subcategoryList[currentSubTag];
                 [KinaraSubCategory setHidden:TRUE];
@@ -1591,7 +1571,7 @@
                     if([subcategoryIdList count]!=0)
                     {
                         currentSubTag=0;
-                        ////NSLOG(@"Current sub tag 2= %d", currentSubTag);
+                        //////NSLOG(@"Current sub tag 2= %d", currentSubTag);
                         KinaraSelectedSubCategoryID=[subcategoryIdList[currentSubTag]intValue];
                         KinaraSelectedSubCategoryName=subcategoryList[currentSubTag];
                         //[self removeSwipeSubviews];
@@ -1647,7 +1627,7 @@
             {
                 KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-76.5, KinaraCategory.frame.origin.y+65, 153, 50);
                 KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(-25, KinaraCategory.frame.origin.y+65,[UIScreen mainScreen].bounds.size.width, 50)];
-                ////NSLOG(@"Calling from here...");
+                //////NSLOG(@"Calling from here...");
                 [KinaraSubCategory setHidden:TRUE];
                 [self KinaracreateSubCategoryScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 153,50) scrollView:KinaraSubCategory];
             }
@@ -1668,11 +1648,11 @@
             [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
             if([self.subcategoryList count]>0)
             {
-                ////NSLOG(@"selected sub_cat_id = %d", KinaraSelectedSubCategoryID);
+                //////NSLOG(@"selected sub_cat_id = %d", KinaraSelectedSubCategoryID);
                 [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
             }
             
-            ////NSLOG(@"Log xx 7");
+            //////NSLOG(@"Log xx 7");
             
         }
         
@@ -1824,20 +1804,20 @@
     }
     else
     {
-        ////NSLOG(@"Log xxx 1");
+        //////NSLOG(@"Log xxx 1");
         currentSubTag=[self getSubCategoryArrayIndex:tag];
-        ////NSLOG(@"Log xxx 2, subcatcount = %d, subtag = %d", [subcategoryIdList count], subtag);
+        //////NSLOG(@"Log xxx 2, subcatcount = %d, subtag = %d", [subcategoryIdList count], subtag);
         [self mainSubCategoryClicked:0 sub:subcategoryIdList[subtag]];
-        ////NSLOG(@"Log xxx 3");
+        //////NSLOG(@"Log xxx 3");
         [menulistView.menudetailView.view removeFromSuperview];
-        ////NSLOG(@"Log xxx 4");
+        //////NSLOG(@"Log xxx 4");
     }
 }
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    ////NSLOG(@"in end deaccelerate");
+    //////NSLOG(@"in end deaccelerate");
     BOOL Status;
     scrollView.panGestureRecognizer.cancelsTouchesInView = YES;
     scrollView.canCancelContentTouches = YES;
@@ -2594,6 +2574,8 @@
 
 -(IBAction)favouriteClicked:(id)sender
 {
+    [self hideUnhideComponents:TRUE];
+
     [self.overviewMenuButton setHidden:FALSE]; // Changed
     
     if(!mainMenu.isHidden)
@@ -2643,6 +2625,8 @@
 
 -(IBAction)searchClicked:(id)sender
 {
+    [self hideUnhideComponents:TRUE];
+
     [self.overviewMenuButton setHidden:FALSE]; // Changed
 
     if(!mainMenu.isHidden)
@@ -2837,7 +2821,7 @@
 	[mainMenu addSubview:menuTable];
     [menuTable reloadData];
     
-    ////NSLOG(@"coming in here...");
+    //////NSLOG(@"coming in here...");
 	
 }
 
@@ -2848,6 +2832,7 @@
     if(![ShareableData bestSellersON])
         return;
     
+   
     NSString *dishImage = @"bestseller.png";
     UIImage *imageData = [UIImage imageNamed:dishImage];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
@@ -2857,7 +2842,9 @@
     [data1 writeToFile:location atomically:YES];
     
     [firstImages insertObject:location atIndex:0];
+     if (![((NSString*)[categoryList objectAtIndex:0]) isEqualToString:BEST_SELLERS]){
     [categoryList insertObject:BEST_SELLERS atIndex:0];
+    }
     
 }
 
@@ -2920,7 +2907,39 @@
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	
-    
+        if(subcatScroller != nil)
+            [subcatScroller removeFromSuperview];
+        
+        subcatScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, 61)];
+        subcatScroller.delegate=self;
+        //subcatScroller.scrollEnabled=NO;//narmeet for fha
+        [subcatScroller setHidden:TRUE];
+        
+        [subcatScroller setShowsHorizontalScrollIndicator:NO];
+        [subcatScroller setShowsVerticalScrollIndicator:NO];
+        CGSize scrollableSize = CGSizeMake(self.view.frame.size.width, 40);
+        [subcatScroller setContentSize:scrollableSize];
+        [subcatScroller setScrollEnabled:YES];
+        
+        
+        //  NSString *img_name1 = [NSString stringWithFormat:@"%@%@", PRE_NAME, HEADER_IMAGE];
+        NSString *img_name = [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HEADER_IMAGE, [ShareableData appKey]];
+        UIImage *img2 = [[TabSquareDBFile sharedDatabase] getImage:img_name];
+        if(img2 == nil)
+            img2 = [UIImage imageNamed:@"subCatHeader"];
+        
+        subCatbg = [[UIImageView alloc] initWithImage:img2];
+        
+        
+        CGRect tempFrame = CGRectMake(subcatScroller.frame.origin.x, subcatScroller.frame.origin.y-5, subcatScroller.frame.size.width, subcatScroller.frame.size.height) ;
+        // [[UIImageView alloc] initWithFrame:CGRectMake(subcatScroller.frame.origin.x, subcatScroller.frame.origin.y, subcatScroller.frame.size.width, subcatScroller.frame.size.height)];
+        subCatbg.frame = tempFrame;
+        [self.view addSubview:subCatbg];
+        [subCatbg setHidden:TRUE];
+        //[subcatScroller sendSubviewToBack:subCatbg];
+        
+        [self.view addSubview:subcatScroller];
+        
     /*========================Background Image=========================*/
     
  //   NSString *img_name1 = [NSString stringWithFormat:@"%@%@", PRE_NAME, CATEGORY_IMAGE];
@@ -3064,7 +3083,40 @@
                                                                                [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"1"];
                                                                                
                                                                                best_flag = TRUE;
+                                                                               if(subcatScroller != nil)
+                                                                                   [subcatScroller removeFromSuperview];
+                                                                               
+                                                                               subcatScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, 61)];
+                                                                               subcatScroller.delegate=self;
+                                                                               //subcatScroller.scrollEnabled=NO;//narmeet for fha
+                                                                               [subcatScroller setHidden:TRUE];
+                                                                               
+                                                                               [subcatScroller setShowsHorizontalScrollIndicator:NO];
+                                                                               [subcatScroller setShowsVerticalScrollIndicator:NO];
+                                                                               CGSize scrollableSize = CGSizeMake(self.view.frame.size.width, 40);
+                                                                               [subcatScroller setContentSize:scrollableSize];
+                                                                               [subcatScroller setScrollEnabled:YES];
+                                                                               
+                                                                               
+                                                                               //  NSString *img_name1 = [NSString stringWithFormat:@"%@%@", PRE_NAME, HEADER_IMAGE];
+                                                                               NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HEADER_IMAGE, [ShareableData appKey]];
+                                                                               UIImage *img1 = [[TabSquareDBFile sharedDatabase] getImage:img_name1];
+                                                                               if(img1 == nil)
+                                                                                   img1 = [UIImage imageNamed:@"subCatHeader"];
+                                                                               
+                                                                               subCatbg = [[UIImageView alloc] initWithImage:img1];
+                                                                               
+                                                                               
+                                                                               CGRect tempFrame = CGRectMake(subcatScroller.frame.origin.x, subcatScroller.frame.origin.y-5, subcatScroller.frame.size.width, subcatScroller.frame.size.height) ;
+                                                                               // [[UIImageView alloc] initWithFrame:CGRectMake(subcatScroller.frame.origin.x, subcatScroller.frame.origin.y, subcatScroller.frame.size.width, subcatScroller.frame.size.height)];
+                                                                               subCatbg.frame = tempFrame;
+                                                                               [self.view addSubview:subCatbg];
+                                                                               [subCatbg setHidden:TRUE];
+                                                                               //[subcatScroller sendSubviewToBack:subCatbg];
+                                                                               
+                                                                               [self.view addSubview:subcatScroller];
                                                                                [self searchBetseellers];
+                                                                              
                                                                            }
                                                                            
                                                                            if(!best_flag) {
@@ -3078,6 +3130,11 @@
                                                                            
                                                                            [mainMenu setHidden:TRUE];
                                                                            [self hideUnhideComponents:FALSE];
+                                                                           if (best_flag){
+                                                                               beveragesBeerView.view.hidden = YES;
+                                                                               beveragesBeerView1.view.hidden = YES;
+                                                                               beveragesBeerView2.view.hidden = YES;
+                                                                           }
                                                                            
                                                                        }
                                                        ];}
@@ -3186,6 +3243,7 @@
         [searchLbl setFont:[UIFont fontWithName:@"Century Gothic" size:31.0]];
         searchLbl.shadowColor = [UIColor colorWithWhite:0.7 alpha:1];
         searchLbl.shadowOffset = CGSizeMake(1, 2);
+        
     }
     
     [searchLbl setBackgroundColor:[UIColor clearColor]];
@@ -3198,6 +3256,18 @@
 
 -(void)searchBetseellers
 {
+    [mainMenu setHidden:TRUE]; // Changed
+    
+    
+    [orderSummaryView.view removeFromSuperview];
+    [feedbackView.view removeFromSuperview];
+    [searchView.view removeFromSuperview];
+    overviewMenuButton.selected = NO;
+    
+    overviewMenuView.hidden=YES;
+    KinaraSubCategory.hidden=YES;
+    
+
     NSMutableArray *search_data = [[TabSquareDBFile sharedDatabase] getDishKeyData:@""];
     
     NSMutableArray *temp = [[NSMutableArray alloc] init];
@@ -3222,7 +3292,7 @@
     [ShareableData sharedInstance].SearchAllItemData= temp;
     [ShareableData sharedInstance].TaskType=@"2";
     
-    //NSLog(@"Search Data = %@", temp);
+    ////NSLOG(@"Search Data = %@", temp);
     
     menulistView1.view.frame=CGRectMake(0, 191, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
     [self.menulistView1 reloadDataOfSubCat:@"0" cat:@"1"];

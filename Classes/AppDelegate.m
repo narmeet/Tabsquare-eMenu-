@@ -46,10 +46,10 @@ NSString *kNameColorKey= @"nameColorKey";
     NSString *dish_tag = nil;
     
     BOOL value = [[NSUserDefaults standardUserDefaults] boolForKey:DISH_TAG];
-    //NSLOG(@"value = %d", value);
+    ////NSLOG(@"value = %d", value);
     
     NSString *str = [[NSUserDefaults standardUserDefaults] valueForKey:SERVER_URL];
-    //NSLOG(@"string = %@, lenght = %d", str, [str length]);
+    ////NSLOG(@"string = %@, lenght = %d", str, [str length]);
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

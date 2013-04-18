@@ -158,7 +158,7 @@
 
 -(void)reloadDataOfSubCat:(NSString *)sub cat:(NSString*)CatID
 {
-    ////NSLOG(@"cat = %@, , , , sub_cat = %@", CatID, sub);
+    //////NSLOG(@"cat = %@, , , , sub_cat = %@", CatID, sub);
 
     tag_switch = [ShareableData dishTagStatus];
     [self reloadFonts];
@@ -190,7 +190,7 @@
         [self postData:sub cat:CatID];
         @try
         {
-            //NSLOG(@"result from post count = %d", [resultFromPost count]);
+            ////NSLOG(@"result from post count = %d", [resultFromPost count]);
             if(resultFromPost)
             {
                 for(int i=0;i<[resultFromPost count];i++)
@@ -761,7 +761,7 @@
     {
        return [self getTotalSubDishes:SubSectionIdData[section]];
     }
-    //NSLOG(@"dish images count = %d, tag count = %d", [DishImage count], [self.tagIcons count]);
+    ////NSLOG(@"dish images count = %d, tag count = %d", [DishImage count], [self.tagIcons count]);
      
     return [DishID count];
 }
@@ -992,8 +992,8 @@
 {
     /*============================*/
     /*
-    //NSLOG(@"Dish Id =%@", DishID);
-    //NSLOG(@"selected item = %d",selectedItem);
+    ////NSLOG(@"Dish Id =%@", DishID);
+    ////NSLOG(@"selected item = %d",selectedItem);
     NSMutableArray *combo_data = [[TabSquareDBFile sharedDatabase] getCombodata:DishCategoryId[selectedItem]];
     */
     

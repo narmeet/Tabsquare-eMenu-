@@ -459,7 +459,7 @@ imgView.clipsToBounds = NO;
     [super viewDidLoad];
     
     // imageArray = [[NSArray alloc] initWithObjects:@"callwater.png",@"callbill_selected.png",@"callBill.png",@"category.png",nil];
-    //NSLOG(@"selectedImageAtMenu==%d",selectedImageAtMenu);
+    ////NSLOG(@"selectedImageAtMenu==%d",selectedImageAtMenu);
     
     hFlowView.delegate = self;
     hFlowView.dataSource = self;
@@ -561,7 +561,7 @@ imgView.clipsToBounds = NO;
     
     selectedIndex=selectedItem;
     currentIndex=selectedItem;
-    ////NSLOG(@"dd.selectedItem==%d",selectedItem);
+    //////NSLOG(@"dd.selectedItem==%d",selectedItem);
     selectedImageAtMenu =selectedItem;
     
     //loading the rate,name,description of the selected Dish
@@ -577,7 +577,7 @@ imgView.clipsToBounds = NO;
     KDishDescription.textColor=[UIColor whiteColor];
     KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:20];
 
- //   //NSLOG(@"KDishName==%@",KDishName.text);
+ //   ////NSLOG(@"KDishName==%@",KDishName.text);
     //[hFlowView reloadData];
     
 }
@@ -615,7 +615,7 @@ imgView.clipsToBounds = NO;
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(PagedFlowView *)flowView {
     if (pageNumber>=0) {
-       // //NSLOG(@"Scrolled to page # %d", pageNumber);
+       // ////NSLOG(@"Scrolled to page # %d", pageNumber);
         
         // [KDishImage.layer setShadowOpacity:1.0];
         //[KDishImage.layer setShadowOffset:CGSizeMake(2.5, 1.5)];
@@ -628,7 +628,7 @@ imgView.clipsToBounds = NO;
 //        KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
 //        KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:15];
         
-       // //NSLOG(@"KDishName.text====%@d", KDishName.text);
+       // ////NSLOG(@"KDishName.text====%@d", KDishName.text);
         
     }
     
@@ -640,7 +640,7 @@ imgView.clipsToBounds = NO;
 
 - (NSInteger)numberOfPagesInFlowView:(PagedFlowView *)flowView{
    
-    //NSLOG(@"DishImage count====%d", [DishImage count]);
+    ////NSLOG(@"DishImage count====%d", [DishImage count]);
 
     if([orderScreenFlag isEqualToString:@"1"]){
         return 1;
@@ -659,7 +659,7 @@ imgView.clipsToBounds = NO;
 
 - (UIView *)flowView:(PagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     
-    //NSLOG(@"DishImage====%@",KDishCatId);
+    ////NSLOG(@"DishImage====%@",KDishCatId);
 
     imageView = (UIImageView *)[flowView dequeueReusableCell];
     
@@ -685,8 +685,8 @@ imgView.clipsToBounds = NO;
             imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;
             
         }
-        // //NSLOG(@"index flowView # %d", index);
-        ////NSLOG(@"KDishImagev== %@", KDishImage);
+        // ////NSLOG(@"index flowView # %d", index);
+        //////NSLOG(@"KDishImagev== %@", KDishImage);
         
         if([ShareableData sharedInstance].ViewMode==1)
         {
@@ -737,8 +737,8 @@ imgView.clipsToBounds = NO;
         imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;
 
     }
-   // //NSLOG(@"index flowView # %d", index);
-    ////NSLOG(@"KDishImagev== %@", KDishImage);
+   // ////NSLOG(@"index flowView # %d", index);
+    //////NSLOG(@"KDishImagev== %@", KDishImage);
     
     if([ShareableData sharedInstance].ViewMode==1)
     {

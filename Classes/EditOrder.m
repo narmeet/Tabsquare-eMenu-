@@ -437,7 +437,7 @@ float totalPriceMinusDrinks;
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     
     [ShareableData sharedInstance].OrderId=data;
-    //NSLOG(@"Bill Number :%@",data);
+    ////NSLOG(@"Bill Number :%@",data);
     
 }
 
@@ -657,7 +657,7 @@ float totalPriceMinusDrinks;
 
 -(IBAction)minusBtnClick:(id)sender
 {
-    //NSLOG(@"minus clicked");
+    ////NSLOG(@"minus clicked");
     UIButton *btn=(UIButton*)sender;
     minus_btn_tag = btn.tag;
     
@@ -1106,7 +1106,7 @@ float totalPriceMinusDrinks;
 {
     
     NSString *post =[NSString stringWithFormat:@"table=%@&key=%@",tableNumber, [ShareableData appKey]];
-    //NSLOG(@"post==%@",post);
+    ////NSLOG(@"post==%@",post);
     
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     

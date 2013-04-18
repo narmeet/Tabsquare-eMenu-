@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "RateView.h"
+#import "TabSquareNewBeerScrollController.h"
+#import "TabMainMenuDetailViewController.h"
+#import "ViewController.h"
 
 @class TabSquareMenuController;
 @class TabSquarefriendsorderViewController;
@@ -20,16 +23,19 @@
 @interface TabSquareFriendListController : UIViewController<UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate,RateViewDelegate>
 {
     MBProgressHUD *progressHud;
-     TabSquareBeerDetailController *beerDetailView;
+    // TabSquareBeerDetailController *beerDetailView;
+    TabSquareNewBeerScrollController *beerDetailView;
     NSString *custType;
 }
 
+//@property(nonatomic,strong)TabMainMenuDetailViewController *menudetailView;
+@property(nonatomic,strong)ViewController *menudetailView;
 
 @property(nonatomic,strong)NSMutableDictionary *resultFromDB;
 @property(nonatomic,strong)TabSquareMenuController *menuView;
 @property(nonatomic,strong)TabSquarefriendsorderViewController *friendOrderView;
 @property(nonatomic,strong)TabSquareMenuDetailController *customizationView;
-@property(nonatomic,strong)TabSquareBeerDetailController *beerDetailView;
+@property(nonatomic,strong)TabSquareNewBeerScrollController *beerDetailView;
 @property(nonatomic,strong)IBOutlet UITableView *friendlistView;
 @property(nonatomic,strong)IBOutlet UITableView *lastOrderedView;
 @property(nonatomic,strong)NSMutableArray *lastOrderedData;

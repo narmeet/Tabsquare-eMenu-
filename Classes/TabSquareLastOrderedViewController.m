@@ -430,7 +430,7 @@
         // [menudetailView.menuDetailView.view removeFromSuperview];
         itemDetailView.view.frame=CGRectMake(10,-10, itemDetailView.view.frame.size.width, itemDetailView.view.frame.size.height);
         [self.view addSubview:itemDetailView.view];
-        //NSLOG(@"resultFromPost==%@",resultFromPost);
+        ////NSLOG(@"resultFromPost==%@",resultFromPost);
         
         for(int i=0;i<[resultFromPost count];i++)
         {

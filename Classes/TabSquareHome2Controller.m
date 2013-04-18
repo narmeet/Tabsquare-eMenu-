@@ -37,7 +37,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
     NSString *libraryDirectory = [paths lastObject];
     NSString *location = [NSString stringWithFormat:@"%@/%@%@_%@.png",libraryDirectory, PRE_NAME, HOME_IMAGE2, [ShareableData appKey]];
-    ////NSLOG(@"home 32 img = %@", location);
+    //////NSLOG(@"home 32 img = %@", location);
     // NSData *image=[[TabSquareDBFile sharedDatabase]getHomeImageData:@"1"];
     backhomeView.image=[UIImage imageWithContentsOfFile:location];
    // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];

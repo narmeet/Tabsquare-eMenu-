@@ -30,11 +30,13 @@
 @synthesize lastOrderedView,customizationView;
 @synthesize DishID,DishName,DishPrice,DishImage,DishCatId,DishDescription,DishCustomization;
 @synthesize resultFromDB,fromCheckout;
+@synthesize menudetailView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    if (self)
     {
         // Custom initialization
     }
@@ -44,7 +46,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self loadlastOrdereddata];
-
+    
 }
 
 - (void)viewDidLoad
@@ -56,8 +58,8 @@
     lastOrderedId=[[NSMutableArray alloc]init];
     lastOrderedData=[[NSMutableArray alloc]init];
     lastOrderedRating=[[NSMutableArray alloc]init];
-    beerDetailView =[[TabSquareBeerDetailController alloc]initWithNibName:@"TabSquareBeerDetailController" bundle:nil];
-   // [super viewDidLoad];
+    beerDetailView =[[TabSquareNewBeerScrollController alloc]initWithNibName:@"TabSquareNewBeerScrollController" bundle:nil];
+    // [super viewDidLoad];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -92,7 +94,7 @@
             if([frdId isEqualToString:id1])
             {
                 NSString *friendname=result2[@"name"];
-                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",id1]]];      
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture",id1]]];
                 [friendId addObject:id1];
                 [friendName addObject:friendname];
                 [friendImage addObject:imageData];
@@ -136,25 +138,25 @@
     
     for(int i=0;i<[resultFromPost count];++i)
     {
-   
-       // NSMutableDictionary *dataitem=[resultFromPost objectAtIndex:0];
-    NSMutableDictionary *dataitem2=resultFromPost[0];
+        
+        // NSMutableDictionary *dataitem=[resultFromPost objectAtIndex:0];
+        NSMutableDictionary *dataitem2=resultFromPost[0];
         
         tt=[NSString stringWithFormat:@"%@",dataitem2[@"id"]];
         
     }
     
     
-   // DLog(@"Result : %@",dataitem);
+    // DLog(@"Result : %@",dataitem);
     return tt;
 }
 
--(void)getlastOrderedDataList:(NSString*)email 
+-(void)getlastOrderedDataList:(NSString*)email
 {
     [self updateFeedback:email order_id:[ShareableData sharedInstance].OrderId];
     [self updateFeedbackAboutDish:email order_id:[ShareableData sharedInstance].OrderId];
     
-
+    
     NSString *post =[NSString stringWithFormat:@"email=%@&key=%@",email, [ShareableData appKey]];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
@@ -181,9 +183,9 @@
     {
         NSMutableDictionary *dataitem=resultFromPost[i];
         if (![[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]] isEqualToString:@"0"]){
-        [lastOrderedId addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]]];
-        [lastOrderedData addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_name"]]];
-        [lastOrderedRating addObject:[NSString stringWithFormat:@"%@",dataitem[@"rating"]]];
+            [lastOrderedId addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]]];
+            [lastOrderedData addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_name"]]];
+            [lastOrderedRating addObject:[NSString stringWithFormat:@"%@",dataitem[@"rating"]]];
         }
     }
     [lastOrderedView reloadData];
@@ -298,8 +300,8 @@
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     SBJSON *parser = [[SBJSON alloc] init];
     NSMutableArray *resultFromPost = [parser objectWithString:data error:nil];
-  
-  //  [lastOrderedView reloadData];
+    
+    //  [lastOrderedView reloadData];
     DLog(@"Result : %@",data);
     return resultFromPost;
 }
@@ -336,7 +338,7 @@
     
 }
 
-- (void)configureView:(RateView*)rateView 
+- (void)configureView:(RateView*)rateView
 {
     // Update the user interface for the detail item.
     rateView.notSelectedImage = [UIImage imageNamed:@"star.png"];
@@ -344,8 +346,8 @@
     rateView.fullSelectedImage = [UIImage imageNamed:@"red star.png"];
     rateView.editable = NO;
     rateView.maxRating = 5;
-    rateView.delegate = self; 
-    rateView.rating = 0;    
+    rateView.delegate = self;
+    rateView.rating = 0;
     
 }
 
@@ -361,9 +363,9 @@
 {
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 2, 200, 45)];
     titleLabel.backgroundColor=[UIColor clearColor];
-    titleLabel.text = lastOrderedData[rowIndex]; 
+    titleLabel.text = lastOrderedData[rowIndex];
     titleLabel.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
-    [cell.contentView addSubview:titleLabel];   
+    [cell.contentView addSubview:titleLabel];
     
 }
 
@@ -378,32 +380,9 @@
     DishSubCatId=[NSString stringWithFormat:@"%@",resultFromDB[@"sub_category"]];
     DishImage=[UIImage imageWithContentsOfFile:resultFromDB[@"images"]];//resultFromDB[@"images"];
     custType =[NSString stringWithFormat:@"%@",resultFromDB[@"cust"]];
-
+    
 }
 
--(void)addBlankCustomizationView
-{
-    menuView.menulistView1.menudetailView.menuDetailView=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
-    customizationView=menuView.menulistView1.menudetailView.menuDetailView;
-    customizationView.KKselectedID  =DishID;
-    customizationView.KKselectedName=DishName;
-    customizationView.KKselectedRate=DishPrice;
-    customizationView.KKselectedCatId=DishCatId;
-    customizationView.backImage.hidden=NO;
-    customizationView.DishCustomization=DishCustomization;
-    customizationView.KKselectedImage=DishImage;
-    [customizationView.customizationView reloadData];
-    customizationView.requestView.text=@"";
-    customizationView.swipeIndicator=@"1";
-    customizationView.isView=@"main";
-    customizationView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
-    customizationView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
-    customizationView.detailImageView.contentMode = UIViewContentModeRedraw;
-    
-    
-    customizationView.detailImageView.clipsToBounds=YES;
-    [self.view addSubview:customizationView.view];
-}
 
 
 -(void)addCustomizationView
@@ -427,8 +406,8 @@
 
 -(void)addItem
 {
-    [[ShareableData sharedInstance].OrderItemID addObject:DishID]; 
-    [[ShareableData sharedInstance].OrderItemName addObject:DishName]; 
+    [[ShareableData sharedInstance].OrderItemID addObject:DishID];
+    [[ShareableData sharedInstance].OrderItemName addObject:DishName];
     [[ShareableData sharedInstance].OrderItemRate addObject:DishPrice];
     [[ShareableData sharedInstance].OrderCatId addObject:DishCatId];
     [[ShareableData sharedInstance].IsOrderCustomization addObject:@"0"];
@@ -511,7 +490,7 @@
     pathAnimation.path = curvedPath;
     CGPathRelease(curvedPath);
     
-    CAAnimationGroup *group = [CAAnimationGroup animation]; 
+    CAAnimationGroup *group = [CAAnimationGroup animation];
     group.fillMode = kCAFillModeForwards;
     group.removedOnCompletion = NO;
     [group setAnimations:@[fadeOutAnimation, pathAnimation, resizeAnimation]];
@@ -526,19 +505,27 @@
     
     //DLog(@"Order Conferm");
 }
+-(void)createMenuDetail
+{
+    
+    
+    ////change newScrollVC
+    menudetailView=[[ViewController alloc]initWithNibName:@"ViewController" bundle:nil];
+    [menudetailView allocateArray];
+}
 
 -(IBAction)infoClicked:(id)sender
 {
     UIButton *btn=(UIButton*)sender;
     
     int tag=btn.tag;
-    
+    [self createMenuDetail];
     //selectedItem=tag;
     [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
     NSString *orderId=[NSString stringWithFormat:@"%@",lastOrderedId[tag]];
-   // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
+    // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
     NSMutableArray *resultFromPost=[[TabSquareDBFile sharedDatabase]getDishDataDetail:orderId];
-   // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
+    // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
     
     resultFromDB=resultFromPost[0];
     
@@ -549,9 +536,122 @@
     // NSString *dishCatId2 = [DishCategoryId objectAtIndex:selectedItem];
     // NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:selectedItem];
     int bevDisplay = 0;
-    TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
+    TabSquareNewBeerScrollController* beveragesBeerView=[[TabSquareNewBeerScrollController alloc]initWithNibName:@"TabSquareNewBeerScrollController" bundle:nil];
     if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
         
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
+        for(int i=0;i<[subCategoryData count];++i){
+            NSMutableDictionary *subCategory=subCategoryData[i];
+            NSString *subId=subCategory[@"id"];
+            NSString *displayId=subCategory[@"display"];
+            if ([subId isEqualToString:DishSubCatId]&&[displayId isEqualToString:@"1"]){
+                [ShareableData sharedInstance].TaskType = @"3";
+                bevDisplay = 1;
+                // [beveragesBeerView reloadDataOfSubCat:DishSubCatId cat:DishCatId];
+                //[beveragesBeerView.beverageView reloadData];
+            }
+            
+        }
+        
+        // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
+    }
+    if (bevDisplay == 1){
+        // NSMutableArray *beverageCustomization;
+        // NSMutableArray *beverageSkuDetail;
+        // NSMutableArray *beverageCustType;
+        beerDetailView =[[TabSquareNewBeerScrollController alloc]initWithNibName:@"TabSquareNewBeerScrollController" bundle:nil];
+        beerDetailView.beverageView = self;
+        
+        beerDetailView.tempDishID = orderId.intValue;
+        
+        beerDetailView.orderScreenFlag=@"1";
+        beerDetailView.selectedIndex=[NSString stringWithFormat:@"%d",tag];
+        // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
+        beerDetailView.beverageSKUDetail=[[TabSquareDBFile sharedDatabase]getBeverageSkuDetail:orderId];
+        // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
+        beerDetailView.beverageCatId=[NSString stringWithFormat:@"%d",8];
+        beerDetailView.beverageCustomization=resultFromPost[0][@"customisations"];
+        beerDetailView.drinkNameFromOrderSummary=resultFromPost[0][@"name"];
+        beerDetailView.drinkDescriptionFromOrderSummary=resultFromPost[0][@"description"];//[NSString stringWithFormat:@"%@",dataitem[@"price"]];
+        beerDetailView.beverageCutType=resultFromPost[0][@"cust"];
+        //UIImage *imageUrl = [UIImage imageWithContentsOfFile:resultFromPost[0][@"images"]];
+        //if(imageUrl)
+        //{
+        beerDetailView.KDishImage=[UIImage imageWithContentsOfFile:resultFromPost[0][@"images"]];
+        //}
+        [beerDetailView.beverageSkUView reloadData];
+        beerDetailView.selectedItemIndex=tag;
+        
+        //[beerDetailView loadBeverageData:selectedItemIndex];
+        [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
+        [self.view addSubview:beerDetailView.view];
+        [self.view bringSubviewToFront:beerDetailView.view];
+    }else{
+        
+        //        [menudetailView.KDishCust removeAllObjects];
+        //
+        //        menudetailView.orderSummaryView=self;
+        //        menudetailView.IshideAddButton=@"1";
+        //
+        //
+        //
+        //
+        //        for(int i=0;i<[resultFromPost count];i++)
+        //        {
+        //            NSMutableDictionary *dataitem=resultFromPost[i];
+        //            menudetailView.KDishCatId=[NSString stringWithFormat:@"%@",DishCatId];
+        //            menudetailView.KDishName.text=[NSString stringWithFormat:@"%@",dataitem[@"name"]];
+        //            menudetailView.KDishRate.text=[NSString stringWithFormat:@"%@",dataitem[@"price"]];
+        //            menudetailView.KDishDescription.text=[NSString stringWithFormat:@"%@",dataitem[@"description"]];
+        //            menudetailView.kDishId =[NSString stringWithFormat:@"%@",orderId];
+        //            [menudetailView.KDishCust addObject:dataitem[@"customisations"]];
+        //            menudetailView.KDishCustType=[NSString stringWithFormat:@"%@",dataitem[@"cust"]];
+        //            menudetailView.KDishName.font=[UIFont fontWithName:@"Century Gothic" size:21];
+        //            CGSize newsize=  [menudetailView.KDishName.text sizeWithFont:menudetailView.KDishName.font constrainedToSize:CGSizeMake(241, 400) lineBreakMode: menudetailView.KDishName.lineBreakMode];
+        //            menudetailView.KDishName.frame=CGRectMake( menudetailView.KDishName.frame.origin.x, menudetailView.KDishName.frame.origin.y, newsize.width, newsize.height);
+        //            menudetailView.orderScreenFlag=@"1";
+        //
+        //            UIImage *imageUrl = [UIImage imageWithContentsOfFile:dataitem[@"images"]];
+        //            if(imageUrl)
+        //            {
+        //                menudetailView.KDishImage=[UIImage imageWithContentsOfFile:dataitem[@"images"]];
+        //            }
+        //            menudetailView.view.frame=CGRectMake(10,-10, menudetailView.view.frame.size.width, menudetailView.view.frame.size.height);
+        //            [self.view addSubview:menudetailView.view];
+        //            menudetailView.Viewtype=@"1";
+        //            [menudetailView loadDataInView:tag];
+        //            break;
+        //        }
+    }
+    
+}
+
+-(IBAction)addClicked:(id)sender
+{
+    
+    UIButton *btn=(UIButton*)sender;
+    UIView *view= [btn superview];
+    CGRect frame=btn.frame;
+    int tag=btn.tag;
+    // DLog(@"Tag : %d",tag);
+    //selectedItem=tag;
+    // NSString *type=[custType objectAtIndex:tag];
+    NSString *orderId=[NSString stringWithFormat:@"%@",lastOrderedId[tag]];
+    // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
+    NSMutableArray *resultFromPost=[[TabSquareDBFile sharedDatabase]getDishDataDetail:orderId];
+    // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
+    
+    resultFromDB=resultFromPost[0];
+    
+    //parse data
+    [self loadDishData];
+    
+    // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
+    // NSString *dishCatId2 = [DishCategoryId objectAtIndex:tag];
+    //  NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:tag];
+    int bevDisplay = 0;
+    TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
+    if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
         NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
@@ -566,7 +666,7 @@
             
         }
         
-       // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
+        // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
     }
     if (bevDisplay == 1){
         // NSMutableArray *beverageCustomization;
@@ -576,112 +676,9 @@
         //int currentindex=[[DishID objectAtIndex:selectedItem] intValue];
         beerDetailView.selectedIndex=[NSString stringWithFormat:@"%d",tag];
         beerDetailView.tempDishID = DishID.intValue;
-       // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
+        //  [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
         beerDetailView.beverageSKUDetail=[[TabSquareDBFile sharedDatabase]getBeverageSkuDetail:DishID];
-       // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
-        beerDetailView.beverageCatId=[NSString stringWithFormat:@"%d",8];
-        beerDetailView.beverageCustomization=DishCustomization;
-        //beerDetailView.beverageCutType=custType;
-        [beerDetailView.beverageSkUView reloadData];
-        [beerDetailView loadBeverageData:DishID.intValue];
-        [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
-        [self.view addSubview:beerDetailView.view];
-        [self.view bringSubviewToFront:beerDetailView.view];
-    }else{
-        beerDetailView.leftArrow.hidden=NO;
-        beerDetailView.rightArrow.hidden=NO;
-        
-        [menuView.menulistView1.menudetailView.tabMainDetailView.KDishCust removeAllObjects];
-        [menuView.menulistView1.menudetailView removeSwipeSubviews];
-        [menuView.menulistView1.menudetailView.swipeDetailView addSubview:menuView.menulistView1.menudetailView.tabMainDetailView.view];
-        menuView.menulistView1.menudetailView.swipeDetailView.scrollEnabled=NO;
-        menuView.menulistView1.menudetailView.tabMainDetailView.IshideAddButton=@"1";
-        menuView.menulistView1.menudetailView.tabMainDetailView.Viewtype=@"2";
-        menuView.menulistView1.menudetailView.view.frame=CGRectMake(3, 20, menuView.menulistView1.menudetailView.view.frame.size.width, menuView.menulistView1.menudetailView.view.frame.size.height);
-        [self.view addSubview:menuView.menulistView1.menudetailView.view];
-        for(int i=0;i<[resultFromPost count];i++)
-        {
-            NSMutableDictionary *dataitem=resultFromPost[i];
-            menuView.menulistView1.menudetailView.tabMainDetailView.KDishCatId=[NSString stringWithFormat:@"%@",DishCatId];
-            menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.text=[NSString stringWithFormat:@"%@",dataitem[@"name"]];
-            menuView.menulistView1.menudetailView.tabMainDetailView.KDishRate.text=[NSString stringWithFormat:@"%@",dataitem[@"price"]];
-            menuView.menulistView1.menudetailView.tabMainDetailView.KDishDescription.text=[NSString stringWithFormat:@"%@",dataitem[@"description"]];
-            menuView.menulistView1.menudetailView.tabMainDetailView.kDishId =[NSString stringWithFormat:@"%@",orderId];
-            [menuView.menulistView1.menudetailView.tabMainDetailView.KDishCust addObject:dataitem[@"customisations"]];
-            menuView.menulistView1.menudetailView.tabMainDetailView.KDishCustType=[NSString stringWithFormat:@"%@",dataitem[@"cust"]];
-            UIImage *imageUrl = [UIImage imageNamed:dataitem[@"images"]];
-            if(imageUrl)
-            {
-                menuView.menulistView1.menudetailView.tabMainDetailView.KDishImage.image=imageUrl;
-            }
-            
-            break;
-        }
-        menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.font=[UIFont fontWithName:@"Lucida Calligraphy" size:21];
-        menuView.menulistView1.menudetailView.tabMainDetailView.KDishRate.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
-        menuView.menulistView1.menudetailView.tabMainDetailView.KDishDescription.font=[UIFont fontWithName:@"Lucida Calligraphy" size:14];
-        CGSize newsize=  [menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.text sizeWithFont:menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.font constrainedToSize:CGSizeMake(241, 400) lineBreakMode:menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.lineBreakMode];
-        menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.frame=CGRectMake(menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.frame.origin.x,menuView.menulistView1.menudetailView.tabMainDetailView.KDishName.frame.origin.y, newsize.width, newsize.height);
-        
-        
-        [menuView.menulistView1.menudetailView.tabMainDetailView  hideButtons];
-    }
-
-}
-
--(IBAction)addClicked:(id)sender
-{
-   
-    UIButton *btn=(UIButton*)sender;
-    UIView *view= [btn superview];
-    CGRect frame=btn.frame;
-    int tag=btn.tag;
-    // DLog(@"Tag : %d",tag);
-    //selectedItem=tag;
-    // NSString *type=[custType objectAtIndex:tag];
-    NSString *orderId=[NSString stringWithFormat:@"%@",lastOrderedId[tag]];
-   // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-    NSMutableArray *resultFromPost=[[TabSquareDBFile sharedDatabase]getDishDataDetail:orderId];
-   // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
-    
-    resultFromDB=resultFromPost[0];
-    
-    //parse data
-    [self loadDishData];
-    
-   // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-    // NSString *dishCatId2 = [DishCategoryId objectAtIndex:tag];
-    //  NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:tag];
-    int bevDisplay = 0;
-    TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
-    if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
-        for(int i=0;i<[subCategoryData count];++i){
-            NSMutableDictionary *subCategory=subCategoryData[i];
-            NSString *subId=subCategory[@"id"];
-            NSString *displayId=subCategory[@"display"];
-            if ([subId isEqualToString:DishSubCatId]&&[displayId isEqualToString:@"1"]){
-                 [ShareableData sharedInstance].TaskType = @"3";
-                bevDisplay = 1;
-                [beveragesBeerView reloadDataOfSubCat:DishSubCatId cat:DishCatId];
-                [beveragesBeerView.beverageView reloadData];
-            }
-            
-        }
-        
-       // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
-    }
-    if (bevDisplay == 1){
-        // NSMutableArray *beverageCustomization;
-        // NSMutableArray *beverageSkuDetail;
-        // NSMutableArray *beverageCustType;
-        beerDetailView.beverageView = beveragesBeerView;
-        //int currentindex=[[DishID objectAtIndex:selectedItem] intValue];
-        beerDetailView.selectedIndex=[NSString stringWithFormat:@"%d",tag];
-        beerDetailView.tempDishID = DishID.intValue;
-      //  [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-        beerDetailView.beverageSKUDetail=[[TabSquareDBFile sharedDatabase]getBeverageSkuDetail:DishID];
-       // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
+        // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
         beerDetailView.beverageCatId=[NSString stringWithFormat:@"%d",8];
         beerDetailView.beverageCustomization=DishCustomization;
         //beerDetailView.beverageCutType=custType;
@@ -694,12 +691,7 @@
         
         if([custType isEqualToString:@"0"])
         {
-           // [self addImageAnimation:frame btnView:view];
-            if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
-                [self addImageAnimation:frame btnView:view];
-            }else{
-                [self addBlankCustomizationView];
-            }
+            [self addImageAnimation:frame btnView:view];
         }
         else
         {
@@ -717,7 +709,7 @@
         }
     }
     
-
+    
 }
 
 
@@ -777,7 +769,7 @@
     {
         return [friendName count];
     }
-    else if (tableView==lastOrderedView) 
+    else if (tableView==lastOrderedView)
     {
         return [lastOrderedId count];
     }
@@ -809,10 +801,10 @@
             frdname.textAlignment=UITextAlignmentLeft;
             [cell.contentView addSubview:frdname];
             cell.selectionStyle=UITableViewCellSelectionStyleGray;
-
+            
         }
     }
-    else if (tableView==lastOrderedView) 
+    else if (tableView==lastOrderedView)
     {
         [self removesuperView:cell];
         [self addDishItem:cell indexPath:indexPath.row];
@@ -824,11 +816,11 @@
         }
         UIButton *addInfo = [self addInfoButton:cell indexPath:indexPath.row];
         [cell.contentView addSubview:addInfo];
-         if (![fromCheckout isEqualToString:@"1"]){
-        UIButton *addBtn = [self addButton:cell indexPath:indexPath.row];
-        [cell.contentView addSubview:addBtn];
-         }
-       
+        if (![fromCheckout isEqualToString:@"1"]){
+            UIButton *addBtn = [self addButton:cell indexPath:indexPath.row];
+            [cell.contentView addSubview:addBtn];
+        }
+        
     }
     
     return cell;
@@ -877,10 +869,10 @@
 
 -(IBAction)logOutClicked:(id)sender
 {
-     [ShareableData sharedInstance].isLogin = @"0";
-      [ShareableData sharedInstance].Customer = @"0";
-        [ShareableData sharedInstance].isFBLogin = @"0";
-     [ShareableData sharedInstance].isTwitterLogin = @"0";
+    [ShareableData sharedInstance].isLogin = @"0";
+    [ShareableData sharedInstance].Customer = @"0";
+    [ShareableData sharedInstance].isFBLogin = @"0";
+    [ShareableData sharedInstance].isTwitterLogin = @"0";
     [menuView.favouriteView.objFacebookViewC logout];
     [menuView favouriteClicked:0];
     [self.view.superview.superview removeFromSuperview];//narmeet

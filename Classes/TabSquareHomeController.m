@@ -115,7 +115,7 @@ int toUpdate = 0;
     NSString *location = [NSString stringWithFormat:@"%@/%@/%@_%@.png",libraryDirectory, PRE_NAME,HOME_IMAGE1, [ShareableData appKey]];//
     NSString *location2 = [NSString stringWithFormat:@"%@/%@/%@_%@.png",libraryDirectory,PRE_NAME,HOME_IMAGE2, [ShareableData appKey]];//[libraryDirectory stringByAppendingString:@"/@%",dishImage];
 
-    //NSLOG(@"Home img path = %@", [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]]);
+    ////NSLOG(@"Home img path = %@", [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]]);
     UIImage *imageData = [[TabSquareDBFile sharedDatabase] getImage:[NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]]];
 
     UIImage *imageData2 = [[TabSquareDBFile sharedDatabase] getImage:[NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE2, [ShareableData appKey]]];
@@ -763,7 +763,7 @@ int toUpdate = 0;
     /*
     [hud setDetailsLabelText:@"Updating Combo Value Data"];
     [self insertComboValueData:comboValueItem];
-    //NSLOG(@"XXX db log 14");
+    ////NSLOG(@"XXX db log 14");
     return;
      */
     
@@ -910,7 +910,7 @@ int toUpdate = 0;
     
     SBJSON *parser = [[SBJSON alloc] init];
     NSMutableDictionary *resultFromPost = [parser objectWithString:data error:nil];
-    //NSLOG(@"Response data = %@", resultFromPost);
+    ////NSLOG(@"Response data = %@", resultFromPost);
     
     NSString *time = resultFromPost[@"Time"];
     [[TabSquareDBFile sharedDatabase]updateKinaraVersionDate:time];
@@ -966,7 +966,7 @@ int toUpdate = 0;
     //NSString *Key=@"kinara123";
     
     NSString *post =[NSString stringWithFormat:@"key=%@&date=%@", [ShareableData appKey],date];
-    //NSLOG(@"request = %@", date);
+    ////NSLOG(@"request = %@", date);
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];

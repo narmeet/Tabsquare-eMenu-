@@ -110,11 +110,11 @@
 
 -(void)loadDataInView:(int)selectedItem
 {
-    ////NSLOG(@"Selected index = %d", selectedItem);
+    //////NSLOG(@"Selected index = %d", selectedItem);
     
     NSString *currrent_id = nil;
     currrent_id = DishID[selectedItem];
-    //NSLOG(@"set 2 dish id = %@", currrent_id);
+    ////NSLOG(@"set 2 dish id = %@", currrent_id);
     
     [TabSquareCommonClass setValueInUserDefault:@"set_id" value:currrent_id];
 
@@ -478,7 +478,7 @@
         [self loadDataInView:index];
     }
     
-    ////NSLOG(@"Selected index> = %d", index);
+    //////NSLOG(@"Selected index> = %d", index);
 }
 
 -(IBAction)prevClicked:(id)sender

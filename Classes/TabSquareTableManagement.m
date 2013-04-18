@@ -118,7 +118,7 @@ bool funcCalled = NO;
     //NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     //DLog(@"Data :%@",data);
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-   // NSLog(@"json = %@",json);
+   // //NSLOG(@"json = %@",json);
     
   
        NSArray* returnVal = [json objectForKey:@"returnVal"];
@@ -371,7 +371,7 @@ bool funcCalled = NO;
    
     
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    // NSLog(@"json = %@",json);
+    // //NSLOG(@"json = %@",json);
     
     
     NSArray* returnVal = [json objectForKey:@"returnVal"];
@@ -509,7 +509,7 @@ bool funcCalled = NO;
     if (funcCalled == NO){
        funcCalled = YES;
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self getTotalNumberofTable];
+       // [self getTotalNumberofTable];
          [self getTables];
        // [self getTableStatusView];
        // [TATables removeAllObjects];
@@ -934,7 +934,7 @@ bool funcCalled = NO;
         // [self showIndicator];
         if([[ShareableData sharedInstance].isConfromHomePage isEqualToString:@"1"])
         {
-            //NSLOG(@"in if");
+            ////NSLOG(@"in if");
             //[self dismissModalViewControllerAnimated:NO];
             @autoreleasepool {
                 
@@ -947,7 +947,7 @@ bool funcCalled = NO;
         }
         else
         {
-            //NSLOG(@"in else");
+            ////NSLOG(@"in else");
             @autoreleasepool {
                 
                 
@@ -1068,7 +1068,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-   // NSLog(@"json = %@",json);
+   // //NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1408,6 +1408,36 @@ bool funcCalled = NO;
         [super viewDidLoad];
       
             [self getTableDetails:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]; //Change
+                
+                dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    /*  [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemID forKey:@"OrderItemID"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemName forKey:@"OrderItemName"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemRate forKey:@"OrderItemRate"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderCatId forKey:@"OrderCatId"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].IsOrderCustomization forKey:@"IsOrderCustomization"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderCustomizationDetail forKey:@"OrderCustomizationDetail"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderSpecialRequest forKey:@"OrderSpecialRequest"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderItemQuantity forKey:@"OrderItemQuantity"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].confirmOrder forKey:@"confirmOrder"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].OrderId forKey:@"OrderId"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable1"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable2"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable3"];
+                     [[NSUserDefaults standardUserDefaults] setObject:[ShareableData sharedInstance].assignedTable1 forKey:@"assignedTable4"];*/
+                    NSArray *array=@[[ShareableData sharedInstance].OrderItemID,[ShareableData sharedInstance].OrderItemName,[ShareableData sharedInstance].OrderItemRate,[ShareableData sharedInstance].OrderCatId,[ShareableData sharedInstance].IsOrderCustomization,[ShareableData sharedInstance].OrderCustomizationDetail,[ShareableData sharedInstance].OrderSpecialRequest,[ShareableData sharedInstance].OrderItemQuantity,[ShareableData sharedInstance].confirmOrder];
+                    NSArray *array2 = @[[ShareableData sharedInstance].OrderId,[ShareableData sharedInstance].assignedTable1,[ShareableData sharedInstance].assignedTable2,[ShareableData sharedInstance].assignedTable3,[ShareableData sharedInstance].assignedTable4,[ShareableData sharedInstance].salesNo];;
+                    
+                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+                    NSString *libraryDirectory = [paths lastObject];
+                    NSString *location = [libraryDirectory stringByAppendingString:@"/orderarrays.plist"];
+                    NSString *location2 = [libraryDirectory stringByAppendingString:@"/orderstrings.plist"];
+                    [array writeToFile:location atomically:YES];
+                    [array2 writeToFile:location2 atomically:YES];
+                    DLog(@"Added to Temp");
+                    
+                    // [[NSUserDefaults standardUserDefaults] synchronize];
+                });
+
                 
         [self gotoDishMenuLIst2];
             }
@@ -1799,7 +1829,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1824,7 +1854,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];

@@ -389,7 +389,7 @@
             _drinkDiscription.text=(beverageView.beverageDescription)[index];
             _drinkDiscription.textColor=[UIColor whiteColor];
             
-         //   //NSLOG(@"drinkName===%@",drinkName.text);
+         //   ////NSLOG(@"drinkName===%@",drinkName.text);
             
 
             drinkName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
@@ -490,7 +490,7 @@
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(PagedFlowView *)flowView {
     if (pageNumber>=0) {
-        // //NSLOG(@"Scrolled to page # %d", pageNumber);
+        // ////NSLOG(@"Scrolled to page # %d", pageNumber);
         [self loadBeverageData:pageNumber];
 
         // [KDishImage.layer setShadowOpacity:1.0];
@@ -504,7 +504,7 @@
 //        drinkName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
 //        _drinkDiscription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:15];
 //        
-       // //NSLOG(@"KDishName.text====%@d", drinkName.text);
+       // ////NSLOG(@"KDishName.text====%@d", drinkName.text);
         
         
     }
@@ -532,7 +532,7 @@
 }
 
 - (UIView *)flowView:(PagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
-//    //NSLOG(@"DishImage====%d",[DishName count]);
+//    ////NSLOG(@"DishImage====%d",[DishName count]);
 //    drinkImage.image=(beverageView.beverageImageData)[pageNumber];
 
     
@@ -580,7 +580,7 @@
     
     
     if([orderScreenFlag isEqualToString:@"1"]){
-      //  //NSLOG(@"selectedItemIndex==%d",selectedItemIndex);
+      //  ////NSLOG(@"selectedItemIndex==%d",selectedItemIndex);
        // imageView.image = [(beverageView.beverageImageData) objectAtIndex:selectedItemIndex];
         imageView.image = KDishImage;
         drinkName.text=drinkNameFromOrderSummary;

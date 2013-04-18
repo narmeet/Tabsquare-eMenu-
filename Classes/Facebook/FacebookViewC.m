@@ -75,7 +75,7 @@
 
 -(void) fbDiDLogin 
 {
-    //NSLOG(@"fb did login");
+    ////NSLOG(@"fb did login");
 	_fbButton.isLoggedIn         = YES;
     tasktype=1;
     if(feedbackView)
@@ -86,7 +86,7 @@
         
     }
     else{
-        //NSLOG(@"Requesting graph api");
+        ////NSLOG(@"Requesting graph api");
         [_facebook requestWithGraphPath:@"me" andDelegate:self];
     }
    
@@ -113,7 +113,7 @@
     }
     else if(_favouriteView)
     {
-        //NSLOG(@"loading favorite view");
+        ////NSLOG(@"loading favorite view");
         [_favouriteView loadFBfriendList];
         //[finalFeedbackView loadFBfriendList];
     }
@@ -158,7 +158,7 @@
         else if (tasktype==3)
         {
             result=result[@"data"];
-            //NSLOG(@"print installed data = %@", result);
+            ////NSLOG(@"print installed data = %@", result);
             if ([result isKindOfClass:[NSArray class]]) 
             { 
                 [_favouriteView.fbfriendView.friendInstalled removeAllObjects];
@@ -306,12 +306,12 @@
                                             if(granted){
                                                 NSArray *accounts = [_accountStore accountsWithAccountType:facebookTypeAccount];
                                                 _facebookAccount = [accounts lastObject];
-                                                //NSLOG(@"Success");
+                                                ////NSLOG(@"Success");
                                                 
                                             }else{
                                                 // ouch
-                                                //NSLOG(@"Fail");
-                                                //NSLOG(@"Error: %@", error);
+                                                ////NSLOG(@"Fail");
+                                                ////NSLOG(@"Error: %@", error);
                                             }
                                         }];
 

@@ -103,7 +103,7 @@
     NSString *imageUrl = [NSString stringWithFormat:@"%@/img/product/%@", @"http://54.251.56.111/central",[NSString stringWithFormat:@"%@",data]];  // do not change
     
     [ShareableData sharedInstance].feedDishImage=imageUrl;
-    NSLog(@"imageUrl =====%@",imageUrl);
+    //NSLOG(@"imageUrl =====%@",imageUrl);
 }
 
 

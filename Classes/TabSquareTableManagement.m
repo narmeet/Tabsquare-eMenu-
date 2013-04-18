@@ -118,7 +118,7 @@ bool funcCalled = NO;
     //NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     //DLog(@"Data :%@",data);
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-   // NSLog(@"json = %@",json);
+   // //NSLOG(@"json = %@",json);
     
   
        NSArray* returnVal = [json objectForKey:@"returnVal"];
@@ -371,7 +371,7 @@ bool funcCalled = NO;
    
     
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    // NSLog(@"json = %@",json);
+    // //NSLOG(@"json = %@",json);
     
     
     NSArray* returnVal = [json objectForKey:@"returnVal"];
@@ -509,7 +509,7 @@ bool funcCalled = NO;
     if (funcCalled == NO){
        funcCalled = YES;
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self getTotalNumberofTable];
+       // [self getTotalNumberofTable];
          [self getTables];
        // [self getTableStatusView];
        // [TATables removeAllObjects];
@@ -934,7 +934,7 @@ bool funcCalled = NO;
         // [self showIndicator];
         if([[ShareableData sharedInstance].isConfromHomePage isEqualToString:@"1"])
         {
-            //NSLOG(@"in if");
+            ////NSLOG(@"in if");
             //[self dismissModalViewControllerAnimated:NO];
             @autoreleasepool {
                 
@@ -947,7 +947,7 @@ bool funcCalled = NO;
         }
         else
         {
-            //NSLOG(@"in else");
+            ////NSLOG(@"in else");
             @autoreleasepool {
                 
                 
@@ -1068,7 +1068,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-   // NSLog(@"json = %@",json);
+   // //NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1829,7 +1829,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1854,7 +1854,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];

@@ -220,7 +220,7 @@
     customizationView.requestView.text=@"";
     customizationView.swipeIndicator=@"1";
     customizationView.isView=@"main";
-    customizationView.view.frame=CGRectMake(12, 100, self.view.frame.size.width-24, self.view.frame.size.height);
+    customizationView.view.frame=CGRectMake(12, -250, self.view.frame.size.width-24, self.view.frame.size.height);
     [self.view addSubview:customizationView.view];
 }
 

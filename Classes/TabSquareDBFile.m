@@ -25,38 +25,7 @@ int enableClose = 1;
 	return singleton;
 }
 
-/*+ (sqlite3*) getNewDBConnection
-{
-	sqlite3 *newDBconnection;
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-	NSString *documentsDirectory = [paths[0]stringByAppendingPathComponent:@"DataBase"];
-	
-	NSString *path = [documentsDirectory stringByAppendingPathComponent:DatabaseName];
-	// Open the database. The database was prepared outside the application.
-	if (sqlite3_open([path UTF8String], &newDBconnection) == SQLITE_OK)
-	{
-		DLog(@"Database Successfully Opened :)");
-	} 
-	else 
-	{
-		DLog(@"Error in opening database :(");
-	}
-	return newDBconnection; 
-}*/
 
-/*- (void) openBundleDatabaseConnection
-{
-	NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DatabaseName];	// Open the database. The database was prepared outside the application.
-	if (sqlite3_open([defaultDBPath UTF8String], &dataBaseConnection) == SQLITE_OK)
-	{
-		DLog(@"Database Successfully Opened :)");
-	} 
-	else 
-	{
-		DLog(@"Error in opening database :(");
-	}
-	
-}*/
 
 
 -(void)GetBundleVersionNo
@@ -69,26 +38,7 @@ int enableClose = 1;
     for (id element in records){
         NewVersion = (NSString*)[element objectForKey:@"version"];
     }
-	/*[self openDatabaseConnection];
 	
-	NSString *query;
-	query = @"select version from  KinaraVersion  where id=1 ";  
-	const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *addStmt;
-	
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-			NewVersion= [NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
-		}
-	}
-	sqlite3_finalize(addStmt);
-	[self closeDatabaseConnection];*/
 	
 }
 
@@ -106,32 +56,6 @@ int enableClose = 1;
             OldVersion=@"";
         }
     }
-	/*[self openDatabaseConnection];
-	NSString *query;
-	query = @"select version from  KinaraVersion  where id=1 ";
-	const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *addStmt;
-	
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error:failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-			@try
-			{
-				OldVersion= [NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
-			}
-			@catch (NSException *exception) 
-			{
-				OldVersion=@"";
-			}
-		}
-	}
-	sqlite3_finalize(addStmt);
-	[self closeDatabaseConnection];*/
 	
 }
 
@@ -218,27 +142,7 @@ int enableClose = 1;
     for (id element in records){
         totalRecord = ((NSString*)[element objectForKey:@"count(*)"]).intValue;
     }
-    /*
-    [self openDatabaseConnection];
-    
-	const char *sql =[[NSString stringWithFormat:@"select count(*) from kinaraVersion"]cStringUsingEncoding:NSUTF8StringEncoding];	
-	sqlite3_stmt *addStmt = nil;		
-	
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-			totalRecord=sqlite3_column_int(addStmt, 0);
-		}
-		
-	}
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return totalRecord;
+    	return totalRecord;
 }
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -254,40 +158,11 @@ int enableClose = 1;
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
    // NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO Categories(id,name,sequence) VALUES (?,?,?);" withValues: Id,catName,catSeq, nil];
      NSString *statement = [NSString stringWithFormat:@"INSERT INTO Categories(id,name,sequence,'image',is_beverage) VALUES (%@,'%@',%@,'%@',%@);",Id,catName,catSeq,catImage,is_beverage];
-    //NSLOG(@"query Logg 1 = %@", statement);
+    ////NSLOG(@"query Logg 1 = %@", statement);
     
     [connection execute: statement];
-    //NSLOG(@"Logg 2");
-    
-    /*
-    [self openDatabaseConnection];
-    sqlite3_stmt *addStmt;
-    NSString *query;
-    query = @"INSERT INTO Categories(id,name,sequence) VALUES (?,?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	catid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,1,catid, -1, SQLITE_TRANSIENT);
-    
-    const char*	catname = [catName UTF8String];
-    sqlite3_bind_text(addStmt,2, catname, -1, SQLITE_TRANSIENT);
-    
-    const char*	catsequence = [catSeq UTF8String];
-    sqlite3_bind_text(addStmt,3,catsequence, -1, SQLITE_TRANSIENT);    
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt)){
-        
-        NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    }
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-    
-}
+    ////NSLOG(@"Logg 2");
+   }
 -(void)optimizeDB{
     [self openDatabaseConnection];
     if (sqlite3_exec(dataBaseConnection, "PRAGMA PAGE_SIZE=512;", NULL, NULL, NULL) != SQLITE_OK) {
@@ -361,22 +236,7 @@ int enableClose = 1;
     //NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"delete from Categories where id = ?;" withValues: catid, nil];
     NSString *statement = [NSString stringWithFormat:@"delete from Categories where id = %@;",catid ];
     [connection execute: statement];
-   /*
-	const char *sql =[[NSString stringWithFormat:@"delete from Categories where id=%@",catid]cStringUsingEncoding:NSUTF8StringEncoding];	
-	sqlite3_stmt *deleteStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    int success = sqlite3_step(deleteStmt);
-	DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];
-    */
-}
+  }
 
 
 -(void)updateCategoryRecordTable:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage is_beverage:(NSString *)is_beverage
@@ -388,38 +248,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"Update Categories set name = '%@',sequence = %@,image = '%@' , is_beverage = %@ where id = %@ ;",catName,catSeq, catImage,is_beverage,Id ];
     [connection execute: statement];
     
-    
-   /* NSString *query;
-    
-    query = @"Update Categories set name=?,sequence=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	catname = [catName UTF8String];
-    sqlite3_bind_text(addStmt,1, catname, -1, SQLITE_TRANSIENT);    
-    
-    const char*	catsequence = [catSeq UTF8String];
-    sqlite3_bind_text(addStmt,2,catsequence, -1, SQLITE_TRANSIENT);     
-    
-    const char*	catid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,3,catid, -1, SQLITE_TRANSIENT);
-    
-    int success = sqlite3_step(addStmt);
-    // DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-[self closeDatabaseConnection];*/
-}
+   }
 
 -(void)insertIntoSubCategoryTableWithRecord:(NSString*)Id SubcategoryName:(NSString*)subcatName categoryId:(NSString*)catId subCatSequence:(NSString*)catSeq displayType:(NSString*)display catImage:(NSString *)catImage
 {
@@ -430,38 +259,6 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"INSERT INTO SubCategories(id,name,category_id,sequence,display,'image') VALUES ( %@ , '%@' , %@ , %@ , %@, '%@') ;",Id,subcatName,catId,catSeq,display,catImage];
     [connection execute: statement];
     
-    /*
-    sqlite3_stmt *addStmt;
-    NSString *query;
-    query = @"INSERT INTO SubCategories(id,name,category_id,sequence,display) VALUES (?,?,?,?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	subid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,1,subid, -1, SQLITE_TRANSIENT);
-    
-    const char*	subcatname = [subcatName UTF8String];
-    sqlite3_bind_text(addStmt,2, subcatname, -1, SQLITE_TRANSIENT);
-    
-    const char*	categoryId = [catId UTF8String];
-    sqlite3_bind_text(addStmt,3, categoryId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	catsequence = [catSeq UTF8String];
-    sqlite3_bind_text(addStmt,4,catsequence, -1, SQLITE_TRANSIENT);       
-    
-    const char*	displayType = [display UTF8String];
-    sqlite3_bind_text(addStmt,5,displayType, -1, SQLITE_TRANSIENT);       
-    
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-        
-        NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
 }
 
 -(void)deleteSubCategoryRecordTable:(NSString*)Subcatid
@@ -471,20 +268,7 @@ int enableClose = 1;
      NSString *statement = [NSString stringWithFormat:@"delete from SubCategories where id = %@ ;",Subcatid ];
     [connection execute: statement];
     
-    
-	/*const char *sql =[[NSString stringWithFormat:@"delete from SubCategories where id=%@",Subcatid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    int success = sqlite3_step(deleteStmt);
-	DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];*/
+   
 }
 
 -(void)updateSubCategoryRecordTable:(NSString*)Id SubcategoryName:(NSString*)subcatName categoryId:(NSString*)catId subCatSequence:(NSString*)catSeq displayType:(NSString*)display catImage:(NSString *)catImage
@@ -497,42 +281,7 @@ int enableClose = 1;
      NSString *statement = [NSString stringWithFormat:@"Update SubCategories set name = '%@',category_id = %@,sequence = %@,display = %@,image = '%@' where id = %@ ;",subcatName,catId,catSeq,display,catImage,Id ];
     [connection execute: statement];
     
-  /*  NSString *query;
-    
-    query = @"Update SubCategories set name=?,category_id=?,sequence=?,display=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	subcatname = [subcatName UTF8String];
-    sqlite3_bind_text(addStmt,1, subcatname, -1, SQLITE_TRANSIENT);
-    
-    const char*	categoryId = [catId UTF8String];
-    sqlite3_bind_text(addStmt,2, categoryId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	catsequence = [catSeq UTF8String];
-    sqlite3_bind_text(addStmt,3,catsequence, -1, SQLITE_TRANSIENT);     
-    
-    const char*	displayType = [display UTF8String];
-    sqlite3_bind_text(addStmt,4,displayType, -1, SQLITE_TRANSIENT);       
-    
-    const char*	subid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,5,subid, -1, SQLITE_TRANSIENT);
-    
-    int success = sqlite3_step(addStmt);
-    // DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+  
     
 }
 
@@ -544,35 +293,7 @@ int enableClose = 1;
   //  NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO Sub_Sub_Categories(id,name,category_id,sub_category_id) VALUES ( ? , ? , ? , ? ) ;" withValues: Id,subcatName,catId,subcatId, nil];
     NSString *statement = [NSString stringWithFormat:@"INSERT INTO Sub_Sub_Categories(id,name,category_id,sub_category_id,sequence,'image') VALUES ( %@ , '%@' , %@ , %@ , %@, '%@') ;",Id,subcatName,catId,subcatId,seq,catImage];
     [connection execute: statement];
-    
-   /* sqlite3_stmt *addStmt;
-    NSString *query;
-    query = @"INSERT INTO Sub_Sub_Categories(id,name,category_id,sub_category_id) VALUES (?,?,?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	subid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,1,subid, -1, SQLITE_TRANSIENT);
-    
-    const char*	subcatname = [subcatName UTF8String];
-    sqlite3_bind_text(addStmt,2, subcatname, -1, SQLITE_TRANSIENT);
-    
-    const char*	categoryId = [catId UTF8String];
-    sqlite3_bind_text(addStmt,3, categoryId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	subcategoryid = [subcatId UTF8String];
-    sqlite3_bind_text(addStmt,4,subcategoryid, -1, SQLITE_TRANSIENT);       
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-        
-        NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-    
+      
 }
 
 -(void)deleteSubSubCategoryRecordTable:(NSString*)Subcatid
@@ -581,20 +302,7 @@ int enableClose = 1;
   //  NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"delete from Sub_Sub_Categories where id = ? ;" withValues: Subcatid, nil];
      NSString *statement = [NSString stringWithFormat:@"delete from Sub_Sub_Categories where id = %@ ;",Subcatid ];
     [connection execute: statement];
-    
-	/*const char *sql =[[NSString stringWithFormat:@"delete from Sub_Sub_Categories where id=%@",Subcatid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt = nil;		
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    int success = sqlite3_step(deleteStmt);
-	DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];*/
+   
 }
 
 -(void)updateSubSubCategoryRecordTable:(NSString*)Id SubSubcategoryName:(NSString*)subcatName categoryId:(NSString*)catId subCatId:(NSString*)subcatId sequence:(NSString*)seq catImage:(NSString *)catImage
@@ -606,39 +314,7 @@ int enableClose = 1;
      NSString *statement = [NSString stringWithFormat:@"Update Sub_Sub_Categories set name = '%@' ,category_id = %@ ,sub_category_id= %@ , sequence = %@,image = '%@' where id = %@ ;",subcatName,catId,subcatId,seq,catImage,Id ];
     [connection execute: statement];
     
-   /* NSString *query;
-    
-    query = @"Update Sub_Sub_Categories set name=?,category_id=?,sub_category_id=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	subcatname = [subcatName UTF8String];
-    sqlite3_bind_text(addStmt,1, subcatname, -1, SQLITE_TRANSIENT);
-    
-    const char*	categoryId = [catId UTF8String];
-    sqlite3_bind_text(addStmt,2, categoryId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	subCategoryId = [subcatId UTF8String];
-    sqlite3_bind_text(addStmt,3,subCategoryId, -1, SQLITE_TRANSIENT);     
-    
-    const char*	subid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,4,subid, -1, SQLITE_TRANSIENT);
-    
-    int success = sqlite3_step(addStmt);
-    // DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+   
 }
 
 
@@ -658,31 +334,7 @@ int enableClose = 1;
      NSString *statement = [NSString stringWithFormat:@"INSERT INTO KinaraVersion(version,datetime) VALUES ( '%@' , '%@' ) ;",versionName,dateString ];
     [connection execute: statement];
     
-	/*NSString *query;
-    NSString *versionName=@"Kinara1";
-	query = @"INSERT INTO KinaraVersion(version,datetime) VALUES (?,?)";  
-	const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}*/
-   /* NSDate *today=[NSDate date];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    NSString *dateString=[dateFormat stringFromDate:today];
-    const char*	version = [versionName UTF8String];
-	sqlite3_bind_text(addStmt,1, version, -1, SQLITE_TRANSIENT);
-    
-    const char*	date = [dateString UTF8String];
-	sqlite3_bind_text(addStmt,2, date, -1, SQLITE_TRANSIENT);    
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-		
-    NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+	
 }
 
 -(void)insertIntoDishTableWithRecord:(NSString*)DishId DishName:(NSString*)name DishImage:(NSString*)imagedata CategoryId:(NSString*)category SubCategoryId:(NSString*)subcategory price:(NSString*)price price2:(NSString*)price2 description:(NSString*) description customization:(NSString*)cust itemtags:(NSString*)tags DishSequence:(NSString*)dishSeq SubSubCatId:(NSString*)sub_sub_id
@@ -696,66 +348,7 @@ int enableClose = 1;
     
     [connection execute: statement];
     
-   /* sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    @try {
-        NSString *query;
-        query = @"INSERT INTO Dishes(id,name,image,category,sub_category,price,price2,description,customization,tags,sequence,sub_sub_category) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";  
-        const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-        
-        
-        if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-        {
-            DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-        }
-        
-        const char*	dishid = [DishId UTF8String];
-        sqlite3_bind_text(addStmt,1, dishid, -1, SQLITE_TRANSIENT);
-        
-        const char*	dishname = [name UTF8String];
-        sqlite3_bind_text(addStmt,2, dishname, -1, SQLITE_TRANSIENT);
-        
-        
-        sqlite3_bind_blob(addStmt, 3, [imagedata bytes], [imagedata length], NULL);
-        
-        const char*	cat = [category UTF8String];
-        sqlite3_bind_text(addStmt,4, cat, -1, SQLITE_TRANSIENT);
-        
-        const char*	subcat = [subcategory UTF8String];
-        sqlite3_bind_text(addStmt,5, subcat, -1, SQLITE_TRANSIENT);    
-        
-        const char*	dishprice = [price UTF8String];
-        sqlite3_bind_text(addStmt,6, dishprice, -1, SQLITE_TRANSIENT);
-        
-        const char*	dishprice2 = [price2 UTF8String];
-        sqlite3_bind_text(addStmt,7, dishprice2, -1, SQLITE_TRANSIENT);    
-        
-        const char*	dishdescription = [description UTF8String];
-        sqlite3_bind_text(addStmt,8, dishdescription, -1, SQLITE_TRANSIENT);
-        
-        const char*	custId = [cust UTF8String];
-        sqlite3_bind_text(addStmt,9,custId, -1, SQLITE_TRANSIENT);    
-        
-        const char*	itemtag = [tags UTF8String];
-        sqlite3_bind_text(addStmt,10,itemtag, -1, SQLITE_TRANSIENT);            
-        
-        const char*	dishsequence = [dishSeq UTF8String];
-        sqlite3_bind_text(addStmt,11,dishsequence, -1, SQLITE_TRANSIENT);         
-        
-        const char*	subsubid = [sub_sub_id UTF8String];
-        sqlite3_bind_text(addStmt,12,subsubid, -1, SQLITE_TRANSIENT); 
-        
-        if(SQLITE_DONE != sqlite3_step(addStmt))
-            
-        NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    }
-    @catch (NSException *exception) {
-        
-    }
-    @finally {
-        sqlite3_finalize(addStmt);
-    }
-    [self closeDatabaseConnection];*/
+   
 }
 
 -(void)deleteDishRecordTable:(NSString*)Dishid
@@ -765,19 +358,7 @@ int enableClose = 1;
      NSString *statement = [NSString stringWithFormat:@"delete from Dishes where id = '%@' ;",Dishid ];
     [connection execute: statement];
     
-	/*const char *sql =[[NSString stringWithFormat:@"delete from Dishes where id=%@",Dishid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    sqlite3_step(deleteStmt);
-	//DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-[self closeDatabaseConnection];*/
+
 }
 
 -(void)updateDishImageRecordTable:(NSString*)DishId DishName:(NSString*)name DishImage:(NSString*)imagedata CategoryId:(NSString*)category SubCategoryId:(NSString*)subcategory price:(NSString*)price price2:(NSString*)price2 description:(NSString*)description customization:(NSString*)cust itemtags:(NSString*)tag DishSequence:(NSString*)dishSeq SubSubCatId:(NSString*)sub_sub_id
@@ -790,68 +371,7 @@ int enableClose = 1;
     tag = [tag stringByReplacingOccurrencesOfString:@"'" withString:@""];
      NSString *statement = [NSString stringWithFormat:@"Update Dishes set name = '%@',image = '%@',category= '%@' ,sub_category = '%@',price = '%@',price2 = '%@',description = '%@',customization = '%@',tags = '%@',sequence = '%@',sub_sub_category = '%@' where id = '%@' ;",name,imagedata,category,subcategory,price,price2,description,cust,tag,dishSeq,sub_sub_id,DishId ];
     [connection execute: statement];
-    
-   /* NSString *query;
-    
-    query = @"Update Dishes set name=?,image=?,category=?,sub_category=?,price=?,price2=?,description=?,customization=?,tags=?,sequence=?,sub_sub_category=? where  id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	dishname = [name UTF8String];
-    sqlite3_bind_text(addStmt,1, dishname, -1, SQLITE_TRANSIENT);
-    
-    
-    sqlite3_bind_blob(addStmt, 2, [imagedata bytes], [imagedata length], NULL);
-    
-    const char*	cat = [category UTF8String];
-    sqlite3_bind_text(addStmt,3, cat, -1, SQLITE_TRANSIENT);
-    
-    const char*	subcat = [subcategory UTF8String];
-    sqlite3_bind_text(addStmt,4, subcat, -1, SQLITE_TRANSIENT);    
-    
-    const char*	dishprice = [price UTF8String];
-    sqlite3_bind_text(addStmt,5, dishprice, -1, SQLITE_TRANSIENT);
-    
-    const char*	dishprice2 = [price2 UTF8String];
-    sqlite3_bind_text(addStmt,6, dishprice2, -1, SQLITE_TRANSIENT);    
-    
-    const char*	dishdescription = [description UTF8String];
-    sqlite3_bind_text(addStmt,7, dishdescription, -1, SQLITE_TRANSIENT);
-    
-    const char*	custId = [cust UTF8String];
-    sqlite3_bind_text(addStmt,8,custId, -1, SQLITE_TRANSIENT);    
-
-    const char*	itemtag = [tag UTF8String];
-    sqlite3_bind_text(addStmt,9,itemtag, -1, SQLITE_TRANSIENT);       
-    
-    const char*	dishsequence = [dishSeq UTF8String];
-    sqlite3_bind_text(addStmt,10,dishsequence, -1, SQLITE_TRANSIENT);             
-    
-    const char*	subsubid = [sub_sub_id UTF8String];
-    sqlite3_bind_text(addStmt,11,subsubid, -1, SQLITE_TRANSIENT); 
-    
-    const char*	dishid = [DishId UTF8String];
-    sqlite3_bind_text(addStmt,12, dishid, -1, SQLITE_TRANSIENT);
-    
-    
-    
-    
-    int success= sqlite3_step(addStmt);
-    
-    //DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+  
 }
 
 -(void)updateDishRecordTable:(NSString*)DishId DishName:(NSString*)name  CategoryId:(NSString*)category SubCategoryId:(NSString*)subcategory price:(NSString*)price price2:(NSString*)price2 description:(NSString*)description customization:(NSString*)cust itemtags:(NSString*)tag DishSequence:(NSString*)dishSeq SubSubCatId:(NSString*)sub_sub_id
@@ -865,62 +385,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"Update Dishes set name = '%@',category= '%@' ,sub_category = '%@',price = '%@',price2 = '%@',description = '%@',customization = '%@',tags = '%@',sequence = '%@',sub_sub_category = '%@' where id = '%@' ;",name,category,subcategory,price,price2,description,cust,tag,dishSeq,sub_sub_id,DishId ];
     [connection execute: statement];
     
-    
-   /* NSString *query;
-    
-    query = @"Update Dishes set name=?,category=?,sub_category=?,price=?,price2=?,description=?,customization=?,tags=?,sequence=?,sub_sub_category=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt ;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	dishname = [name UTF8String];
-    sqlite3_bind_text(addStmt,1, dishname, -1, SQLITE_TRANSIENT);
-    
-    const char*	cat = [category UTF8String];
-    sqlite3_bind_text(addStmt,2, cat, -1, SQLITE_TRANSIENT);
-    
-    const char*	subcat = [subcategory UTF8String];
-    sqlite3_bind_text(addStmt,3, subcat, -1, SQLITE_TRANSIENT);    
-    
-    const char*	dishprice = [price UTF8String];
-    sqlite3_bind_text(addStmt,4, dishprice, -1, SQLITE_TRANSIENT);
-    
-    const char*	dishprice2 = [price2 UTF8String];
-    sqlite3_bind_text(addStmt,5, dishprice2, -1, SQLITE_TRANSIENT);    
-    
-    const char*	dishdescription = [description UTF8String];
-    sqlite3_bind_text(addStmt,6, dishdescription, -1, SQLITE_TRANSIENT);
-    
-    const char*	custId = [cust UTF8String];
-    sqlite3_bind_text(addStmt,7,custId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	itemtag = [tag UTF8String];
-    sqlite3_bind_text(addStmt,8,itemtag, -1, SQLITE_TRANSIENT);           
-    
-    const char*	dishsequence = [dishSeq UTF8String];
-    sqlite3_bind_text(addStmt,9,dishsequence, -1, SQLITE_TRANSIENT);  
-    
-    const char*	subsubid = [sub_sub_id UTF8String];
-    sqlite3_bind_text(addStmt,10,subsubid, -1, SQLITE_TRANSIENT); 
-    
-    const char*	dishid = [DishId UTF8String];
-    sqlite3_bind_text(addStmt,11, dishid, -1, SQLITE_TRANSIENT);
-    
-    int success= sqlite3_step(addStmt);
-    
-    //DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+ 
 }
 
 -(void)insertIntoCustomizationTableWithRecord:(NSString*)custId CustName:(NSString*)name Custheader:(NSString*)headertxt custType:(NSString*)type totalSelection:(NSString*)selection 
@@ -931,38 +396,7 @@ int enableClose = 1;
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO Customization(id,name,header_text,type,no_of_selection) VALUES ( ? , ? , ? , ? , ? ) ;" withValues: custId,name,headertxt,type,selection, nil];
     [connection execute: statement];
-    
-  /*  sqlite3_stmt *addStmt;
-    NSString *query;
-    query = @"INSERT INTO Customization(id,name,header_text,type,no_of_selection) VALUES (?,?,?,?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	custid = [custId UTF8String];
-    sqlite3_bind_text(addStmt,1, custid, -1, SQLITE_TRANSIENT);
-    
-    const char*	custname = [name UTF8String];
-    sqlite3_bind_text(addStmt,2, custname, -1, SQLITE_TRANSIENT);
-    
-    const char*	header = [headertxt UTF8String];
-    sqlite3_bind_text(addStmt,3,header, -1, SQLITE_TRANSIENT);
-    
-    const char*	custtype = [type UTF8String];
-    sqlite3_bind_text(addStmt,4, custtype, -1, SQLITE_TRANSIENT);    
-    
-    const char*	totalselection = [selection UTF8String];
-    sqlite3_bind_text(addStmt,5, totalselection, -1, SQLITE_TRANSIENT);
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-        
-    NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    sqlite3_finalize(addStmt);
-[self closeDatabaseConnection];*/
+   
 }
 
 -(void)deleteCustomizationRecordTable:(NSString*)Custid
@@ -973,19 +407,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"delete from Customization where id = '%@' ;",Custid ];
     [connection execute: statement];
     
-	/*const char *sql =[[NSString stringWithFormat:@"delete from Customization where id=%@",Custid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    sqlite3_step(deleteStmt);
-	//DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];*/
+	
 }
 
 -(void)updateCustomizationRecordTable:(NSString*)custId CustName:(NSString*)name Custheader:(NSString*)headertxt custType:(NSString*)type totalSelection:(NSString*)selection 
@@ -996,43 +418,7 @@ int enableClose = 1;
     headertxt = [headertxt stringByReplacingOccurrencesOfString:@"'" withString:@""];
     NSString *statement = [NSString stringWithFormat:@"Update Customization set name = '%@' ,header_text = '%@' ,type = '%@' ,no_of_selection = '%@' where id = '%@' ;",name,headertxt,type,selection,custId ];
     [connection execute: statement];
-    
-   /* NSString *query;
-    
-    query = @"Update Customization set name=?,header_text=?,type=?,no_of_selection=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	custname = [name UTF8String];
-    sqlite3_bind_text(addStmt,1, custname, -1, SQLITE_TRANSIENT);
-    
-    const char*	header = [headertxt UTF8String];
-    sqlite3_bind_text(addStmt,2,header, -1, SQLITE_TRANSIENT);
-    
-    const char*	custtype = [type UTF8String];
-    sqlite3_bind_text(addStmt,3, custtype, -1, SQLITE_TRANSIENT);    
-    
-    const char*	totalselection = [selection UTF8String];
-    sqlite3_bind_text(addStmt,4, totalselection, -1, SQLITE_TRANSIENT);    
-
-    const char*	custid = [custId UTF8String];
-    sqlite3_bind_text(addStmt,5, custid, -1, SQLITE_TRANSIENT);    
-    
-    int success = sqlite3_step(addStmt);
-    //DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+   
 }
 
 -(void)insertIntoOptionTableWithRecord:(NSString*)optionId optionName:(NSString*)name optionprice:(NSString*)price custId:(NSString*)custid optionQty:(NSString*)qty 
@@ -1043,38 +429,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"INSERT INTO CustOptions(id,name,price,customization_id,quantity) VALUES ( '%@' , '%@' , '%@' , '%@' , '%@' ) ;",optionId,name,price,custid,qty ];//, [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO CustOptions(id,name,price,customization_id,quantity) VALUES ( ? , ? , ? , ? , ? ) ;" withValues: optionId,name,price,custid,qty, nil];
     [connection execute: statement];
     
-    
-  /*  sqlite3_stmt *addStmt ;
-    NSString *query;
-    query = @"INSERT INTO CustOptions(id,name,price,customization_id,quantity) VALUES (?,?,?,?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    [self openDatabaseConnection];
-    
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	optionid = [optionId UTF8String];
-    sqlite3_bind_text(addStmt,1, optionid, -1, SQLITE_TRANSIENT);
-    
-    const char*	optionname = [name UTF8String];
-    sqlite3_bind_text(addStmt,2, optionname, -1, SQLITE_TRANSIENT);
-    
-    const char*	optionprice = [price UTF8String];
-    sqlite3_bind_text(addStmt,3,optionprice, -1, SQLITE_TRANSIENT);
-    
-    const char*	custId = [custid UTF8String];
-    sqlite3_bind_text(addStmt,4, custId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	quantity = [qty UTF8String];
-    sqlite3_bind_text(addStmt,5, quantity, -1, SQLITE_TRANSIENT);
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-        
-    NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+   
 }
 
 -(void)deleteOptionRecordTable:(NSString*)optionid
@@ -1085,19 +440,6 @@ int enableClose = 1;
     [connection execute: statement];
     
     
-	/*const char *sql =[[NSString stringWithFormat:@"delete from CustOptions where id=%@",optionid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    sqlite3_step(deleteStmt);
-	//DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];*/
 }
 
 -(void)updateOptionRecordTable:(NSString*)optionId optionName:(NSString*)name optionprice:(NSString*)price custId:(NSString*)custid optionQty:(NSString*)qty 
@@ -1109,42 +451,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"Update CustOptions set name = '%@' ,price = '%@' ,customization_id = '%@' ,quantity = '%@' where id = '%@' ;",name,price,custid,qty,optionId ];
     [connection execute: statement];
     
- /*   NSString *query;
-    
-    query = @"Update CustOptions set name=?,price=?,customization_id=?,quantity=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	optionname = [name UTF8String];
-    sqlite3_bind_text(addStmt,1, optionname, -1, SQLITE_TRANSIENT);
-    
-    const char*	optionprice = [price UTF8String];
-    sqlite3_bind_text(addStmt,2,optionprice, -1, SQLITE_TRANSIENT);
-    
-    const char*	custId = [custid UTF8String];
-    sqlite3_bind_text(addStmt,3, custId, -1, SQLITE_TRANSIENT);    
-    
-    const char*	quantity = [qty UTF8String];
-    sqlite3_bind_text(addStmt,4, quantity, -1, SQLITE_TRANSIENT);
-    
-    const char*	optionid = [optionId UTF8String];
-    sqlite3_bind_text(addStmt,5, optionid, -1, SQLITE_TRANSIENT);
-    
-    int success = sqlite3_step(addStmt);
-   // DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+ 
 }
 
 
@@ -1156,28 +463,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"INSERT INTO Containers(id,name) VALUES ( '%@' , '%@' ) ;",containerId,name ];
    [connection execute: statement];
     
-   /* sqlite3_stmt *addStmt ;
-    NSString *query;
-    query = @"INSERT INTO Containers(id,name) VALUES (?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    [self openDatabaseConnection];
-    
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	contid = [containerId UTF8String];
-    sqlite3_bind_text(addStmt,1, contid, -1, SQLITE_TRANSIENT);
-    
-    const char*	contname = [name UTF8String];
-    sqlite3_bind_text(addStmt,2, contname, -1, SQLITE_TRANSIENT);
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-        
-    NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+  
     
 }
 
@@ -1189,19 +475,7 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"delete from Containers where id = '%@' ;",Containerid ];
     [connection execute: statement];
     
-	/*const char *sql =[[NSString stringWithFormat:@"delete from Containers where id=%@",Containerid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    sqlite3_step(deleteStmt);
-	//DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];*/
+	
 }
 
 -(void)updateContainersRecordTable:(NSString*)containerId ContainerName:(NSString*)name
@@ -1214,33 +488,7 @@ int enableClose = 1;
       NSString *statement = [NSString stringWithFormat:@"Update Containers set name = '%@' where id = '%@' ;",name,containerId ];
     [connection execute: statement];
     
-   /*NSString *query;
-    
-    query = @"Update Containers set name=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	containername = [name UTF8String];
-    sqlite3_bind_text(addStmt,1,containername, -1, SQLITE_TRANSIENT);
-    
-    const char*	containerid = [containerId UTF8String];
-    sqlite3_bind_text(addStmt,2,containerid, -1, SQLITE_TRANSIENT);
-    
-    int success = sqlite3_step(addStmt);
-    //DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+
 }
 
 
@@ -1252,33 +500,6 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"INSERT INTO BeverageContainers(id,beverage_id,container_id,price) VALUES ( '%@' , '%@' , '%@' , '%@' ) ;",Id,beverageid,containerid,price ];
     [connection execute: statement];
     
-    /*sqlite3_stmt *addStmt;
-    NSString *query;
-    query = @"INSERT INTO BeverageContainers(id,beverage_id,container_id,price) VALUES (?,?,?,?)";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	bevid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,1,bevid, -1, SQLITE_TRANSIENT);
-    
-    const char*	beverageId = [beverageid UTF8String];
-    sqlite3_bind_text(addStmt,2, beverageId, -1, SQLITE_TRANSIENT);
-    
-    const char*	containerId = [containerid UTF8String];
-    sqlite3_bind_text(addStmt,3,containerId, -1, SQLITE_TRANSIENT);
-    
-    const char*	bevprice = [price UTF8String];
-    sqlite3_bind_text(addStmt,4, bevprice, -1, SQLITE_TRANSIENT);    
-    
-    if(SQLITE_DONE != sqlite3_step(addStmt))
-        
-        NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
 }
 
 -(void)deleteBeverageContainerRecordTable:(NSString*)bevid
@@ -1289,19 +510,7 @@ int enableClose = 1;
     [connection execute: statement];
     
     
-	/*const char *sql =[[NSString stringWithFormat:@"delete from BeverageContainers where id=%@",bevid]cStringUsingEncoding:NSUTF8StringEncoding];
-	sqlite3_stmt *deleteStmt;		
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &deleteStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-    
-    int success = sqlite3_step(deleteStmt);
-	DLog(@"success full deleted==%d",success);
-	sqlite3_reset(deleteStmt);	
-	sqlite3_finalize(deleteStmt);
-    [self closeDatabaseConnection];*/
+
 }
 
 -(void)updateBeverageContainerRecordTable:(NSString*)Id beverageId:(NSString*)beverageid containerId:(NSString*)containerid price:(NSString*)price  
@@ -1311,41 +520,7 @@ int enableClose = 1;
    // NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"Update BeverageContainers set beverage_id = ? ,container_id = ? ,price = ? where id = ? ;" withValues: beverageid,containerid,price,Id, nil];
     NSString *statement = [NSString stringWithFormat:@"Update BeverageContainers set beverage_id = '%@' ,container_id = '%@' ,price = '%@' where id = '%@' ;",beverageid,containerid,price,Id ];
     [connection execute: statement];
-    
-   /* NSString *query;
-    
-    query = @"Update BeverageContainers set beverage_id=?,container_id=?,price=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	beverageId = [beverageid UTF8String];
-    sqlite3_bind_text(addStmt,1, beverageId, -1, SQLITE_TRANSIENT);
-    
-    const char*	containerId = [containerid UTF8String];
-    sqlite3_bind_text(addStmt,2,containerId, -1, SQLITE_TRANSIENT);
-    
-    const char*	bevprice = [price UTF8String];
-    sqlite3_bind_text(addStmt,3, bevprice, -1, SQLITE_TRANSIENT);    
-    
-    const char*	bevid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,4,bevid, -1, SQLITE_TRANSIENT);
-    
-    
-    int success = sqlite3_step(addStmt);
-   // DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+   
 }
 
 -(void)insertIntoHomeImageTableWithRecord:(NSString*)imageid imageName:(NSString*)name imageData:(NSData*)imagedata 
@@ -1355,39 +530,7 @@ int enableClose = 1;
     NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO HomeImage(id,name,image) VALUES ( ? , ? , ? ) ;" withValues: imageid,name,imagedata, nil];
     [connection execute: statement];
     
-   /* sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    @try {
-        NSString *query;
-        query = @"INSERT INTO HomeImage(id,name,image) VALUES (?,?,?)";  
-        const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-        
-        
-        if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-        {
-            DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-        }
-        
-        const char*	imageId = [imageid UTF8String];
-        sqlite3_bind_text(addStmt,1, imageId, -1, SQLITE_TRANSIENT);
-        
-        const char*	imagename = [name UTF8String];
-        sqlite3_bind_text(addStmt,2, imagename, -1, SQLITE_TRANSIENT);
-        
-        sqlite3_bind_blob(addStmt, 3, [imagedata bytes], [imagedata length], NULL);
-        
-        if(SQLITE_DONE != sqlite3_step(addStmt))
-            
-            NSAssert1(0, @"Error while inserting data. '%s'", sqlite3_errmsg(dataBaseConnection));
-    }
-    @catch (NSException *exception) 
-    {
-        
-    }
-    @finally {
-        sqlite3_finalize(addStmt);
-    }
-    [self closeDatabaseConnection];*/
+ 
 }
 
 -(void)updateHomeImageRecordTable:(NSString*)Id imageData:(NSData*)imagedata
@@ -1396,32 +539,7 @@ int enableClose = 1;
     NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"Update HomeImage set image = ? where id = ? ;" withValues: imagedata,Id, nil];
     [connection execute: statement];
     
-    
-   /* NSString *query;
-    
-    query = @"Update HomeImage set image=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    sqlite3_bind_blob(addStmt, 1, [imagedata bytes], [imagedata length], NULL);
-    
-    const char*	imageid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,2,imageid, -1, SQLITE_TRANSIENT);
-    
-    int success = sqlite3_step(addStmt);
-   
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+  
 }
 -(void)insertHomeCategoryRecordTable:homeid categoryId:(NSString*)catId subcategoryId:(NSString*)SubcatId
 {
@@ -1430,35 +548,7 @@ int enableClose = 1;
     NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"insert into HomePage (id,category,subcategory) values ( ? , ? , ? );" withValues: homeid,catId,SubcatId, nil];
     [connection execute: statement];
     
-    /* NSString *query;
-     
-     query = @"Update HomePage set category=?,subcategory=? where id=?";
-     const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-     sqlite3_stmt *addStmt;
-     [self openDatabaseConnection];
-     if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK)
-     {
-     DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-     }
-     
-     const char*	catid = [catId UTF8String];
-     sqlite3_bind_text(addStmt,1,catid, -1, SQLITE_TRANSIENT);
-     
-     const char*	subcatid = [SubcatId UTF8String];
-     sqlite3_bind_text(addStmt,2,subcatid, -1, SQLITE_TRANSIENT);
-     
-     const char*	homeid = [Id UTF8String];
-     sqlite3_bind_text(addStmt,3,homeid, -1, SQLITE_TRANSIENT);
-     
-     int success = sqlite3_step(addStmt);
-     
-     sqlite3_finalize(addStmt);
-     
-     if(success == SQLITE_ERROR)
-     {
-     NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-     }
-     [self closeDatabaseConnection];*/
+  
 }
 
 -(void)updateHomeCategoryRecordTable:(NSString*)Id categoryId:(NSString*)catId subcategoryId:(NSString*)SubcatId
@@ -1467,36 +557,7 @@ int enableClose = 1;
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"Update HomePage set category = ? ,subcategory = ? where id = ? ;" withValues: catId,SubcatId,Id, nil];
     [connection execute: statement];
-    
-   /* NSString *query;
-    
-    query = @"Update HomePage set category=?,subcategory=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    const char*	catid = [catId UTF8String];
-    sqlite3_bind_text(addStmt,1,catid, -1, SQLITE_TRANSIENT);
-    
-    const char*	subcatid = [SubcatId UTF8String];
-    sqlite3_bind_text(addStmt,2,subcatid, -1, SQLITE_TRANSIENT);
-    
-    const char*	homeid = [Id UTF8String];
-    sqlite3_bind_text(addStmt,3,homeid, -1, SQLITE_TRANSIENT);
-   
-    int success = sqlite3_step(addStmt);
-    
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
+  
 }
 
 -(NSMutableArray*)getHomeCategoryData:(NSString*)HomeId
@@ -1524,34 +585,7 @@ int enableClose = 1;
     
     
     
-    
-    /*const char *sql =[[NSString stringWithFormat:@"SELECT * FROM HomePage where id=%@",HomeId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *HomeCategoryData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-            NSMutableDictionary *homecatDic=[NSMutableDictionary dictionary];
-            NSString *catid=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];	
-            NSString *subid=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)];
-           
-            
-            homecatDic[@"cat"] = catid;
-            homecatDic[@"subcat"] = subid;
-            [HomeCategoryData addObject:homecatDic];
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
-	return HomeCategoryData;
+   	return HomeCategoryData;
 }
 
 
@@ -1572,27 +606,7 @@ int enableClose = 1;
     }
     
     
-   /* const char *sql =[[NSString stringWithFormat:@"select image from HomeImage where id=%@",imageId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSData *imageData;
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-        {
-           imageData = [[NSData alloc] initWithBytes:sqlite3_column_blob(addStmt, 0) length:sqlite3_column_bytes(addStmt,0)]; 
-                              
-        }
-            
-            
-    }
-        
-    sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+  
 	return imageData;
 }
 
@@ -1601,55 +615,13 @@ int enableClose = 1;
 -(void)updateKinaraVersionDate:(NSString *)time
 {
     int versionid=1;
-    
-    //NSDate *today=[NSDate date];
-    // NSDate *curr=[today dateByAddingTimeInterval:9000];
-    
-    /*
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    NSString *dateString=[dateFormat stringFromDate:today];
-    // const char*	date = [dateString UTF8String];
-    */
+   
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     
     NSString *statement = [NSString stringWithFormat:@"Update KinaraVersion set datetime = '%@' where id = %d ;",time,versionid];//[ZIMSqlPreparedStatement preparedStatement: @"Update KinaraVersion set datetime = '?' where id = ? ;" withValues: dateString,1, nil];
     [connection execute: statement];
 
     
-    /*NSString *query;
-    int versionid=1;
-    query = @"Update KinaraVersion set datetime=? where id=?";  
-    const char *sql = [query cStringUsingEncoding:NSUTF8StringEncoding];
-    sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-    
-    if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-    {
-        DLog(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    
-    NSDate *today=[NSDate date];
-   // NSDate *curr=[today dateByAddingTimeInterval:9000];
-   
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    NSString *dateString=[dateFormat stringFromDate:today];
-    const char*	date = [dateString UTF8String];
-	sqlite3_bind_text(addStmt,1, date, -1, SQLITE_TRANSIENT);        
-    sqlite3_bind_int(addStmt, 2, versionid);
-    
-    int success = sqlite3_step(addStmt);
-    
-    //DLog(@"success full inserted==%d",success);
-    // Because we want to reuse the addStmt, we "reset" it instead of "finalizing" it.
-    sqlite3_finalize(addStmt);
-    
-    if(success == SQLITE_ERROR) 
-    {
-        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-    }
-    [self closeDatabaseConnection];*/
 }
 
 
@@ -1670,26 +642,7 @@ int enableClose = 1;
         
         
     }
-    
-   /* NSString* datetime=@"";
-    const char *sql =[[NSString stringWithFormat:@"select datetime from KinaraVersion"]cStringUsingEncoding:NSUTF8StringEncoding];	
-	sqlite3_stmt *addStmt ;
-	[self openDatabaseConnection];
-	
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-			datetime=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
-        }
-    }
-   
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+  
     return datetime;
 }
 
@@ -1716,37 +669,7 @@ int enableClose = 1;
 
     }
     
-    /*
-    const char *sql =[[NSString stringWithFormat:@"select * from CustOptions where customization_id in(%@)",custId]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *optionData=[[NSMutableArray alloc]init];
     
-	sqlite3_stmt *addStmt;
-    [self openDatabaseConnection];
-	
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-			NSString *optionId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-            NSString *optionName=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-            NSString *optionPrice=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)];
-            NSString *optionCustid=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-            NSString *optionQuantity=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-             NSMutableDictionary *optionDic=[NSMutableDictionary dictionary];           
-            optionDic[@"id"] = optionId;
-            optionDic[@"name"] = optionName;
-            optionDic[@"price"] = optionPrice;
-            optionDic[@"customisation_id"] = optionCustid;
-            optionDic[@"quantity"] = optionQuantity;
-            [optionData addObject:optionDic];
-        }
-	}
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
 	return optionData;
 }
 
@@ -1782,54 +705,7 @@ int enableClose = 1;
         //[customization addObject:cust];
         [finalCust addObject:cust];
     }
-    /*
-    const char *sql =[[NSString stringWithFormat:@"select * from Customization where id in(%@)",custId]cStringUsingEncoding:NSUTF8StringEncoding];
-	//NSMutableArray *custData=[[NSMutableArray alloc]init];
-    NSMutableArray *finalCust=[[NSMutableArray alloc]init];
-  	sqlite3_stmt *addStmt ;
-    [self openDatabaseConnection];
-	
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-        
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-           // NSMutableArray *customization=[[NSMutableArray alloc]init];
-           // [custData removeAllObjects];
-			NSString *custId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-            NSString *custname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-            NSString *custheader=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,2)];
-            NSString *custtype=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,3)];
-            NSString *custselection=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,4)];
-            NSMutableDictionary *custDic=[NSMutableDictionary dictionary];
-            custDic[@"id"] = custId;
-            custDic[@"name"] = custname;
-            custDic[@"header_text"] = custheader;
-            custDic[@"type"] = custtype;
-            custDic[@"no_of_selection"] = custselection;
-            enableClose = 0;
-          //  [custData addObject:custDic];
-             NSMutableArray *optionData=[self getOptionData:custId];
-            enableClose = 1;
-            NSMutableDictionary *cust=[NSMutableDictionary dictionary];
-            cust[@"Customisation"] = custDic;
-            cust[@"Option"] = optionData;
-            
-            //[customization addObject:cust];
-           [finalCust addObject:cust];         
-            //DLog(@"%@",finalCust);
-        }
-        
-        
-        
-        
-	}
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
+    
 	return finalCust;
 }
 
@@ -1879,7 +755,7 @@ int enableClose = 1;
             // enableClose = 1;
             
             NSString *tag_str = (NSString *)[element objectForKey:@"tags"];
-            ////NSLOG(@"tag str = %@", tag_str);
+            //////NSLOG(@"tag str = %@", tag_str);
             /*==========Fetching dish tag items============*/
             NSMutableArray *tag_array = [[NSMutableArray alloc] init];
             NSMutableArray *tag_names = [[NSMutableArray alloc] init];
@@ -1982,7 +858,7 @@ int enableClose = 1;
         NSMutableArray *tag_names = [[NSMutableArray alloc] init];
         
         if(tag_str != NULL && ![tag_str isEqualToString:@"<null>"] && [tag_str length] > 0) {
-            ////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
+            //////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
             
             NSString *val = [NSString stringWithFormat:@"0%@0", tag_str];
             ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
@@ -2137,19 +1013,25 @@ int enableClose = 1;
 
 -(NSMutableArray*)getDishKeyData:(NSString*)key
 {
-    
     char c = '%';
     NSString *sp_char = [NSString stringWithFormat:@"%c", c];
     
+        
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
-    NSString *statement = [NSString stringWithFormat:@"SELECT * FROM 'dishes' WHERE %@ LIKE '%@%@%@' OR %@ LIKE '%@%@%@' OR tags LIKE '%@,' ||(SELECT id FROM 'tags' WHERE %@ LIKE '%@%@' LIMIT 1) || ',%@' GROUP BY category ;", @"name", sp_char, key, sp_char, @"description", sp_char, key, sp_char, sp_char, @"name", key, sp_char, sp_char];
+    NSString *statement = [NSString stringWithFormat:@"SELECT * FROM 'dishes' WHERE %@ LIKE '%@%@%@' OR %@ LIKE '%@%@%@' OR tags LIKE '%@,' ||(SELECT id FROM 'tags' WHERE %@ LIKE '%@%@' LIMIT 1) || ',%@' ORDER BY category ;", @"name", sp_char, key, sp_char, @"description", sp_char, key, sp_char, sp_char, @"name", key, sp_char, sp_char];
+    
+    
     
     if([key length] == 0 && [[TabSquareCommonClass getValueInUserDefault:BEST_SELLERS] intValue] == 1 && [ShareableData bestSellersON]) {
         statement = [NSString stringWithFormat:@"SELECT *FROM dishes WHERE tags LIKE '%@,' ||(SELECT id FROM tags WHERE name LIKE '%@Bestseller%@' LIMIT 1) || ',%@'", sp_char, sp_char, sp_char, sp_char];
     }
     
     NSArray *records = [connection query: statement];
-   NSMutableArray *dishData=[[NSMutableArray alloc]init];
+    ////NSLOG(@"Search records = %@", records);
+    
+    NSMutableArray *dishData=[[NSMutableArray alloc]init];
+    ////NSLOG(@"dish data searched = %@", records);
+    
     for (id element in records){
         //NSString *optionId=(NSString*)[element objectForKey:@"id"];//[NSString
         // NSMutableDictionary *SkuDic=[NSMutableDictionary dictionary];
@@ -2169,17 +1051,45 @@ int enableClose = 1;
         NSString *dishprice2=(NSString*)[element objectForKey:@"price2"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,6)];
         NSString *dishdescription=(NSString*)[element objectForKey:@"description"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,7)];
         NSString *dishcustomization=(NSString*)[element objectForKey:@"customization"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
-      //  enableClose =0;
+        //  enableClose =0;
         if ([dishcustomization isEqualToString:@"<null>"]) {
             dishcustomization=@"";
         }
         NSMutableArray *customizationdata= [self getCustomizationData:dishcustomization];
-       // enableClose = 1;
+        // enableClose = 1;
         NSString *cust=@"0";
         if(![dishcustomization isEqualToString:@""])
         {
             cust=@"1";
         }
+        
+        
+        NSString *tag_str = (NSString *)[element objectForKey:@"tags"];
+        //////NSLOG(@"tag str = %@", tag_str);
+        /*==========Fetching dish tag items============*/
+        NSMutableArray *tag_array = [[NSMutableArray alloc] init];
+        NSMutableArray *tag_names = [[NSMutableArray alloc] init];
+        
+        if(tag_str != NULL && ![tag_str isEqualToString:@"<null>"] && [tag_str length] > 0) {
+            
+            NSString *val = [NSString stringWithFormat:@"0%@0", tag_str];
+            
+            ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
+            NSString *query = [NSString stringWithFormat:@"select icon, name FROM tags WHERE id IN(%@) and icon!='' AND icon!='<null>' order by name ;", val];
+            
+            
+            NSArray *records2 = [connection query: query];
+            
+            for(id dat in records2)
+            {
+                [tag_array addObject:[dat objectForKey:@"icon"]];
+                [tag_names addObject:[dat objectForKey:@"name"]];
+            }
+        }
+        /*============================================*/
+        
+        
+        
         dishDic[@"cust"] = cust;
         dishDic[@"id"] = dishId;
         dishDic[@"name"] = dishname;
@@ -2190,12 +1100,13 @@ int enableClose = 1;
         dishDic[@"price2"] = dishprice2;
         dishDic[@"description"] = dishdescription;
         dishDic[@"customisations"] = customizationdata;
+        [dishDic setObject:tag_array forKey:@"tag_icons"];
+        [dishDic setObject:tag_names forKey:@"tag_names"];
+        
         
         [dishData addObject:dishDic];
     }
     
-    
-
 	return dishData;
 }
 
@@ -2401,7 +1312,7 @@ int enableClose = 1;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
             NSString *libraryDirectory = [paths lastObject];
             NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,imageName];
-            //NSLOG(@"location = %@", location);
+            ////NSLOG(@"location = %@", location);
             [dish_images addObject:location];
         }
     }
@@ -2478,7 +1389,7 @@ int enableClose = 1;
                        ;// success
                    else
                    {
-                       NSLog(@"[%@] ERROR: attempting to write create MyFolder directory", [self class]);
+                       //NSLOG(@"[%@] ERROR: attempting to write create MyFolder directory", [self class]);
                        NSAssert( FALSE, @"Failed to create directory maybe out of disk space?");
                    }
                }
@@ -2556,7 +1467,7 @@ int enableClose = 1;
         ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO combo_values(id, 'group', 'pre_select_option',combo_id) VALUES ( %@ , '%@' , '%@' , %@ );",_id, group, pre_select_option, combo_id];
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
     }
     else if([query_type isEqualToString:@"2"])
@@ -2616,9 +1527,9 @@ int enableClose = 1;
         [self saveImage:image];
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO combos(id,category,sub_category,'sub_sub_category','name','image','price','group','description','on_update', 'tags') VALUES ( %@ , %@ , %@ , '%@' , '%@' , '%@' , '%@' , '%@' , '%@' , '%@' , '%@' );",dish_id,category,sub_category,sub_sub_category,name,image,price,group,description,on_update, tags];
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         NSNumber *number = [connection execute: statement];
-        //NSLOG(@"status = %@", number);
+        ////NSLOG(@"status = %@", number);
 
     }
     else if([query_type isEqualToString:@"2"])
@@ -2668,9 +1579,9 @@ int enableClose = 1;
         selection_header = [selection_header stringByReplacingOccurrencesOfString:@"'" withString:@""];
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO groups('id','name','category','selection_header','modified','created_by') VALUES ( %@ , '%@' , %@ , '%@' , '%@' , '%@' );",dish_id,name,category,selection_header,modified,created_by];
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         NSNumber *number = [connection execute: statement];
-        //NSLOG(@"status = %@", number);
+        ////NSLOG(@"status = %@", number);
         
     }
     else if([query_type isEqualToString:@"2"])
@@ -2719,9 +1630,9 @@ int enableClose = 1;
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO group_dishes(id,'name','image',group_id,'dish_id','description') VALUES ( %@ , '%@' , '%@' , %@ , '%@', '%@');",id1,name,image,group_id,dish_id, description];
         
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         NSNumber *status = [connection execute: statement];
-        //NSLOG(@"status >>= %@", status);
+        ////NSLOG(@"status >>= %@", status);
         
     }
     else if([query_type isEqualToString:@"2"])
@@ -2730,10 +1641,10 @@ int enableClose = 1;
         [self saveImage:image];
         
         NSString *statement = [NSString stringWithFormat:@"Update group_dishes set name = '%@',image= '%@',group_id = %@,dish_id='%@',description = '%@' where id = %@ ;",name,image,group_id,dish_id, description, id1];
-        //NSLOG(@"query update = %@", statement);
+        ////NSLOG(@"query update = %@", statement);
 
         NSNumber *status = [connection execute: statement];
-        //NSLOG(@"status >>= %@", status);
+        ////NSLOG(@"status >>= %@", status);
         
     }
     else if ([query_type isEqualToString:@"1"])
@@ -2772,7 +1683,7 @@ int enableClose = 1;
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO tags(id,'name','icon') VALUES ( %@ , '%@' , '%@');",id1,name,icon];
         
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
         
     }
@@ -2783,7 +1694,7 @@ int enableClose = 1;
         
         NSString *statement = [NSString stringWithFormat:@"Update tags set name = '%@',icon= '%@' where id = %@ ;", name, icon, id1];
         
-        //NSLOG(@"query update = %@", statement);
+        ////NSLOG(@"query update = %@", statement);
         [connection execute: statement];
         
     }
@@ -2838,7 +1749,7 @@ int enableClose = 1;
         NSString *statement1 = [NSString stringWithFormat:@"SELECT id FROM combo_values where combo_id=%d ;",combo_id];
         
         NSArray *group_records = [connection1 query: statement1];
-        ////NSLOG(@"Log 22 grrep = %@", group_records);
+        //////NSLOG(@"Log 22 grrep = %@", group_records);
         
         for(int i = 0; i < [group_records count]; i++)
         {
@@ -2898,7 +1809,7 @@ int enableClose = 1;
     {
         NSMutableDictionary *dict1 = (NSMutableDictionary *)records1[0];
         NSString *query1 = nil;
-        ////NSLOG(@"pre selected  = %@", dict1[@"pre_select_option"]);
+        //////NSLOG(@"pre selected  = %@", dict1[@"pre_select_option"]);
         
         query1 = [NSString stringWithFormat:@"SELECT * FROM groups where id=%@ ;", dict1[@"group"]];
         records = [connection query: query1];
@@ -2906,7 +1817,7 @@ int enableClose = 1;
     
     for(int i = 0; i < [records count]; i++) {
         NSMutableDictionary *data_dict = [records objectAtIndex:i];
-        ////NSLOG(@"data dict = %@", data_dict);
+        //////NSLOG(@"data dict = %@", data_dict);
         [data_dict setObject:pre_status forKey:@"pre_select_option"];
         
         [data addObject:data_dict];

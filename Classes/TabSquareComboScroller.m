@@ -214,23 +214,23 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, TabSquareCombo
         //DEPRECATED: check for legacy delegate method usage
         if ([_delegate respondsToSelector:@selector(carousel:itemAlphaForOffset:)])
         {
-            //NSLOG(@"Warning: The carousel:itemAlphaForOffset: delegate method is deprecated. Use carousel:valueForOption:withDefault: with iCarouselOptionFadeMin, iCarouselOptionFadeMax and iCarouselOptionFadeRange instead");
+            ////NSLOG(@"Warning: The carousel:itemAlphaForOffset: delegate method is deprecated. Use carousel:valueForOption:withDefault: with iCarouselOptionFadeMin, iCarouselOptionFadeMax and iCarouselOptionFadeRange instead");
         }
         if ([_delegate respondsToSelector:@selector(carouselShouldWrap:)])
         {
-            //NSLOG(@"Warning: The carouselShouldWrap: delegate method is deprecated. Use carousel:valueForOption:withDefault: with iCarouselOptionWrap instead");
+            ////NSLOG(@"Warning: The carouselShouldWrap: delegate method is deprecated. Use carousel:valueForOption:withDefault: with iCarouselOptionWrap instead");
         }
         if ([_delegate respondsToSelector:@selector(carouselOffsetMultiplier:)])
         {
-            //NSLOG(@"Warning: The carouselOffsetMultiplier: delegate method is deprecated. Use carousel:valueForOption:withDefault: with iCarouselOptionOffsetMultiplier instead");
+            ////NSLOG(@"Warning: The carouselOffsetMultiplier: delegate method is deprecated. Use carousel:valueForOption:withDefault: with iCarouselOptionOffsetMultiplier instead");
         }
         if ([_delegate respondsToSelector:@selector(numberOfVisibleItemsInCarousel:)])
         {
-            //NSLOG(@"Warning: The numberOfVisibleItemsInCarousel: dataSource method is deprecated. This value is now set automatically, but if you need to override it, use carousel:valueForOption:withDefault: with iCarouselOptionVisibleItems instead");
+            ////NSLOG(@"Warning: The numberOfVisibleItemsInCarousel: dataSource method is deprecated. This value is now set automatically, but if you need to override it, use carousel:valueForOption:withDefault: with iCarouselOptionVisibleItems instead");
         }
         if ([_delegate respondsToSelector:@selector(carouselCurrentItemIndexUpdated:)])
         {
-            //NSLOG(@"Warning: The carouselCurrentItemIndexUpdated: delegate method is deprecated. Use carouselCurrentItemIndexDidChange: instead");
+            ////NSLOG(@"Warning: The carouselCurrentItemIndexUpdated: delegate method is deprecated. Use carouselCurrentItemIndexDidChange: instead");
         }
 
     }

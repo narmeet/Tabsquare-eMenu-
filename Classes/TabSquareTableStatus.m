@@ -244,7 +244,7 @@
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     
     [ShareableData sharedInstance].OrderId=data;
-    //NSLOG(@"Bill Number :%@",data);
+    ////NSLOG(@"Bill Number :%@",data);
 
 }
 
@@ -567,7 +567,7 @@
     for(int i=0;i<[resultFromPost count];i++)
     {
         NSMutableDictionary *dataitem=resultFromPost[i];
-        //NSLOG(@"dataitem===%@",dataitem);
+        ////NSLOG(@"dataitem===%@",dataitem);
         guestName.text=dataitem[@"guest_name"];
         noOfGuest.text=[NSString stringWithFormat:@"%@", dataitem[@"total_guests"]];
         guestlastVisit.text=dataitem[@"last_visit"];

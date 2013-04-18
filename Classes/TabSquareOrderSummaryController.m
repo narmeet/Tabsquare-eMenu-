@@ -677,7 +677,7 @@ static int tapCount = 0;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -700,7 +700,7 @@ static int tapCount = 0;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -723,7 +723,7 @@ static int tapCount = 0;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    //NSLOG(@"json = %@",json);
+    ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -896,7 +896,7 @@ static int tapCount = 0;
         {
             //NSString *btnVal = @"8100149"; for beverages
             
-            //NSLOG(@"orderCatName in Recoomendation page====%@",orderCatName);
+            ////NSLOG(@"orderCatName in Recoomendation page====%@",orderCatName);
             soupView.catMenuLabel.text=[NSString stringWithFormat:@"Would you like to try some %@",[orderCatName substringFromIndex:2]];
             //////manoj
             soupView.catMenuLabel.text=[NSString stringWithFormat:@"How about a drink ?"];
@@ -1681,7 +1681,7 @@ static int tapCount = 0;
        // [menudetailView.menuDetailView.view removeFromSuperview];
         menudetailView.view.frame=CGRectMake(10,-10, menudetailView.view.frame.size.width, menudetailView.view.frame.size.height);
         [self.view addSubview:menudetailView.view];
-        //NSLOG(@"resultFromPost==%@",resultFromPost);
+        ////NSLOG(@"resultFromPost==%@",resultFromPost);
 
         for(int i=0;i<[resultFromPost count];i++)
         {

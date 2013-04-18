@@ -11,7 +11,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import<sqlite3.h>
-//#import "ZIMSqlSdk.h"
 
 @interface TabSquareDBFile : NSObject
 {

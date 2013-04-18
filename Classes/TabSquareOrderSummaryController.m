@@ -391,56 +391,16 @@ static int tapCount = 0;
                 lblSplReq.hidden=NO;
                 specialRequest.hidden=NO;
                 [ShareableData sharedInstance].isFeedbackDone=@"0";
-//                NSString* temp1 = [self loadWebViewDish];
-//                NSString* temp2 = [self loadWebViewDrink];
-//                if (![temp1 isEqualToString:@"pass"] && ![temp2 isEqualToString:@"pass"]){
-//                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Drinks & Dishes order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-//                    alert.tag=2;
-//                    [alert show];
-//                }else if (![temp1 isEqualToString:@"pass"]){
-//                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Dishes order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-//                    alert.tag=2;
-//                    [alert show];
-//                }else if (![temp2 isEqualToString:@"pass"]){
-//                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please contact waiter to confirm your Drinks order." delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-//                    alert.tag=2;
-//                    [alert show];
-//                }else{
                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Thank you" message:@"Your order have been succesfully placed" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
                     alert.tag=2;
                     [alert show];
-               // }
                 [ShareableData sharedInstance].isConfermOrder=TRUE;
                 [OrderList reloadData];
-                /* [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemID"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemName"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemRate"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderCatId"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"IsOrderCustomization"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderCustomizationDetail"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderSpecialRequest"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderItemQuantity"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"confirmOrder"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"OrderId"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable1"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable2"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable3"];
-                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"assignedTable4"];*/
-                // [[NSUserDefaults standardUserDefaults] synchronize];
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
                 NSString *libraryDirectory = [paths lastObject];
                 NSString *location = [libraryDirectory stringByAppendingString:@"/orderarrays.plist"];
-                
-                //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"orderarrays" ofType:@"plist"];
-                // NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-                // NSArray *array = [[NSArray alloc] initWithContentsOfFile:location];
-                // NSString *filePath2 = [[NSBundle mainBundle] pathForResource:@"orderstrings" ofType:@"plist"];
-                // NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-                // NSString *libraryDirectory = [paths objectAtIndex:0];
                 NSString *location2 = [libraryDirectory stringByAppendingString:@"/orderstrings.plist"];
-                // NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-                //  NSArray *array2 = [[NSArray alloc] initWithContentsOfFile:location2];
-                
+                               
                 [[NSFileManager defaultManager] removeItemAtPath:location error:nil];
                 [[NSFileManager defaultManager] removeItemAtPath:location2 error:nil];
                 DLog(@"ITEMS REMOVED");

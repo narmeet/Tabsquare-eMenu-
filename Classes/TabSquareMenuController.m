@@ -835,12 +835,12 @@
         NSString *filtered = [self filterString:title pattern:@"[1-9]-"];
         
         CGSize stringsize = [filtered sizeWithFont:[UIFont fontWithName:@"Copperplate" size:30.0]];
-        float width  = stringsize.width + 10;
+        float width  = stringsize.width + 30;
         float height = 60;
         
         float screen_width = self.view.frame.size.width;
         
-        float gap = 80;//screen_width - (width * count);
+        float gap = 60;//screen_width - (width * count);
 //        gap /= count+1;
 //        
 //       if(count > 4)
@@ -1067,6 +1067,7 @@
 -(IBAction)displayOverview{
 
     //searchStatus = FALSE;
+    [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"0"];
     if(searchStatus) {
        [self.search sendActionsForControlEvents:UIControlEventTouchUpInside];
         searchStatus = FALSE;
@@ -2647,7 +2648,7 @@
     search.selected=YES;
     
     [searchView getPickerData];
-    searchView.view.frame=CGRectMake(12, 160, searchView.view.frame.size.width, searchView.view.frame.size.height);
+    searchView.view.frame=CGRectMake(12, 200, searchView.view.frame.size.width, searchView.view.frame.size.height-40);
     
     searchView = nil;
     [self createSearchView];

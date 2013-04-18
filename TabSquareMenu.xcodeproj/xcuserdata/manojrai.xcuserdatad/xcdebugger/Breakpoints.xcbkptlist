@@ -962,8 +962,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "2794"
          endingLineNumber = "2794"
-         landmarkName = "@implementation TabSquareMenuController"
-         landmarkType = "3">
+         landmarkName = "-EnterTableNumber:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2013,8 +2013,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "3222"
          endingLineNumber = "3222"
-         landmarkName = "-setSearchOn:"
-         landmarkType = "5">
+         landmarkName = "@implementation TabSquareMenuController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"

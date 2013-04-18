@@ -3223,9 +3223,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1923"
-         endingLineNumber = "1923"
-         landmarkName = "-getDishData:subCatId:"
-         landmarkType = "5">
+         endingLineNumber = "1923">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -3248,7 +3246,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "71"
          endingLineNumber = "71"
-         landmarkName = "-GetBundleVersionNo"
+         landmarkName = "-createEditableCopyOfDatabaseIfNeeded"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3261,7 +3259,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "257"
          endingLineNumber = "257"
-         landmarkName = "-insertIntoCategoryTableWithRecord:categoryName:categorySequence:catImage:is_beverage:"
+         landmarkName = "-insertIntoSubCategoryTableWithRecord:SubcategoryName:categoryId:subCatSequence:displayType:catImage:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3300,8 +3298,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1830"
          endingLineNumber = "1830"
-         landmarkName = "-getCustomizationData:"
-         landmarkType = "5">
+         landmarkName = "@implementation TabSquareDBFile"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -3313,7 +3311,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "102"
          endingLineNumber = "102"
-         landmarkName = "-GetDircetoryVersionNo"
+         landmarkName = "-createEditableCopyOfDatabaseIfNeeded"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3326,7 +3324,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "154"
          endingLineNumber = "154"
-         landmarkName = "-createEditableCopyOfDatabaseIfNeeded"
+         landmarkName = "-insertIntoCategoryTableWithRecord:categoryName:categorySequence:catImage:is_beverage:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3352,8 +3350,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1598"
          endingLineNumber = "1598"
-         landmarkName = "@implementation TabSquareDBFile"
-         landmarkType = "3">
+         landmarkName = "-updateGroupData:type:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3364,9 +3362,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1855"
-         endingLineNumber = "1855"
-         landmarkName = "-getDishData:subCatId:"
-         landmarkType = "5">
+         endingLineNumber = "1855">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3625,8 +3621,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "646"
          endingLineNumber = "646"
-         landmarkName = "@implementation TabSquareDBFile"
-         landmarkType = "3">
+         landmarkName = "-getUpdateDateTime"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -3638,7 +3634,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "219"
          endingLineNumber = "219"
-         landmarkName = "-getTotalRows"
+         landmarkName = "-optimizeDB"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3703,7 +3699,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "691"
          endingLineNumber = "691"
-         landmarkName = "-insertIntoDishTableWithRecord:DishName:DishImage:CategoryId:SubCategoryId:price:price2:description:customization:itemtags:DishSequence:SubSubCatId:"
+         landmarkName = "-getCustomizationData:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3742,7 +3738,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1839"
          endingLineNumber = "1839"
-         landmarkName = "-getDishData:subCatId:"
+         landmarkName = "-getGroupDishes:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -4079,9 +4075,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "2633"
-         endingLineNumber = "2633"
-         landmarkName = "-updateComboData:type:"
-         landmarkType = "5">
+         endingLineNumber = "2633">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -4196,9 +4190,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "2685"
-         endingLineNumber = "2685"
-         landmarkName = "-updateGroupData:type:"
-         landmarkType = "5">
+         endingLineNumber = "2685">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -5314,7 +5306,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "385"
          endingLineNumber = "385"
-         landmarkName = "-updateCategoryRecordTable:categoryName:categorySequence:catImage:is_beverage:"
+         landmarkName = "-updateDishRecordTable:DishName:CategoryId:SubCategoryId:price:price2:description:customization:itemtags:DishSequence:SubSubCatId:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

@@ -323,7 +323,7 @@ bool funcCalled = NO;
 
 -(void)viewWillAppear:(BOOL)animated{
     quickOrderSwitch.on=NO;
-    specialReqSwitch.on = NO;
+    specialReqSwitch.on = YES;
     
     [[ShareableData sharedInstance].OrderItemID removeAllObjects];
     [[ShareableData sharedInstance].OrderItemName removeAllObjects];

@@ -3088,6 +3088,7 @@
                                                                                [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"1"];
                                                                                
                                                                                best_flag = TRUE;
+                                                                               
                                                                                if(subcatScroller != nil)
                                                                                    [subcatScroller removeFromSuperview];
                                                                                
@@ -3121,7 +3122,7 @@
                                                                                
                                                                                [self.view addSubview:subcatScroller];
                                                                                [self searchBetseellers];
-                                                                              
+                                                                              searchStatus=FALSE;
                                                                            }
                                                                            
                                                                            if(!best_flag) {

@@ -19,7 +19,7 @@
     if (self) 
     {
         // Custom initialization
-        self.view.frame=CGRectMake(12, 100, self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame=CGRectMake(12, 140, self.view.frame.size.width, self.view.frame.size.height-20);
     }
     return self;
 }

@@ -1018,12 +1018,12 @@ int enableClose = 1;
     
         
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
-    NSString *statement = [NSString stringWithFormat:@"SELECT * FROM 'dishes' WHERE %@ LIKE '%@%@%@' OR %@ LIKE '%@%@%@' OR tags LIKE '%@,' ||(SELECT id FROM 'tags' WHERE %@ LIKE '%@%@' LIMIT 1) || ',%@' ORDER BY category ;", @"name", sp_char, key, sp_char, @"description", sp_char, key, sp_char, sp_char, @"name", key, sp_char, sp_char];
+    NSString *statement = [NSString stringWithFormat:@"SELECT * FROM 'dishes' WHERE %@ LIKE '%@%@%@' OR %@ LIKE '%@%@%@' OR tags LIKE '%@,' ||(SELECT id FROM 'tags' WHERE %@ LIKE '%@%@' LIMIT 1) || ',%@' ORDER BY sequence ASC ;", @"name", sp_char, key, sp_char, @"description", sp_char, key, sp_char, sp_char, @"name", key, sp_char, sp_char];
     
     
     
     if([key length] == 0 && [[TabSquareCommonClass getValueInUserDefault:BEST_SELLERS] intValue] == 1 && [ShareableData bestSellersON]) {
-        statement = [NSString stringWithFormat:@"SELECT *FROM dishes WHERE tags LIKE '%@,' ||(SELECT id FROM tags WHERE name LIKE '%@Bestseller%@' LIMIT 1) || ',%@'", sp_char, sp_char, sp_char, sp_char];
+        statement = [NSString stringWithFormat:@"SELECT * FROM dishes WHERE tags LIKE '%@,' ||(SELECT id FROM tags WHERE name LIKE '%@Bestseller%@' LIMIT 1) || ',%@' order by sequence ASC", sp_char, sp_char, sp_char, sp_char];
     }
     
     NSArray *records = [connection query: statement];

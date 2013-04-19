@@ -3280,28 +3280,28 @@
     NSMutableArray *temp = [[NSMutableArray alloc] init];
     
     /*========Sort By Catgegory==========*/
-    for(int i = 0; i < [categoryIdList count]; i++) {
-        
-        NSString *key_id = categoryIdList[i];
-        
-        for(int j = 0; j < [search_data count]; j++) {
-            
-            NSMutableDictionary *dict = search_data[j];
-            NSString *search_id = dict[@"category"];
-            
-            if([key_id isEqualToString:search_id]) {
-                [temp addObject:dict];
-            }
-        }
-    }
+//    for(int i = 0; i < [categoryIdList count]; i++) {
+//        
+//        NSString *key_id = categoryIdList[i];
+//        
+//        for(int j = 0; j < [search_data count]; j++) {
+//            
+//            NSMutableDictionary *dict = search_data[j];
+//            NSString *search_id = dict[@"category"];
+//            
+//            if([key_id isEqualToString:search_id]) {
+//                [temp addObject:dict];
+//            }
+//        }
+//    }
     
     [[ShareableData sharedInstance].SearchAllItemData removeAllObjects];
-    [ShareableData sharedInstance].SearchAllItemData= temp;
+    [ShareableData sharedInstance].SearchAllItemData= search_data;//temp;
     [ShareableData sharedInstance].TaskType=@"2";
     
     ////NSLOG(@"Search Data = %@", temp);
     
-    menulistView1.view.frame=CGRectMake(0, 191, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
+    menulistView1.view.frame=CGRectMake(0, 195, menulistView1.view.frame.size.width, menulistView1.view.frame.size.height);
     [self.menulistView1 reloadDataOfSubCat:@"0" cat:@"1"];
     [self.view addSubview:menulistView1.view];
     [menulistView1.view setHidden:FALSE];

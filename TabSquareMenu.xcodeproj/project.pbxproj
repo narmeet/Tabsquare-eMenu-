@@ -547,6 +547,8 @@
 		C24760D2167F2E5500F1663A /* ZIMMessageDigest.h in Sources */ = {isa = PBXBuildFile; fileRef = C2475EF9167F23B600F1663A /* ZIMMessageDigest.h */; };
 		C24760DB168008FF00F1663A /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = C24760D9168008FF00F1663A /* icon_delete.png */; };
 		C2BC6A7516C4EFA00047A3FD /* subCatHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BC6A7416C4EFA00047A3FD /* subCatHeader.png */; };
+		C2DC2EED1724F75A00F9A69C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DC2EEC1724F75A00F9A69C /* Icon-72.png */; };
+		C2DC2EEF1724F76C00F9A69C /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DC2EEE1724F76C00F9A69C /* Icon-72@2x.png */; };
 		C2EB212A1684164800259827 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EB21261684164800259827 /* CustomBadge.m */; };
 		C2FD63971682CE59007CDC9E /* Background2_new.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FD63931682CE59007CDC9E /* Background2_new.png */; };
 		C2FD63981682CE59007CDC9E /* background_new.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FD63941682CE59007CDC9E /* background_new.png */; };
@@ -1314,6 +1316,8 @@
 		C2475EFF167F23B600F1663A /* example.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = example.xml; sourceTree = "<group>"; };
 		C24760D9168008FF00F1663A /* icon_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_delete.png; path = ../../Classes/icon_delete.png; sourceTree = "<group>"; };
 		C2BC6A7416C4EFA00047A3FD /* subCatHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subCatHeader.png; path = ../../Classes/subCatHeader.png; sourceTree = "<group>"; };
+		C2DC2EEC1724F75A00F9A69C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		C2DC2EEE1724F76C00F9A69C /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		C2EB21261684164800259827 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
 		C2EB21271684164800259827 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
 		C2FD63931682CE59007CDC9E /* Background2_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background2_new.png; sourceTree = "<group>"; };
@@ -1645,6 +1649,8 @@
 		0FF3AC7B15A572F900FB1300 = {
 			isa = PBXGroup;
 			children = (
+				C2DC2EEE1724F76C00F9A69C /* Icon-72@2x.png */,
+				C2DC2EEC1724F75A00F9A69C /* Icon-72.png */,
 				86FEB433168AFB1D00030520 /* Social.framework */,
 				86FEB431168AFB0600030520 /* Accounts.framework */,
 				86FEB42E168AFAFF00030520 /* Twitter.framework */,
@@ -3717,6 +3723,8 @@
 				861E15A1171D5D8700F8FDDE /* quicksearchbutton.png in Resources */,
 				861E15A3171D5D8700F8FDDE /* TabSearchViewController.xib in Resources */,
 				861E15A5171D61D300F8FDDE /* bestseller.png in Resources */,
+				C2DC2EED1724F75A00F9A69C /* Icon-72.png in Resources */,
+				C2DC2EEF1724F76C00F9A69C /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

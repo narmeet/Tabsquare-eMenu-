@@ -1043,17 +1043,17 @@
     //int subCat = [(NSString*)[chunks objectAtIndex:0] intValue];
     btnn = (UIButton*)[KinaraSubCategory viewWithTag:[(NSString*)chunks[1] intValue]];
     
-    
-    if (KinaraSelectedCategoryID != [chunks[0] intValue]){
-       // KinaraSelectedCategoryID = [(NSString*)[chunks objectAtIndex:0] intValue];
-    [self KinaraCategoryClicked3:[(NSString*)chunks[0] intValue ]];
-        if (KinaraSelectedSubCategoryID != [chunks[1] intValue]){
-           // [self resetSCat];
-            //[self performSelector:@selector(KinaraSubCategoryClicked3:) withObject:sender afterDelay:0.01];
-            [ self KinaraSubCategoryClicked3:sender];
-        }
-    }
-    else{
+    ////////// Narmeet 2 may 2013 ////////// if else statment removed
+//    if (KinaraSelectedCategoryID != [chunks[0] intValue]){
+//       // KinaraSelectedCategoryID = [(NSString*)[chunks objectAtIndex:0] intValue];
+//    [self KinaraCategoryClicked3:[(NSString*)chunks[0] intValue ]];
+//        if (KinaraSelectedSubCategoryID != [chunks[1] intValue]){
+//           // [self resetSCat];
+//            //[self performSelector:@selector(KinaraSubCategoryClicked3:) withObject:sender afterDelay:0.01];
+//            [ self KinaraSubCategoryClicked3:sender];
+//        }
+//    }
+   // else{
         [self KinaraCategoryClicked3:[(NSString*)chunks[0] intValue ]];
 
     if (KinaraSelectedSubCategoryID != [chunks[1] intValue]){
@@ -1061,7 +1061,7 @@
    // [self performSelector:@selector(KinaraSubCategoryClicked3:) withObject:sender afterDelay:0.01];
         [self KinaraSubCategoryClicked3:sender];
     }
-    }
+   // }
    // [self KinaraSubCategoryClicked2:[(NSString*)[chunks objectAtIndex:0] intValue]];
 }
 -(IBAction)displayOverview{

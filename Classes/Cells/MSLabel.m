@@ -43,9 +43,9 @@
         
         // calculate drawWidth based on textAlignment
         int drawWidth = 0;
-        if (self.textAlignment == UITextAlignmentCenter) {
+        if (self.textAlignment == NSTextAlignmentCenter) {
             drawWidth = floorf((self.frame.size.width - [line sizeWithFont:self.font].width) / 2);
-        } else if (self.textAlignment == UITextAlignmentRight) {
+        } else if (self.textAlignment == NSTextAlignmentRight) {
             drawWidth = (self.frame.size.width - [line sizeWithFont:self.font].width);
         }
         

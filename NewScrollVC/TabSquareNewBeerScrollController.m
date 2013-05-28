@@ -75,7 +75,8 @@
     customizationView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
     customizationView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
     customizationView.detailImageView.contentMode = UIViewContentModeRedraw;
-    
+    customizationView.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
+
     
     customizationView.detailImageView.clipsToBounds=YES;
     [customizationView.customizationView reloadData];
@@ -98,10 +99,13 @@
     customizationView.KKselectedCatId=beverageCatId;
     customizationView.DishCustomization=(beverageView.beverageCustomization)[[selectedIndex intValue]];
     customizationView.KKselectedImage=(beverageView.beverageImageData)[[selectedIndex intValue]];
+    customizationView.crossBtn.frame=CGRectMake(610,5, 45, 45);////setting frame for cross button
     [customizationView.customizationView reloadData];
     customizationView.requestView.text=@"";
     customizationView.swipeIndicator=@"0";
     customizationView.isView=@"beverageinfo";
+    
+
     if([customizationView.DishCustomization count]!=0)
     {
         [self.view addSubview:customizationView.view];

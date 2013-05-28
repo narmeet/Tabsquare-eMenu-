@@ -5,15 +5,15 @@
 #import "ShareableData.h"
 #import "UnPaidCellList.h"
 #import "PaidCellList.h"
-
+#import "MSLabel.h"
 
 @implementation TabSquareMenuDetailController
 
 @synthesize detailImageView,requestView,soupMenu;
 @synthesize KKselectedID,KKselectedName,KKselectedRate,KKselectedCatId,KKselectedImage,DishCustomization;
 @synthesize customizationView,unpaidCell,paidCell,swipeIndicator,tableContent;
-@synthesize isView,backImage;
-
+@synthesize isView,backImage,bgBlackView,mParent,headerSectionLabel,headerLabel;
+@synthesize crossBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,8 +21,13 @@
     if (self) {
         // Custom initialization
         self.view.frame=CGRectMake(13, 0, self.view.frame.size.width, self.view.frame.size.height);
+        //self.view.backgroundColor=[UIColor redColor];
     }
     return self;
+}
+-(void)setParent:(id)sender{
+    
+    mParent=sender;
 }
 
 -(void)createSoupView
@@ -33,9 +38,10 @@
 
 - (void)viewDidLoad
 {
+    
     detailImageView.layer.borderWidth=2.5;
 
-    detailImageView.layer.borderColor=[UIColor colorWithRed:220.0f/255.0f green:208.0f/255.0f blue:156.0f/255.0f alpha:0.8].CGColor;
+    detailImageView.layer.borderColor=[UIColor colorWithRed:220.0f/255.0f green:208.0f/255.0f blue:156.0f/255.0f alpha:0.0].CGColor;
     [detailImageView.layer setShadowOpacity:0.85];
     [detailImageView.layer setShadowOffset:CGSizeMake(3.0, 2.5)];
 
@@ -44,8 +50,8 @@
     [requestView.layer setShadowOffset:CGSizeMake(1.0, 2.0)];
     [requestView.layer setShadowColor:[UIColor blackColor].CGColor];
     [requestView.layer setBorderColor:[UIColor colorWithRed:227.0/255.0 green:191.0/255.0 blue:185.0/255.0 alpha:1.0].CGColor];
-    
-    
+   // requestView.backgroundColor=[UIColor redColor];
+
     DishCustomization=[[NSMutableArray alloc]init];
     //create soup view
     if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
@@ -56,6 +62,7 @@
     [self createSoupView];
     self.customizationView.opaque=NO;
     [self.customizationView setBackgroundView:nil];
+    [self.view addSubview:crossBtn];
   //  self.customizationView.backgroundView.hidden = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -65,6 +72,24 @@
 -(void)viewDidAppear:(BOOL)animated{
     self.requestView.text = @"";
     [self resetOptionQuantity];
+    
+    ///manoj//////////
+    ///////////////////DishName at the Customization page///////////////
+   
+    [[detailImageView viewWithTag:999 ] removeFromSuperview];
+
+    headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, -170, 400, 400)];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.tag=999;
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont fontWithName:@"Copperplate" size:30.0];
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.lineBreakMode=NSLineBreakByWordWrapping;
+    headerLabel.numberOfLines=2;
+    headerLabel.text=self.KKselectedName;
+    [detailImageView addSubview:headerLabel];
+    
    [customizationView reloadData];
 }
 -(void)resetOptionQuantity
@@ -126,6 +151,8 @@
 
 -(void)removeView2:(id)sender
 {
+    [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
+
     [sender removeFromSuperview];
 }
 
@@ -349,6 +376,7 @@
     
     [imgView.layer addAnimation:group forKey:@"savingAnimation"];
     
+
     
    /* [UIView beginAnimations:@"animations" context:NULL];
     [UIView setAnimationDuration:0.8];
@@ -360,6 +388,7 @@
     [self performSelector:@selector(removeView2:) withObject:imgView afterDelay:0.8];
     
     [self checkItemInOrderList];
+
     //[self addItemInOrderSummary];
        
    // DLog(@"Order Conferm");
@@ -411,6 +440,20 @@
     {
        [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
     }
+//          [UIView animateWithDuration:0.3
+//                              delay:0
+//                            options: UIViewAnimationCurveEaseOut
+//                         animations:^{
+//                             self.view.alpha = 0;
+//                         }
+//                         completion:^(BOOL finished){
+//                             NSLog(@"Done!");
+//                             [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
+//
+//                         }];
+
+    [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
+    
     [self.view removeFromSuperview];
 }
 
@@ -643,6 +686,10 @@
     NSMutableDictionary *customizations=dataitem[@"Customisation"];
     return [customizations[@"type"]intValue];
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 50;
+}
 
 
 // UITableView Delegate
@@ -650,7 +697,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 48.0;
+    return 50.0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -667,18 +714,23 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section 
 {
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(8.0, 0.0,tableView.bounds.size.width, 27)];
+    
+        
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(8.0,0,tableView.bounds.size.width, 27)];
     customView.backgroundColor=[UIColor clearColor];
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor blackColor];
-    headerLabel.font = [UIFont fontWithName:@"Copperplate" size:22.0];
-    headerLabel.frame = CGRectMake(28,-7,tableView.bounds.size.width, 27.0);
-    headerLabel.textAlignment = UITextAlignmentLeft;
+    headerSectionLabel = [[MSLabel alloc] initWithFrame:CGRectZero];
+    headerSectionLabel.backgroundColor = [UIColor clearColor];
+    headerSectionLabel.opaque = NO;
+    headerSectionLabel.textColor = [UIColor blackColor];
+    headerSectionLabel.font = [UIFont fontWithName:@"Copperplate" size:22.0];
+    headerSectionLabel.frame = CGRectMake(28,15,tableView.bounds.size.width, 37.0);
+    headerSectionLabel.lineBreakMode=NSLineBreakByWordWrapping;
+    headerSectionLabel.lineHeight = 16;
+    headerSectionLabel.numberOfLines=2;
+    headerSectionLabel.textAlignment = NSTextAlignmentLeft;
     NSString* headertxt=[self getHeaderTitle:section];
-    headerLabel.text=headertxt;
-    [customView addSubview:headerLabel];
+    headerSectionLabel.text=headertxt;
+    [customView addSubview:headerSectionLabel];
     return customView;
 }
 
@@ -783,7 +835,12 @@
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
 }
-
+-(void)viewDidDisappear:(BOOL)animated{
+    bgBlackView=nil;
+    mParent=nil;
+    headerSectionLabel=nil;
+    headerLabel=nil;
+}
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     return YES;  

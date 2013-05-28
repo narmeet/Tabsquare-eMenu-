@@ -83,5 +83,6 @@
 -(void)orderAddAnimation;
 -(void)unhideTheScrollerAndSubCatBgOnMenuController;
 
++ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion;
 
 @end

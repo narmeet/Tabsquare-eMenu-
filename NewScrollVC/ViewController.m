@@ -384,7 +384,9 @@ imgView.clipsToBounds = NO;
     menuDetailView.KKselectedImage=[DishImage objectAtIndex:currentIndex];
     [menuDetailView.customizationView reloadData];
     menuDetailView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
-    menuDetailView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    menuDetailView.detailImageView.frame = CGRectMake(104, 229, 530, 260);
+    menuDetailView.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
+
     menuDetailView.detailImageView.contentMode = UIViewContentModeRedraw;
     
     
@@ -422,7 +424,8 @@ imgView.clipsToBounds = NO;
     menuDetailView.KKselectedImage=[DishImage objectAtIndex:currentIndex];
     [menuDetailView.customizationView reloadData];
     menuDetailView.view.frame=CGRectMake(1, 0, menuDetailView.view.frame.size.width, menuDetailView.view.frame.size.height);
-    
+    menuDetailView.crossBtn.frame=CGRectMake(610,5, 45, 45);////setting frame for cross button
+
     [self.view addSubview:menuDetailView.view];
     menuDetailView.requestView.text=@"";
     menuDetailView.swipeIndicator=@"0";

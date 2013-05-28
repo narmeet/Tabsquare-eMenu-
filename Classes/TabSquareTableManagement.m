@@ -302,18 +302,6 @@ bool funcCalled = NO;
 
         
         
-        
-        
-        
-        
-        //[self AssignTAData];
-      /*  if (homeView !=nil){
-            [self createHomeView];
-        }*/
-        
-        
-        //[self dismissModalViewControllerAnimated:NO];
-        //[self presentViewController:homeView animated:YES completion:Nil];
         [self.navigationController pushViewController:homeView animated:YES];
         
     }
@@ -2143,12 +2131,7 @@ bool funcCalled = NO;
    
         return cell;
 }
-// 4
-/*- (UICollectionReusableView *)collectionView:
- (UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
- {
- return [[UICollectionReusableView alloc] init];
- }*/
+
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -547,6 +547,8 @@
 		C24760D2167F2E5500F1663A /* ZIMMessageDigest.h in Sources */ = {isa = PBXBuildFile; fileRef = C2475EF9167F23B600F1663A /* ZIMMessageDigest.h */; };
 		C24760DB168008FF00F1663A /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = C24760D9168008FF00F1663A /* icon_delete.png */; };
 		C2BC6A7516C4EFA00047A3FD /* subCatHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BC6A7416C4EFA00047A3FD /* subCatHeader.png */; };
+		C2DC2EED1724F75A00F9A69C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DC2EEC1724F75A00F9A69C /* Icon-72.png */; };
+		C2DC2EEF1724F76C00F9A69C /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DC2EEE1724F76C00F9A69C /* Icon-72@2x.png */; };
 		C2EB212A1684164800259827 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EB21261684164800259827 /* CustomBadge.m */; };
 		C2FD63971682CE59007CDC9E /* Background2_new.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FD63931682CE59007CDC9E /* Background2_new.png */; };
 		C2FD63981682CE59007CDC9E /* background_new.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FD63941682CE59007CDC9E /* background_new.png */; };
@@ -1314,6 +1316,8 @@
 		C2475EFF167F23B600F1663A /* example.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = example.xml; sourceTree = "<group>"; };
 		C24760D9168008FF00F1663A /* icon_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_delete.png; path = ../../Classes/icon_delete.png; sourceTree = "<group>"; };
 		C2BC6A7416C4EFA00047A3FD /* subCatHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subCatHeader.png; path = ../../Classes/subCatHeader.png; sourceTree = "<group>"; };
+		C2DC2EEC1724F75A00F9A69C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		C2DC2EEE1724F76C00F9A69C /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		C2EB21261684164800259827 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
 		C2EB21271684164800259827 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
 		C2FD63931682CE59007CDC9E /* Background2_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background2_new.png; sourceTree = "<group>"; };
@@ -1645,6 +1649,8 @@
 		0FF3AC7B15A572F900FB1300 = {
 			isa = PBXGroup;
 			children = (
+				C2DC2EEE1724F76C00F9A69C /* Icon-72@2x.png */,
+				C2DC2EEC1724F75A00F9A69C /* Icon-72.png */,
 				86FEB433168AFB1D00030520 /* Social.framework */,
 				86FEB431168AFB0600030520 /* Accounts.framework */,
 				86FEB42E168AFAFF00030520 /* Twitter.framework */,
@@ -2610,14 +2616,14 @@
 			name = ShareableData;
 			sourceTree = "<group>";
 		};
-		CD631A1016FC21C500D78B9E /* TabSquareMenuDetailController */ = {
+		CD631A1016FC21C500D78B9E /* TabSquareMenuDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DD74365A167AB74800190CD7 /* TabMainMenuDetailViewController.h */,
 				DD74365B167AB74800190CD7 /* TabMainMenuDetailViewController.m */,
 				DD7435E0167AB6DA00190CD7 /* TabMainMenuDetailViewController.xib */,
 			);
-			name = TabSquareMenuDetailController;
+			name = TabSquareMenuDetailViewController;
 			sourceTree = "<group>";
 		};
 		CD631A1116FC221E00D78B9E /* TabSquareAssignTable */ = {
@@ -2713,7 +2719,8 @@
 				CD631A0C16FC20D400D78B9E /* ComboSet */,
 				CD6319F716FC125000D78B9E /* TabMainCourseMenuListVC */,
 				CD6319FB16FC150000D78B9E /* TabMainDetailView */,
-				CD631A1016FC21C500D78B9E /* TabSquareMenuDetailController */,
+				CD6319F916FC13FC00D78B9E /* TabSquareMenuDetailController */,
+				CD631A1016FC21C500D78B9E /* TabSquareMenuDetailViewController */,
 				CD631A1516FC41E800D78B9E /* TabSearchViewController */,
 				CD631A1116FC221E00D78B9E /* TabSquareAssignTable */,
 				CD6319FC16FC156600D78B9E /* TabSquareBeerController */,
@@ -2725,7 +2732,6 @@
 				CD631A0316FC1DC900D78B9E /* TabSquareHelpController */,
 				CD631A1416FC417900D78B9E /* TabSquareHomeController */,
 				CD631A0416FC1E4E00D78B9E /* TabSquareLastOrderedViewController */,
-				CD6319F916FC13FC00D78B9E /* TabSquareMenuDetailController */,
 				CDE49D0416F2CD5500E890B3 /* MenuController */,
 				CDE49D0316F2CD1200E890B3 /* OrderSummaryVC */,
 				CD631A0616FC1EBC00D78B9E /* TabSquareQuickOrder */,
@@ -3717,6 +3723,8 @@
 				861E15A1171D5D8700F8FDDE /* quicksearchbutton.png in Resources */,
 				861E15A3171D5D8700F8FDDE /* TabSearchViewController.xib in Resources */,
 				861E15A5171D61D300F8FDDE /* bestseller.png in Resources */,
+				C2DC2EED1724F75A00F9A69C /* Icon-72.png in Resources */,
+				C2DC2EEF1724F76C00F9A69C /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

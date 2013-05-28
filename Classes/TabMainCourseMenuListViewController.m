@@ -29,6 +29,7 @@
     if (self) {
         // Custom initialization
         self.view.frame=CGRectMake(13, 20, self.view.frame.size.width, self.view.frame.size.height);
+        //self.view.backgroundColor=[UIColor blackColor];
     }
     return self;
 }
@@ -284,8 +285,6 @@
         menuDetailViewT.backImage.hidden=NO;
     }
     
-    //[self addCustomization];
-    //DLog(@"%@",[DishCustomization objectAtIndex:selectedItem]);
     menuDetailViewT.DishCustomization=DishCustomization[selectedItem];
     menuDetailViewT.KKselectedImage=DishImage[selectedItem];
     [menuDetailViewT.customizationView reloadData];
@@ -293,14 +292,35 @@
     menuDetailViewT.swipeIndicator=@"1";
     menuDetailViewT.isView=@"main";
     menuDetailViewT.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
-    menuDetailViewT.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    menuDetailViewT.detailImageView.frame = CGRectMake(104, 229, 530, 260);
     menuDetailViewT.detailImageView.contentMode = UIViewContentModeRedraw;
-    
-    
     menuDetailViewT.detailImageView.clipsToBounds=YES;
     
-    [self.view addSubview:menuDetailViewT.view];
+    menuDetailViewT.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
+//       [UIView animateWithDuration:1
+//                          delay:0.5
+//                        options: UIViewAnimationCurveEaseIn
+//                     animations:^{
+//                         menuDetailViewT.view.alpha = 1;
+//                     }
+//                     completion:^(BOOL finished){
+//                         NSLog(@"Done!");
+//                         [self.view addSubview:menuDetailViewT.view];
+//
+//                     }];
     
+    [self.view addSubview:menuDetailViewT.view];
+
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    menuDetailViewT.mParent=self;
+    menuview.subCatbg.hidden=TRUE;
+    menuview.subcatScroller.hidden=TRUE;
+    menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuview.search.userInteractionEnabled=FALSE;
+    menuview.favourite.userInteractionEnabled=FALSE;
+    menuview.help.userInteractionEnabled=FALSE;
+    menuview.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuview.KinaraLogo.userInteractionEnabled=FALSE;
 }
 
 
@@ -327,7 +347,21 @@
     menuDetailViewT.swipeIndicator=@"1";
     menuDetailViewT.isView=@"main";
     menuDetailViewT.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    menuDetailViewT.crossBtn.frame=CGRectMake(610,30, 45, 45);////setting frame for cross button
     [self.view addSubview:menuDetailViewT.view];
+    
+    
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    menuDetailViewT.mParent=self;
+    menuview.subCatbg.hidden=TRUE;
+    menuview.subcatScroller.hidden=TRUE;
+    menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuview.search.userInteractionEnabled=FALSE;
+    menuview.favourite.userInteractionEnabled=FALSE;
+    menuview.help.userInteractionEnabled=FALSE;
+    menuview.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuview.KinaraLogo.userInteractionEnabled=FALSE;
+
     
 }
 

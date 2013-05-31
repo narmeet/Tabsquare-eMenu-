@@ -28,6 +28,7 @@
 #import "Flurry.h"
 #import "LanguageSelectionView.h"
 #import "LanguageControler.h"
+#import "TabSquareRemoteActivation.h"
 
 #define FONT_GRILLED_CHEESE         @"GrilledCheeseBTNToasted"
 #define FONT_CALIBRI_BOLD           @"Calibri"
@@ -411,6 +412,10 @@
      object:nil];
     
 
+    /*=====================Register to recieve Mode Change Activation======================*/
+    [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
+    [[TabSquareRemoteActivation remoteActivation] setPopupSuperView:self.view];
+
     if(![ShareableData multiLanguageStatus])
         [self.flagButton setHidden:TRUE];
 
@@ -470,6 +475,8 @@
     [self.logoImage setImage:logo_img];
      */
 
+    OrderSummaryButton.hidden=YES;
+    
     searchStatus = FALSE;
     bestsellersOpened = FALSE;
     searchOpened = FALSE;
@@ -920,7 +927,7 @@
     }
     
     /*=========Locking Touch=========*/
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    //[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
 
     
     UIButton *_temp_btn = (UIButton *)sender;
@@ -2723,12 +2730,16 @@
 
         }else if([title isEqualToString:@"Switch to Quick Order"]){
             
+            backupActiveLanguage = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentLanguage];
+            [[ShareableData sharedInstance] setCurrentLanguage:ENGLISH];
+
             [ShareableData sharedInstance].isQuickOrder = @"1";
             [self loadQuickOrder];
             
             
         }else if([title isEqualToString:@"Switch to Normal Menu"]){
             [ShareableData sharedInstance].isQuickOrder = @"0";
+            [[ShareableData sharedInstance] setCurrentLanguage:[NSString stringWithFormat:@"%@", backupActiveLanguage]];
             //[self loadOverview];
             [self displayOverview];
         }
@@ -2785,7 +2796,12 @@
     [menulistView3.menudetailView.menuDetailView.view removeFromSuperview];
     [menulistView1 reloadDataOfSubCat:subId cat:self.selectedCategoryID];
     [menulistView1.DishList reloadData];
-    [swipeView addSubview:menulistView1.view];    
+    
+    if(![prevSubId isEqualToString:sub]) {
+        [self loadAnimation:menulistView1.DishList];
+    }
+
+    [swipeView addSubview:menulistView1.view];
     if([self.subcategoryIdList count]!=0)
     {
         [swipeView addSubview:menulistView2.view];
@@ -2793,8 +2809,16 @@
         
     }
     
-    
 }
+
+-(void)loadAnimation:(UITableView *)table
+{
+    [table beginUpdates];
+    //[table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+    [table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [table endUpdates];
+}
+
 
 -(IBAction)beveragesSubCategoryClicked:(UIButton*)button sub:(NSString*)sub 
 {
@@ -3699,5 +3723,21 @@
     [orderSummaryView.view removeFromSuperview];
 }
 
+
+/*=================View Mode Selected===================*/
+-(void)viewModeActivated:(NSNotification *)notification
+{
+    NSLog(@"view mode");
+    [menulistView.DishList reloadData];
+}
+
+
+/*=================Edit Mode Selected===================*/
+-(void)editModeActivated:(NSNotification *)notification
+{
+    NSLog(@"Edit order Mode");
+    [menulistView.DishList reloadData];
+    
+}
 
 @end

@@ -58,6 +58,7 @@
 		86563294168D7ECF004C6D8D /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 86563293168D7ECD004C6D8D /* left_arrow.png */; };
 		865A501F1749E81B002AD489 /* LanguageControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 865A501E1749E81B002AD489 /* LanguageControler.m */; };
 		865EBE7C16A0463A004C520B /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 865EBE7B16A0463A004C520B /* menu_background.png */; };
+		866B7B68175762AA00B9B617 /* TabSquareRemoteActivation.m in Sources */ = {isa = PBXBuildFile; fileRef = 866B7B67175762AA00B9B617 /* TabSquareRemoteActivation.m */; };
 		867A551D16AEBC6200FB3558 /* Gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 867A551C16AEBC6200FB3558 /* Gradient.png */; };
 		867F84E4168F6C5100838562 /* beverage_cellview.png in Resources */ = {isa = PBXBuildFile; fileRef = 867F84E3168F6C5100838562 /* beverage_cellview.png */; };
 		868075D4168C28BA009D5ABD /* FacebookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 868075D3168C28BA009D5ABD /* FacebookInfo.m */; };
@@ -830,6 +831,8 @@
 		865A501D1749E81B002AD489 /* LanguageControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageControler.h; sourceTree = "<group>"; };
 		865A501E1749E81B002AD489 /* LanguageControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageControler.m; sourceTree = "<group>"; };
 		865EBE7B16A0463A004C520B /* menu_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_background.png; sourceTree = "<group>"; };
+		866B7B66175762AA00B9B617 /* TabSquareRemoteActivation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSquareRemoteActivation.h; sourceTree = "<group>"; };
+		866B7B67175762AA00B9B617 /* TabSquareRemoteActivation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabSquareRemoteActivation.m; sourceTree = "<group>"; };
 		867A551C16AEBC6200FB3558 /* Gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gradient.png; sourceTree = "<group>"; };
 		867F84E3168F6C5100838562 /* beverage_cellview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beverage_cellview.png; sourceTree = "<group>"; };
 		868075D2168C28BA009D5ABD /* FacebookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInfo.h; sourceTree = "<group>"; };
@@ -2597,6 +2600,8 @@
 				8637615A16884767006A3BC7 /* TabSquareTableManagement.h */,
 				8637615B16884767006A3BC7 /* TabSquareTableManagement.m */,
 				8637616316884A68006A3BC7 /* TabSquareTableManagement.xib */,
+				866B7B66175762AA00B9B617 /* TabSquareRemoteActivation.h */,
+				866B7B67175762AA00B9B617 /* TabSquareRemoteActivation.m */,
 			);
 			name = TabSquareTableManagement;
 			sourceTree = "<group>";
@@ -3959,6 +3964,7 @@
 				862203D21732641500FD8AD0 /* TabSquareBeerController.m in Sources */,
 				862203D71732642E00FD8AD0 /* TabSquareBeerDetailController.m in Sources */,
 				865A501F1749E81B002AD489 /* LanguageControler.m in Sources */,
+				866B7B68175762AA00B9B617 /* TabSquareRemoteActivation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

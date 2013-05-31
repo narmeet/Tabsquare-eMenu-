@@ -116,6 +116,9 @@
 
     CGSize thumbanilSize;
     NSMutableArray *tempCategoryList;
+    
+    NSString *backupActiveLanguage;
+    NSString *prevSubId;
 
     
 }

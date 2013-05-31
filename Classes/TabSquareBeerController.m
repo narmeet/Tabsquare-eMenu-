@@ -13,6 +13,8 @@
 #import <QuartzCore/CALayer.h>
 #import "TabSquareDBFile.h"
 #import "TabSquareCommonClass.h"
+#import "TabSquareRemoteActivation.h"
+
 
 @implementation TabSquareBeerController
 
@@ -211,6 +213,10 @@
      selector:@selector(languageChanged:)
      name:LANGUAGE_CHANGED
      object:nil];
+    
+    /*=====================Register to recieve Mode Change Activation======================*/
+    [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
+
 
     self.resultFromPost=[[NSMutableArray alloc]init];
     self.SubSectionIdData=[[NSMutableArray alloc]init];
@@ -669,6 +675,20 @@
     [self.beverageView reloadData];
 }
 
+
+/*=================View Mode Selected===================*/
+-(void)viewModeActivated:(NSNotification *)notification
+{
+    [self.beverageView reloadData];
+}
+
+
+/*=================Edit Mode Selected===================*/
+-(void)editModeActivated:(NSNotification *)notification
+{
+    [self.beverageView reloadData];
+    
+}
 
 
 @end

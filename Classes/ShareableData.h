@@ -59,10 +59,18 @@
 
 /*==================================*/
 
+/*========Remote Activation=========*/
+#define DEFAULT_TABLE       @"-1"
+#define SWITCHED_VIEW_MODE  @"switched_to_view_mode"
+#define SWITCHED_EDIT_MODE  @"switched_to_edit_mode"
+/*==================================*/
+
+
 
 @interface ShareableData : NSObject
 {
     NSString *currentLanguage;
+    NSString *currentTable;
 }
 
 @property (nonatomic,strong) NSMutableArray *OrderSpecialRequest;
@@ -113,11 +121,14 @@
 @property(nonatomic,strong)NSMutableArray *inFormat;
 @property(nonatomic,strong)NSMutableArray *TempOrderID;
 
+@property(nonatomic,strong)NSMutableArray *totalFreeTables;
+
 @property(nonatomic,strong)NSMutableArray *TDishName;
 @property(nonatomic,strong)NSMutableArray *TDishQuantity;
 @property(nonatomic,strong)NSMutableArray *TDishRate;
 
 @property(nonatomic, strong)NSString *currentLanguage;
+@property(nonatomic, strong)NSString *currentTable;
 @property(nonatomic,strong)NSString *Discount;
 @property(nonatomic,strong)NSString *isFBLogin;
 @property(nonatomic,strong)NSString *isTwitterLogin;
@@ -168,6 +179,7 @@
 +(BOOL)bestSellersON;
 -(void)saveBestsellers;
 -(NSString *)activeBestsellerName;
++(void)showAlert:(NSString *)title message:(NSString *)msg;
 
 
 @end

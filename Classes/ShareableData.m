@@ -18,7 +18,7 @@
 @synthesize IsGetCMSData,IsViewPage,isFBLogin,OrderSpecialRequest;
 @synthesize feedDishName,feedDishRating,feedDishImage,isInternetConnected,AddItemFromTakeaway,isTwitterLogin,OrderDishImage;
 @synthesize IsEditOrder,tableNumber,TempOrderID,isQuickOrder,rootLoaded,salesNo,splitNo;
-@synthesize serverUrl, dishTag, categoryID,bevCat,isSpecialReq;
+@synthesize serverUrl, dishTag, categoryID,bevCat,isSpecialReq, currentTable, totalFreeTables;
 
 
 static ShareableData *abc;
@@ -35,6 +35,7 @@ static ShareableData *abc;
 -(void) allocateArray
 {
     self.currentLanguage = [NSString stringWithFormat:@"%@", ENGLISH];
+    self.currentTable = [NSString stringWithFormat:@"%@", DEFAULT_TABLE];
     
     isInternetConnected=FALSE;
     
@@ -378,6 +379,13 @@ static ShareableData *abc;
     return search_key;
     
 }
+
++(void)showAlert:(NSString *)title message:(NSString *)msg
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
+}
+
 
 
 @end

@@ -12,6 +12,10 @@
 #import "TabSquarePlaogramView.h"
 #import "TabSquareCommonClass.h"
 #import "Reachability.h"
+#import "TabSquareRemoteActivation.h"
+
+
+#define FIXED_VIEW_ALERT    1999
 
 #define NUMBERS_ONLY @"1234567890"
 #define CHARACTER_LIMIT 3
@@ -141,6 +145,9 @@ bool funcCalled = NO;
         
         
     }
+    
+    [ShareableData sharedInstance].totalFreeTables = TotalFreeTables;
+    //NSLog(@"Total Free Tables = %@", TotalFreeTables);
 }
 
 -(void)getTableStatusView
@@ -209,6 +216,9 @@ bool funcCalled = NO;
     TotalFreeTables=[[NSMutableArray alloc]init];
     TableStatus=[[NSMutableArray alloc]init];
     TATables=[[NSMutableArray alloc]init];
+    existingTables  = [NSMutableArray new];
+    
+    
     [self showIndicator];
     statusView.layer.cornerRadius=12.0;
     tableData=[[NSMutableArray alloc]init];
@@ -239,7 +249,9 @@ bool funcCalled = NO;
 
     [self checkForWIFIConnection];
 
-    tt =[NSTimer scheduledTimerWithTimeInterval:1.0
+    //[self performSelector:@selector(changeData) withObject:nil afterDelay:25.0];
+    
+    tt =[NSTimer scheduledTimerWithTimeInterval:5.0
                                          target:self
                                        selector:@selector(onTick)
                                        userInfo:nil
@@ -250,6 +262,8 @@ bool funcCalled = NO;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
     NSString *libraryDirectory = [paths lastObject];
     NSString *location = [libraryDirectory stringByAppendingString:@"/orderarrays.plist"];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:location error: nil];
     
     //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"orderarrays" ofType:@"plist"];
     // NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
@@ -307,7 +321,8 @@ bool funcCalled = NO;
 
         
         
-        
+        [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", [ShareableData sharedInstance].assignedTable1]];
+
         
         
         
@@ -358,8 +373,11 @@ bool funcCalled = NO;
 
 -(void)viewDidDisappear:(BOOL)animated{
     
-    [tt invalidate];
-    tt=nil;
+    if([[ShareableData sharedInstance].currentTable isEqualToString:DEFAULT_TABLE]) {
+        [tt invalidate];
+        tt=nil;
+    }
+
   //  DLog(@"WOOOOOOOOOOOOOOOO");
   //  [self dismissViewControllerAnimated:NO completion:Nil];
     
@@ -511,15 +529,35 @@ bool funcCalled = NO;
     //DLog(@"%@",data);
 }
 
+-(void)changeData
+{
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:@"8" forKey:@"TBLNo"];
+    [dict setObject:@"A" forKey:@"TBLStatus"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"test"];
+    [TotalFreeTables replaceObjectAtIndex:13 withObject:dict];
+}
+
 -(void)onTick{
     if (funcCalled == NO){
        funcCalled = YES;
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        // [self getTotalNumberofTable];
-         [self getTables];
+        
+    //if([[[NSUserDefaults standardUserDefaults] objectForKey:@"test"] intValue] != 1) {
+    [self getTables];
+    //}
+        
+        
        // [self getTableStatusView];
        // [TATables removeAllObjects];
         //[TATables addObjectsFromArray:[[self checkTakeaway] copy]];
+        
+        /*================Update UI=================*/
+        [[TabSquareRemoteActivation remoteActivation] tablesUpdated];
+        /*==========================================*/
+
         [self checkSections];
         
         
@@ -686,6 +724,9 @@ bool funcCalled = NO;
             }*/
             tableName.layer.cornerRadius=10.0;
             tableName.text=[NSString stringWithFormat:@"%d",btnn.tag];
+        
+            [existingTables addObject:tableName.text];
+        
             tableName.textAlignment=NSTextAlignmentCenter;
             tableName.font=[UIFont boldSystemFontOfSize:25];
             //[cell.contentView addSubview:tableName];
@@ -772,6 +813,9 @@ bool funcCalled = NO;
             }*/
             tableName.layer.cornerRadius=10.0;
             tableName.text=[[TotalFreeTables objectAtIndex:totalData] objectForKey:@"TBLNo"];//[NSString stringWithFormat:@"%d",totalData+1];
+            
+            [existingTables addObject:tableName.text];
+            
             tableName.textAlignment=NSTextAlignmentCenter;
             tableName.font=[UIFont boldSystemFontOfSize:25];
             [cell.contentView addSubview:tableName];
@@ -904,7 +948,7 @@ bool funcCalled = NO;
 
 
 
--(IBAction)gotoDishViewMode
+-(IBAction)gotoDishViewMode:(id)sender
 {
     
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
@@ -925,6 +969,11 @@ bool funcCalled = NO;
     }
     
     else{
+
+        if(sender != nil) {
+            [[ShareableData sharedInstance] setCurrentTable:DEFAULT_TABLE];
+        }
+
         
         [ShareableData sharedInstance].ViewMode=1;
         [ShareableData sharedInstance].isLogin=@"0";
@@ -1098,6 +1147,44 @@ bool funcCalled = NO;
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
     
+    
+    if(alertView.tag == FIXED_VIEW_ALERT) {
+        
+        if(buttonIndex == 0) {
+            NSString *table_number = [NSString stringWithString:[[alertView textFieldAtIndex:0] text]];
+            
+            if(![existingTables containsObject:[table_number uppercaseString]]) {
+                [ShareableData showAlert:@"Alert" message:@"This table does not exist!"];
+            }
+            else {
+                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", table_number]];
+                NSLog(@"Table number> = %@", [ShareableData sharedInstance].currentTable);
+                //NSLog(@"Total Free Tables 1st = %@", TotalFreeTables);
+                BOOL assigned = TRUE;
+                
+                for(int i = 0; i < [TotalFreeTables count]; i++) {
+                    NSMutableDictionary *dict = (NSMutableDictionary *)TotalFreeTables[i];
+                    
+                    if([dict[@"TBLNo"] isEqualToString:[ShareableData sharedInstance].currentTable] && [dict[@"TBLStatus"] isEqualToString:@"A"]) {
+                        assigned = FALSE;
+                        break;
+                    }
+                }
+
+                if(assigned) {
+                    tableNumber = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];
+                    title = @"Reassign iPad to this table";
+                }
+                else {
+                    [self gotoDishViewMode:nil];
+                }
+                
+            }
+        }
+        
+    }
+
+    
     if ([title isEqualToString:@"Assign"]){
         
 //        numberOfGuests = [alertView textFieldAtIndex:0];
@@ -1120,12 +1207,14 @@ bool funcCalled = NO;
             
             if (quickOrderSwitch.on==NO) {
      
+                
             
             [ShareableData sharedInstance].isQuickOrder=@"0";
             NSDictionary* ttemp = [self recallTableRaptor:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
             
             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"03"]){
                 
+                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];
                 
                 [[ShareableData sharedInstance].OrderItemID removeAllObjects];
                 [[ShareableData sharedInstance].OrderItemName removeAllObjects];
@@ -1165,7 +1254,8 @@ bool funcCalled = NO;
                             NSDictionary* ttemp = [self recallTableRaptor:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
                 
                             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"03"]){
-                
+                                
+                                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];
                 
                                 [[ShareableData sharedInstance].OrderItemID removeAllObjects];
                                 [[ShareableData sharedInstance].OrderItemName removeAllObjects];
@@ -1397,6 +1487,8 @@ bool funcCalled = NO;
             
             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"01"]){
                 
+                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];
+                
         [ShareableData sharedInstance].AddItemFromTakeaway=@"0";
         
         [[ShareableData sharedInstance].OrderItemID removeAllObjects];
@@ -1411,7 +1503,7 @@ bool funcCalled = NO;
         [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
         
                
-        [super viewDidLoad];
+        //[super viewDidLoad];
       
             [self getTableDetails:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]; //Change
                 
@@ -2173,6 +2265,18 @@ bool funcCalled = NO;
 }
 
 
+
+-(IBAction)fixedViewClicked:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Enter Table Number" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Cancel", nil];
+    [alert setTag:FIXED_VIEW_ALERT];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *txt = (UITextField *)[alert textFieldAtIndex:0];
+    [txt setDelegate:self];
+    
+    [alert show];
+}
 
 
 @end

@@ -14,6 +14,7 @@
 #import "TabSquareCommonClass.h"
 #import "TabSquareComboSet.h"
 #import "LanguageControler.h"
+#import "TabSquareRemoteActivation.h"
 
 @implementation TabMainCourseMenuListViewController
 
@@ -115,6 +116,9 @@
      selector:@selector(languageChanged:)
      name:LANGUAGE_CHANGED
      object:nil];
+
+    /*=====================Register to recieve Mode Change Activation======================*/
+    [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
 
     tag_switch = [ShareableData dishTagStatus];
     
@@ -1138,5 +1142,20 @@
     
 }
 
+
+
+/*=================View Mode Selected===================*/
+-(void)viewModeActivated:(NSNotification *)notification
+{
+    [self.DishList reloadData];
+}
+
+
+/*=================Edit Mode Selected===================*/
+-(void)editModeActivated:(NSNotification *)notification
+{
+    [self.DishList reloadData];
+    
+}
 
 @end

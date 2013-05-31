@@ -18,6 +18,7 @@
 #import "TabMainCourseMenuListViewController.h"
 #import "LanguageControler.h"
 #import "TabSquareComboSet.h"
+#import "TabSquareRemoteActivation.h"
 
 @implementation ViewController
 @synthesize hFlowView;
@@ -434,6 +435,10 @@ imgView.clipsToBounds = NO;
      selector:@selector(languageChanged:)
      name:LANGUAGE_CHANGED
      object:nil];
+    
+    /*=====================Register to recieve Mode Change Activation======================*/
+    [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
+
 
        // DLog(@"TabMainMenuDetailViewController");
     //[self createMenuDetailView];
@@ -726,6 +731,20 @@ imgView.clipsToBounds = NO;
     [self.hFlowView reloadData];
     [self.vFlowView reloadData];
     
+}
+
+
+/*=================View Mode Selected===================*/
+-(void)viewModeActivated:(NSNotification *)notification
+{
+    [self.addButton setHidden:TRUE];
+}
+
+
+/*=================Edit Mode Selected===================*/
+-(void)editModeActivated:(NSNotification *)notification
+{
+    [self.addButton setHidden:FALSE];
 }
 
 

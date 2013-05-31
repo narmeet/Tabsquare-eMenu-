@@ -30,6 +30,9 @@
     NSMutableArray *TotalFreeTables;
     NSMutableArray *TableStatus;
     NSMutableArray *TATables;
+    
+    NSMutableArray *existingTables;
+    
     int totalData;
     int totalTable;
     NSTimer* tt;
@@ -48,7 +51,7 @@
 @property(nonatomic,strong) UISwitch *specialReqSwitch;
 -(IBAction)quickOrderSwitch:(id)sender;
 -(IBAction)specialReqSwitch:(id)sender;
--(IBAction)gotoDishViewMode;
+-(IBAction)gotoDishViewMode:(id)sender;
 -(IBAction)infoButton:(id)sender;
 -(void)viewDidDisappear:(BOOL)animated;
 @property(nonatomic,strong) UITextField *numberOfGuests;;

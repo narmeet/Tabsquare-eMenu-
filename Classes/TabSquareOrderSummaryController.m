@@ -21,6 +21,7 @@
 #import "TabSquareBeerController.h"
 #import "TabSquareBeerDetailController.h"
 #import "LanguageControler.h"
+#import "TabSquareRemoteActivation.h"
 
 
 @implementation TabSquareOrderSummaryController
@@ -80,6 +81,18 @@ static int tapCount = 0;
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
+    /*============Registering to receive language change signal==============*/
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(languageChanged:)
+     name:LANGUAGE_CHANGED
+     object:nil];
+
+    /*=====================Register to recieve Mode Change Activation======================*/
+    [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
+
     [self createDishData];
     
     subSortId=[[NSMutableArray alloc]init];
@@ -98,7 +111,7 @@ static int tapCount = 0;
     beerDetailView =[[TabSquareNewBeerScrollController alloc]initWithNibName:@"TabSquareNewBeerScrollController" bundle:nil];
     
     beveragesBeerView2=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
-    [super viewDidLoad];
+    
     lblTotal.text=@"0";
     totalTitle.text=[NSString stringWithFormat:@"0 %@", [LanguageControler activeText:@"ITEMS ADDED"]];
     // TabSquareBeerController *bv2=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
@@ -2035,6 +2048,7 @@ static int tapCount = 0;
 
 -(void)languageChanged:(NSNotification *)notification
 {
+    
     [self.confirmButton setTitle:[[LanguageControler activeText:@"Confirm"] uppercaseString] forState:UIControlStateNormal];
     summaryTitle.text = [NSString stringWithFormat:@"%@ - Table No. %@", [LanguageControler activeText:@"ORDER SUMMARY"], [ShareableData sharedInstance].assignedTable1 ] ;
     [self.subTotal setText:[LanguageControler activeText:@"SUBTOTAL"]];
@@ -2080,6 +2094,24 @@ static int tapCount = 0;
     }
     
 }
+
+/*=================View Mode Selected===================*/
+-(void)viewModeActivated:(NSNotification *)notification
+{
+    [self CalculateTotal];
+    [self.OrderList reloadData];
+}
+
+
+/*=================Edit Mode Selected===================*/
+-(void)editModeActivated:(NSNotification *)notification
+{
+    [self CalculateTotal];
+    [self.OrderList reloadData];
+    
+}
+
+
 
 
 @end

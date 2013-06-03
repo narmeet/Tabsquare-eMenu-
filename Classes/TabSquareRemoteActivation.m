@@ -351,8 +351,14 @@ static TabSquareRemoteActivation *_activation = nil;
 }
 
 
+-(void)setMainMenuButton:(UIButton *)btn
+{
+    menuButton = btn;
+}
+
 -(void)addInfoPopup:(NSString *)text
 {
+    [menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     
     UILabel *status = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320.0, 56.0)];
     [status setFont:[UIFont boldSystemFontOfSize:25.0]];

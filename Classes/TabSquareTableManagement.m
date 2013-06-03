@@ -532,11 +532,11 @@ bool funcCalled = NO;
 -(void)changeData
 {
     NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:@"8" forKey:@"TBLNo"];
+    [dict setObject:@"1" forKey:@"TBLNo"];
     [dict setObject:@"A" forKey:@"TBLStatus"];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"test"];
-    [TotalFreeTables replaceObjectAtIndex:13 withObject:dict];
+    [TotalFreeTables replaceObjectAtIndex:6 withObject:dict];
 }
 
 -(void)onTick{
@@ -1115,7 +1115,6 @@ bool funcCalled = NO;
 -(NSDictionary*)recallTableRaptor:(NSString*)table{
     
     NSArray* returnVal;
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
@@ -1138,6 +1137,23 @@ bool funcCalled = NO;
     return node;
     
 }
+
+-(BOOL)tableExists:(NSString *)obj
+{
+    BOOL exists = FALSE;
+    
+    for(int i = 0; i < [TotalFreeTables count]; i++) {
+        NSMutableDictionary *dict = (NSMutableDictionary *)TotalFreeTables[i];
+        
+        if([dict[@"TBLNo"] isEqualToString:obj]) {
+            exists = TRUE;
+            break;
+        }
+    }
+    
+    return exists;
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [myTextField resignFirstResponder];
@@ -1152,8 +1168,7 @@ bool funcCalled = NO;
         
         if(buttonIndex == 0) {
             NSString *table_number = [NSString stringWithString:[[alertView textFieldAtIndex:0] text]];
-            
-            if(![existingTables containsObject:[table_number uppercaseString]]) {
+            if(![self tableExists:[table_number uppercaseString]]) {
                 [ShareableData showAlert:@"Alert" message:@"This table does not exist!"];
             }
             else {
@@ -1482,9 +1497,7 @@ bool funcCalled = NO;
             [alertView show];
         }
         else{
-            
-            NSDictionary* ttemp = [self recallTableRaptor:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
-            
+            NSDictionary* ttemp = [self recallTableRaptor:[ShareableData sharedInstance].currentTable];
             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"01"]){
                 
                 [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];

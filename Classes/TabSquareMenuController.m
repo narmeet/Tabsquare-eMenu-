@@ -415,6 +415,8 @@
     /*=====================Register to recieve Mode Change Activation======================*/
     [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
     [[TabSquareRemoteActivation remoteActivation] setPopupSuperView:self.view];
+    [[TabSquareRemoteActivation remoteActivation] setMainMenuButton:self.overviewMenuButton];
+    
 
     if(![ShareableData multiLanguageStatus])
         [self.flagButton setHidden:TRUE];
@@ -3724,11 +3726,13 @@
 }
 
 
+
 /*=================View Mode Selected===================*/
 -(void)viewModeActivated:(NSNotification *)notification
 {
     NSLog(@"view mode");
     [menulistView.DishList reloadData];
+    
 }
 
 
@@ -3737,7 +3741,6 @@
 {
     NSLog(@"Edit order Mode");
     [menulistView.DishList reloadData];
-    
 }
 
 @end

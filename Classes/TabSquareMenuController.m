@@ -2271,6 +2271,7 @@
 -(void)onTick:(NSTimer *)timer 
 {
     [self badgeRefresh];
+    //NSLog(@"mode value = %d", [ShareableData sharedInstance].ViewMode);
     if([ShareableData sharedInstance].ViewMode==1)
     {
         OrderSummaryButton.hidden=YES;
@@ -3741,6 +3742,9 @@
 {
     NSLog(@"Edit order Mode");
     [menulistView.DishList reloadData];
+    
+    [self.overviewMenuButton setUserInteractionEnabled:YES];
+    [self.OrderSummaryButton setUserInteractionEnabled:YES];
 }
 
 @end

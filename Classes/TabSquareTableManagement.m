@@ -532,11 +532,11 @@ bool funcCalled = NO;
 -(void)changeData
 {
     NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:@"1" forKey:@"TBLNo"];
-    [dict setObject:@"A" forKey:@"TBLStatus"];
+    [dict setObject:@"6" forKey:@"TBLNo"];
+    [dict setObject:@"H" forKey:@"TBLStatus"];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"test"];
-    [TotalFreeTables replaceObjectAtIndex:6 withObject:dict];
+    [TotalFreeTables replaceObjectAtIndex:11 withObject:dict];
 }
 
 -(void)onTick{
@@ -1245,7 +1245,7 @@ bool funcCalled = NO;
             
             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"03"]){
                 
-                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];
+                [[ShareableData sharedInstance] setCurrentTable:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
                 
                 [[ShareableData sharedInstance].OrderItemID removeAllObjects];
                 [[ShareableData sharedInstance].OrderItemName removeAllObjects];
@@ -1286,7 +1286,7 @@ bool funcCalled = NO;
                 
                             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"03"]){
                                 
-                                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];
+                                [[ShareableData sharedInstance] setCurrentTable:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
                 
                                 [[ShareableData sharedInstance].OrderItemID removeAllObjects];
                                 [[ShareableData sharedInstance].OrderItemName removeAllObjects];
@@ -1519,10 +1519,13 @@ bool funcCalled = NO;
             if(fixed_mode) {
                 tb_no = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];
             }
+            
+            [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tb_no]];
+            
             NSDictionary* ttemp = [self recallTableRaptor:tb_no];
             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"01"]){
                 
-                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];
+                [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tb_no]];
                 
         [ShareableData sharedInstance].AddItemFromTakeaway=@"0";
         

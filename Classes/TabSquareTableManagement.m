@@ -1147,8 +1147,21 @@ bool funcCalled = NO;
         
         if([dict[@"TBLNo"] isEqualToString:obj]) {
             exists = TRUE;
+            
+            if([dict[@"TBLStatus"] isEqualToString:@"H"]) {
+                exists = FALSE;
+                
+                [ShareableData showAlert:@"Alert" message:@"This function can not be used for opened tables. Please reassign table instead."];
+                
+                return exists;
+            }
+                
             break;
         }
+    }
+    
+    if(!exists) {
+        [ShareableData showAlert:@"Alert" message:@"This table does not exist!"];
     }
     
     return exists;
@@ -1169,8 +1182,9 @@ bool funcCalled = NO;
         
         if(buttonIndex == 0) {
             NSString *table_number = [NSString stringWithString:[[alertView textFieldAtIndex:0] text]];
+            
             if(![self tableExists:[table_number uppercaseString]]) {
-                [ShareableData showAlert:@"Alert" message:@"This table does not exist!"];
+                //[ShareableData showAlert:@"Alert" message:@"This table does not exist!"];
             }
             else {
                 [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", table_number]];
@@ -1500,6 +1514,7 @@ bool funcCalled = NO;
         }
         else{
             //
+            [ShareableData sharedInstance].ViewMode = 2;
             NSString *tb_no = [NSString stringWithFormat:@"%@", [[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
             if(fixed_mode) {
                 tb_no = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];

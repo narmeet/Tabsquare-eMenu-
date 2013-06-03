@@ -1163,6 +1163,7 @@ bool funcCalled = NO;
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
     
+    BOOL fixed_mode = FALSE;
     
     if(alertView.tag == FIXED_VIEW_ALERT) {
         
@@ -1187,6 +1188,7 @@ bool funcCalled = NO;
                 }
 
                 if(assigned) {
+                    fixed_mode = TRUE;
                     tableNumber = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];
                     title = @"Reassign iPad to this table";
                 }
@@ -1497,7 +1499,12 @@ bool funcCalled = NO;
             [alertView show];
         }
         else{
-            NSDictionary* ttemp = [self recallTableRaptor:[ShareableData sharedInstance].currentTable];
+            //
+            NSString *tb_no = [NSString stringWithFormat:@"%@", [[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
+            if(fixed_mode) {
+                tb_no = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];
+            }
+            NSDictionary* ttemp = [self recallTableRaptor:tb_no];
             if ([[ttemp objectForKey:@"ErrCode"] isEqualToString:@"01"]){
                 
                 [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", tableNumber]];

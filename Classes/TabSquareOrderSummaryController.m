@@ -101,7 +101,7 @@ static int tapCount = 0;
     [self createRecommendationScreen];
     //summaryTitle.font=[UIFont fontWithName:@"Lucida Calligraphy" size:27];
     //totalTitle.font=[UIFont fontWithName:@"Lucida Calligraphy" size:30];
-    summaryTitle.text = [NSString stringWithFormat:@"%@ - Table No. %@", [LanguageControler activeText:@"ORDER SUMMARY"], [ShareableData sharedInstance].assignedTable1 ] ;
+    summaryTitle.text = [NSString stringWithFormat:@"%@ - Table No. %@", [LanguageControler activeText:@"ORDER SUMMARY"], [ShareableData sharedInstance].currentTable] ;
     //summaryTitle.font=[UIFont fontWithName:@"Lucida Calligraphy" size:27];
     specialRequest.layer.borderWidth=2.0;
     specialRequest.layer.borderColor=[UIColor colorWithRed:220.0f/255.0f green:208.0f/255.0f blue:156.0f/255.0f alpha:0.8].CGColor;
@@ -2050,7 +2050,7 @@ static int tapCount = 0;
 {
     
     [self.confirmButton setTitle:[[LanguageControler activeText:@"Confirm"] uppercaseString] forState:UIControlStateNormal];
-    summaryTitle.text = [NSString stringWithFormat:@"%@ - Table No. %@", [LanguageControler activeText:@"ORDER SUMMARY"], [ShareableData sharedInstance].assignedTable1 ] ;
+    summaryTitle.text = [NSString stringWithFormat:@"%@ - Table No. %@", [LanguageControler activeText:@"ORDER SUMMARY"], [ShareableData sharedInstance].currentTable] ;
     [self.subTotal setText:[LanguageControler activeText:@"SUBTOTAL"]];
     [self.grandTotal setText:[LanguageControler activeText:@"GRAND TOTAL"]];
     [self.onlyTotal setText:[LanguageControler activeText:@"TOTAL"]];

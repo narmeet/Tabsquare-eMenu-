@@ -415,6 +415,8 @@
     /*=====================Register to recieve Mode Change Activation======================*/
     [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
     [[TabSquareRemoteActivation remoteActivation] setPopupSuperView:self.view];
+    [[TabSquareRemoteActivation remoteActivation] setMainMenuButton:self.overviewMenuButton];
+    
 
     if(![ShareableData multiLanguageStatus])
         [self.flagButton setHidden:TRUE];
@@ -2269,6 +2271,7 @@
 -(void)onTick:(NSTimer *)timer 
 {
     [self badgeRefresh];
+    //NSLog(@"mode value = %d", [ShareableData sharedInstance].ViewMode);
     if([ShareableData sharedInstance].ViewMode==1)
     {
         OrderSummaryButton.hidden=YES;
@@ -3724,11 +3727,13 @@
 }
 
 
+
 /*=================View Mode Selected===================*/
 -(void)viewModeActivated:(NSNotification *)notification
 {
     NSLog(@"view mode");
     [menulistView.DishList reloadData];
+    
 }
 
 
@@ -3738,6 +3743,8 @@
     NSLog(@"Edit order Mode");
     [menulistView.DishList reloadData];
     
+    [self.overviewMenuButton setUserInteractionEnabled:YES];
+    [self.OrderSummaryButton setUserInteractionEnabled:YES];
 }
 
 @end

@@ -3,8 +3,8 @@
 
 @interface TabSquareRemoteActivation : NSObject {
     
-    UIView *popupSuperView;
-    
+    UIView   *popupSuperView;
+    UIButton *menuButton;
 }
 
 
@@ -16,6 +16,7 @@
 -(void)tablesUpdated;
 -(void)registerRemoteNotification:(id)obj;
 -(void)setPopupSuperView:(UIView *)_view;
+-(void)setMainMenuButton:(UIButton *)btn;
 
 
 @end

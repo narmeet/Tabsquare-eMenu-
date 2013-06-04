@@ -2296,6 +2296,11 @@ bool funcCalled = NO;
     // TODO: Deselect item
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+    
+    if(textField.tag == FIXED_VIEW_ALERT) {
+        return TRUE;
+    }
+    
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
     NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
@@ -2311,6 +2316,7 @@ bool funcCalled = NO;
     
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField *txt = (UITextField *)[alert textFieldAtIndex:0];
+    [txt setTag:FIXED_VIEW_ALERT];
     [txt setDelegate:self];
     
     [alert show];

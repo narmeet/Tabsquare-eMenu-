@@ -52,14 +52,16 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
+    
     NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = paths[0];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+    NSString *libraryDirectory = [paths lastObject];
     NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
     
     UIImage *img1 = [UIImage imageWithContentsOfFile:location];
     
     bgImage.image = img1;
+
     
 }
 -(void)addCustomizationView
@@ -272,9 +274,11 @@
     UIButton *add=[UIButton buttonWithType:UIButtonTypeCustom];
     add.tag=index;
     add.frame=CGRectMake(299, 1, 105, 30);
-    [add setImage:[UIImage imageNamed:@"add_Scrollbtn.png"] forState:UIControlStateNormal];
-    [add setImage:[UIImage imageNamed:@"add_Scrollbtn.png"] forState:UIControlStateHighlighted];
-    [add setImage:[UIImage imageNamed:@"add_Scrollbtn.png"] forState:UIControlStateSelected];
+    [add setImage:[UIImage imageNamed:@"add_btn.png"] forState:UIControlStateNormal];
+    [add setImage:[UIImage imageNamed:@"add_btn.png"] forState:UIControlStateHighlighted];
+    [add setImage:[UIImage imageNamed:@"add_btn.png"] forState:UIControlStateSelected];
+    [add setTitle:@"Add" forState:UIControlStateNormal];
+    [add.titleLabel setFont:[UIFont systemFontOfSize:20.0]];
     [add addTarget:self action:@selector(addBeerListView:) forControlEvents:UIControlEventTouchUpInside];
     if([ShareableData sharedInstance].ViewMode==1 || [orderScreenFlag isEqualToString:@"1"]){
 

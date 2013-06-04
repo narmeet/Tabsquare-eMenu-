@@ -61,14 +61,16 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
+    
     NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = paths[0];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+    NSString *libraryDirectory = [paths lastObject];
     NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
     
     UIImage *img1 = [UIImage imageWithContentsOfFile:location];
     
     bgImage.image = img1;
+
  
 }
 
@@ -467,19 +469,10 @@ imgView.clipsToBounds = NO;
     currentIndex=0;
     @autoreleasepool {
         
-        
-      //  hFlowView.layer.borderWidth=3.0;
-      //  hFlowView.layer.borderColor=[UIColor colorWithRed:168.0f/255.0f green:49.0f/255.0f blue:19.0f/255.0f alpha:1.0].CGColor;
-        
-        // DLog(@"TabMainMenuDetailViewController");
-        //[self createMenuDetailView];
+        hFlowView.layer.borderWidth=3.0;
+        hFlowView.layer.borderColor=[UIColor colorWithRed:168.0f/255.0f green:49.0f/255.0f blue:19.0f/255.0f alpha:1.0].CGColor;
         nextOrPrev=0;
-//        tt = [NSTimer scheduledTimerWithTimeInterval:1.0
-//                                              target:self
-//                                            selector:@selector(onTick:)
-//                                            userInfo:nil
-//                                             repeats:YES];
-        if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
+             if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
             bggg.hidden = YES;
         }else{
             bggg.hidden = NO;

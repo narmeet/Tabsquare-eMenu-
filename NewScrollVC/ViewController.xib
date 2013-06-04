@@ -76,7 +76,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{90, 486.5}, {354, 62}}</string>
 								<reference key="NSSuperview" ref="568251718"/>
-								<reference key="NSNextKeyView" ref="305085361"/>
+								<reference key="NSNextKeyView" ref="646094672"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -130,7 +130,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{91, 561}, {549, 144}}</string>
 								<reference key="NSSuperview" ref="568251718"/>
-								<reference key="NSNextKeyView" ref="646094672"/>
+								<reference key="NSNextKeyView" ref="325787155"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -161,12 +161,13 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{569, 507}, {93, 40}}</string>
 								<reference key="NSSuperview" ref="568251718"/>
-								<reference key="NSNextKeyView" ref="325787155"/>
+								<reference key="NSNextKeyView" ref="305085361"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUINormalTitle">ADD</string>
 								<reference key="IBUIHighlightedTitleColor" ref="147265076"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
@@ -178,17 +179,17 @@
 								</object>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">add_Scrollbtn.png</string>
+									<string key="NSResourceName">add_btn.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">Copperplate-Light</string>
 									<string key="family">Copperplate</string>
 									<int key="traits">0</int>
-									<double key="pointSize">23</double>
+									<double key="pointSize">20</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Copperplate</string>
-									<double key="NSSize">23</double>
+									<double key="NSSize">20</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
@@ -198,6 +199,7 @@
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
 								<string key="NSFrame">{{208, 561}, {41, 36}}</string>
 								<reference key="NSSuperview" ref="568251718"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -403,13 +405,13 @@
 						<int key="objectID">18</int>
 						<reference key="object" ref="568251718"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="945295556"/>
 							<reference ref="305085361"/>
 							<reference ref="962817002"/>
 							<reference ref="646094672"/>
 							<reference ref="946136933"/>
 							<reference ref="325787155"/>
 							<reference ref="797388223"/>
+							<reference ref="945295556"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -485,7 +487,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="Popup Close button.png">{75, 75}</string>
-			<string key="add_Scrollbtn.png">{253, 90}</string>
+			<string key="add_btn.png">{115, 53}</string>
 			<string key="menu_back.png">{1478, 1390}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

@@ -23,7 +23,7 @@ int selectedImageAtMenu;
 ///////////////////////////API URL//////////////////////////////////////////////////
 
 
-#define kURL                    @"http://25.67.240.7/"//192.168.1.90
+#define kURL                    @"http://192.168.0.40/"//192.168.1.90
 
 
 #define DEFAULT_URL             kURL@"central"

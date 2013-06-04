@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.SystemVersion">11G63</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.37</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -44,7 +44,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{-116, -498}, {1000, 2000}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="477950928"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -65,7 +64,6 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{0, -64}, {717, 775}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="955600847"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -80,7 +78,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{90, 487}, {354, 62}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="703426728"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -115,7 +112,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{90, 544.5}, {583, 85.5}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1063307751"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -148,7 +144,6 @@
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
 								<string key="NSFrame">{{208, 561}, {41, 36}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="383012939"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -162,7 +157,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{697, 0}, {45, 45}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="261629546"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -197,7 +191,6 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{156, 638}, {405, 64}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="66953809">
 									<int key="NSColorSpace">3</int>
@@ -216,7 +209,6 @@
 						</array>
 						<string key="NSFrame">{{21, 8.5}, {717, 711}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="591882850"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="66953809"/>
@@ -225,7 +217,6 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="438466215"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -438,134 +429,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">57</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">PagedFlowView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PagedFlowView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TabSquareNewBeerScrollController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="closeClicked:">id</string>
-						<string key="leftClicked:">id</string>
-						<string key="rightClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="closeClicked:">
-							<string key="name">closeClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="leftClicked:">
-							<string key="name">leftClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="rightClicked:">
-							<string key="name">rightClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="KDishImage">UIImageView</string>
-						<string key="beverageSkUView">UITableView</string>
-						<string key="bgBlackView">UIView</string>
-						<string key="bgImage">UIImageView</string>
-						<string key="bgg">UIImageView</string>
-						<string key="bggg">UIImageView</string>
-						<string key="detailImageView">UIView</string>
-						<string key="drinkDiscription">UILabel</string>
-						<string key="drinkImage">UIImageView</string>
-						<string key="drinkName">UILabel</string>
-						<string key="hFlowView">PagedFlowView</string>
-						<string key="hPageControl">UIPageControl</string>
-						<string key="imageView">UIImageView</string>
-						<string key="leftArrow">UIButton</string>
-						<string key="mcloseButton">UIButton</string>
-						<string key="rightArrow">UIButton</string>
-						<string key="vFlowView">PagedFlowView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="KDishImage">
-							<string key="name">KDishImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="beverageSkUView">
-							<string key="name">beverageSkUView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="bgBlackView">
-							<string key="name">bgBlackView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="bgImage">
-							<string key="name">bgImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="bgg">
-							<string key="name">bgg</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="bggg">
-							<string key="name">bggg</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="detailImageView">
-							<string key="name">detailImageView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="drinkDiscription">
-							<string key="name">drinkDiscription</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="drinkImage">
-							<string key="name">drinkImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="drinkName">
-							<string key="name">drinkName</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="hFlowView">
-							<string key="name">hFlowView</string>
-							<string key="candidateClassName">PagedFlowView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="hPageControl">
-							<string key="name">hPageControl</string>
-							<string key="candidateClassName">UIPageControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="leftArrow">
-							<string key="name">leftArrow</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mcloseButton">
-							<string key="name">mcloseButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rightArrow">
-							<string key="name">rightArrow</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="vFlowView">
-							<string key="name">vFlowView</string>
-							<string key="candidateClassName">PagedFlowView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TabSquareNewBeerScrollController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

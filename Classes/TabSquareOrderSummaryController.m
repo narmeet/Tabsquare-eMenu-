@@ -355,7 +355,10 @@ static int tapCount = 0;
 }
 //-(void)openItemRaptor
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    
+   
+}
 -(void)confirmOrder
 {
     tapCount=0;

@@ -54,4 +54,6 @@
 -(IBAction)plusClicked:(id)sender;
 -(void)setParent:(id)sender;
 -(void)unhideTheScrollerAndSubCatBgOnMenuController;
+-(void)unHideAllTheButtononMenuAfterCustomizationIsDone;
+
 @end

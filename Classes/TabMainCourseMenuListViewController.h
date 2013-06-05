@@ -92,6 +92,6 @@
 -(void)reloadDataOfSubCat2:(NSString *)sub cat:(NSString *)CatID;
 -(void)orderAddAnimation;
 -(void)unhideTheScrollerAndSubCatBgOnMenuController;
-
+-(void)unHideAllTheButtononMenuAfterCustomizationIsDone;
 
 @end

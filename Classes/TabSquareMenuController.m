@@ -81,6 +81,7 @@
 @synthesize KinaraSubCategory,KinaraSubategoryNameList,KinaraSelectedSubCategoryName,KinaraSelectorSubCategory,assignTable;
 
 @synthesize subcatScroller,subCatbg;
+@synthesize mparent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,7 +96,12 @@
 }
 
 
-
+-(void)setParent:(id)sender{
+    
+    mparent=sender;
+    
+    
+}
 
 -(void)createFavouriteClicked
 {
@@ -3723,6 +3729,13 @@
     
     [self.overviewMenuButton setUserInteractionEnabled:YES];
     [self.OrderSummaryButton setUserInteractionEnabled:YES];
+    
+    NSLog(@"mParent===%@",[mparent class]);
+    if ([mparent class] ==[TabMainCourseMenuListViewController class]) {
+        [self.overviewMenuButton setUserInteractionEnabled:NO];
+        [self.OrderSummaryButton setUserInteractionEnabled:NO];
+    }
+    
 }
 
 @end

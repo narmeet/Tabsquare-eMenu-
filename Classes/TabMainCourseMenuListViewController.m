@@ -30,6 +30,7 @@
     if (self) {
         // Custom initialization
         self.view.frame=CGRectMake(13, 20, self.view.frame.size.width, self.view.frame.size.height);
+        menuview.OrderSummaryButton.hidden=TRUE;
     }
     return self;
 }
@@ -337,6 +338,7 @@
     
     //////// to hide the all other buttons and scroll background from the parent view //////
     menuDetailViewT.mParent=self;
+    menuview.mparent=self;
     menuview.subCatbg.hidden=TRUE;
     menuview.subcatScroller.hidden=TRUE;
     menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
@@ -345,6 +347,8 @@
     menuview.help.userInteractionEnabled=FALSE;
     menuview.overviewMenuButton.userInteractionEnabled=FALSE;
     menuview.KinaraLogo.userInteractionEnabled=FALSE;
+    menuview.flagButton.userInteractionEnabled=FALSE;
+
 
     
     
@@ -353,18 +357,7 @@
 {
     menuDetailViewT=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
     
-    //////// to hide the all other buttons and scroll background from the parent view //////
-    menuDetailViewT.mParent=self;
-    menuview.subCatbg.hidden=TRUE;
-    menuview.subcatScroller.hidden=TRUE;
-    menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
-    menuview.search.userInteractionEnabled=FALSE;
-    menuview.favourite.userInteractionEnabled=FALSE;
-    menuview.help.userInteractionEnabled=FALSE;
-    menuview.overviewMenuButton.userInteractionEnabled=FALSE;
-    menuview.KinaraLogo.userInteractionEnabled=FALSE;
-
-    
+        
     menuDetailViewT.KKselectedID  =DishID[selectedItem];
    menuDetailViewT.KKselectedName=DishName[selectedItem];
     menuDetailViewT.KKselectedRate=DishPrice[selectedItem];
@@ -388,6 +381,19 @@
 
     [self.view addSubview:menuDetailViewT.view];
     
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    menuDetailViewT.mParent=self;
+    menuview.mparent=self;
+    menuview.subCatbg.hidden=TRUE;
+    menuview.subcatScroller.hidden=TRUE;
+    menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuview.search.userInteractionEnabled=FALSE;
+    menuview.favourite.userInteractionEnabled=FALSE;
+    menuview.help.userInteractionEnabled=FALSE;
+    menuview.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuview.KinaraLogo.userInteractionEnabled=FALSE;
+    menuview.flagButton.userInteractionEnabled=FALSE;
+
     
     
 }
@@ -1158,6 +1164,7 @@
             menuview.help.userInteractionEnabled=FALSE;
             menuview.overviewMenuButton.userInteractionEnabled=FALSE;
             menuview.KinaraLogo.userInteractionEnabled=FALSE;
+            menuview.flagButton.userInteractionEnabled=FALSE;
      
         }
     }
@@ -1173,6 +1180,8 @@
     menuview.help.userInteractionEnabled=TRUE;
     menuview.overviewMenuButton.userInteractionEnabled=TRUE;
     menuview.KinaraLogo.userInteractionEnabled=TRUE;
+    menuview.flagButton.userInteractionEnabled=TRUE;
+
     
 }
 

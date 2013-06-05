@@ -120,9 +120,9 @@
     NSString *backupActiveLanguage;
     NSString *prevSubId;
 
-    
+    id mparent;
 }
-
+@property(nonatomic,strong)id mparent;
 @property(nonatomic,strong) UIScrollView    *subcatScroller;
 @property(nonatomic,strong) UIImageView* subCatbg;
 
@@ -197,6 +197,6 @@
 -(void)setSearchOn:(NSString *)keyword;
 -(IBAction)flagPressed:(id)sender;
 -(void)overviewBtnClicked2:(id) sender;
-
+-(void)setParent:(id)sender;
 
 @end

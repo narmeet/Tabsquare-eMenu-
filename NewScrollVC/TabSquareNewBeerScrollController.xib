@@ -191,6 +191,7 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{156, 638}, {405, 64}}</string>
 								<reference key="NSSuperview" ref="477950928"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="66953809">
 									<int key="NSColorSpace">3</int>
@@ -200,6 +201,7 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<bool key="IBUIAlwaysBounceVertical">YES</bool>
 								<int key="IBUISeparatorStyle">1</int>
+								<reference key="IBUISeparatorColor" ref="66953809"/>
 								<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 								<float key="IBUIRowHeight">32</float>

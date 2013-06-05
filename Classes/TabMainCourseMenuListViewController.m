@@ -305,10 +305,65 @@
         }
     }
 }
+-(void)addBlankCustomizationView
+{
+    menuDetailViewT=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    
+    menuDetailViewT.KKselectedID  =DishID[selectedItem];
+    menuDetailViewT.KKselectedName=DishName[selectedItem];
+    menuDetailViewT.KKselectedRate=DishPrice[selectedItem];
+    menuDetailViewT.KKselectedCatId=DishCategoryId[selectedItem];
+    if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
+        menuDetailViewT.backImage.hidden=YES;
+    }else{
+        menuDetailViewT.backImage.hidden=NO;
+    }
+    
+    menuDetailViewT.DishCustomization=DishCustomization[selectedItem];
+    menuDetailViewT.KKselectedImage=DishImage[selectedItem];
+    [menuDetailViewT.customizationView reloadData];
+    menuDetailViewT.requestView.text=@"";
+    menuDetailViewT.swipeIndicator=@"1";
+    menuDetailViewT.isView=@"main";
+    menuDetailViewT.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    menuDetailViewT.detailImageView.frame = CGRectMake(104, 229, 530, 260);
+    menuDetailViewT.detailImageView.contentMode = UIViewContentModeRedraw;
+    menuDetailViewT.detailImageView.clipsToBounds=YES;
+    
+    menuDetailViewT.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
+        
+    [self.view addSubview:menuDetailViewT.view];
+    
+    
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    menuDetailViewT.mParent=self;
+    menuview.subCatbg.hidden=TRUE;
+    menuview.subcatScroller.hidden=TRUE;
+    menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuview.search.userInteractionEnabled=FALSE;
+    menuview.favourite.userInteractionEnabled=FALSE;
+    menuview.help.userInteractionEnabled=FALSE;
+    menuview.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuview.KinaraLogo.userInteractionEnabled=FALSE;
 
+    
+    
+}
 -(void)addCustomizationView
 {
     menuDetailViewT=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    menuDetailViewT.mParent=self;
+    menuview.subCatbg.hidden=TRUE;
+    menuview.subcatScroller.hidden=TRUE;
+    menuview.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuview.search.userInteractionEnabled=FALSE;
+    menuview.favourite.userInteractionEnabled=FALSE;
+    menuview.help.userInteractionEnabled=FALSE;
+    menuview.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuview.KinaraLogo.userInteractionEnabled=FALSE;
+
     
     menuDetailViewT.KKselectedID  =DishID[selectedItem];
    menuDetailViewT.KKselectedName=DishName[selectedItem];
@@ -329,7 +384,11 @@
     menuDetailViewT.swipeIndicator=@"1";
     menuDetailViewT.isView=@"main";
     menuDetailViewT.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    menuDetailViewT.crossBtn.frame=CGRectMake(610,30, 45, 45);////setting frame for cross button
+
     [self.view addSubview:menuDetailViewT.view];
+    
+    
     
 }
 
@@ -554,7 +613,12 @@
 
     if([type isEqualToString:@"0"])
     {
-        [self addImageAnimation:frame btnView:view];
+        //[self addImageAnimation:frame btnView:view];
+        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+            [self addImageAnimation:frame btnView:view];
+        }else{
+            [self addBlankCustomizationView];
+        }
     }
     else 
     {

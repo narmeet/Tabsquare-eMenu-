@@ -582,6 +582,7 @@
 		CD23D90016E5AA3700EC73DC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23D8FF16E5AA3600EC73DC /* Reachability.m */; };
 		CD5C2FAA16CCD8C400022ECA /* add_Scrollbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5C2FA916CCD8C400022ECA /* add_Scrollbtn.png */; };
 		CD5C2FAC16CCD93C00022ECA /* Popup Close button.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5C2FAB16CCD93C00022ECA /* Popup Close button.png */; };
+		CD680794175DCF9F00EAA169 /* TabSquareMenu-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD680793175DCF9F00EAA169 /* TabSquareMenu-Info.plist */; };
 		CDA1A3B516E929A1005E51DA /* tabsquare1Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA1A3B416E929A1005E51DA /* tabsquare1Logo.png */; };
 		CDD1F5F117019B1100103EF6 /* paxbox.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD1F5F017019B1100103EF6 /* paxbox.png */; };
 		D606E27015E688B70088803B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D606E26F15E688B70088803B /* SystemConfiguration.framework */; };
@@ -1376,6 +1377,7 @@
 		CD5C2FA816CCCFEC00022ECA /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Global.h; path = ../Global.h; sourceTree = "<group>"; };
 		CD5C2FA916CCD8C400022ECA /* add_Scrollbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_Scrollbtn.png; sourceTree = "<group>"; };
 		CD5C2FAB16CCD93C00022ECA /* Popup Close button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Popup Close button.png"; sourceTree = "<group>"; };
+		CD680793175DCF9F00EAA169 /* TabSquareMenu-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "TabSquareMenu-Info.plist"; path = "Resources/TabSquareMenu-Info.plist"; sourceTree = "<group>"; };
 		CDA1A3B416E929A1005E51DA /* tabsquare1Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabsquare1Logo.png; sourceTree = "<group>"; };
 		CDD1F5F017019B1100103EF6 /* paxbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paxbox.png; path = ../../paxbox.png; sourceTree = "<group>"; };
 		D606E26F15E688B70088803B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1672,6 +1674,7 @@
 		0FF3AC7B15A572F900FB1300 = {
 			isa = PBXGroup;
 			children = (
+				CD680793175DCF9F00EAA169 /* TabSquareMenu-Info.plist */,
 				86FEB433168AFB1D00030520 /* Social.framework */,
 				86FEB431168AFB0600030520 /* Accounts.framework */,
 				86FEB42E168AFAFF00030520 /* Twitter.framework */,
@@ -2668,14 +2671,14 @@
 			name = ShareableData;
 			sourceTree = "<group>";
 		};
-		CD631A1016FC21C500D78B9E /* TabSquareMenuDetailController */ = {
+		CD631A1016FC21C500D78B9E /* TabSquareMenuDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				86BFA0AC1730E872004D3BEE /* TabMainMenuDetailViewController.h */,
 				86BFA0AD1730E872004D3BEE /* TabMainMenuDetailViewController.m */,
 				DD7435E0167AB6DA00190CD7 /* TabMainMenuDetailViewController.xib */,
 			);
-			name = TabSquareMenuDetailController;
+			name = TabSquareMenuDetailViewController;
 			sourceTree = "<group>";
 		};
 		CD631A1116FC221E00D78B9E /* TabSquareAssignTable */ = {
@@ -2772,7 +2775,7 @@
 				CD631A0C16FC20D400D78B9E /* ComboSet */,
 				CD6319F716FC125000D78B9E /* TabMainCourseMenuListVC */,
 				CD6319FB16FC150000D78B9E /* TabMainDetailView */,
-				CD631A1016FC21C500D78B9E /* TabSquareMenuDetailController */,
+				CD631A1016FC21C500D78B9E /* TabSquareMenuDetailViewController */,
 				CD631A1516FC41E800D78B9E /* TabSearchViewController */,
 				CD631A1116FC221E00D78B9E /* TabSquareAssignTable */,
 				CD6319FC16FC156600D78B9E /* TabSquareBeerController */,
@@ -3782,6 +3785,7 @@
 				86BFA0B61730E99A004D3BEE /* TabSquareMenuController.xib in Resources */,
 				862203D31732641500FD8AD0 /* TabSquareBeerController.xib in Resources */,
 				862203D81732642E00FD8AD0 /* TabSquareBeerDetailController.xib in Resources */,
+				CD680794175DCF9F00EAA169 /* TabSquareMenu-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

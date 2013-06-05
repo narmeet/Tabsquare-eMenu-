@@ -32,6 +32,34 @@ NSString *kNameColorKey= @"nameColorKey";
 
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   
+//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+//    [[NSUserDefaults standardUserDefaults] setValue:version forKey:@"version_number"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+//    NSString *bPath = [[NSBundle mainBundle] bundlePath];
+//    NSString *settingsPath = [bPath stringByAppendingPathComponent:@"Settings.bundle"];
+//    NSString *plistFile = [settingsPath stringByAppendingPathComponent:@"Root.plist"];
+//    
+//    //Get the Preferences Array from the dictionary
+//    NSDictionary *settingsDictionary = [NSDictionary dictionaryWithContentsOfFile:plistFile];
+//    NSArray *preferencesArray = [settingsDictionary objectForKey:@"PreferenceSpecifiers"];
+//    
+//    //Save default value of "version_number" in preference to NSUserDefaults
+//    for(NSDictionary * item in preferencesArray) {
+//        if([[item objectForKey:@"Key"] isEqualToString:@"version_number"]) {
+//            NSString * defaultValue = [item objectForKey:@"Title"];
+//            [[NSUserDefaults standardUserDefaults] setObject:defaultValue forKey:@"Type"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//        }
+//    }
+    
+    //Save your real version number to NSUserDefaults
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:version forKey:@"version_number"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:SEARCH_DATA];
     [TabSquareCommonClass setValueInUserDefault:BEST_SELLERS value:@"0"];
@@ -178,7 +206,7 @@ NSString *kNameColorKey= @"nameColorKey";
 			}
 		}
         
-		// since no default values have been set (i.e. no preferences file created), create it here		
+		// since no default values have been set (i.e. no preferences file created), create it here
 		NSDictionary *appDefaults = @{kNameColorKey: nameColorDefault};
         
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];

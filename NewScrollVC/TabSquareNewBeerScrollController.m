@@ -52,16 +52,45 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
+    
     NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = paths[0];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+    NSString *libraryDirectory = [paths lastObject];
     NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
     
     UIImage *img1 = [UIImage imageWithContentsOfFile:location];
     
     bgImage.image = img1;
+
     
 }
+-(void)addBlankCustomizationView
+{
+    NSMutableDictionary *skudetail=beverageSKUDetail[beverageSkuIndex];
+    customizationView.KKselectedID  =skudetail[@"sku_id"];
+    NSString *beverageName=[NSString stringWithFormat:@"%@(%@)",(beverageView.beverageName)[[self.selectedIndex intValue]],skudetail[@"sku_name"]];
+    customizationView.KKselectedName=beverageName;
+    customizationView.KKselectedRate=skudetail[@"sku_price"];
+    customizationView.KKselectedCatId=beverageCatId;
+    customizationView.DishCustomization=(beverageView.beverageCustomization)[[selectedIndex intValue]];
+    customizationView.KKselectedImage=(beverageView.beverageImageData)[[selectedIndex intValue]];
+    customizationView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    customizationView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
+    customizationView.detailImageView.contentMode = UIViewContentModeRedraw;
+    customizationView.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
+    
+    
+    customizationView.detailImageView.clipsToBounds=YES;
+    [customizationView.customizationView reloadData];
+    customizationView.requestView.text=@"";
+    customizationView.swipeIndicator=@"0";
+    customizationView.isView=@"beverageinfo";
+    if([customizationView.DishCustomization count]!=0)
+    {
+        [self.view addSubview:customizationView.view];
+    }
+}
+
 -(void)addCustomizationView
 {
     NSMutableDictionary *skudetail=beverageSKUDetail[beverageSkuIndex];
@@ -72,6 +101,7 @@
     customizationView.KKselectedCatId=beverageCatId;
     customizationView.DishCustomization=(beverageView.beverageCustomization)[[selectedIndex intValue]];
     customizationView.KKselectedImage=(beverageView.beverageImageData)[[selectedIndex intValue]];
+    customizationView.crossBtn.frame=CGRectMake(610,5, 45, 45);////setting frame for cross button
     [customizationView.customizationView reloadData];
     customizationView.requestView.text=@"";
     customizationView.swipeIndicator=@"0";
@@ -231,7 +261,12 @@
     // NSString *type=[beverageCutType objectAtIndex:[selectedIndex intValue]];
     if([(beverageView.beverageCustomization)[[selectedIndex intValue]]count]==0)
     {
-        [self addImageAnimation:frame btnView:view];
+        //[self addImageAnimation:frame btnView:view];
+        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+            [self addImageAnimation:frame btnView:view];
+        }else{
+            [self addBlankCustomizationView];
+        }
     }
     else
     {
@@ -258,27 +293,31 @@
     skuName.text=skudetail[@"sku_name"];
     skuName.backgroundColor=[UIColor clearColor];
     skuName.font=[UIFont systemFontOfSize:16];
+    skuName.textColor = [UIColor blackColor];
     [cellView addSubview:skuName];
     
     //add price label
     UILabel *price=[[UILabel alloc]initWithFrame:CGRectMake(212, 0, 60,30)];
     price.backgroundColor=[UIColor clearColor];
     price.font=[UIFont systemFontOfSize:16];
-    price.textAlignment=NSTextAlignmentRight;
-    price.text=[NSString stringWithFormat:@"$%@",skudetail[@"sku_price"]];;
+    price.textAlignment=UITextAlignmentRight;
+    price.text=[NSString stringWithFormat:@"$%@",skudetail[@"sku_price"]];
+    price.textColor=[UIColor blackColor];
     [cellView addSubview:price];
     
     //add label button
     UIButton *add=[UIButton buttonWithType:UIButtonTypeCustom];
     add.tag=index;
-    add.frame=CGRectMake(299, 1, 105, 30);
-    [add setImage:[UIImage imageNamed:@"add_Scrollbtn.png"] forState:UIControlStateNormal];
-    [add setImage:[UIImage imageNamed:@"add_Scrollbtn.png"] forState:UIControlStateHighlighted];
-    [add setImage:[UIImage imageNamed:@"add_Scrollbtn.png"] forState:UIControlStateSelected];
+    add.frame=CGRectMake(299, 1, 108, 30);
+    
+    [add setBackgroundImage:[UIImage imageNamed:@"add_btn.png"] forState:UIControlStateNormal];
+    [add setTitle:@"ADD" forState:UIControlStateNormal];
+    [add setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [add.titleLabel setFont:[UIFont systemFontOfSize:20.0]];
     [add addTarget:self action:@selector(addBeerListView:) forControlEvents:UIControlEventTouchUpInside];
     if([ShareableData sharedInstance].ViewMode==1 || [orderScreenFlag isEqualToString:@"1"]){
-
-    
+        
+        
         add.hidden=YES;
     }
     else
@@ -286,6 +325,8 @@
         add.hidden=NO;
     }
     [cellView addSubview:add];
+    
+
     
     return cellView;
 }

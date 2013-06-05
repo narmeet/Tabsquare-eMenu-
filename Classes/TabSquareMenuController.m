@@ -1007,29 +1007,7 @@
     [subcatScroller setContentOffset:CGPointMake(test*-1, btn.frame.origin.y) animated:YES];
     [self changeFontSize:btn];
     
-    /*float move1=KinaraCurrentScrollPositionPointSub.x+(([UIScreen mainScreen].bounds.size.width/2));
-    float move2=btn.frame.origin.x+(btn.frame.size.width/2);
-    
-    float diff=move1-move2;
-    
-    if(KinaraSubCategory.contentOffset.x+[UIScreen mainScreen].bounds.size.width-diff+153 > KinaraSubCategory.contentSize.width || KinaraSubCategory.contentOffset.x-153-diff < 0)
-    {
-        // [KinaraSubCategory setContentOffset:KinaraOriginalScrollPositionPointSub animated:YES];
-        
-        [subcatScroller setContentOffset:KinaraOriginalScrollPositionPointSub animated:YES];
-        
-        [KinaraSubCategory setContentOffset:KinaraOriginalScrollPositionPointSub animated:YES];
-    }
-    else
-    {
-        [subcatScroller setContentOffset:CGPointMake(btn.frame.origin.x, btn.frame.origin.y) animated:YES];
-        [KinaraSubCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPointSub.x-diff-24.5,KinaraCurrentScrollPositionPointSub.y) animated:YES];
-    }
-    KinaraCurrentScrollPositionPointSub=subcatScroller.contentOffset;//KinaraSubCategory.contentOffset;
-    KinaraSubcategoryBtnClick=false;*/
-    //[subcatScroller setContentOffset:CGPointMake(btn.frame.origin.x, btn.frame.origin.y) animated:YES];
-
-    
+       
 
 }
 

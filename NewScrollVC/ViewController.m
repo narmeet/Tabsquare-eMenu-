@@ -61,14 +61,16 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
+    
     NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = paths[0];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+    NSString *libraryDirectory = [paths lastObject];
     NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
     
     UIImage *img1 = [UIImage imageWithContentsOfFile:location];
     
     bgImage.image = img1;
+
  
 }
 
@@ -117,7 +119,13 @@
     }
     else
     {
-        [self addImageAnimation:frame btnView:view];
+        //[self addImageAnimation:frame btnView:view];
+        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
+            [self addImageAnimation:frame btnView:view];
+        }else{
+            [self addBlankCustomizationView];
+        }
+
     }
     
 }
@@ -376,6 +384,45 @@ imgView.clipsToBounds = NO;
     }
     
 }
+-(void)addBlankCustomizationView
+{
+    menuDetailView=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    // menuDetailView
+    if([Viewtype isEqualToString:@"1"])
+    {
+        int index = [self.selectedID intValue];
+        menuDetailView.KKselectedID=DishID[index];
+        menuDetailView.KKselectedName=DishName[index];
+        menuDetailView.KKselectedRate=DishPrice[index];
+        menuDetailView.KKselectedCatId=DishCatId[index];
+        menuDetailView.DishCustomization=DishCustomization[index];
+    }
+    else if([Viewtype isEqualToString:@"2"])
+    {
+        menuDetailView.KKselectedID=kDishId;
+        menuDetailView.KKselectedName=KDishName.text;
+        menuDetailView.KKselectedRate=[NSString stringWithFormat:@"%@",KDishRate.text];
+        menuDetailView.KKselectedCatId=KDishCatId;
+        menuDetailView.DishCustomization=KDishCust[0];
+    }
+    
+    menuDetailView.KKselectedImage=[DishImage objectAtIndex:currentIndex];
+    [menuDetailView.customizationView reloadData];
+    menuDetailView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
+    menuDetailView.detailImageView.frame = CGRectMake(104, 229, 530, 260);
+    menuDetailView.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
+    
+    menuDetailView.detailImageView.contentMode = UIViewContentModeRedraw;
+    
+    
+    menuDetailView.detailImageView.clipsToBounds=YES;
+    
+    [self.view addSubview:menuDetailView.view];
+    menuDetailView.requestView.text=@"";
+    menuDetailView.swipeIndicator=@"0";
+    menuDetailView.isView=@"maininfo";
+    [self.view bringSubviewToFront:menuDetailView.view];
+}
 
 -(void)addCustomizationView
 {
@@ -402,7 +449,8 @@ imgView.clipsToBounds = NO;
     menuDetailView.KKselectedImage=[DishImage objectAtIndex:currentIndex];
     [menuDetailView.customizationView reloadData];
     menuDetailView.view.frame=CGRectMake(1, 0, menuDetailView.view.frame.size.width, menuDetailView.view.frame.size.height);
-    
+    menuDetailView.crossBtn.frame=CGRectMake(610,5, 45, 45);////setting frame for cross button
+
     [self.view addSubview:menuDetailView.view];
     menuDetailView.requestView.text=@"";
     menuDetailView.swipeIndicator=@"0";
@@ -467,19 +515,10 @@ imgView.clipsToBounds = NO;
     currentIndex=0;
     @autoreleasepool {
         
-        
-      //  hFlowView.layer.borderWidth=3.0;
-      //  hFlowView.layer.borderColor=[UIColor colorWithRed:168.0f/255.0f green:49.0f/255.0f blue:19.0f/255.0f alpha:1.0].CGColor;
-        
-        // DLog(@"TabMainMenuDetailViewController");
-        //[self createMenuDetailView];
+        hFlowView.layer.borderWidth=3.0;
+        hFlowView.layer.borderColor=[UIColor colorWithRed:168.0f/255.0f green:49.0f/255.0f blue:19.0f/255.0f alpha:1.0].CGColor;
         nextOrPrev=0;
-//        tt = [NSTimer scheduledTimerWithTimeInterval:1.0
-//                                              target:self
-//                                            selector:@selector(onTick:)
-//                                            userInfo:nil
-//                                             repeats:YES];
-        if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
+             if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
             bggg.hidden = YES;
         }else{
             bggg.hidden = NO;

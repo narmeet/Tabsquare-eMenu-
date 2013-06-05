@@ -303,7 +303,6 @@ static TabSquareRemoteActivation *_activation = nil;
 -(void)tablesUpdated
 {
     NSString *current_table = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];
-    //NSLog(@"currr tabl= = %@", current_table);
     if([current_table isEqualToString:DEFAULT_TABLE])
         return;
     
@@ -320,7 +319,6 @@ static TabSquareRemoteActivation *_activation = nil;
         }
     }
 
-    //NSLog(@"total tabales = %@, status = %d", free_tables, assigned);
     
     if(!assigned) {
         [self switchToViewMode];

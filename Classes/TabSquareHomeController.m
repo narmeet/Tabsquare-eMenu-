@@ -172,7 +172,7 @@ int toUpdate = 0;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-        
+            
     NSString *img_name = [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]];
     UIImage *img = [[TabSquareDBFile sharedDatabase] getImage:img_name];
     

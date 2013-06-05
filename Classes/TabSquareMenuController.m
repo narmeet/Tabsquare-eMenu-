@@ -884,6 +884,7 @@
         [btn setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
         [btn.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [btn.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [btn.titleLabel setNumberOfLines:1];
         // [btn setBackgroundImage:[UIImage imageNamed:@"subcategory_normal.png"] forState:UIControlStateNormal];
         [btn setTitle:filtered forState:UIControlStateNormal];
         [btn setTitle:filtered forState:UIControlStateReserved];
@@ -1101,6 +1102,7 @@
     //int subCat = [(NSString*)[chunks objectAtIndex:0] intValue];
     btnn = (UIButton*)[KinaraSubCategory viewWithTag:[(NSString*)chunks[1] intValue]];
     
+    //NSLog(@"chunk = %@", chunks);
     
     if (KinaraSelectedCategoryID != [chunks[0] intValue]){
        // KinaraSelectedCategoryID = [(NSString*)[chunks objectAtIndex:0] intValue];
@@ -2242,7 +2244,6 @@
     {
         
     }
-    
     for(int i=0;i<[resultFromPost count];i++)
     {
         NSMutableDictionary *dataitem=resultFromPost[i];
@@ -3669,12 +3670,15 @@
 
 -(void)updateScrollerTitles
 {
+    //NSLog(@"Scroller header list = %@", subcategoryList);
     int i = 0;
     for(UIView *sub_view in subcatScroller.subviews) {
         
         if([sub_view isMemberOfClass:[UIButton class]]){
             UIButton *btn = (UIButton *)sub_view;
-            [btn setTitle:subcategoryList[i] forState:UIControlStateNormal];
+            NSString *title = [NSString stringWithFormat:@"%@", subcategoryList[i]];
+            title = [title stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            [btn setTitle:title forState:UIControlStateNormal];
             i++;
         }
     }

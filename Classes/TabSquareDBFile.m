@@ -2962,60 +2962,24 @@ int enableClose = 1;
 
 -(NSMutableArray*)getCategoryData
 {
-    
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSString *statement = [NSString stringWithFormat:@"SELECT * FROM Categories order by sequence,%@", [LanguageControler activeLanguage:@"name"]];
-    // NSString *beverageId=@"";
+    
     NSArray *records = [connection query: statement];
-    
-    
     NSMutableArray *CategoryData=[[NSMutableArray alloc]init];
-    for (id element in records){
-        //NSString *optionId=(NSString*)[element objectForKey:@"id"];//[NSString
-        // NSMutableDictionary *SkuDic=[NSMutableDictionary dictionary];
-        //NSString *skuId=(NSString*)[element objectForKey:@"id"];//[NSString
-      //  NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
-        //NSString *dishId=(NSString*)[element objectForKey:@"id"];//[NSString
-        NSMutableDictionary *catDic=[NSMutableDictionary dictionary];
+    
+    for (id element in records) {
+
+        NSMutableDictionary *catDic=[NSMutableDictionary new];
         NSString *catId=(NSString*)[element objectForKey:@"id"];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];
         NSString *catname=(NSString*)[element objectForKey:[LanguageControler activeLanguage:@"name"]];
-        //[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
         
         catDic[@"id"] = catId;
         catDic[@"name"] = catname;
         
         [CategoryData addObject:catDic];
     }
-
     
-    
-   /*
-    const char *sql =[[NSString stringWithFormat:@"SELECT * FROM Categories order by sequence,name"]cStringUsingEncoding:NSUTF8StringEncoding];
-	NSMutableArray *CategoryData=[[NSMutableArray alloc]init];
-    
-	sqlite3_stmt *addStmt;
-	[self openDatabaseConnection];
-	if (sqlite3_prepare_v2(dataBaseConnection, sql, -1, &addStmt, NULL) != SQLITE_OK) 
-	{
-		DLog(0,@"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(dataBaseConnection));
-	}
-	else
-	{
-		while (sqlite3_step(addStmt) == SQLITE_ROW)
-		{
-                NSMutableDictionary *catDic=[NSMutableDictionary dictionary];
-                NSString *catId=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,0)];	
-                NSString *catname=[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,1)];
-                
-                catDic[@"id"] = catId;
-                catDic[@"name"] = catname;
-                              
-                [CategoryData addObject:catDic];
-            
-        }
-    }
-	sqlite3_finalize(addStmt);
-    [self closeDatabaseConnection];*/
 	return CategoryData;
 }
 
@@ -3024,7 +2988,7 @@ int enableClose = 1;
     
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSString *statement = [NSString stringWithFormat:@"SELECT * FROM SubCategories where category_id='%@' order by sequence,%@",catId, [LanguageControler activeLanguage:@"name"]];
-    // NSString *beverageId=@"";
+        
     NSArray *records = [connection query: statement];
     
     NSMutableArray *SubCategoryData=[[NSMutableArray alloc]init];

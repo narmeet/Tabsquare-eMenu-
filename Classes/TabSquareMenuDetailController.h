@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MSLabel.h"
+#import "TabSquareMenuController.h"
 @class TabSquareSoupViewController;
 @class CustomizationUnPaidCell;
 @class CustomizationPaidCell;
+@class TabSquareMenuController;
 
 @interface TabSquareMenuDetailController : UIViewController<UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -44,6 +46,7 @@
 @property(nonatomic,strong)UIImage* KKselectedImage;
 @property(nonatomic,strong)NSMutableArray *DishCustomization;
 @property(nonatomic,strong)TabSquareSoupViewController *soupMenu;
+@property(nonatomic,strong)TabSquareMenuController *menuView;/////////////////change the mparentt value in this class
 @property(nonatomic,strong)NSString *isView;
 @property(nonatomic,strong)IBOutlet UIImageView *backImage;
 @property (nonatomic, strong)IBOutlet UIView *bgBlackView;

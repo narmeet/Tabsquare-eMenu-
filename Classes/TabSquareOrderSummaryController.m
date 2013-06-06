@@ -357,7 +357,7 @@ static int tapCount = 0;
 
 -(void)viewDidAppear:(BOOL)animated{
     
-   
+   menuView.mparent=nil;///to unable the orderSummaryButton & backButton
 }
 -(void)confirmOrder
 {

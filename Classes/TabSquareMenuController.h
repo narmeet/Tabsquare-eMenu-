@@ -120,7 +120,7 @@
     NSString *backupActiveLanguage;
     NSString *prevSubId;
 
-    id mparent;
+    id mparent;///for Unhiding the orderUmarry & back button
 }
 @property(nonatomic,strong)id mparent;
 @property(nonatomic,strong) UIScrollView    *subcatScroller;

@@ -9,7 +9,7 @@
 
 @implementation TabSquareMenuDetailController
 
-@synthesize detailImageView,requestView,soupMenu;
+@synthesize detailImageView,requestView,soupMenu,menuView;
 @synthesize KKselectedID,KKselectedName,KKselectedRate,KKselectedCatId,KKselectedImage,DishCustomization;
 @synthesize customizationView,unpaidCell,paidCell,swipeIndicator,tableContent;
 @synthesize isView,backImage;
@@ -105,6 +105,7 @@
     mParent=nil;
     headerSectionLabel=nil;
     headerLabel=nil;
+    menuView.mparent=nil;///to unable the orderSummaryButton & backButton
 }
 - (void)viewDidUnload
 {
@@ -152,7 +153,7 @@
 }
 
 -(void)removeView2:(id)sender
-{
+{    menuView.mparent=nil;///to unable the orderSummaryButton & backButton
     [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
 
     [sender removeFromSuperview];
@@ -440,8 +441,8 @@
     {
        [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
     }
+    menuView.mparent=nil;///to unable the orderSummaryButton & backButton
     [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
-
     [self.view removeFromSuperview];
 }
 

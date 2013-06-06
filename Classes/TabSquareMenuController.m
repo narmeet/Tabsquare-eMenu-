@@ -2356,6 +2356,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    mparent=nil;///to unable the orderSummaryButton & backButton
     [super viewDidAppear:animated];
     //[self.view sendSubviewToBack:search];
 }
@@ -3027,6 +3028,7 @@
 
 -(IBAction)searchClicked:(id)sender
 {
+    mparent=nil;
     [self.overviewMenuButton setHidden:FALSE]; // Changed
     
     favorite_status = FALSE;
@@ -3735,6 +3737,7 @@
     [self.OrderSummaryButton setUserInteractionEnabled:YES];
     
     NSLog(@"mParent===%@",[mparent class]);
+   /////////to unhide the orderSummaryButton & backButton
     if ([mparent class] ==[TabMainCourseMenuListViewController class]) {
         [self.overviewMenuButton setUserInteractionEnabled:NO];
         [self.OrderSummaryButton setUserInteractionEnabled:NO];

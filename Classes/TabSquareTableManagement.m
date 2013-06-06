@@ -1143,17 +1143,17 @@ bool funcCalled = NO;
     for(int i = 0; i < [TotalFreeTables count]; i++) {
         NSMutableDictionary *dict = (NSMutableDictionary *)TotalFreeTables[i];
         
-        if([dict[@"TBLNo"] isEqualToString:obj]) {
+        if([[dict[@"TBLNo"] uppercaseString] isEqualToString:obj]) {
             exists = TRUE;
             
-            if([dict[@"TBLStatus"] isEqualToString:@"H"]) {
+            if([[dict[@"TBLStatus"] uppercaseString] isEqualToString:@"H"]) {
                 exists = FALSE;
                 
                 [ShareableData showAlert:@"Alert" message:@"This function can not be used for opened tables. Please reassign table instead."];
                 
                 return exists;
             }
-                
+            
             break;
         }
     }
@@ -1193,12 +1193,12 @@ bool funcCalled = NO;
                 for(int i = 0; i < [TotalFreeTables count]; i++) {
                     NSMutableDictionary *dict = (NSMutableDictionary *)TotalFreeTables[i];
                     
-                    if([dict[@"TBLNo"] isEqualToString:[ShareableData sharedInstance].currentTable] && [dict[@"TBLStatus"] isEqualToString:@"A"]) {
+                    if([[dict[@"TBLNo"] uppercaseString] isEqualToString:[[ShareableData sharedInstance].currentTable uppercaseString]] && [[dict[@"TBLStatus"] uppercaseString] isEqualToString:@"A"]) {
                         assigned = FALSE;
                         break;
                     }
                 }
-
+                
                 if(assigned) {
                     fixed_mode = TRUE;
                     tableNumber = [NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable];

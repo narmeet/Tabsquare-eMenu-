@@ -52,7 +52,7 @@
                                         completion:^(BOOL granted, NSError *error) {
                                             if(granted)
                                             {
-                                                ////NSLOG(@"Done");
+                                                //////NSLOG(@"Done");
                                                 
                                                 NSArray *accounts = [_accountStore accountsWithAccountType:facebookTypeAccount];
                                                 
@@ -80,7 +80,7 @@
                                                 [feedRequest performRequestWithHandler:^(NSData *responseData,
                                                                                          NSHTTPURLResponse *urlResponse, NSError *error)
                                                  {
-                                                     ////NSLOG(@"data>>> %@",[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
+                                                     //////NSLOG(@"data>>> %@",[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
                                                  }];
                                                 
                                                 //=====================
@@ -89,8 +89,8 @@
                                             else
                                             {
                                                 status = FALSE;
-                                                ////NSLOG(@"Fail");
-                                                ////NSLOG(@"Error: %@", error);
+                                                //////NSLOG(@"Fail");
+                                                //////NSLOG(@"Error: %@", error);
                                             }
                                         }];
     

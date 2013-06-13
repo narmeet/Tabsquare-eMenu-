@@ -37,7 +37,7 @@
 
 -(void)postData:(NSString *)sub cat:(NSString*)CatID
 {
-    NSLog(@"sub 2 = %@, catid = %@ >>", sub, CatID);
+    //NSLOG(@"sub 2 = %@, catid = %@ >>", sub, CatID);
     NSString *taskType=[ShareableData sharedInstance].TaskType;
     if([taskType isEqualToString:@"1"])
     {
@@ -178,7 +178,7 @@
         float _green = [arr[1] floatValue];
         float _blue  = [arr[2] floatValue];
         
-        fontColor = [UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
+        fontColor = [UIColor blackColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
     }
     else {
         fontName = @"Copperplate-Light";
@@ -188,11 +188,11 @@
 
 }
 
-//NSLog(@"cat = %@, , , , sub_cat = %@", CatID, sub);
+////NSLOG(@"cat = %@, , , , sub_cat = %@", CatID, sub);
 
 -(void)reloadDataOfSubCat:(NSString *)sub cat:(NSString*)CatID
 {
-    NSLog(@"cat = %@, , , , sub_cat = %@", CatID, sub);
+    //NSLOG(@"cat = %@, , , , sub_cat = %@", CatID, sub);
     
     tag_switch = [ShareableData dishTagStatus];
     [self reloadFonts];
@@ -215,14 +215,14 @@
     currentCatId=[[NSString alloc]initWithFormat:@"%@",CatID];
     currentSubId=[[NSString alloc]initWithFormat:@"%@",sub];
     [self postData:sub cat:CatID];
-    //NSLOG(@"result from post count = %d", [resultFromPost count]);
+    ////NSLOG(@"result from post count = %d", [resultFromPost count]);
     if(resultFromPost)
     {
         for(int i=0;i<[resultFromPost count];i++)
         {
             @autoreleasepool {
                 NSMutableDictionary *dataitem=resultFromPost[i];
-                //NSLog(@"Dish data dict = %@", dataitem);
+                ////NSLOG(@"Dish data dict = %@", dataitem);
                 if ([[ShareableData sharedInstance].TaskType isEqualToString:@"2"]){
                     [DishCategoryId addObject:[NSString stringWithFormat:@"%@",dataitem[@"category"]]];
                     [DishSubCategoryId addObject:[NSString stringWithFormat:@"%@",dataitem[@"sub_category"]]];
@@ -826,7 +826,7 @@
     {
        return [self getTotalSubDishes:SubSectionIdData[section]];
     }
-    NSLog(@"dish images count = %d, tag count = %d", [DishImage count], [self.tagIcons count]);
+    //NSLOG(@"dish images count = %d, tag count = %d", [DishImage count], [self.tagIcons count]);
      
     return [DishID count];
 }
@@ -838,120 +838,124 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"DishItem";
+    NSString *CellIdentifier = [NSString stringWithFormat:@"DishItem%@",DishID ];
     DishItem *cell = (DishItem *)[self.DishList dequeueReusableCellWithIdentifier:CellIdentifier];
 	if(cell==nil)
     {
         [[NSBundle mainBundle]loadNibNamed:@"DishItemCell" owner:self options:nil];
         cell=self.tmpCell;
         self.tmpCell=nil;
-    }
-    
-    [self.addButton setTitle:[LanguageControler activeText:@"Add"] forState:UIControlStateNormal];
-    
-    UIImageView *bg_view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 741.0, 110.0)];
-    
-    [bg_view setImage:cellImage];
-    [cell.contentView addSubview:bg_view];
-    [cell.contentView sendSubviewToBack:bg_view];
+        
+        [self.addButton setTitle:[LanguageControler activeText:@"Add"] forState:UIControlStateNormal];
+        
+        
+        UIImageView *bg_view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 741.0, 110.0)];
+        
+        [bg_view setImage:cellImage];
+        [bg_view setContentMode:UIViewContentModeScaleAspectFit];
 
-    
-    if([DishID count]>indexPath.row)
-    {
-        int sortIndex;
-        if([SubSectionIdData count]>indexPath.section)
-        {
-            sortIndex =[self getDishIndex:SubSectionIdData[indexPath.section] rowIndex:indexPath.row];  
-        }
-        else 
-        {
-            sortIndex=indexPath.row;
-        }     
-        //NSData *img_data = (NSData *)[DishImage objectAtIndex:sortIndex];
-        
-        UIImage *img = (UIImage *)[resizedImages objectAtIndex:sortIndex];
-        
-        int cat = ((NSString*)DishCategoryId[sortIndex]).intValue;
+        [cell.contentView addSubview:bg_view];
+        [cell.contentView sendSubviewToBack:bg_view];
 
-        int x_axis = 16.0;
         
-        if(tag_switch && cat != 8)
-            x_axis = 38.0;
-        
-        UIButton *img_btn = [[UIButton alloc] initWithFrame:CGRectMake(x_axis, 15, 129, 98)];
-        if (cat ==8){
-            img_btn.frame= [ self setImageInFrame:img_btn.frame :img ].frame;
-        }
-        
-        float new_y = (bg_view.frame.size.height - img_btn.frame.size.height)/2;
-        img_btn.frame = CGRectMake(img_btn.frame.origin.x, new_y, img_btn.frame.size.width, img_btn.frame.size.height);
-        
-        /*=============Add Dish tag icons if dish tag is on==============*/
-        if(tag_switch) {
-            CGRect tag_frm = CGRectMake(5, 7, 27, 28);
-            float gap = 1.0;
-            NSMutableArray *arr = (NSMutableArray *)[self.tagIcons objectAtIndex:sortIndex];
-            NSMutableArray *name_arr = (NSMutableArray *)[self.tagNames objectAtIndex:sortIndex];
-            
-            for(int i = 0; i < [arr count]; i++) {
-                
-                float _y = (i*gap) + (i * tag_frm.size.height) + tag_frm.origin.y;
-                
-                CGRect frm = CGRectMake(tag_frm.origin.x, _y, tag_frm.size.width , tag_frm.size.height);
-                
-                UIButton *tag1 = [[UIButton alloc] initWithFrame:frm];
-                NSString *img_name = [NSString stringWithFormat:@"%@", [arr objectAtIndex:i]];
-                [tag1 setBackgroundImage:[[TabSquareDBFile sharedDatabase]getImage:img_name] forState:UIControlStateNormal];
-                [tag1 setTitle:[name_arr objectAtIndex:i] forState:UIControlStateReserved];
-                [tag1 setContentMode:UIViewContentModeScaleAspectFit];
-                [tag1 addTarget:self action:@selector(tagPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.contentView addSubview:tag1];
-                
+        if([DishID count]>indexPath.row)
+        {
+            int sortIndex;
+            if([SubSectionIdData count]>indexPath.section)
+            {
+                sortIndex =[self getDishIndex:SubSectionIdData[indexPath.section] rowIndex:indexPath.row];
             }
+            else
+            {
+                sortIndex=indexPath.row;
+            }
+            //NSData *img_data = (NSData *)[DishImage objectAtIndex:sortInx];
+            
+            UIImage *img = (UIImage *)[DishImage objectAtIndex:sortIndex];
+            
+            int cat = ((NSString*)DishCategoryId[sortIndex]).intValue;
+            
+            int x_axis = 16.0;
+            
+            if(tag_switch && cat != 8)
+                x_axis = 38.0;
+            
+            UIButton *img_btn = [[UIButton alloc] initWithFrame:CGRectMake(x_axis, 15, 129, 98)];
+            if (cat ==8){
+                img_btn.frame= [ self setImageInFrame:img_btn.frame :img ].frame;
+            }
+            
+            float new_y = (bg_view.frame.size.height - img_btn.frame.size.height)/2;
+            img_btn.frame = CGRectMake(img_btn.frame.origin.x, new_y, img_btn.frame.size.width, img_btn.frame.size.height);
+            
+            /*=============Add Dish tag icons if dish tag is on==============*/
+            if(tag_switch) {
+                CGRect tag_frm = CGRectMake(5, 7, 27, 28);
+                float gap = 1.0;
+                NSMutableArray *arr = (NSMutableArray *)[self.tagIcons objectAtIndex:sortIndex];
+                NSMutableArray *name_arr = (NSMutableArray *)[self.tagNames objectAtIndex:sortIndex];
+                
+                for(int i = 0; i < [arr count]; i++) {
+                    
+                    float _y = (i*gap) + (i * tag_frm.size.height) + tag_frm.origin.y;
+                    
+                    CGRect frm = CGRectMake(tag_frm.origin.x, _y, tag_frm.size.width , tag_frm.size.height);
+                    
+                    UIButton *tag1 = [[UIButton alloc] initWithFrame:frm];
+                    NSString *img_name = [NSString stringWithFormat:@"%@", [arr objectAtIndex:i]];
+                    [tag1 setBackgroundImage:[[TabSquareDBFile sharedDatabase]getImage:img_name] forState:UIControlStateNormal];
+                    [tag1 setTitle:[name_arr objectAtIndex:i] forState:UIControlStateReserved];
+                    [tag1 setContentMode:UIViewContentModeScaleAspectFit];
+                    [tag1 addTarget:self action:@selector(tagPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.contentView addSubview:tag1];
+                    
+                }
+            }
+            /*
+             else {
+             [img_btn setFrame:CGRectMake(16, img_btn.frame.origin.y, img_btn.frame.size.width, img_btn.frame.size.height)];
+             
+             }
+             */
+            /*===============================================================*/
+            
+            [img_btn setBackgroundImage:img forState:UIControlStateNormal];
+            [img_btn setTag:sortIndex];
+            [img_btn addTarget:self action:@selector(infoClicked:) forControlEvents:UIControlEventTouchUpInside];
+            //        [img_btn.layer setShadowOpacity:1.0];
+            //        [img_btn.layer setMasksToBounds:NO];
+            //        [img_btn.layer setShadowOffset:CGSizeMake(4.0, 2.0)];
+            [cell.contentView addSubview:img_btn];
+            
+            //MSLabel *titleLabel = [[MSLabel alloc] initWithFrame:CGRectMake(14, 47, 463, 45)];
+            MSLabel *titleLabel = [[MSLabel alloc] initWithFrame:CGRectMake(180, 47, 459, 45)];
+            titleLabel.lineHeight = 20;
+            //titleLabel.anchorBottom = YES;
+            titleLabel.numberOfLines = 2;
+            titleLabel.backgroundColor=[UIColor clearColor];
+            titleLabel.text = DishDescription[sortIndex];
+            titleLabel.font=[UIFont fontWithName:@"Century Gothic" size:18];
+            [titleLabel setTextColor:fontColor];
+            [cell.contentView addSubview:titleLabel];
+            cell.DishName=DishName[sortIndex];
+            cell.Discription=DishDescription[sortIndex];
+            
+            cell.Price=[NSString stringWithFormat:@"$%@",DishPrice[sortIndex]];
+            
+            
+            if([ShareableData sharedInstance].ViewMode==1)
+            {
+                cell.btnTag=@"-1"; 
+            }
+            else
+            {
+                cell.btnTag=[NSString stringWithFormat:@"%d",sortIndex];
+            }
+            cell.btnTagInfo=[NSString stringWithFormat:@"%d",sortIndex];
         }
-        /*
-        else {
-            [img_btn setFrame:CGRectMake(16, img_btn.frame.origin.y, img_btn.frame.size.width, img_btn.frame.size.height)];
-
-        }
-         */
-        /*===============================================================*/
-        
-        [img_btn setBackgroundImage:img forState:UIControlStateNormal];
-        [img_btn setTag:sortIndex];
-        [img_btn addTarget:self action:@selector(infoClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [img_btn.layer setShadowOpacity:1.0];
-        [img_btn.layer setMasksToBounds:NO];
-        [img_btn.layer setShadowOffset:CGSizeMake(4.0, 2.0)];
-        [cell.contentView addSubview:img_btn];
-        
-        //MSLabel *titleLabel = [[MSLabel alloc] initWithFrame:CGRectMake(14, 47, 463, 45)];
-        MSLabel *titleLabel = [[MSLabel alloc] initWithFrame:CGRectMake(180, 47, 459, 45)];
-        titleLabel.lineHeight = 20;
-        //titleLabel.anchorBottom = YES;
-        titleLabel.numberOfLines = 2;
-        titleLabel.backgroundColor=[UIColor clearColor];
-        titleLabel.text = DishDescription[sortIndex]; 
-        titleLabel.font=[UIFont fontWithName:@"Century Gothic" size:18];
-        [titleLabel setTextColor:fontColor];
-        //[titleLabel setTextColor:[UIColor whiteColor] ];
-        [cell.contentView addSubview:titleLabel];   
-        cell.DishName=DishName[sortIndex];
-        cell.Discription=DishDescription[sortIndex];
-        
-        cell.Price=[NSString stringWithFormat:@"$%@",DishPrice[sortIndex]];
-        
-        
-        if([ShareableData sharedInstance].ViewMode==1)
-        {
-            cell.btnTag=@"-1"; 
-        }
-        else
-        {
-            cell.btnTag=[NSString stringWithFormat:@"%d",sortIndex];
-        }
-        cell.btnTagInfo=[NSString stringWithFormat:@"%d",sortIndex];
     }
+    [cell setNeedsDisplay];
+    
     return cell;
 }
 
@@ -1050,10 +1054,13 @@
 
 - (void)InfoClicked
 {
+    
+    
+    
     /*============================*/
     /*
-    NSLog(@"Dish Id =%@", DishID);
-    NSLog(@"selected item = %d",selectedItem);
+    //NSLOG(@"Dish Id =%@", DishID);
+    //NSLOG(@"selected item = %d",selectedItem);
     NSMutableArray *combo_data = [[TabSquareDBFile sharedDatabase] getCombodata:DishCategoryId[selectedItem]];
     */
     
@@ -1196,7 +1203,7 @@
     last_sub = [NSString stringWithFormat:@"%@", [TabSquareCommonClass getValueInUserDefault:@"sub_cat"]];
     
     last_CatID = [NSString stringWithFormat:@"%@", [TabSquareCommonClass getValueInUserDefault:@"cat_id"]];
-    NSLog(@"last_sub = %@, last_catid = %@", last_sub, last_CatID);
+    //NSLOG(@"last_sub = %@, last_catid = %@", last_sub, last_CatID);
     
     [self reloadDataOfSubCat:last_sub cat:last_CatID];
     
@@ -1220,14 +1227,14 @@
 /*=================View Mode Selected===================*/
 -(void)viewModeActivated:(NSNotification *)notification
 {
-    [self.DishList reloadData];
+    //[self.DishList reloadData];
 }
 
 
 /*=================Edit Mode Selected===================*/
 -(void)editModeActivated:(NSNotification *)notification
 {
-    [self.DishList reloadData];
+   // [self.DishList reloadData];
     
 }
 

@@ -66,7 +66,7 @@
     if([taskType isEqualToString:@"1"]||[taskType isEqualToString:@"3"])
     {
        // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
-        NSLog(@"LogDD 3");
+        //NSLOG(@"LogDD 3");
         self.resultFromPost=[[TabSquareDBFile sharedDatabase]getDishData:CatID subCatId:sub];
       //  [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
     }

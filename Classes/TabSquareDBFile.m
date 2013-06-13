@@ -262,10 +262,10 @@ int enableClose = 1;
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
    // NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO Categories(id,name,sequence) VALUES (?,?,?);" withValues: Id,catName,catSeq, nil];
      NSString *statement = [NSString stringWithFormat:@"INSERT INTO Categories(id,name,sequence,'image', 'ch_name','fr_name','in_name','ja_name','ko_name') VALUES (%@,'%@',%@,'%@','%@','%@','%@','%@','%@');",Id,catName,catSeq,catImage, dataitem[@"ch_name"], dataitem[@"fr_name"], dataitem[@"in_name"], dataitem[@"ja_name"], dataitem[@"ko_name"]];
-    //NSLOG(@"query Logg 1 = %@", statement);
+    ////NSLOG(@"query Logg 1 = %@", statement);
     
     [connection execute: statement];
-    //NSLOG(@"Logg 2");
+    ////NSLOG(@"Logg 2");
     
     /*
     [self openDatabaseConnection];
@@ -2130,7 +2130,7 @@ int enableClose = 1;
 //        NSMutableArray *tag_array = [[NSMutableArray alloc] init];
 //        NSMutableArray *tag_names = [[NSMutableArray alloc] init];
 //        if(tag_str != NULL && ![tag_str isEqualToString:@"<null>"] && [tag_str length] > 0) {
-//            ////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
+//            //////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
 //
 //            NSString *val = [NSString stringWithFormat:@"0%@0", tag_str];
 //            ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
@@ -2303,15 +2303,15 @@ int enableClose = 1;
     /*
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSArray *records = [connection query: query];
-    NSLog(@"Query = %@", records);
+    //NSLOG(@"Query = %@", records);
      */
-    NSLog(@"Query = %@", statement);
+    //NSLOG(@"Query = %@", statement);
     // }
-    //NSLog(@"query = %@", query);
+    ////NSLOG(@"query = %@", query);
     NSArray *records = [connection query: statement];
-    //NSLog(@"records = %@", records);
+    ////NSLOG(@"records = %@", records);
     
-    //NSLog(@"Query = %@\n\n, records = %@", query, records);
+    ////NSLOG(@"Query = %@\n\n, records = %@", query, records);
     
     if([catId intValue] == 8)
     {
@@ -2347,7 +2347,7 @@ int enableClose = 1;
             // enableClose = 1;
             
             NSString *tag_str = (NSString *)[element objectForKey:@"tags"];
-            ////NSLOG(@"tag str = %@", tag_str);
+            //////NSLOG(@"tag str = %@", tag_str);
             /*==========Fetching dish tag items============*/
             NSMutableArray *tag_array = [[NSMutableArray alloc] init];
             NSMutableArray *tag_names = [[NSMutableArray alloc] init];
@@ -2432,7 +2432,7 @@ int enableClose = 1;
         
         NSString *dishcustomization = [NSString stringWithFormat:@"%@", element[@"customization"]];//[NSString stringWithFormat:@"%s", (char*)sqlite3_column_text(addStmt,8)];
         
-        //NSLog(@"dish customization = %@", dishcustomization);
+        ////NSLOG(@"dish customization = %@", dishcustomization);
         // NSString *dishcustomization = @"";
         if ([dishcustomization isEqualToString:@"<null>"]) {
             
@@ -2449,7 +2449,7 @@ int enableClose = 1;
         else
             customizationdata = [self getCustomizationData:dishcustomization];
         
-        //NSLog(@"customization = %@", customizationdata);
+        ////NSLOG(@"customization = %@", customizationdata);
         // enableClose = 1;
         NSString *tag_str = (NSString *)[element objectForKey:@"tags"];
         
@@ -2458,7 +2458,7 @@ int enableClose = 1;
         NSMutableArray *tag_names = [[NSMutableArray alloc] init];
         
         if(tag_str != NULL && ![tag_str isEqualToString:@"<null>"] && [tag_str length] > 0) {
-            ////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
+            //////NSLOG(@"cat=%@, subcat=%@, tag_str = %@", catId, subCatId, tag_str);
             
             NSString *val = [NSString stringWithFormat:@"0%@0", tag_str];
             ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
@@ -2630,8 +2630,8 @@ int enableClose = 1;
     
     NSArray *records = [connection query: statement];
     
-    //NSLog(@"query = %@", statement);
-    //NSLog(@"records >>= %@", records);
+    ////NSLOG(@"query = %@", statement);
+    ////NSLOG(@"records >>= %@", records);
     
     NSMutableArray *beverageSku=[[NSMutableArray alloc]init];
     for (id element in records){
@@ -2736,14 +2736,14 @@ int enableClose = 1;
     NSString *statement = [NSString stringWithFormat:@"SELECT * FROM 'dishes' WHERE name LIKE '%@%@%@' OR ch_name LIKE '%@%@%@' OR fr_name LIKE '%@%@%@' OR in_name LIKE '%@%@%@' OR ja_name LIKE '%@%@%@' OR ko_name LIKE '%@%@%@' OR description LIKE '%@%@%@' OR ch_description LIKE '%@%@%@' OR fr_description LIKE '%@%@%@' OR in_description LIKE '%@%@%@' OR ja_description LIKE '%@%@%@' OR ko_description LIKE '%@%@%@' OR tags LIKE '%@,' ||(SELECT id FROM 'tags' WHERE name LIKE '%@%@' OR ch_name LIKE '%@%@' OR fr_name LIKE '%@%@' OR in_name LIKE '%@%@' OR ja_name LIKE '%@%@' OR ko_name LIKE '%@%@' LIMIT 1) || ',%@' ORDER BY category ;", sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, sp_char, key, sp_char, key, sp_char, key, sp_char, key, sp_char, key, sp_char, key, sp_char, sp_char];
     
     //[self printData:@"Select * From Dishes"];
-    //NSLog(@"search query = %@", statement);
+    ////NSLOG(@"search query = %@", statement);
     BOOL is_best_seller = FALSE;
     if([key length] == 0 && [[TabSquareCommonClass getValueInUserDefault:BEST_SELLERS] intValue] == 1 && [ShareableData bestSellersON]) {
         
         is_best_seller = TRUE;
         NSString *search_key = [[ShareableData sharedInstance] activeBestsellerName];
         
-        statement = [NSString stringWithFormat:@"SELECT *FROM dishes WHERE tags LIKE '%@,' ||(SELECT id FROM tags WHERE name LIKE '%@%@%@' OR ch_name LIKE '%@%@%@' OR fr_name LIKE '%@%@%@' OR in_name LIKE '%@%@%@' OR ja_name LIKE '%@%@%@' OR ko_name LIKE '%@%@%@'  LIMIT 1) || ',%@'", sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char];
+        statement = [NSString stringWithFormat:@"SELECT * FROM dishes WHERE tags LIKE '%@,' ||(SELECT id FROM tags WHERE name LIKE '%@%@%@' OR ch_name LIKE '%@%@%@' OR fr_name LIKE '%@%@%@' OR in_name LIKE '%@%@%@' OR ja_name LIKE '%@%@%@' OR ko_name LIKE '%@%@%@'  LIMIT 1) || ',%@'", sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char, search_key, sp_char, sp_char];
     }
     
     NSArray *records = [connection query: statement];
@@ -2783,7 +2783,7 @@ int enableClose = 1;
         
         
         NSString *tag_str = (NSString *)[element objectForKey:@"tags"];
-        ////NSLOG(@"tag str = %@", tag_str);
+        //////NSLOG(@"tag str = %@", tag_str);
         /*==========Fetching dish tag items============*/
         NSMutableArray *tag_array = [[NSMutableArray alloc] init];
         NSMutableArray *tag_names = [[NSMutableArray alloc] init];
@@ -2795,7 +2795,7 @@ int enableClose = 1;
             ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
             NSString *query = [NSString stringWithFormat:@"select icon, %@ FROM tags WHERE id IN(%@) and icon!='' AND icon!='<null>' order by %@ ;", [LanguageControler activeLanguage:@"name"], val, [LanguageControler activeLanguage:@"name"]];
             
-            //NSLog(@"query = %@", query);
+            ////NSLOG(@"query = %@", query);
             NSArray *records2 = [connection query: query];
             
             for(id dat in records2)
@@ -3203,7 +3203,7 @@ int enableClose = 1;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
             NSString *libraryDirectory = [paths lastObject];
             NSString *location = [NSString stringWithFormat:@"%@/%@_%@",libraryDirectory, THUMBNAIL,imageName];
-            //NSLOG(@"location = %@", location);
+            ////NSLOG(@"location = %@", location);
             [dish_images addObject:location];
         }
     }
@@ -3258,14 +3258,14 @@ int enableClose = 1;
         NSString *img_name = [NSString stringWithFormat:@"%@%@", PRE_NAME, img];
         NSString *img_url = [NSString stringWithFormat:@"%@/app/webroot/img/product/app_image/%@", [ShareableData serverURL], img];
         
-        ////NSLOG(@"Log 3 Image url is = %@", img_url);
+        //////NSLOG(@"Log 3 Image url is = %@", img_url);
         
         //@autoreleasepool
         {
             
             UIImage  *imageData = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:img_url]]];
  
-            ////NSLOG(@"image obj home 1 = %@", imageData);
+            //////NSLOG(@"image obj home 1 = %@", imageData);
             CGSize size = imageData.size;
             BOOL hd_device = [TabSquareCommonClass isHDDevice];
             if(!hd_device) {
@@ -3276,8 +3276,8 @@ int enableClose = 1;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
             NSString *libraryDirectory = paths[0];
             NSString *location = [NSString stringWithFormat:@"%@/%@",libraryDirectory,img_name];//[libraryDirectory stringByAppendingString:@"/@%",dishImage];
-            ////NSLOG(@"image location = %@", location);
-            ////NSLOG(@"Log 4 img location after downloading = %@", location);
+            //////NSLOG(@"image location = %@", location);
+            //////NSLOG(@"Log 4 img location after downloading = %@", location);
             NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(imageData)];
             [data1 writeToFile:location atomically:YES];
         }
@@ -3315,7 +3315,7 @@ int enableClose = 1;
                        ;// success
                 else
                 {
-                NSLog(@"[%@] ERROR: attempting to write create MyFolder directory", [self class]);
+                //NSLOG(@"[%@] ERROR: attempting to write create MyFolder directory", [self class]);
                 NSAssert( FALSE, @"Failed to create directory maybe out of disk space?");
                 }
             }
@@ -3428,7 +3428,7 @@ int enableClose = 1;
         ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO combo_values(id, 'group', 'pre_select_option',combo_id) VALUES ( %@ , '%@' , '%@' , %@ );",_id, group, pre_select_option, combo_id];
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
     }
     else if([query_type isEqualToString:@"2"])
@@ -3488,9 +3488,9 @@ int enableClose = 1;
         [self saveImage:image];
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO combos(id,category,sub_category,'sub_sub_category','name','image','price','group','description','on_update', 'tags', 'ch_name','fr_name','in_name','ja_name','ko_name', 'ch_description','fr_description','in_description','ja_description','ko_description') VALUES ( %@ , %@ , %@ , '%@' , '%@' , '%@' , '%@' , '%@' , '%@' , '%@' , '%@' ,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@');",dish_id,category,sub_category,sub_sub_category,name,image,price,group,description,on_update, tags, data[@"ch_name"], data[@"fr_name"], data[@"in_name"], data[@"ja_name"], data[@"ko_name"], data[@"ch_description"], data[@"fr_description"], data[@"in_description"], data[@"ja_description"], data[@"ko_description"]];
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
-        //NSLOG(@"status = %@", number);
+        ////NSLOG(@"status = %@", number);
 
     }
     else if([query_type isEqualToString:@"2"])
@@ -3540,9 +3540,9 @@ int enableClose = 1;
         selection_header = [selection_header stringByReplacingOccurrencesOfString:@"'" withString:@""];
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO groups('id','name','category','selection_header','modified','created_by', ch_name,fr_name,in_name,ja_name,ko_name, ch_selection_header,fr_selection_header,in_selection_header,ja_selection_header,ko_selection_header) VALUES ( %@ , '%@' , %@ , '%@' , '%@' , '%@' ,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@');",dish_id,name,category,selection_header,modified,created_by, data[@"ch_name"], data[@"fr_name"], data[@"in_name"], data[@"ja_name"], data[@"ko_name"], data[@"ch_selection_header"], data[@"fr_selection_header"], data[@"in_selection_header"], data[@"ja_selection_header"], data[@"ko_selection_header"]];
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
-        //NSLOG(@"status = %@", number);
+        ////NSLOG(@"status = %@", number);
         
     }
     else if([query_type isEqualToString:@"2"])
@@ -3591,9 +3591,9 @@ int enableClose = 1;
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO group_dishes(id,'name','image',group_id,'dish_id','description', 'ch_name','fr_name','in_name','ja_name','ko_name', 'ch_description','fr_description','in_description','ja_description','ko_description') VALUES ( %@ , '%@' , '%@' , %@ , '%@', '%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@');",id1,name,image,group_id,dish_id, description, data[@"ch_name"], data[@"fr_name"], data[@"in_name"], data[@"ja_name"], data[@"ko_name"], data[@"ch_description"], data[@"fr_description"], data[@"in_description"], data[@"ja_description"], data[@"ko_description"]];
         
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
-        //NSLOG(@"status >>= %@", status);
+        ////NSLOG(@"status >>= %@", status);
         
     }
     else if([query_type isEqualToString:@"2"])
@@ -3602,10 +3602,10 @@ int enableClose = 1;
         [self saveImage:image];
         
         NSString *statement = [NSString stringWithFormat:@"Update group_dishes set name = '%@',image= '%@',group_id = %@,dish_id='%@',description = '%@', ch_name = '%@', fr_name = '%@', in_name = '%@', ja_name = '%@', ko_name = '%@', ch_description = '%@', fr_description = '%@', in_description = '%@', ja_description = '%@', ko_description = '%@'  where id = %@ ;",name,image,group_id,dish_id, description, data[@"ch_name"], data[@"fr_name"], data[@"in_name"], data[@"ja_name"], data[@"ko_name"], data[@"ch_description"], data[@"fr_description"], data[@"in_description"], data[@"ja_description"], data[@"ko_description"], id1];
-        //NSLOG(@"query update = %@", statement);
+        ////NSLOG(@"query update = %@", statement);
 
         [connection execute: statement];
-        //NSLOG(@"status >>= %@", status);
+        ////NSLOG(@"status >>= %@", status);
         
     }
     else if ([query_type isEqualToString:@"1"])
@@ -3644,7 +3644,7 @@ int enableClose = 1;
         
         NSString *statement = [NSString stringWithFormat:@"INSERT INTO tags(id,'name','icon', 'ch_name','fr_name','in_name','ja_name','ko_name') VALUES ( %@ , '%@' , '%@','%@','%@','%@','%@','%@');",id1,name,icon, data[@"ch_name"], data[@"fr_name"], data[@"in_name"], data[@"ja_name"], data[@"ko_name"]];
         
-        //NSLOG(@"query = %@", statement);
+        ////NSLOG(@"query = %@", statement);
         [connection execute: statement];
         
     }
@@ -3655,7 +3655,7 @@ int enableClose = 1;
         
         NSString *statement = [NSString stringWithFormat:@"Update tags set name = '%@',icon= '%@', ch_name = '%@', fr_name = '%@', in_name = '%@', ja_name = '%@', ko_name = '%@' where id = %@ ;", name, icon, data[@"ch_name"], data[@"fr_name"], data[@"in_name"], data[@"ja_name"], data[@"ko_name"], id1];
         
-        //NSLOG(@"query update = %@", statement);
+        ////NSLOG(@"query update = %@", statement);
         [connection execute: statement];
         
     }
@@ -3710,7 +3710,7 @@ int enableClose = 1;
         NSString *statement1 = [NSString stringWithFormat:@"SELECT id FROM combo_values where combo_id=%d ;",combo_id];
         
         NSArray *group_records = [connection1 query: statement1];
-        ////NSLOG(@"Log 22 grrep = %@", group_records);
+        //////NSLOG(@"Log 22 grrep = %@", group_records);
         
         for(int i = 0; i < [group_records count]; i++)
         {
@@ -3770,7 +3770,7 @@ int enableClose = 1;
     {
         NSMutableDictionary *dict1 = (NSMutableDictionary *)records1[0];
         NSString *query1 = nil;
-        ////NSLOG(@"pre selected  = %@", dict1[@"pre_select_option"]);
+        //////NSLOG(@"pre selected  = %@", dict1[@"pre_select_option"]);
         
         query1 = [NSString stringWithFormat:@"SELECT * FROM groups where id=%@ ;", dict1[@"group"]];
         records = [connection query: query1];
@@ -3778,7 +3778,7 @@ int enableClose = 1;
     
     for(int i = 0; i < [records count]; i++) {
         NSMutableDictionary *data_dict = [records objectAtIndex:i];
-        ////NSLOG(@"data dict = %@", data_dict);
+        //////NSLOG(@"data dict = %@", data_dict);
         [data_dict setObject:pre_status forKey:@"pre_select_option"];
         
         [data addObject:data_dict];
@@ -3907,7 +3907,7 @@ int enableClose = 1;
     
     NSArray *records = [connection query: query];
     
-    //NSLog(@"feedback data = %@", records);
+    ////NSLOG(@"feedback data = %@", records);
     
     NSMutableDictionary *dict = nil;
     
@@ -3916,7 +3916,7 @@ int enableClose = 1;
     else
         return nil;
     
-    //NSLog(@"dict = %@", dict);
+    ////NSLOG(@"dict = %@", dict);
     NSString *str = [dict objectForKey:@"ids"];
     
     if(str == nil)
@@ -3974,8 +3974,8 @@ int enableClose = 1;
     
     
     NSArray *records = [connection query: query];
-    NSLog(@"order active names = %@", records);
-    NSLog(@"query = %@", query);
+    //NSLOG(@"order active names = %@", records);
+    //NSLOG(@"query = %@", query);
     
     for(id element in records) {
         [data addObject:[element objectForKey:[LanguageControler activeLanguage:@"name"]]];
@@ -3994,7 +3994,7 @@ int enableClose = 1;
     
     NSString *query = [NSString stringWithFormat:@"Select %@ From CustOptions Where id = %015d ;", [LanguageControler activeLanguage:@"name"], [optionId intValue]];
     
-    NSLog(@"query = %@", query);
+    //NSLOG(@"query = %@", query);
     NSArray *records = [connection query: query];
     NSString *option_name = @"";
     
@@ -4011,7 +4011,7 @@ int enableClose = 1;
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     NSArray *records = [connection query: query];
     
-    NSLog(@"Query Records = %@", records);
+    //NSLOG(@"Query Records = %@", records);
 }
 
 
@@ -4022,8 +4022,8 @@ int enableClose = 1;
     NSString *query = [NSString stringWithFormat:@"Select * From tags Where lower(name) = '%@' ;", name.lowercaseString];
     
     NSArray *records = [connection query: query];
-    NSLog(@"Query = %@", query);
-    //NSLog(@"Best sellers data = %@", records);
+    //NSLOG(@"Query = %@", query);
+    ////NSLOG(@"Best sellers data = %@", records);
     
     NSMutableDictionary *data = nil;
     

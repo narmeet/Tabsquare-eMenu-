@@ -57,7 +57,7 @@
     combo_id = _id;
     category_id = _category_id;
     
-    //NSLog(@"combo_id = %d, category_id=%d", _id, _category_id);
+    ////NSLOG(@"combo_id = %d, category_id=%d", _id, _category_id);
 }
 
 
@@ -87,7 +87,7 @@
     
     NSString *groups = dic[@"group"];
     NSArray *group_ids = [groups componentsSeparatedByString:@","];
-    //NSLog(@"group_ids = %@", group_ids);
+    ////NSLOG(@"group_ids = %@", group_ids);
     group_dish = [[NSMutableArray alloc] init];
     for(NSString *grp in group_ids) {
         NSMutableArray *arr = [[TabSquareDBFile sharedDatabase] getGroupDishDataById:[grp intValue] preSelected:TRUE];
@@ -99,7 +99,7 @@
         }
     }
     
-    //NSLog(@"groupdishes = %@", group_dish);
+    ////NSLOG(@"groupdishes = %@", group_dish);
     [self addDishButtons:group_ids];
     
 }
@@ -195,7 +195,7 @@
     }
     
     [self addItem:orderData];
-    //NSLog(@"order data = %@", orderData);
+    ////NSLOG(@"order data = %@", orderData);
     [self dismissViewControllerAnimated:NO completion:^{
         
         if(quickOrder) {
@@ -767,7 +767,7 @@
      */
     
     CGPoint lp1 = first_section.layer.position;
-    //NSLog(@"layer 1 = %@", NSStringFromCGPoint(first_section.layer.position));
+    ////NSLOG(@"layer 1 = %@", NSStringFromCGPoint(first_section.layer.position));
     first_pnt = CGPointMake(lp1.x, lp1.y);
     CGPoint p1 =CGPointMake(lp1.x + f1.origin.x, -y1+lp1.y);
     

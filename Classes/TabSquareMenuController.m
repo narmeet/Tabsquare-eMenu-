@@ -522,7 +522,7 @@
         
         self.view.clipsToBounds = NO;
         [ShareableData sharedInstance].swipeView=swipeView;
-        [NSTimer scheduledTimerWithTimeInterval:1.0
+        [NSTimer scheduledTimerWithTimeInterval:1.00
                                          target:self
                                        selector:@selector(onTick:)
                                        userInfo:nil
@@ -589,28 +589,28 @@
     [self addTable];
     return;
     
-    overviewMenuButton.selected = YES;
-    [self UnselectedBottomMenu];
-    OrderSummaryButton.selected=NO;
-    [self.view insertSubview:overviewMenuView aboveSubview:KinaraSubCategory];
-    [KinaraSubCategory setHidden:TRUE];
-    CGRect newFrame = CGRectMake(0, 80, overviewMenuView.frame.size.width, overviewMenuView.frame.size.height);
-    overviewMenuView.frame=newFrame;
-    
-    NSArray *subviews = [overviewMenuView subviews];
-    
-    //UIButton *btn=(UIButton *)[self.view viewWithTag:sender];
-  //  [KinaraCategory setContentOffset:KinaraOriginalScrollPositionPoint animated:YES];
-  //  KinaraCurrentScrollPositionPoint=KinaraCategory.contentOffset;
-    for(id subview in subviews ){
-        
-        if ([subview isKindOfClass:[UIButton class]]){
-            UIButton* temp = (UIButton*)subview;
-    
-            [temp.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        }
-    }
-    [self.view bringSubviewToFront:overviewMenuView];
+//    overviewMenuButton.selected = YES;
+//    [self UnselectedBottomMenu];
+//    OrderSummaryButton.selected=NO;
+//    [self.view insertSubview:overviewMenuView aboveSubview:KinaraSubCategory];
+//    [KinaraSubCategory setHidden:TRUE];
+//    CGRect newFrame = CGRectMake(0, 80, overviewMenuView.frame.size.width, overviewMenuView.frame.size.height);
+//    overviewMenuView.frame=newFrame;
+//    
+//    NSArray *subviews = [overviewMenuView subviews];
+//    
+//    //UIButton *btn=(UIButton *)[self.view viewWithTag:sender];
+//  //  [KinaraCategory setContentOffset:KinaraOriginalScrollPositionPoint animated:YES];
+//  //  KinaraCurrentScrollPositionPoint=KinaraCategory.contentOffset;
+//    for(id subview in subviews ){
+//        
+//        if ([subview isKindOfClass:[UIButton class]]){
+//            UIButton* temp = (UIButton*)subview;
+//    
+//            [temp.titleLabel setTextAlignment:NSTextAlignmentCenter];
+//        }
+//    }
+//    [self.view bringSubviewToFront:overviewMenuView];
     
 }
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -718,7 +718,7 @@
     //size1 = [subcategoryIdList count];
     [ScrollView setHidden:TRUE];
     
-    //////NSLOG(@"Coming here again sub-cat %@, simze1 = %d", subcategoryIdList, size1);
+    ////////NSLOG(@"Coming here again sub-cat %@, simze1 = %d", subcategoryIdList, size1);
     ScrollView.userInteractionEnabled = YES;
     [ScrollView setShowsHorizontalScrollIndicator:NO];
     [ScrollView setShowsVerticalScrollIndicator:NO];
@@ -1086,7 +1086,7 @@
     //int subCat = [(NSString*)[chunks objectAtIndex:0] intValue];
     btnn = (UIButton*)[KinaraSubCategory viewWithTag:[(NSString*)chunks[1] intValue]];
     
-    //NSLog(@"chunk = %@", chunks);
+    ////NSLOG(@"chunk = %@", chunks);
     
     if (KinaraSelectedCategoryID != [chunks[0] intValue]){
        // KinaraSelectedCategoryID = [(NSString*)[chunks objectAtIndex:0] intValue];
@@ -1391,7 +1391,7 @@
 -(IBAction)KinaraSubCategoryClicked:(id)sender
 {
     
-    //NSLog(@"sub cat clicked, btn = %@,   title = %@", sender, [(UIButton *)sender titleForState:UIControlStateNormal]);
+    ////NSLOG(@"sub cat clicked, btn = %@,   title = %@", sender, [(UIButton *)sender titleForState:UIControlStateNormal]);
     KinaraSubcategoryBtnClick=true;
     
     UIButton *btn=(UIButton*)sender;
@@ -1429,7 +1429,7 @@
 
 -(IBAction)KinaraSubCategoryClicked2:(int)sender
 {
-    //NSLog(@"copy of subcat action clicked");
+    ////NSLOG(@"copy of subcat action clicked");
     KinaraSubcategoryBtnClick=true;
     
     UIButton *btn=(UIButton *)[KinaraSubCategory viewWithTag:sender];
@@ -1561,7 +1561,7 @@
     UIScrollView *swipe=(UIScrollView*)sender;
     if(swipe==swipeView)
     {
-        //NSLog(@"Does come in scrollview did scroll...");
+        ////NSLOG(@"Does come in scrollview did scroll...");
 
         CGFloat pageWidth = swipeView.frame.size.width;
         float fractionalPage = swipeView.contentOffset.x / pageWidth;
@@ -1835,7 +1835,7 @@
             if (menulistView1.pageIndex != nearestNumber)
             {
                 currentSubTag=menulistView2.pageIndex;
-                //NSLog(@"Current sub tag 1= %d", currentSubTag);
+                ////NSLOG(@"Current sub tag 1= %d", currentSubTag);
                 KinaraSelectedSubCategoryID=[subcategoryIdList[currentSubTag]intValue];
                 KinaraSelectedSubCategoryName=subcategoryList[currentSubTag];
                 [KinaraSubCategory setHidden:TRUE];
@@ -1859,7 +1859,7 @@
                     if([subcategoryIdList count]!=0)
                     {
                         currentSubTag=0;
-                        //NSLog(@"Current sub tag 2= %d", currentSubTag);
+                        ////NSLOG(@"Current sub tag 2= %d", currentSubTag);
                         KinaraSelectedSubCategoryID=[subcategoryIdList[currentSubTag]intValue];
                         KinaraSelectedSubCategoryName=subcategoryList[currentSubTag];
                         //[self removeSwipeSubviews];
@@ -1915,7 +1915,7 @@
             {
                 KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-76.5, KinaraCategory.frame.origin.y+65, 153, 50);
                 KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(-25, KinaraCategory.frame.origin.y+65,[UIScreen mainScreen].bounds.size.width, 50)];
-                //NSLog(@"Calling from here...");
+                ////NSLOG(@"Calling from here...");
                 [KinaraSubCategory setHidden:TRUE];
                 [self KinaracreateSubCategoryScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 153,50) scrollView:KinaraSubCategory];
             }
@@ -1936,11 +1936,11 @@
             [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
             if([self.subcategoryList count]>0)
             {
-                //NSLog(@"selected sub_cat_id = %d", KinaraSelectedSubCategoryID);
+                ////NSLOG(@"selected sub_cat_id = %d", KinaraSelectedSubCategoryID);
                 [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
             }
             
-            //NSLog(@"Log xx 7");
+            ////NSLOG(@"Log xx 7");
             
         }
         
@@ -2091,20 +2091,20 @@
     }
     else
     {
-        //NSLog(@"Log xxx 1");
+        ////NSLOG(@"Log xxx 1");
         currentSubTag=[self getSubCategoryArrayIndex:tag];
-        //NSLog(@"Log xxx 2, subcatcount = %d, subtag = %d", [subcategoryIdList count], subtag);
+        ////NSLOG(@"Log xxx 2, subcatcount = %d, subtag = %d", [subcategoryIdList count], subtag);
         [self mainSubCategoryClicked:0 sub:subcategoryIdList[subtag]];
-        //NSLog(@"Log xxx 3");
+        ////NSLOG(@"Log xxx 3");
         [menulistView.menudetailView.view removeFromSuperview];
-        //NSLog(@"Log xxx 4");
+        ////NSLOG(@"Log xxx 4");
     }
 }
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    //NSLog(@"in end deaccelerate");
+    ////NSLOG(@"in end deaccelerate");
     BOOL Status;
     scrollView.panGestureRecognizer.cancelsTouchesInView = YES;
     scrollView.canCancelContentTouches = YES;
@@ -2253,10 +2253,10 @@
     return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
--(void)onTick:(NSTimer *)timer 
-{
+-(void)onTick:(NSTimer *)timer
+{    
     [self badgeRefresh];
-    //NSLog(@"mode value = %d", [ShareableData sharedInstance].ViewMode);
+    ////NSLOG(@"mode value = %d", [ShareableData sharedInstance].ViewMode);
     if([ShareableData sharedInstance].ViewMode==1)
     {
         OrderSummaryButton.hidden=YES;
@@ -2728,8 +2728,9 @@
             
         }else if([title isEqualToString:@"Switch to Normal Menu"]){
             [ShareableData sharedInstance].isQuickOrder = @"0";
-            [[ShareableData sharedInstance] setCurrentLanguage:[NSString stringWithFormat:@"%@", backupActiveLanguage]];
-            //[self loadOverview];
+           // [[ShareableData sharedInstance] setCurrentLanguage:[NSString stringWithFormat:@"%@", backupActiveLanguage]];
+            [[ShareableData sharedInstance] setCurrentLanguage:ENGLISH];
+            [self loadOverview];
             [self displayOverview];
         }
     }
@@ -2946,7 +2947,7 @@
 {
     /*
      UIView *gift_view = [self.view viewWithTag:8888];
-     NSLog(@"gift view = %@", gift_view);
+     //NSLOG(@"gift view = %@", gift_view);
      
      if(!gift_view.isHidden)
      return;
@@ -3071,6 +3072,7 @@
 
 -(IBAction)feedbackClicked:(id)sender
 {
+    mparent =nil;
     if([[ShareableData sharedInstance].isFeedbackDone isEqualToString:@"0"])
     {
         KinaraSubCategory.hidden=YES;
@@ -3091,7 +3093,7 @@
 }
 
 -(IBAction)helpClicked:(id)sender
-{
+{    mparent =nil;
     favorite_status = FALSE;
     
     if(search.selected)
@@ -3215,7 +3217,7 @@
     
     [self addBestsellers];
     
-    //NSLog(@"first images = %@", firstImages);
+    ////NSLOG(@"first images = %@", firstImages);
     CGRect frame = CGRectMake(35,30, mainMenu.frame.size.width-70, mainMenu.frame.size.height+5);
     menuTable               = [[UITableView alloc] initWithFrame:frame];
 	menuTable.delegate      = self;
@@ -3308,7 +3310,7 @@
 	if(cell == nil)
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-	}
+	
     
     /*========================Background Image=========================*/
     
@@ -3360,7 +3362,9 @@
     [cell.contentView setTag:[[categoryIdList objectAtIndex:indx] intValue]];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	
+	}
+    [cell setNeedsDisplay];
+
 	return cell;
 	
 }
@@ -3558,6 +3562,7 @@
 
 -(IBAction)flagPressed:(id)sender
 {
+    mparent =nil;
     
     if(![ShareableData multiLanguageStatus]) {
         [self.flagButton setHidden:TRUE];
@@ -3656,7 +3661,7 @@
 
 -(void)updateScrollerTitles
 {
-    //NSLog(@"Scroller header list = %@", subcategoryList);
+    ////NSLOG(@"Scroller header list = %@", subcategoryList);
     int i = 0;
     for(UIView *sub_view in subcatScroller.subviews) {
         
@@ -3721,8 +3726,8 @@
 /*=================View Mode Selected===================*/
 -(void)viewModeActivated:(NSNotification *)notification
 {
-    NSLog(@"view mode");
-    [menulistView.DishList reloadData];
+    //NSLOG(@"view mode");
+    //[menulistView.DishList reloadData];
     
 }
 
@@ -3730,17 +3735,18 @@
 /*=================Edit Mode Selected===================*/
 -(void)editModeActivated:(NSNotification *)notification
 {
-    NSLog(@"Edit order Mode");
-    [menulistView.DishList reloadData];
+    //NSLOG(@"Edit order Mode");
+   // [menulistView.DishList reloadData];
     
     [self.overviewMenuButton setUserInteractionEnabled:YES];
     [self.OrderSummaryButton setUserInteractionEnabled:YES];
     
-    NSLog(@"mParent===%@",[mparent class]);
+    //NSLOG(@"mParent===%@",[mparent class]);
    /////////to unhide the orderSummaryButton & backButton
     if ([mparent class] ==[TabMainCourseMenuListViewController class]) {
         [self.overviewMenuButton setUserInteractionEnabled:NO];
         [self.OrderSummaryButton setUserInteractionEnabled:NO];
+        mparent=nil;
     }
     
 }

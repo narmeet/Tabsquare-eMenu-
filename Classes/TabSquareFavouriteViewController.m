@@ -40,6 +40,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.view.frame=CGRectMake(13, 160, self.view.frame.size.width, self.view.frame.size.height);
+        self.view.backgroundColor=[UIColor redColor];
         // Custom initialization
     }
     return self;
@@ -449,14 +450,16 @@
 
 -(void) showIndicator
 {
-    UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(0,187, self.view.frame.size.width, self.view.frame.size.height)];
-	progressHud= [[MBProgressHUD alloc] initWithView:progressView];
-	[self.view addSubview:progressHud];
-	[self.view bringSubviewToFront:progressHud];
-	//progressHud.dimBackground = YES;
-	progressHud.delegate = self;
-    //progressHud.labelText = @"loading....";
-	[progressHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+//    UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(0,187, self.view.frame.size.width, self.view.frame.size.height)];
+//	progressHud= [[MBProgressHUD alloc] initWithView:progressView];
+//	[self.view addSubview:progressHud];
+//	[self.view bringSubviewToFront:progressHud];
+//	//progressHud.dimBackground = YES;
+//	progressHud.delegate = self;
+//    //progressHud.labelText = @"loading....";
+//	[progressHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+    
+    [self myTask];
 }
 
 -(void)myTask

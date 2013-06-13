@@ -177,7 +177,7 @@
 -(void)getSearchTags
 {
     NSString *post =[NSString stringWithFormat:@"key=%@", [ShareableData appKey]];
-    //NSLOG(@"request = %@", date);
+    ////NSLOG(@"request = %@", date);
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
@@ -196,11 +196,11 @@
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
-    //NSLog(@"original data = %@", data);
+    ////NSLOG(@"original data = %@", data);
     
     SBJSON *parser = [[SBJSON alloc] init];
     NSMutableDictionary *resultFromPost = [parser objectWithString:data error:nil];
-    //NSLog(@"Response data = %@", resultFromPost);
+    ////NSLOG(@"Response data = %@", resultFromPost);
     [[NSUserDefaults standardUserDefaults] setObject:resultFromPost forKey:SEARCH_DATA];
     
 }

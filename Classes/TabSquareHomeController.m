@@ -116,7 +116,7 @@ int toUpdate = 0;
     NSString *location = [NSString stringWithFormat:@"%@/%@/%@_%@.png",libraryDirectory, PRE_NAME,HOME_IMAGE1, [ShareableData appKey]];//
     NSString *location2 = [NSString stringWithFormat:@"%@/%@/%@_%@.png",libraryDirectory,PRE_NAME,HOME_IMAGE2, [ShareableData appKey]];//[libraryDirectory stringByAppendingString:@"/@%",dishImage];
 
-    //NSLOG(@"Home img path = %@", [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]]);
+    ////NSLOG(@"Home img path = %@", [NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]]);
     UIImage *imageData = [[TabSquareDBFile sharedDatabase] getImage:[NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE1, [ShareableData appKey]]];
 
     UIImage *imageData2 = [[TabSquareDBFile sharedDatabase] getImage:[NSString stringWithFormat:@"%@%@_%@.png", PRE_NAME, HOME_IMAGE2, [ShareableData appKey]]];
@@ -931,11 +931,11 @@ int toUpdate = 0;
     
     currentDate = [NSString stringWithFormat:@"%@", datetime];
     NSString *data=[self GetDishTableData:datetime];
-    //NSLog(@"---> %@",data);
+    ////NSLOG(@"---> %@",data);
     
     SBJSON *parser = [[SBJSON alloc] init];
     NSMutableDictionary *resultFromPost = [parser objectWithString:data error:nil];
-    NSLog(@"Response data = %@", resultFromPost);
+    //NSLOG(@"Response data = %@", resultFromPost);
     
     NSString *time = resultFromPost[@"Time"];
     [[TabSquareDBFile sharedDatabase]updateKinaraVersionDate:time];
@@ -991,7 +991,7 @@ int toUpdate = 0;
     //NSString *Key=@"kinara123";
     
     NSString *post =[NSString stringWithFormat:@"key=%@&date=%@", [ShareableData appKey],date];
-    NSLog(@"request = %@", post);
+    //NSLOG(@"request = %@", post);
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];

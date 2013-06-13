@@ -261,12 +261,10 @@
     // NSString *type=[beverageCutType objectAtIndex:[selectedIndex intValue]];
     if([(beverageView.beverageCustomization)[[selectedIndex intValue]]count]==0)
     {
-        //[self addImageAnimation:frame btnView:view];
-        if ([[ShareableData sharedInstance].isSpecialReq isEqualToString:@"0"]){
             [self addImageAnimation:frame btnView:view];
-        }else{
             [self addBlankCustomizationView];
-        }
+
+        
     }
     else
     {
@@ -393,7 +391,7 @@
             drinkName.text=(beverageView.beverageName)[index];
             _drinkDiscription.text=(beverageView.beverageDescription)[index];
             
-         //   NSLog(@"drinkName===%@",drinkName.text);
+         //   //NSLOG(@"drinkName===%@",drinkName.text);
             
 
            // drinkName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
@@ -494,7 +492,7 @@
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(PagedFlowView *)flowView {
     if (pageNumber>=0) {
-        // NSLog(@"Scrolled to page # %d", pageNumber);
+        // //NSLOG(@"Scrolled to page # %d", pageNumber);
         [self loadBeverageData:pageNumber];
 
         // [KDishImage.layer setShadowOpacity:1.0];
@@ -506,7 +504,7 @@
 //        drinkName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
 //        _drinkDiscription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:15];
 //        
-       // NSLog(@"KDishName.text====%@d", drinkName.text);
+       // //NSLOG(@"KDishName.text====%@d", drinkName.text);
         
         
     }
@@ -534,7 +532,7 @@
 }
 
 - (UIView *)flowView:(PagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
-//    NSLog(@"DishImage====%d",[DishName count]);
+//    //NSLOG(@"DishImage====%d",[DishName count]);
 //    drinkImage.image=(beverageView.beverageImageData)[pageNumber];
 
     
@@ -582,7 +580,7 @@
     
     
     if([orderScreenFlag isEqualToString:@"1"]){
-      //  NSLog(@"selectedItemIndex==%d",selectedItemIndex);
+      //  //NSLOG(@"selectedItemIndex==%d",selectedItemIndex);
        // imageView.image = [(beverageView.beverageImageData) objectAtIndex:selectedItemIndex];
         imageView.image = KDishImage;
         drinkName.text=drinkNameFromOrderSummary;

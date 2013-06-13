@@ -97,7 +97,7 @@
 }
 -(void)voidRaptor
 {
-    NSString *post =[NSString stringWithFormat:@"POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",tableNumber,[ShareableData sharedInstance].salesNo,@"0"];
+    NSString *post =[NSString stringWithFormat:@"POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",tableNumber,[ShareableData sharedInstance].salesNo,@"0"];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
@@ -244,7 +244,7 @@
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     
     [ShareableData sharedInstance].OrderId=data;
-    ////NSLOG(@"Bill Number :%@",data);
+    //////NSLOG(@"Bill Number :%@",data);
 
 }
 
@@ -567,7 +567,7 @@
     for(int i=0;i<[resultFromPost count];i++)
     {
         NSMutableDictionary *dataitem=resultFromPost[i];
-        ////NSLOG(@"dataitem===%@",dataitem);
+        //////NSLOG(@"dataitem===%@",dataitem);
         guestName.text=dataitem[@"guest_name"];
         noOfGuest.text=[NSString stringWithFormat:@"%@", dataitem[@"total_guests"]];
         guestlastVisit.text=dataitem[@"last_visit"];

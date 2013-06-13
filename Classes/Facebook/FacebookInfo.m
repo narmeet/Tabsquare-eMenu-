@@ -65,7 +65,7 @@
                                                 
                                                 NSArray *accounts = [_accountStore accountsWithAccountType:facebookTypeAccount];
                                                 
-                                                ////NSLOG(@"account data = %@\n", accounts);
+                                                //////NSLOG(@"account data = %@\n", accounts);
                                                 
                                                 _facebookAccount = [accounts lastObject];
                                                 
@@ -85,8 +85,8 @@
                                             else
                                             {
                                                 status = FALSE;
-                                                ////NSLOG(@"Fail");
-                                                ////NSLOG(@"Error: %@", error);
+                                                //////NSLOG(@"Fail");
+                                                //////NSLOG(@"Error: %@", error);
                                             }
                                         }];
     
@@ -101,10 +101,10 @@
     /*
     [_accountStore renewCredentialsForAccount:_facebookAccount completion:^(ACAccountCredentialRenewResult renewResult, NSError *error) {
         
-        ////NSLOG(@"Renewed");
+        //////NSLOG(@"Renewed");
         
         if (error){
-            ////NSLOG(@"Failed");
+            //////NSLOG(@"Failed");
         }
     }];
     */
@@ -126,7 +126,7 @@
      {
          NSString *list_data = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
          
-         ////NSLOG(@"Raw data = %@", list_data);
+         //////NSLOG(@"Raw data = %@", list_data);
          SBJSON *parser = [[SBJSON alloc] init];
          NSMutableDictionary *resultFromPost = [parser objectWithString:list_data error:nil];
          NSMutableArray *arr = [resultFromPost objectForKey:@"data"];
@@ -138,7 +138,7 @@
              NSMutableDictionary *dict = [arr objectAtIndex:i];
              [friends addObject:[dict objectForKey:@"name"]];
          }
-         ////NSLOG(@"friends list= %@", friends);
+         //////NSLOG(@"friends list= %@", friends);
      }];
 
     
@@ -167,7 +167,7 @@
                                              NSHTTPURLResponse *urlResponse, NSError *error)
      {
          NSString *list_data = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-         ////NSLOG(@"installed list data = %@", list_data);
+         //////NSLOG(@"installed list data = %@", list_data);
          SBJSON *parser = [[SBJSON alloc] init];
          NSMutableDictionary *resultFromPost = [parser objectWithString:list_data error:nil];
          NSMutableArray *arr = [resultFromPost objectForKey:@"data"];
@@ -179,7 +179,7 @@
              NSMutableDictionary *dict = [arr objectAtIndex:i];
              [installed addObject:[dict objectForKey:@"name"]];
          }
-         ////NSLOG(@"installed list= %@", installed);
+         //////NSLOG(@"installed list= %@", installed);
      }];
 
 }

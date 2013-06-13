@@ -224,7 +224,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Logging in with your Facebook ID allows you to see which dishes your friends love at BANANA LEAF APOLO.</string>
+						<string key="IBUIText">Logging in with your Facebook ID allows you to see which dishes your friends love at Moghul Mahal.</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MC4zMTM3MjU1MDEzIDAuMzA5ODAzOTMyOSAwLjI5NDExNzY1OTMAA</bytes>

@@ -122,15 +122,16 @@ bool funcCalled = NO;
     //NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     //DLog(@"Data :%@",data);
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-   // //NSLOG(@"json = %@",json);
+   // ////NSLOG(@"json = %@",json);
     
   
-       NSArray* returnVal = [json objectForKey:@"returnVal"];
+      
     
    // NSMutableArray* temp = [TotalFreeTables copy];
    // NSDictionary* node = [returnVal objectAtIndex:0];
     // [node objectForKey:@"ErrCode"];
     @try{
+         NSArray* returnVal = [json objectForKey:@"returnVal"];
         if ([TotalFreeTables count]>0){
         [TotalFreeTables replaceObjectsInRange:(NSMakeRange(0, [TotalFreeTables count])) withObjectsFromArray:returnVal range:(NSMakeRange(0, [returnVal count]))];
         }else{
@@ -147,7 +148,7 @@ bool funcCalled = NO;
     }
     
     [ShareableData sharedInstance].totalFreeTables = TotalFreeTables;
-    //NSLog(@"Total Free Tables = %@", TotalFreeTables);
+    ////NSLOG(@"Total Free Tables = %@", TotalFreeTables);
 }
 
 -(void)getTableStatusView
@@ -251,7 +252,7 @@ bool funcCalled = NO;
 
     //[self performSelector:@selector(changeData) withObject:nil afterDelay:25.0];
     
-    tt =[NSTimer scheduledTimerWithTimeInterval:5.0
+    tt =[NSTimer scheduledTimerWithTimeInterval:1.0
                                          target:self
                                        selector:@selector(onTick)
                                        userInfo:nil
@@ -337,7 +338,7 @@ bool funcCalled = NO;
         [self.navigationController pushViewController:homeView animated:YES];
         
     }
-[self setSection2:3];
+[self setSection2:3];///previous value =1
 }
 
 
@@ -360,7 +361,7 @@ bool funcCalled = NO;
    // [self getTableStatusView];
     [self checkSections];
     if ([TATables count]>0){
-        sectionID = [[TATables objectAtIndex:1] objectForKey:@"SectionID"];
+        sectionID = [[TATables objectAtIndex:0] objectForKey:@"SectionID"];/////previous value objectAtIndex=1
     }
     [ShareableData sharedInstance].categoryID=@"1";
     //[self initTABtns];
@@ -395,7 +396,7 @@ bool funcCalled = NO;
    
     
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    // //NSLOG(@"json = %@",json);
+    // ////NSLOG(@"json = %@",json);
     
     
     NSArray* returnVal = [json objectForKey:@"returnVal"];
@@ -653,10 +654,10 @@ bool funcCalled = NO;
         }
         
     }
-    if (sectionID.intValue == 4){
-        [ShareableData sharedInstance].categoryID=@"3";
+    if (sectionID.intValue == 4){/////previous value=3
+        [ShareableData sharedInstance].categoryID=@"3";/////previous value=3
     }else{
-        [ShareableData sharedInstance].categoryID=@"1";
+        [ShareableData sharedInstance].categoryID=@"1";/////previous value=1
     }
     [self onTick];
     
@@ -676,10 +677,10 @@ bool funcCalled = NO;
         }
         
     }
-    if (sectionID.intValue == 4){
-        [ShareableData sharedInstance].categoryID=@"3";
+    if (sectionID.intValue == 4){/////previous value=3
+        [ShareableData sharedInstance].categoryID=@"3";/////previous value=3
     }else{
-        [ShareableData sharedInstance].categoryID=@"1";
+        [ShareableData sharedInstance].categoryID=@"1";/////previous value=1
     }
     [self onTick];
     
@@ -689,7 +690,8 @@ bool funcCalled = NO;
 
 -(void)initTABtns
 {
-    sectionID=@"3";
+    sectionID=@"3";/////previous value=1
+    
    // CGRect frame=CGRectMake(0,10, 103,100);
     //int i=0;
   //  int totalRows = 0;
@@ -903,7 +905,9 @@ bool funcCalled = NO;
     {
        // cell = [[UITableViewCell alloc] initWithFrame:CGRectZero ];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-[self addTabledataImage:cell indexRow:indexPath.row];
+
+        [self addTabledataImage:cell indexRow:indexPath.row];
+        
     }else{
        // int i=0;
         int tagVal = indexPath.row*5;
@@ -987,7 +991,7 @@ bool funcCalled = NO;
         // [self showIndicator];
         if([[ShareableData sharedInstance].isConfromHomePage isEqualToString:@"1"])
         {
-            ////NSLOG(@"in if");
+            //////NSLOG(@"in if");
             //[self dismissModalViewControllerAnimated:NO];
             @autoreleasepool {
                 
@@ -1000,7 +1004,7 @@ bool funcCalled = NO;
         }
         else
         {
-            ////NSLOG(@"in else");
+            //////NSLOG(@"in else");
             @autoreleasepool {
                 
                 
@@ -1114,13 +1118,13 @@ bool funcCalled = NO;
     
     NSArray* returnVal;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-   // //NSLOG(@"json = %@",json);
+   // ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1186,8 +1190,8 @@ bool funcCalled = NO;
             }
             else {
                 [[ShareableData sharedInstance] setCurrentTable:[NSString stringWithFormat:@"%@", table_number]];
-                NSLog(@"Table number> = %@", [ShareableData sharedInstance].currentTable);
-                //NSLog(@"Total Free Tables 1st = %@", TotalFreeTables);
+                //NSLOG(@"Table number> = %@", [ShareableData sharedInstance].currentTable);
+                ////NSLOG(@"Total Free Tables 1st = %@", TotalFreeTables);
                 BOOL assigned = TRUE;
                 
                 for(int i = 0; i < [TotalFreeTables count]; i++) {
@@ -1453,7 +1457,7 @@ bool funcCalled = NO;
         UITextField *guests = [alertView textFieldAtIndex:0];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS002&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1541,8 +1545,8 @@ bool funcCalled = NO;
                
         //[super viewDidLoad];
       
-            [self getTableDetails:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]; //Change
-                
+           // [self getTableDetails:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]; //Change
+                [self getTableDetails:tb_no];
                 dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSArray *array=@[[ShareableData sharedInstance].OrderItemID,[ShareableData sharedInstance].OrderItemName,[ShareableData sharedInstance].OrderItemRate,[ShareableData sharedInstance].OrderCatId,[ShareableData sharedInstance].IsOrderCustomization,[ShareableData sharedInstance].OrderCustomizationDetail,[ShareableData sharedInstance].OrderSpecialRequest,[ShareableData sharedInstance].OrderItemQuantity,[ShareableData sharedInstance].confirmOrder];
                     NSArray *array2 = @[[ShareableData sharedInstance].OrderId,[ShareableData sharedInstance].assignedTable1,[ShareableData sharedInstance].assignedTable2,[ShareableData sharedInstance].assignedTable3,[ShareableData sharedInstance].assignedTable4,[ShareableData sharedInstance].salesNo];;
@@ -1608,7 +1612,7 @@ bool funcCalled = NO;
             
         [self getSalesNumber:[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"]];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
+       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS002&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1949,7 +1953,7 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    ////NSLOG(@"json = %@",json);
+    //////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];
@@ -1968,13 +1972,13 @@ bool funcCalled = NO;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
-    ////NSLOG(@"json = %@",json);
+    //////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
         returnVal = [json objectForKey:@"returnVal"];

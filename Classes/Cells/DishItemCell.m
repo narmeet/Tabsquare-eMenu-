@@ -35,7 +35,7 @@
         
       //  UIColor *fontColor = [UIColor whiteColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
         
-        UIColor *fontColor = [UIColor whiteColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
+        UIColor *fontColor = [UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
 
         [lbl setTextColor:fontColor];
     }
@@ -66,8 +66,9 @@
 {
     [super setDishName:newDishName];
     lblDishName.text=newDishName;
-    lblDishName.font=[UIFont fontWithName:FONT_NAME size:21];
-    
+    lblDishName.font=[UIFont fontWithName:FONT_NAME size:25];
+    lblDishName.backgroundColor = [UIColor redColor];
+
     [self setLabelColor:lblDishName];
 }
 

@@ -400,7 +400,7 @@
     NSMutableDictionary *dataitem=menuSubCategory[selectedIndex];
    // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
         [dishes removeAllObjects];
-        NSLog(@"LogDD 5");
+        //NSLOG(@"LogDD 5");
     [dishes addObjectsFromArray:[[TabSquareDBFile sharedDatabase]getDishData:[NSString stringWithFormat:@"%@",dataitem[@"category_id"] ] subCatId:[NSString stringWithFormat:@"%@",dataitem[@"id"] ]]];
    // [[TabSquareDBFile sharedDatabase]closeDatabaseConnection];
     return [dishes count];

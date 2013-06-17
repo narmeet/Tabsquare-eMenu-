@@ -56,6 +56,7 @@
 		8656328E168D7A83004C6D8D /* add_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8656328D168D7A81004C6D8D /* add_btn.png */; };
 		86563290168D7D94004C6D8D /* close_confirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 8656328F168D7D92004C6D8D /* close_confirm.png */; };
 		86563294168D7ECF004C6D8D /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 86563293168D7ECD004C6D8D /* left_arrow.png */; };
+		8658E540176AE11E000056F4 /* TabSquareTableRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8658E53F176AE11E000056F4 /* TabSquareTableRequestHandler.m */; };
 		865A501F1749E81B002AD489 /* LanguageControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 865A501E1749E81B002AD489 /* LanguageControler.m */; };
 		865EBE7C16A0463A004C520B /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 865EBE7B16A0463A004C520B /* menu_background.png */; };
 		866B7B68175762AA00B9B617 /* TabSquareRemoteActivation.m in Sources */ = {isa = PBXBuildFile; fileRef = 866B7B67175762AA00B9B617 /* TabSquareRemoteActivation.m */; };
@@ -829,6 +830,8 @@
 		8656328D168D7A81004C6D8D /* add_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_btn.png; sourceTree = "<group>"; };
 		8656328F168D7D92004C6D8D /* close_confirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_confirm.png; sourceTree = "<group>"; };
 		86563293168D7ECD004C6D8D /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
+		8658E53E176AE11E000056F4 /* TabSquareTableRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabSquareTableRequestHandler.h; sourceTree = "<group>"; };
+		8658E53F176AE11E000056F4 /* TabSquareTableRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabSquareTableRequestHandler.m; sourceTree = "<group>"; };
 		865A501D1749E81B002AD489 /* LanguageControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageControler.h; sourceTree = "<group>"; };
 		865A501E1749E81B002AD489 /* LanguageControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageControler.m; sourceTree = "<group>"; };
 		865EBE7B16A0463A004C520B /* menu_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_background.png; sourceTree = "<group>"; };
@@ -2603,6 +2606,8 @@
 				8637615A16884767006A3BC7 /* TabSquareTableManagement.h */,
 				8637615B16884767006A3BC7 /* TabSquareTableManagement.m */,
 				8637616316884A68006A3BC7 /* TabSquareTableManagement.xib */,
+				8658E53E176AE11E000056F4 /* TabSquareTableRequestHandler.h */,
+				8658E53F176AE11E000056F4 /* TabSquareTableRequestHandler.m */,
 				866B7B66175762AA00B9B617 /* TabSquareRemoteActivation.h */,
 				866B7B67175762AA00B9B617 /* TabSquareRemoteActivation.m */,
 			);
@@ -3969,6 +3974,7 @@
 				862203D71732642E00FD8AD0 /* TabSquareBeerDetailController.m in Sources */,
 				865A501F1749E81B002AD489 /* LanguageControler.m in Sources */,
 				866B7B68175762AA00B9B617 /* TabSquareRemoteActivation.m in Sources */,
+				8658E540176AE11E000056F4 /* TabSquareTableRequestHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

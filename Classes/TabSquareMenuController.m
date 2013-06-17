@@ -81,7 +81,7 @@
 @synthesize KinaraSubCategory,KinaraSubategoryNameList,KinaraSelectedSubCategoryName,KinaraSelectorSubCategory,assignTable;
 
 @synthesize subcatScroller,subCatbg;
-@synthesize mparent;
+@synthesize mparent, billCallBtn, waiterCallBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -483,6 +483,17 @@
     [self.logoImage setImage:logo_img];
      */
 
+    /*=====================Call Functions Objects=====================*/
+    if([[ShareableData sharedInstance].currentTable isEqualToString:DEFAULT_TABLE]) {
+        [self.waiterCallBtn setHidden:TRUE];
+        [self.billCallBtn setHidden:TRUE];
+    }
+    else {
+        callForWaiter = [[TabSquareTableRequestHandler alloc] initWithTableNo:[NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable]];
+        callForBill = [[TabSquareTableRequestHandler alloc] initWithTableNo:[NSString stringWithFormat:@"%@", [ShareableData sharedInstance].currentTable]];
+    }
+    /*================================================================*/
+    
     OrderSummaryButton.hidden=YES;
     
     searchStatus = FALSE;
@@ -3725,6 +3736,9 @@
     [beveragesBeerView1.view removeFromSuperview];
     [beveragesBeerView2.view removeFromSuperview];
     [orderSummaryView.view removeFromSuperview];
+    
+    /*====================Unlocking touch===================*/
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
 
@@ -3756,5 +3770,19 @@
     }
     
 }
+
+
+/*======================Call for Waiter/Bill Functions=======================*/
+-(IBAction)callForWaiter:(id)sender
+{
+    [callForWaiter performSelectorInBackground:@selector(callForStaff:) withObject:WAITER];
+}
+
+
+-(IBAction)callForBill:(id)sender
+{
+    [callForWaiter performSelectorInBackground:@selector(callForStaff:) withObject:BILL];
+}
+
 
 @end

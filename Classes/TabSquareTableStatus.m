@@ -97,7 +97,7 @@
 }
 -(void)voidRaptor
 {
-    NSString *post =[NSString stringWithFormat:@"POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",tableNumber,[ShareableData sharedInstance].salesNo,@"0"];
+    NSString *post =[NSString stringWithFormat:@"POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",tableNumber,[ShareableData sharedInstance].salesNo,@"0"];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];

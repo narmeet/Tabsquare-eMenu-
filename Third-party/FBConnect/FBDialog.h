@@ -36,6 +36,7 @@
   UILabel* _titleLabel;
   UIButton* _closeButton;
   UIDeviceOrientation _orientation;
+    
   BOOL _showingKeyboard;
 }
 
@@ -48,6 +49,7 @@
  * The parameters.
  */
 @property(nonatomic, strong) NSMutableDictionary* params;
+@property(nonatomic, strong) UIWindow* windowFB;;
 
 /**
  * The title that is shown in the header atop the view.
@@ -94,6 +96,8 @@
  * Subclasses may override to perform actions just prior to showing the dialog.
  */
 - (void)dialogWillAppear;
+- (void)postDismissCleanup;
+-(void)removeWindowOfFB;
 
 /**
  * Subclasses may override to perform actions just after the dialog is hidden.

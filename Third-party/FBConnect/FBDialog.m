@@ -50,7 +50,8 @@ BOOL FBIsDeviceIPad() {
 @implementation FBDialog
 
 @synthesize delegate = _delegate,
-            params   = _params;
+            params   = _params,
+windowFB;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // private
@@ -357,6 +358,8 @@ BOOL FBIsDeviceIPad() {
 
 - (void)dealloc {
   _webView.delegate = nil;
+
+    
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -574,10 +577,13 @@ BOOL FBIsDeviceIPad() {
   [_spinner startAnimating];
   _spinner.center = _webView.center;
 
-  UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
   if (!window) {
     window = ([UIApplication sharedApplication].windows)[0];
   }
+    self.tag=8789;
+
   [window addSubview:self];
 
   [self dialogWillAppear];
@@ -616,11 +622,20 @@ BOOL FBIsDeviceIPad() {
 }
 
 - (void)dialogWillAppear {
+    
+   
 }
 
 - (void)dialogWillDisappear {
+  
 }
 
+-(void)removeWindowOfFB{////////removing the login window on the click of different button click
+    
+    [[([UIApplication sharedApplication].windows)[0] viewWithTag:8789] removeFromSuperview];
+   
+
+}
 - (void)dialogDidSucceed:(NSURL *)url {
   
   if ([_delegate respondsToSelector:@selector(dialogCompleteWithUrl:)]) {

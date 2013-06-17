@@ -3044,7 +3044,13 @@
 
 -(IBAction)searchClicked:(id)sender
 {
-    mparent=nil;
+    ////////////removing the FBLogin screen/////////////////
+     FBDialog *loginPage = [[FBDialog alloc]init];
+    [loginPage removeWindowOfFB];
+    
+    
+    
+    mparent=nil; 
     [self.overviewMenuButton setHidden:FALSE]; // Changed
     
     favorite_status = FALSE;
@@ -3697,6 +3703,9 @@
 
 -(void)searchBetseellers
 {
+    /*====================Unlocking touch===================*/
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    
     bestsellersOpened = TRUE;
     
     NSMutableArray *search_data = [[TabSquareDBFile sharedDatabase] getDishKeyData:@""];

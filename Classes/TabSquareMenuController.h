@@ -31,8 +31,10 @@
 @class EditOrder;
 
 
-@interface TabSquareMenuController : UIViewController<MBProgressHUDDelegate,ProgressBarDelegate,UIScrollViewDelegate,UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface TabSquareMenuController : UIViewController<MBProgressHUDDelegate,ProgressBarDelegate,UIScrollViewDelegate,UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource,FBLoginDialogDelegate>
 {
+    
+    FBLoginDialog* _fbDialog;
     
     TabMainCourseMenuListViewController     *menulistView;
     TabMainCourseMenuListViewController     *menulistView1;

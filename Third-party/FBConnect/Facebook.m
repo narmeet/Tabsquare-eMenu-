@@ -378,7 +378,7 @@ static NSString* kSDKVersion = @"ios";
 
   }
   
-  [_fbDialog show];  
+  [_fbDialog show];
 }
 
 /**

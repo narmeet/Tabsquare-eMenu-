@@ -29,6 +29,7 @@
 #import "LanguageSelectionView.h"
 #import "LanguageControler.h"
 #import "TabSquareRemoteActivation.h"
+#import "TabSquareTableRequestHandler.h"
 
 #define FONT_GRILLED_CHEESE         @"GrilledCheeseBTNToasted"
 #define FONT_CALIBRI_BOLD           @"Calibri"

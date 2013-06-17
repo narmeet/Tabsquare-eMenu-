@@ -11,8 +11,9 @@
 #import "TabSquareQuickOrder.h"
 #import "TabSquareFlurryTracking.h"
 #import "CustomBadge.h"
-#import "TabSquareTableRequestHandler.h"
-
+#import "FBDialog.h"
+#import "FBLoginDialog.h"
+#import "FBRequest.h"
 #include "ProgressBar.h"
 
 

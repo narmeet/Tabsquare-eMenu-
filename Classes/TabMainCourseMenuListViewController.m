@@ -178,7 +178,7 @@
         float _green = [arr[1] floatValue];
         float _blue  = [arr[2] floatValue];
         
-        fontColor = [UIColor blackColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
+        fontColor = [UIColor whiteColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
     }
     else {
         fontName = @"Copperplate-Light";

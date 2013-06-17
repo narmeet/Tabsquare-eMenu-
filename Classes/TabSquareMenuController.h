@@ -11,7 +11,9 @@
 #import "TabSquareQuickOrder.h"
 #import "TabSquareFlurryTracking.h"
 #import "CustomBadge.h"
-
+#import "FBDialog.h"
+#import "FBLoginDialog.h"
+#import "FBRequest.h"
 #include "ProgressBar.h"
 
 
@@ -30,8 +32,10 @@
 @class EditOrder;
 
 
-@interface TabSquareMenuController : UIViewController<MBProgressHUDDelegate,ProgressBarDelegate,UIScrollViewDelegate,UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface TabSquareMenuController : UIViewController<MBProgressHUDDelegate,ProgressBarDelegate,UIScrollViewDelegate,UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource,FBLoginDialogDelegate>
 {
+    
+    FBLoginDialog* _fbDialog;
     
     TabMainCourseMenuListViewController     *menulistView;
     TabMainCourseMenuListViewController     *menulistView1;

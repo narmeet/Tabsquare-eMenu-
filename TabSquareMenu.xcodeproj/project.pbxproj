@@ -696,7 +696,6 @@
 		DD74356A167AB38E00190CD7 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD74355A167AB38E00190CD7 /* SA_OAuthTwitterController.m */; };
 		DD74356B167AB38E00190CD7 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DD74355C167AB38E00190CD7 /* SA_OAuthTwitterEngine.m */; };
 		DD74357A167AB4FF00190CD7 /* EditOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD74356F167AB4FF00190CD7 /* EditOrderCell.xib */; };
-		DD74357B167AB4FF00190CD7 /* FacebookViewC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD743571167AB4FF00190CD7 /* FacebookViewC.xib */; };
 		DD74357C167AB4FF00190CD7 /* OrderCellList.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD743573167AB4FF00190CD7 /* OrderCellList.xib */; };
 		DD74357D167AB4FF00190CD7 /* PaidCellList.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD743575167AB4FF00190CD7 /* PaidCellList.xib */; };
 		DD74357E167AB4FF00190CD7 /* UnPaidCellList.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD743577167AB4FF00190CD7 /* UnPaidCellList.xib */; };
@@ -1530,7 +1529,6 @@
 		DD74355B167AB38E00190CD7 /* SA_OAuthTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SA_OAuthTwitterEngine.h; sourceTree = "<group>"; };
 		DD74355C167AB38E00190CD7 /* SA_OAuthTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SA_OAuthTwitterEngine.m; sourceTree = "<group>"; };
 		DD743570167AB4FF00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EditOrderCell.xib; sourceTree = "<group>"; };
-		DD743572167AB4FF00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FacebookViewC.xib; sourceTree = "<group>"; };
 		DD743574167AB4FF00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OrderCellList.xib; sourceTree = "<group>"; };
 		DD743576167AB4FF00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PaidCellList.xib; sourceTree = "<group>"; };
 		DD743578167AB4FF00190CD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UnPaidCellList.xib; sourceTree = "<group>"; };
@@ -3097,7 +3095,6 @@
 		DD743594167AB51100190CD7 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				DD743571167AB4FF00190CD7 /* FacebookViewC.xib */,
 				DD743595167AB51100190CD7 /* FacebookViewC.h */,
 				DD743596167AB51100190CD7 /* FacebookViewC.m */,
 				DD743597167AB51100190CD7 /* FBLoginButton.h */,
@@ -3307,7 +3304,6 @@
 				DD743567167AB38E00190CD7 /* jQueryInject.txt in Resources */,
 				DD743568167AB38E00190CD7 /* jQueryInjectLandscape.txt in Resources */,
 				DD74357A167AB4FF00190CD7 /* EditOrderCell.xib in Resources */,
-				DD74357B167AB4FF00190CD7 /* FacebookViewC.xib in Resources */,
 				DD74357C167AB4FF00190CD7 /* OrderCellList.xib in Resources */,
 				DD74357D167AB4FF00190CD7 /* PaidCellList.xib in Resources */,
 				DD74357E167AB4FF00190CD7 /* UnPaidCellList.xib in Resources */,
@@ -3999,15 +3995,6 @@
 			);
 			name = EditOrderCell.xib;
 			path = ../Resources;
-			sourceTree = "<group>";
-		};
-		DD743571167AB4FF00190CD7 /* FacebookViewC.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD743572167AB4FF00190CD7 /* en */,
-			);
-			name = FacebookViewC.xib;
-			path = ../../Resources;
 			sourceTree = "<group>";
 		};
 		DD743573167AB4FF00190CD7 /* OrderCellList.xib */ = {

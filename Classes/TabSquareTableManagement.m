@@ -1118,7 +1118,7 @@ bool funcCalled = NO;
     
     NSArray* returnVal;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -1457,7 +1457,7 @@ bool funcCalled = NO;
         UITextField *guests = [alertView textFieldAtIndex:0];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS002&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1612,7 +1612,7 @@ bool funcCalled = NO;
             
         [self getSalesNumber:[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"]];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS002&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
+       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1972,7 +1972,7 @@ bool funcCalled = NO;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];

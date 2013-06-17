@@ -513,10 +513,10 @@ static int tapCount = 0;
                 //insert option detail
                 [self insertInTempOptionOrderService:optionid ItemCustomizationId:itemCustomisationId price:optionprice optionQty:optionQty];
                 if ([optionprice isEqualToString:@"0.00"]){
-                    [self insertInItemModifierRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo SalesRef:salesRef Modifier:optionDic[@"name"]];
+                    [self insertInItemModifierRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo SalesRef:salesRef Modifier:optionDic[@"name"]];
                    // [ShareableData sharedInstance].OrderItemID[index]
                 }else{
-                    [self insertInOpenItemRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000171" Qty:optionQty PLUName:optionDic[@"name"] Amount:optionprice];
+                    [self insertInOpenItemRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000171" Qty:optionQty PLUName:optionDic[@"name"] Amount:optionprice];
                 }
             }
         }
@@ -653,7 +653,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -699,7 +699,7 @@ static int tapCount = 0;
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -813,25 +813,25 @@ static int tapCount = 0;
 {
     if (DishID1.length!=15){
         if ([OrderCatId1 isEqualToString:[ShareableData sharedInstance].bevCat]){
-            [self insertInOpenItemRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000172" Qty:DishQuantity1 PLUName:DishName1 Amount:DishRate1];
+            [self insertInOpenItemRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000172" Qty:DishQuantity1 PLUName:DishName1 Amount:DishRate1];
             if (OrderSpecialRequest1.length<2){
                 OrderSpecialRequest1 = @"";
             }else{
-                 [self insertInItemModifierRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo SalesRef:salesRef Modifier:OrderSpecialRequest1];
+                 [self insertInItemModifierRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo SalesRef:salesRef Modifier:OrderSpecialRequest1];
             }
         }else{
-            [self insertInOpenItemRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000171" Qty:DishQuantity1 PLUName:DishName1 Amount:DishRate1];
+            [self insertInOpenItemRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:@"000000000000171" Qty:DishQuantity1 PLUName:DishName1 Amount:DishRate1];
             if (OrderSpecialRequest1.length<2){
                 OrderSpecialRequest1 = @"";
             }else{
-                [self insertInItemModifierRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo SalesRef:salesRef Modifier:OrderSpecialRequest1];
+                [self insertInItemModifierRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo SalesRef:salesRef Modifier:OrderSpecialRequest1];
             }
         }
     }else{
         if (OrderSpecialRequest1.length<2){
             OrderSpecialRequest1 = @"";
         }
-        [self insertInItemRaptor:@"POS002" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:DishID1 Qty:DishQuantity1 ItemRemark:OrderSpecialRequest1];
+        [self insertInItemRaptor:@"POS011" OperatorNo:@"1" TableNo:[ShareableData sharedInstance].assignedTable1 SalesNo:[ShareableData sharedInstance].salesNo SplitNo:[ShareableData sharedInstance].splitNo PLUNo:DishID1 Qty:DishQuantity1 ItemRemark:OrderSpecialRequest1];
     }
     NSString *post =[NSString stringWithFormat:@"table=%@&dish_id=%@&dish_name=%@&quantity=%@&price=%@&order_special_request=%@&order_customisation_detail=%@&order_beverage_container_id=%@&order_cat_id=%@&confirm_order=%@&is_order_customisation=%@&order_id=%@",tableNumber1,DishID1,DishName1,DishQuantity1,DishRate1,OrderSpecialRequest1,OrderCustomizationDetail1,OrderBeverageContainerId1,OrderCatId1,@"0",IsOrderCustomization1,[ShareableData sharedInstance].OrderId];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];

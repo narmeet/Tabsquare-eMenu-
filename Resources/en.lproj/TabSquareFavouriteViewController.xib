@@ -43,6 +43,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{742, 720}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="891869352"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -57,6 +58,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{267, 38}, {209, 28}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="24212467"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -65,10 +67,9 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">FAVOURITES</string>
-						<object class="NSColor" key="IBUITextColor" id="863919456">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+						<object class="NSColor" key="IBUITextColor" id="295869018">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -90,12 +91,10 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 338}, {300, 34}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="565891622"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="295869018">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="295869018"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -129,6 +128,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{219, 418}, {302, 31}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1006599724"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="295869018"/>
@@ -157,6 +157,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{163, 43}, {415, 78}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="903123990"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -165,8 +166,12 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">This E-Menu solution is powered by:</string>
-						<reference key="IBUITextColor" ref="863919456"/>
-						<reference key="IBUIHighlightedColor" ref="863919456"/>
+						<reference key="IBUITextColor" ref="295869018"/>
+						<object class="NSColor" key="IBUIHighlightedColor" id="863919456">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
+							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+						</object>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
@@ -188,6 +193,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{42, 190}, {658, 96}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="598243451"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -196,7 +202,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">Login with your TabSquare/Facebook ID to recieve                                 E-Receipts of your bill and to check out your favourite dishes from previous visits.</string>
-						<reference key="IBUITextColor" ref="863919456"/>
+						<reference key="IBUITextColor" ref="295869018"/>
 						<reference key="IBUIHighlightedColor" ref="863919456"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -211,6 +217,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{50, 535}, {658, 78}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="939310716"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -219,7 +226,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">Logging in with your Facebook ID allows you to see which dishes your friends love at Moghul Mahal.</string>
-						<reference key="IBUITextColor" ref="863919456"/>
+						<reference key="IBUITextColor" ref="295869018"/>
 						<reference key="IBUIHighlightedColor" ref="863919456"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -234,6 +241,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 310}, {245, 22}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="942618864"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -242,7 +250,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">TABSQUARE ID (E-mail)</string>
-						<reference key="IBUITextColor" ref="863919456"/>
+						<reference key="IBUITextColor" ref="295869018"/>
 						<reference key="IBUIHighlightedColor" ref="863919456"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -263,6 +271,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 391}, {134, 21}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="555342036"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -271,7 +280,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">PASSWORD</string>
-						<reference key="IBUITextColor" ref="863919456"/>
+						<reference key="IBUITextColor" ref="295869018"/>
 						<reference key="IBUIHighlightedColor" ref="863919456"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -283,6 +292,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{214, 610}, {315, 48}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="86865756"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -317,6 +327,8 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{214, 666}, {315, 48}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -340,6 +352,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{221, 467}, {149, 46}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="542988233"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -364,6 +377,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{375, 467}, {145, 46}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="654912059"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -388,6 +402,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{210, 104}, {322, 78}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="278412229"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">1</int>
@@ -395,12 +410,13 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">tabsquarelogo.png</string>
+							<string key="NSResourceName">tabsquare1Logo.png</string>
 						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{741, 720}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1023032685"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -637,7 +653,61 @@
 			<nil key="sourceID"/>
 			<int key="maxID">28</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">TabSquareFavouriteViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="LoginButtonClick:">id</string>
+						<string key="RegisterButtonClick:">id</string>
+						<string key="facebookLoginBtnClicked">id</string>
+						<string key="twitterBtnClicked:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="LoginButtonClick:">
+							<string key="name">LoginButtonClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="RegisterButtonClick:">
+							<string key="name">RegisterButtonClick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="facebookLoginBtnClicked">
+							<string key="name">facebookLoginBtnClicked</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="twitterBtnClicked:">
+							<string key="name">twitterBtnClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="bgImage">UIImageView</string>
+						<string key="txtLogin">UITextField</string>
+						<string key="txtPassword">UITextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="bgImage">
+							<string key="name">bgImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtLogin">
+							<string key="name">txtLogin</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtPassword">
+							<string key="name">txtPassword</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TabSquareFavouriteViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
@@ -647,7 +717,7 @@
 			<string key="login.png">{170, 60}</string>
 			<string key="menu_back.png">{1478, 1390}</string>
 			<string key="ragister.png">{170, 60}</string>
-			<string key="tabsquarelogo.png">{1054, 235}</string>
+			<string key="tabsquare1Logo.png">{1181, 367}</string>
 			<string key="twitter_signin.png">{400, 66}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

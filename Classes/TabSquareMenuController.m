@@ -2767,7 +2767,7 @@
             [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
             [[ShareableData sharedInstance].TempOrderID removeAllObjects];
             
-           // [self presentModalViewController:assignTable animated:YES];
+            //[self presentModalViewController:assignTable animated:YES];
             //[self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:Nil];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
@@ -2798,8 +2798,11 @@
         [swipeView addSubview:menulistView3.view];
         
     }
-    
+
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+
 }
+
 
 -(void)loadAnimation:(UITableView *)table
 {
@@ -2808,6 +2811,7 @@
     [table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     [table endUpdates];
 }
+
 
 
 -(IBAction)beveragesSubCategoryClicked:(UIButton*)button sub:(NSString*)sub 
@@ -3409,6 +3413,7 @@
     /*=========Locking Touch=========*/
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
 
+    NSLog(@"Log 1111");
     beveragesBeerView.mParent=self;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UILabel *label = cell.textLabel;// [menuLabels objectAtIndex: button.tag];
@@ -3495,6 +3500,7 @@
                               ];}
                      }];
 
+    
 }
 
 
@@ -3567,7 +3573,7 @@
 
 
 -(IBAction)flagPressed:(id)sender
-{
+{    
     mparent =nil;
     
     if(![ShareableData multiLanguageStatus]) {

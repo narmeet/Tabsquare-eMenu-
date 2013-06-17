@@ -460,6 +460,12 @@ imgView.clipsToBounds = NO;
 //        addButton.hidden=NO;
 //    }
 }
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [tabMainCourseMenuListViewController setMenuStatus:@"0"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -561,6 +567,8 @@ imgView.clipsToBounds = NO;
 //    
 //    
 //
+    tabMainCourseMenuListViewController.menuStatus = @"0";
+    
     [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
 }
 

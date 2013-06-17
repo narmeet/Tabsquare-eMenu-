@@ -45,9 +45,13 @@
     /*=========Performance improvement==========*/
     UIImage *cellImage;
     NSMutableArray *resizedImages;
+    
+    int totalRows;
+    
 
 }
 
+@property(nonatomic, retain)NSString *menuStatus;
 @property NSInteger pageIndex;
 @property(nonatomic)NSMutableArray *SubSectionIdData;
 @property(nonatomic)NSMutableArray *SubSectionNameData;

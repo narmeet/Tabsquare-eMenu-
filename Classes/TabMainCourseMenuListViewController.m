@@ -22,7 +22,7 @@
 @synthesize DishCategoryId,beerDetailView;
 @synthesize currentListTag;
 @synthesize pageIndex,DishCustomization, tagIcons, tagNames, addButton;
-@synthesize custType,menuview,dishDetailview,DishSubCategoryId;
+@synthesize custType,menuview,dishDetailview,DishSubCategoryId, menuStatus;
 @synthesize SubSectionIdData,SubSectionNameData,SectionDishData,DishSubSubCategoryId,beveragesBeerView,menuDetailViewT ;
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -64,7 +64,7 @@
     }
     
     /*===========Unlocking Touch============*/
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    //[[UIApplication sharedApplication] endIgnoringInteractionEvents];
 
 }
 
@@ -76,6 +76,7 @@
     ////change newScrollVC
     menudetailView=[[ViewController alloc]initWithNibName:@"ViewController" bundle:nil];
     [menudetailView allocateArray];
+    menudetailView.tabMainCourseMenuListViewController = self;
 }
 
 -(void)createDishDetailview
@@ -130,6 +131,8 @@
         cellImage = [UIImage imageNamed:@"cell_slide.png"];
     /*=========================================================*/
 
+    self.menuStatus = [NSString stringWithFormat:@"0"];
+    
     resizedImages = [NSMutableArray new];
       // int currentVCIndex = [self.navigationController.viewControllers indexOfObject:self.navigationController.topViewController];
    // DLog(@"MCML1 %d",currentVCIndex);
@@ -147,6 +150,8 @@
     self.beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
     beerDetailView.beverageView = beveragesBeerView;
     menudetailView.menuDetailView=[[TabSquareMenuDetailController alloc]initWithNibName:@"TabSquareMenuDetailController" bundle:nil];
+    
+    self.menuStatus = [NSString stringWithFormat:@"0"];
 }
 
 
@@ -645,6 +650,14 @@
 
 -(IBAction)infoClicked:(id)sender
 {
+    /*============Preventing to opening it again, locking touch===========*/
+    if([self.menuStatus intValue] == 1) {
+        return;
+    }
+    else {
+        self.menuStatus = [NSString stringWithFormat:@"1"];
+    }
+        
     UIButton *btn=(UIButton*)sender;
     if([[ShareableData sharedInstance].IsViewPage count]==0)
     {
@@ -659,7 +672,9 @@
     [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
     [self createMenuDetail];
     [self InfoClicked];
+    
 }
+
 
 -(int)getDishIndex:(NSString*)subcatId rowIndex:(NSInteger)index
 {
@@ -824,11 +839,12 @@
 {
     if([SubSectionIdData count]!=0)
     {
-       return [self getTotalSubDishes:SubSectionIdData[section]];
+        totalRows = [self getTotalSubDishes:SubSectionIdData[section]];
+       return totalRows;
     }
     //NSLOG(@"dish images count = %d, tag count = %d", [DishImage count], [self.tagIcons count]);
-     
-    return [DishID count];
+    totalRows = [DishID count];
+    return totalRows;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

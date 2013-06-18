@@ -15,7 +15,7 @@
 #import "FBLoginDialog.h"
 #import "FBRequest.h"
 #include "ProgressBar.h"
-
+#import "TabSquareTableRequestHandler.h"
 
 @class TabSquareFavouriteViewController;
 @class TabMainCourseMenuListViewController;
@@ -30,7 +30,7 @@
 @class TabTwitterFollowerListControllerViewController;
 @class TabSquareTableManagement;
 @class EditOrder;
-
+@class TabSquareQuickOrder;
 
 @interface TabSquareMenuController : UIViewController<MBProgressHUDDelegate,ProgressBarDelegate,UIScrollViewDelegate,UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource,FBLoginDialogDelegate>
 {

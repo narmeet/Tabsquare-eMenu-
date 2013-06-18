@@ -109,7 +109,17 @@
 
 
 -(void)viewWillAppear:(BOOL)animated
-{
+{   NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+    NSString *libraryDirectory = [paths lastObject];
+    NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
+    
+    UIImage *img1 = [UIImage imageWithContentsOfFile:location];
+    
+    bgImage.image = img1;
+    
+    NSLog(@"View will appear in Feedback View Controller");
+
     @try 
     {
         TaskType=1;
@@ -270,6 +280,7 @@
     foodName.text = foodList[index]; 
     foodName.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
     foodName.minimumFontSize = 10.0;
+    foodName.textColor=[UIColor whiteColor];//////////////////////change according to bg *manoj*
     foodName.adjustsFontSizeToFitWidth = YES;
    // descriptionLabel.numberOfLines = 1;
 
@@ -464,6 +475,7 @@
     FQ.textAlignment=NSTextAlignmentLeft;
     FQ.minimumFontSize = 10.0;
     FQ.adjustsFontSizeToFitWidth = YES;
+    FQ.textColor=[UIColor whiteColor];/////change as per the BG *manoj*
     return FQ;
 }
 

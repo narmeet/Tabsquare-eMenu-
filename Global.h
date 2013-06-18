@@ -32,3 +32,14 @@ int selectedImageAtMenu;
 ////////////////////////////////////////////////////////////////////////////////////
 
 #endif
+
+///////////change the color of UIlable of this xib and UItableVIew//////////////////////////////
+  
+  //  FeedbackViewController
+  //  TabSquareFeedbackLLViewController
+   // TabSquareFavouriteViewController
+   // TabSquareNewBeerScrollController
+   // ViewController
+   
+   
+   

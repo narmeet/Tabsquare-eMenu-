@@ -76,7 +76,19 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    
+    NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+    NSString *libraryDirectory = [paths lastObject];
+    NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
+    
+    UIImage *img1 = [UIImage imageWithContentsOfFile:location];
+    
+    bgImage.image = img1;
+    
+    NSLog(@"View will appear in Favourite View Controller");
+}
 -(void)loadFriendList
 {
     [friendName removeAllObjects];
@@ -370,6 +382,7 @@
     titleLabel.backgroundColor=[UIColor clearColor];
     titleLabel.text = lastOrderedData[rowIndex];
     titleLabel.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
+    titleLabel.textColor=[UIColor whiteColor];
     [cell.contentView addSubview:titleLabel];
     
 }
@@ -806,6 +819,7 @@
             frdname.backgroundColor=[UIColor clearColor];
             frdname.font=[UIFont systemFontOfSize:19.0];
             frdname.textAlignment=NSTextAlignmentLeft;
+            frdname.textColor=[UIColor whiteColor];
             [cell.contentView addSubview:frdname];
             cell.selectionStyle=UITableViewCellSelectionStyleGray;
             

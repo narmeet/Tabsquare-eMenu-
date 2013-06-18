@@ -922,14 +922,21 @@ bool funcCalled = NO;
         int tagVal = indexPath.row*5;
         for (int y=0;y<5;y++){
             UILabel* tempBtn = ((UILabel*)[cell viewWithTag:tagVal+y+1000]);
-            if (tempBtn !=nil){
-            if ([[[TotalFreeTables objectAtIndex:tagVal+y] objectForKey:@"TBLStatus"] isEqualToString:@"A"]){
+            @try {
+                if (tempBtn !=nil){
+                    if ([[[TotalFreeTables objectAtIndex:tagVal+y] objectForKey:@"TBLStatus"] isEqualToString:@"A"]){
+                        
+                        tempBtn.backgroundColor=[UIColor whiteColor];
+                    }else{
+                        tempBtn.backgroundColor=[UIColor orangeColor];
+                    }
+
+            }
+            }
+            @catch (NSException *exception) {
                 
-                tempBtn.backgroundColor=[UIColor whiteColor];
-            }else{
-                tempBtn.backgroundColor=[UIColor orangeColor];
             }
-            }
+                       
       
             
             

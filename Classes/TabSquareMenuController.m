@@ -3021,11 +3021,17 @@
     }
     else if([[ShareableData sharedInstance].isFBLogin isEqualToString:@"1"])
     {
+        if (!fbFriendview) {
+            fbFriendview.view.frame=CGRectMake(13,160, fbFriendview.view.frame.size.width, fbFriendview.view.frame.size.height);
+            [fbFriendview.friendOrderView.view removeFromSuperview];
+            [self.view addSubview:fbFriendview.view];
+            [fbFriendview.friendlistView reloadData];
+        }
+        else{
+            [fbFriendview.view removeFromSuperview];
+            [favouriteView loadFBfriendList];
+        }
         
-        fbFriendview.view.frame=CGRectMake(13,160, fbFriendview.view.frame.size.width, fbFriendview.view.frame.size.height);
-        [fbFriendview.friendOrderView.view removeFromSuperview];
-        [self.view addSubview:fbFriendview.view];
-        [fbFriendview.friendlistView reloadData];
     }
     else if([[ShareableData sharedInstance].isTwitterLogin isEqualToString:@"1"])
     {
@@ -3785,13 +3791,14 @@
    
     [self.overviewMenuButton setUserInteractionEnabled:YES];
     [self.OrderSummaryButton setUserInteractionEnabled:YES];
-       //NSLOG(@"mParent===%@",[mparent class]);
+     // NSLog(@"mParent===%@",[mparent class]);
    /////////to unhide the orderSummaryButton & backButton
-    if ([mparent class] ==[TabMainCourseMenuListViewController class]) {
-        [self.overviewMenuButton setUserInteractionEnabled:NO];
-        [self.OrderSummaryButton setUserInteractionEnabled:NO];
-        mparent=nil;
+        if ([mparent class] ==[TabMainCourseMenuListViewController class]) {
+            [self.overviewMenuButton setUserInteractionEnabled:NO];
+            [self.OrderSummaryButton setUserInteractionEnabled:NO];
+            mparent=nil;
     }
+
     
 }
 

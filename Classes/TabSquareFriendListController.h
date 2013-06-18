@@ -26,6 +26,7 @@
     // TabSquareBeerDetailController *beerDetailView;
     TabSquareNewBeerScrollController *beerDetailView;
     NSString *custType;
+    IBOutlet UIImageView* bgImage;
 }
 
 //@property(nonatomic,strong)TabMainMenuDetailViewController *menudetailView;

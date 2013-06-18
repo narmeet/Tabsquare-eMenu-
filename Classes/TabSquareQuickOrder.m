@@ -215,10 +215,22 @@
     customizationView.view.frame=CGRectMake(12, 0, self.view.frame.size.width-24, self.view.frame.size.height);
     customizationView.detailImageView.frame = CGRectMake(104, 229, 530, 222);
     customizationView.detailImageView.contentMode = UIViewContentModeRedraw;
-    
-    
+    customizationView.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
     customizationView.detailImageView.clipsToBounds=YES;
     [self.view addSubview:customizationView.view];
+   
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    customizationView.mParent=self;
+    menuView.mparent=self;
+    menuView.subCatbg.hidden=TRUE;
+    menuView.subcatScroller.hidden=TRUE;
+    menuView.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuView.search.userInteractionEnabled=FALSE;
+    menuView.favourite.userInteractionEnabled=FALSE;
+    menuView.help.userInteractionEnabled=FALSE;
+    menuView.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuView.KinaraLogo.userInteractionEnabled=FALSE;
+    menuView.flagButton.userInteractionEnabled=FALSE;
 }
 
 -(void)addCustomizationView
@@ -240,8 +252,23 @@
     customizationView.requestView.text=@"";
     customizationView.swipeIndicator=@"1";
     customizationView.isView=@"main";
-    customizationView.view.frame=CGRectMake(12, -250, self.view.frame.size.width-24, self.view.frame.size.height);
+    customizationView.view.frame=CGRectMake(12, -200, self.view.frame.size.width-24, self.view.frame.size.height);
+    customizationView.crossBtn.frame=CGRectMake(610,210, 45, 45);////setting frame for cross button
     [self.view addSubview:customizationView.view];
+    
+    //////// to hide the all other buttons and scroll background from the parent view //////
+    customizationView.mParent=self;
+    menuView.mparent=self;
+    menuView.subCatbg.hidden=TRUE;
+    menuView.subcatScroller.hidden=TRUE;
+    menuView.OrderSummaryButton.userInteractionEnabled=FALSE;
+    menuView.search.userInteractionEnabled=FALSE;
+    menuView.favourite.userInteractionEnabled=FALSE;
+    menuView.help.userInteractionEnabled=FALSE;
+    menuView.overviewMenuButton.userInteractionEnabled=FALSE;
+    menuView.KinaraLogo.userInteractionEnabled=FALSE;
+    menuView.flagButton.userInteractionEnabled=FALSE;
+
 }
 
 -(void)addImageAnimation:(CGRect)btnFrame btnView:(UIView*)view
@@ -304,6 +331,21 @@
 {
     [sender removeFromSuperview];
 }
+-(void)unhideTheScrollerAndSubCatBgOnMenuController{
+    
+    menuView.subCatbg.hidden=FALSE;
+    menuView.subcatScroller.hidden=FALSE;
+    menuView.OrderSummaryButton.userInteractionEnabled=TRUE;
+    menuView.search.userInteractionEnabled=TRUE;
+    menuView.favourite.userInteractionEnabled=TRUE;
+    menuView.help.userInteractionEnabled=TRUE;
+    menuView.overviewMenuButton.userInteractionEnabled=TRUE;
+    menuView.KinaraLogo.userInteractionEnabled=TRUE;
+    menuView.flagButton.userInteractionEnabled=TRUE;
+    
+    
+}
+
 -(void)checkItemInOrderList
 {
     bool itemExist=false;

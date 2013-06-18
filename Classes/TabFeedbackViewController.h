@@ -21,6 +21,8 @@
     int i1;
     IBOutlet UIButton *skipBtn;
     IBOutlet UIButton *doneBtn;
+    
+    IBOutlet UIImageView* bgImage;
 }
 @property(nonatomic,strong) NSMutableArray *feedItemId;
 @property(nonatomic,strong) UIViewController *menuView;

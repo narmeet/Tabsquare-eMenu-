@@ -269,10 +269,11 @@ static TabSquareRemoteActivation *_activation = nil;
         dispatch_sync(dispatch_get_main_queue(), ^{
             
             if([ShareableData sharedInstance].ViewMode != EDIT_MODE) {
-                [self performSelectorOnMainThread:@selector(addInfoPopup:) withObject:@"Edit Mode Activated" waitUntilDone:NO];
+                  [self performSelectorOnMainThread:@selector(addInfoPopup:) withObject:@"Edit Mode Activated" waitUntilDone:NO];
             }
 
             [ShareableData sharedInstance].ViewMode = EDIT_MODE;
+            
             /*===========Send switch to Edit Mode Signal To Regitered Classes=============*/
             [[NSNotificationCenter defaultCenter] postNotificationName:SWITCHED_EDIT_MODE object:self];
 

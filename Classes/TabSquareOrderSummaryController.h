@@ -10,6 +10,7 @@
 #import "OrderCell.h"
 #import "MBProgressHUD.h"
 #import "TabSquareNewBeerScrollController.h"
+#import "CustomBadge.h"
 
 @class TabMainMenuDetailViewController;
 @class TabSquareSoupViewController;
@@ -41,6 +42,7 @@
     NSString *itemCustomisationId;
     IBOutlet UIImageView* bgImage;
    // NSString *wholeOrderId;
+    CustomBadge *summaryTotalBadge;
 }
 
 @property(assign,readwrite)int categoryTag;
@@ -89,5 +91,6 @@
 -(void)CalculateTotal;
 -(void)filterData;
 -(void)confirmOrder;
+-(void)resetTheDataWhileReactivationOfFixedViewMode;///to remove the data from the ordersumarry page after changing the mode......
 
 @end

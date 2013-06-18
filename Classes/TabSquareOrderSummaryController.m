@@ -1490,6 +1490,9 @@ static int tapCount = 0;
     
     //   NSMutableArray *d = subSortId[index];
     // int sortIndex = [d[indexPath.row] intValue];
+       
+
+    
     int sortIndex = indexPath.row;
     cell.Srl = [NSString stringWithFormat:@"%d",indexPath.row +1];
     cell.IsOrderConfirm=([ShareableData sharedInstance].confirmOrder)[sortIndex];
@@ -1503,6 +1506,7 @@ static int tapCount = 0;
     cell.btnTagMinus=[NSString stringWithFormat:@"%d",sortIndex];
     cell.btnTagRemove=[NSString stringWithFormat:@"%d",sortIndex];
     [self addCustomization:cell rowIndex:sortIndex];
+    
     return cell;
 }
 
@@ -1839,9 +1843,27 @@ static int tapCount = 0;
     
 }
 
+///to remove the data from the ordersumarry page after changing the mode......
+-(void)resetTheDataWhileReactivationOfFixedViewMode{
+   
+
+    [[ShareableData sharedInstance].OrderItemID removeAllObjects];
+    [[ShareableData sharedInstance].OrderItemName removeAllObjects];
+    [[ShareableData sharedInstance].OrderItemQuantity removeAllObjects];
+    [[ShareableData sharedInstance].OrderItemRate removeAllObjects];
+    [[ShareableData sharedInstance].OrderSpecialRequest removeAllObjects];
+    [[ShareableData sharedInstance].OrderCustomizationDetail removeAllObjects];
+    [[ShareableData sharedInstance].OrderCatId removeAllObjects];
+    [[ShareableData sharedInstance].confirmOrder removeAllObjects];
+    [[ShareableData sharedInstance].IsOrderCustomization removeAllObjects];
+    [[ShareableData sharedInstance].TempOrderID removeAllObjects];
+}
+
 -(void)CalculateTotal
 {
+
     lblTotal.text=@"0";
+       
     float total=[lblTotal.text floatValue];
     int totalQty = 0;
     
@@ -2101,17 +2123,32 @@ static int tapCount = 0;
 /*=================View Mode Selected===================*/
 -(void)viewModeActivated:(NSNotification *)notification
 {
-    [self CalculateTotal];
-    [self.OrderList reloadData];
+    //////to remove the items while changing the viewmode
+    
+    [self resetTheDataWhileReactivationOfFixedViewMode];
+
+    summaryTotalBadge = [CustomBadge customBadgeWithString:@"0"
+                                           withStringColor:[UIColor whiteColor]
+                                            withInsetColor:[UIColor clearColor]
+                                            withBadgeFrame:YES
+                                       withBadgeFrameColor:[UIColor whiteColor]
+                                                 withScale:1.2
+                                               withShining:YES];
+    summaryTotalBadge.badgeText=nil;
+    
+    
+   // [self CalculateTotal];
+   // [self.OrderList reloadData];
 }
 
 
 /*=================Edit Mode Selected===================*/
 -(void)editModeActivated:(NSNotification *)notification
 {
+
     [self CalculateTotal];
     [self.OrderList reloadData];
-    
+
 }
 
 

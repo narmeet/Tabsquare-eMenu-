@@ -160,19 +160,27 @@ bool funcCalled = NO;
        /* if ([TableStatus count]<TotalTableNo.intValue){
         [TableStatus addObject:@"0"];
         }*/
+        
         for(int j=0;j<[TotalFreeTables count];++j)
         {
-            if([tableno isEqualToString:[[TotalFreeTables objectAtIndex:j] objectForKey:@"TBLNo"]] && [[[TotalFreeTables objectAtIndex:j] objectForKey:@"TBLStatus"] isEqualToString:@"A"])
-            {
-                TableStatus[k] = @"0";
-                ((UILabel*)[self.view viewWithTag:(k+1000)]).backgroundColor=[UIColor whiteColor];
-                break;
+            @try {
+                if([tableno isEqualToString:[[TotalFreeTables objectAtIndex:j] objectForKey:@"TBLNo"]] && [[[TotalFreeTables objectAtIndex:j] objectForKey:@"TBLStatus"] isEqualToString:@"A"])
+                {
+                    TableStatus[k] = @"0";
+                    ((UILabel*)[self.view viewWithTag:(k+1000)]).backgroundColor=[UIColor whiteColor];
+                    break;
+                }
+                else {
+                    TableStatus[k] = @"1";
+                    ((UILabel*)[self.view viewWithTag:(k+1000)]).backgroundColor=[UIColor orangeColor];
+                }
+
             }
-            else {
-               TableStatus[k] = @"1";
-                ((UILabel*)[self.view viewWithTag:(k+1000)]).backgroundColor=[UIColor orangeColor];
+            @catch (NSException *exception) {
+                
             }
-        }
+        
+                    }
     }
 }
 
@@ -557,6 +565,7 @@ bool funcCalled = NO;
         [[TabSquareRemoteActivation remoteActivation] tablesUpdated];
         /*==========================================*/
 
+        
         [self checkSections];
         
         
@@ -1209,6 +1218,7 @@ bool funcCalled = NO;
                     title = @"Reassign iPad to this table";
                 }
                 else {
+                   
                     [self gotoDishViewMode:nil];
                 }
                 
@@ -1226,6 +1236,8 @@ bool funcCalled = NO;
 //                                                       delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Quick Order Mode",@"Normal Mode", nil];
 //        
 //        [alert show];
+        
+        
         if (netStatus!=ReachableViaWiFi){
             
             // UITextField *guests = [alertView textFieldAtIndex:0];

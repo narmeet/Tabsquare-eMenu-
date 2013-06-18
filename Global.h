@@ -23,7 +23,7 @@ int selectedImageAtMenu;
 ///////////////////////////API URL//////////////////////////////////////////////////
 
 
-#define kURL                    @"http://25.67.240.7/"//192.168.1.90///bananaracecourse
+#define kURL                    @"http://192.168.0.40/"//192.168.1.90///bananaracecourse
                                                       //192.168.1.99///bananaLittleinda
                                                       //10.40.181.10 ////Moguhal Mahal
 

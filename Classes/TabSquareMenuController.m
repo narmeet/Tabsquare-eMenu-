@@ -148,6 +148,8 @@
     orderSummaryView=[[TabSquareOrderSummaryController alloc]initWithNibName:@"TabSquareOrderSummaryController" bundle:nil];
     orderSummaryView.menudetailView=menulistView.menudetailView;
     orderSummaryView.menuView=self;
+    
+
 }
 -(void)returnToEdit{
     
@@ -2357,7 +2359,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     mparent=nil;///to unable the orderSummaryButton & backButton
-    [super viewDidAppear:animated];
+   
+    ////to hide the header 
+    [subCatbg setHidden:TRUE];
+    [subcatScroller setHidden:TRUE];
+       [super viewDidAppear:animated];
     //[self.view sendSubviewToBack:search];
 }
 
@@ -2926,7 +2932,7 @@
         [feedbackView.view removeFromSuperview];
         [searchView.view removeFromSuperview];
         [orderSummaryView.soupView.view removeFromSuperview];
-        
+               
         [orderSummaryView filterData];
         [orderSummaryView CalculateTotal];
         orderSummaryView.specialRequest.text=@"";
@@ -3154,6 +3160,15 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self clearSubViews];
+}
+-(void)viewWillAppear:(BOOL)animated{
+  
+    if (favouriteView) {
+        [self.favouriteView.view setHidden:TRUE];
+        overviewMenuButton.hidden=TRUE;
+        
+    }
+    
 }
 
 -(void)clearSubViews
@@ -3744,19 +3759,18 @@
     //NSLOG(@"view mode");
     //[menulistView.DishList reloadData];
     
+    //[orderSummaryView.view removeFromSuperview];
+    
 }
 
 
 /*=================Edit Mode Selected===================*/
 -(void)editModeActivated:(NSNotification *)notification
 {
-    //NSLOG(@"Edit order Mode");
-   // [menulistView.DishList reloadData];
-    
+   
     [self.overviewMenuButton setUserInteractionEnabled:YES];
     [self.OrderSummaryButton setUserInteractionEnabled:YES];
-    
-    //NSLOG(@"mParent===%@",[mparent class]);
+       //NSLOG(@"mParent===%@",[mparent class]);
    /////////to unhide the orderSummaryButton & backButton
     if ([mparent class] ==[TabMainCourseMenuListViewController class]) {
         [self.overviewMenuButton setUserInteractionEnabled:NO];

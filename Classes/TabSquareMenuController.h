@@ -125,6 +125,9 @@
     NSString *prevSubId;
 
     id mparent;///for Unhiding the orderUmarry & back button
+    
+    TabSquareTableRequestHandler *callForWaiter;
+    TabSquareTableRequestHandler *callForBill;
 }
 @property(nonatomic,strong)id mparent;
 @property(nonatomic,strong) UIScrollView    *subcatScroller;
@@ -170,6 +173,9 @@
 @property(nonatomic,strong)IBOutlet UIButton *FeedbackDisabled;
 @property(nonatomic,strong)UIButton *btnn;
 
+@property(nonatomic,strong)IBOutlet UIButton *waiterCallBtn;
+@property(nonatomic,strong)IBOutlet UIButton *billCallBtn;
+
 
 -(IBAction)feedbackDisabledClicked:(id)sender;
 -(IBAction)orderSummaryClicked:(id)sender;
@@ -202,5 +208,9 @@
 -(IBAction)flagPressed:(id)sender;
 -(void)overviewBtnClicked2:(id) sender;
 -(void)setParent:(id)sender;
+-(IBAction)callForWaiter:(id)sender;
+-(IBAction)callForBill:(id)sender;
+
+
 
 @end

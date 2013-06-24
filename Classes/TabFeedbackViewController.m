@@ -45,7 +45,7 @@
         {
             bool flag=false;
             NSString *ItemId=([ShareableData sharedInstance].OrderItemID)[i];
-            if([([ShareableData sharedInstance].OrderCatId)[i]isEqualToString:[ShareableData sharedInstance].bevCat])
+            if([[TabSquareDBFile sharedDatabase] isBevCheck:([ShareableData sharedInstance].OrderCatId)[i]])
             {
                // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
                 ItemId=[[TabSquareDBFile sharedDatabase]getBeverageId:ItemId];
@@ -62,7 +62,7 @@
             if(flag==false)
             {
                 NSString *dishId=([ShareableData sharedInstance].OrderItemID)[i];
-                if([([ShareableData sharedInstance].OrderCatId)[i]isEqualToString:[ShareableData sharedInstance].bevCat])
+                if([[TabSquareDBFile sharedDatabase] isBevCheck:([ShareableData sharedInstance].OrderCatId)[i]])
                 {
                   //  [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
                     dishId=[[TabSquareDBFile sharedDatabase]getBeverageId:dishId];
@@ -280,7 +280,7 @@
     foodName.text = foodList[index]; 
     foodName.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
     foodName.minimumFontSize = 10.0;
-    foodName.textColor=[UIColor whiteColor];//////////////////////change according to bg *manoj*
+    foodName.textColor=[UIColor blackColor];//////////////////////change according to bg *manoj*
     foodName.adjustsFontSizeToFitWidth = YES;
    // descriptionLabel.numberOfLines = 1;
 
@@ -475,7 +475,7 @@
     FQ.textAlignment=NSTextAlignmentLeft;
     FQ.minimumFontSize = 10.0;
     FQ.adjustsFontSizeToFitWidth = YES;
-    FQ.textColor=[UIColor whiteColor];/////change as per the BG *manoj*
+    FQ.textColor=[UIColor blackColor];/////change as per the BG *manoj*
     return FQ;
 }
 

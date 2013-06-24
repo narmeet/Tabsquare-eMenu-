@@ -499,7 +499,7 @@
     [help_lbl setBackgroundColor:[UIColor clearColor]];
     [help_lbl setTextAlignment:NSTextAlignmentCenter];
     [help_lbl setText:@"TAP THE IMAGE TO SELECT"];
-    [help_lbl setFont:[UIFont fontWithName:@"Copperplate-Light" size:14.0]];
+    [help_lbl setFont:[UIFont fontWithName:@"Century Gothic" size:14.0]];
     [middle addSubview:help_lbl];
     
     
@@ -537,7 +537,7 @@
     [descritpion_lbl setTextAlignment:NSTextAlignmentCenter];
     //[descritpion_lbl setText:@"TAP THE IMAGE TO SELECT"];
     [descritpion_lbl setTag:DESCRIPTION_TAG];
-    [descritpion_lbl setFont:[UIFont fontWithName:@"Copperplate-Light" size:14.0]];
+    [descritpion_lbl setFont:[UIFont fontWithName:@"Century Gothic" size:14.0]];
     [middle addSubview:descritpion_lbl];
     
 }

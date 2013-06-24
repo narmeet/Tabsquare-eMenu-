@@ -78,14 +78,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-    NSString *libraryDirectory = [paths lastObject];
-    NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
-    
-    UIImage *img1 = [UIImage imageWithContentsOfFile:location];
-    
-    bgImage.image = img1;
+//    NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+//    NSString *libraryDirectory = [paths lastObject];
+//    NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
+//    
+//    UIImage *img1 = [UIImage imageWithContentsOfFile:location];
+//    
+//    bgImage.image = img1;
     
     NSLog(@"View will appear in Favourite View Controller");
 }
@@ -190,10 +190,11 @@
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     SBJSON *parser = [[SBJSON alloc] init];
-    NSMutableArray *resultFromPost = [parser objectWithString:data error:nil];
+    NSArray *resultFromPost = [parser objectWithString:data error:nil];
     for(int i=0;i<[resultFromPost count];++i)
     {
-        NSMutableDictionary *dataitem=resultFromPost[i];
+        NSDictionary *dataitem=resultFromPost[i];
+        
         if (![[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]] isEqualToString:@"0"]){
             [lastOrderedId addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_id"]]];
             [lastOrderedData addObject:[NSString stringWithFormat:@"%@",dataitem[@"dish_name"]]];
@@ -382,7 +383,7 @@
     titleLabel.backgroundColor=[UIColor clearColor];
     titleLabel.text = lastOrderedData[rowIndex];
     titleLabel.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
-    titleLabel.textColor=[UIColor whiteColor];
+    titleLabel.textColor=[UIColor blackColor];
     [cell.contentView addSubview:titleLabel];
     
 }
@@ -555,9 +556,9 @@
     // NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:selectedItem];
     int bevDisplay = 0;
     TabSquareNewBeerScrollController* beveragesBeerView=[[TabSquareNewBeerScrollController alloc]initWithNibName:@"TabSquareNewBeerScrollController" bundle:nil];
-    if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
+    if([[TabSquareDBFile sharedDatabase] isBevCheck:DishCatId]){
         
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:DishCatId];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
             NSString *subId=subCategory[@"id"];
@@ -669,8 +670,8 @@
     //  NSString *dishSubCatId2 = [DishSubCategoryId objectAtIndex:tag];
     int bevDisplay = 0;
     TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
-    if([DishCatId isEqualToString:[ShareableData sharedInstance].bevCat]){
-        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:[ShareableData sharedInstance].bevCat];
+    if([[TabSquareDBFile sharedDatabase] isBevCheck:DishCatId]){
+        NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:DishCatId];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
             NSString *subId=subCategory[@"id"];
@@ -819,7 +820,7 @@
             frdname.backgroundColor=[UIColor clearColor];
             frdname.font=[UIFont systemFontOfSize:19.0];
             frdname.textAlignment=NSTextAlignmentLeft;
-            frdname.textColor=[UIColor whiteColor];
+            frdname.textColor=[UIColor blackColor];
             [cell.contentView addSubview:frdname];
             cell.selectionStyle=UITableViewCellSelectionStyleGray;
             

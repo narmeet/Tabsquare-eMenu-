@@ -70,8 +70,8 @@
     UIImage *img1 = [UIImage imageWithContentsOfFile:location];
     
     bgImage.image = img1;
-
- 
+    
+    
 }
 
 -(IBAction)addBtnClicked:(id)sender
@@ -83,7 +83,7 @@
     cur_frm = frame;
     
     int curr_index = [self.hFlowView currentPageIndex];
-    BOOL bev = [DishCatId[curr_index] isEqualToString:@"8"];
+    BOOL bev = [[TabSquareDBFile sharedDatabase] isBevCheck:DishCatId[curr_index] ];//[isEqualToString:@"8"];
     if(!bev && [isSetType[curr_index] intValue] == 1) {
         TabSquareComboSet *combo = [[TabSquareComboSet alloc] init];
         
@@ -93,7 +93,7 @@
         [self presentViewController:combo animated:NO completion:nil];
         return;
     }
-
+    
     
     NSString *IsCustomization=@"";
     if([Viewtype isEqualToString:@"1"])
@@ -125,7 +125,7 @@
         }else{
             [self addBlankCustomizationView];
         }
-
+        
     }
     
 }
@@ -137,39 +137,39 @@
 
 -(void)addImageAnimation:(CGRect)btnFrame btnView:(UIView*)view
 {
-//    UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(btnFrame.origin.x, btnFrame.origin.y, 350, 300)];
-//    // imgView = self.KKselectedImage;
-//    imgView.alpha = 1.0f;
-//    CGRect imageFrame = imgView.frame;
-//    //  viewOrigin.y = 77 + imgView.size.height / 2.0f;
-//    // viewOrigin.x = 578 + imgView.size.width / 2.0f;
-//    
-//    imgView.frame = imageFrame;
-//    UIImage *itemImage;
-//    KDishImage.image=[DishImage objectAtIndex:0];
-//    itemImage=[DishImage objectAtIndex:0];
-//
-//    
-//    [imgView setImage:itemImage];
-//    [self.view addSubview:imgView];
-//    [self.view bringSubviewToFront:imgView];
-//    imgView.clipsToBounds = NO;
-
-UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(btnFrame.origin.x, btnFrame.origin.y, 350, 300)];
-// imgView = self.KKselectedImage;
-imgView.alpha = 1.0f;
-CGRect imageFrame = imgView.frame;
-//  viewOrigin.y = 77 + imgView.size.height / 2.0f;
-// viewOrigin.x = 578 + imgView.size.width / 2.0f;
-
-UIImage *itemImage;
-itemImage=[DishImage objectAtIndex:currentIndex];
-imgView.contentMode=UIViewContentModeScaleAspectFit;
-[imgView setImage:itemImage];
-[self.view addSubview:imgView];
-[self.view bringSubviewToFront:imgView];
-imgView.clipsToBounds = NO;
-
+    //    UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(btnFrame.origin.x, btnFrame.origin.y, 350, 300)];
+    //    // imgView = self.KKselectedImage;
+    //    imgView.alpha = 1.0f;
+    //    CGRect imageFrame = imgView.frame;
+    //    //  viewOrigin.y = 77 + imgView.size.height / 2.0f;
+    //    // viewOrigin.x = 578 + imgView.size.width / 2.0f;
+    //
+    //    imgView.frame = imageFrame;
+    //    UIImage *itemImage;
+    //    KDishImage.image=[DishImage objectAtIndex:0];
+    //    itemImage=[DishImage objectAtIndex:0];
+    //
+    //
+    //    [imgView setImage:itemImage];
+    //    [self.view addSubview:imgView];
+    //    [self.view bringSubviewToFront:imgView];
+    //    imgView.clipsToBounds = NO;
+    
+    UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(btnFrame.origin.x, btnFrame.origin.y, 350, 300)];
+    // imgView = self.KKselectedImage;
+    imgView.alpha = 1.0f;
+    CGRect imageFrame = imgView.frame;
+    //  viewOrigin.y = 77 + imgView.size.height / 2.0f;
+    // viewOrigin.x = 578 + imgView.size.width / 2.0f;
+    
+    UIImage *itemImage;
+    itemImage=[DishImage objectAtIndex:currentIndex];
+    imgView.contentMode=UIViewContentModeScaleAspectFit;
+    [imgView setImage:itemImage];
+    [self.view addSubview:imgView];
+    [self.view bringSubviewToFront:imgView];
+    imgView.clipsToBounds = NO;
+    
     CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     [fadeOutAnimation setToValue:@0.3f];
     fadeOutAnimation.fillMode = kCAFillModeForwards;
@@ -297,7 +297,7 @@ imgView.clipsToBounds = NO;
     //self.view.frame=CGRectMake(50, 120, 529, 640);
     
     
-   // [self showButtons];
+    // [self showButtons];
     if (selectedItem==0) {
         rightButton.alpha=0.0;
         leftButton.alpha=1.0;
@@ -348,17 +348,17 @@ imgView.clipsToBounds = NO;
     //KDishName.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
     KDishName.text=DishName[selectedItem];
     KDishImage.image=DishImage[selectedItem];
-   // CGSize newsize=  [DishName[selectedItem] sizeWithFont:KDishName.font constrainedToSize:CGSizeMake(241, 400) lineBreakMode:KDishName.lineBreakMode];
-   // KDishName.frame=CGRectMake(KDishName.frame.origin.x, KDishName.frame.origin.y, newsize.width+5, newsize.height);
-   //
+    // CGSize newsize=  [DishName[selectedItem] sizeWithFont:KDishName.font constrainedToSize:CGSizeMake(241, 400) lineBreakMode:KDishName.lineBreakMode];
+    // KDishName.frame=CGRectMake(KDishName.frame.origin.x, KDishName.frame.origin.y, newsize.width+5, newsize.height);
+    //
     KDishName.numberOfLines = 3;
     KDishRate.text=[NSString stringWithFormat:@"$%@",DishPrice[selectedItem]];
     //KDishRate.font=[UIFont fontWithName:@"Lucida Calligraphy" size:17];
     KDishDescription.text=DishDescription[selectedItem];
-   // KDishDescription.frame =CGRectMake(0, 0, 481, 120);
+    // KDishDescription.frame =CGRectMake(0, 0, 481, 120);
     //[KDishDescription sizeToFit];
-   // descriptionScroll.contentSize=CGSizeMake(descriptionScroll.contentSize.width, KDishDescription.frame.size.height);
-   // KDishDescription.font=[UIFont fontWithName:@"Lucida Calligraphy" size:14];
+    // descriptionScroll.contentSize=CGSizeMake(descriptionScroll.contentSize.width, KDishDescription.frame.size.height);
+    // KDishDescription.font=[UIFont fontWithName:@"Lucida Calligraphy" size:14];
     IshideAddButton=@"0";
     Viewtype=@"1";
     if([ShareableData sharedInstance].ViewMode==1)
@@ -437,7 +437,7 @@ imgView.clipsToBounds = NO;
     [menuDetailView.customizationView reloadData];
     menuDetailView.view.frame=CGRectMake(1, 0, menuDetailView.view.frame.size.width, menuDetailView.view.frame.size.height);
     menuDetailView.crossBtn.frame=CGRectMake(610,5, 45, 45);////setting frame for cross button
-
+    
     [self.view addSubview:menuDetailView.view];
     menuDetailView.requestView.text=@"";
     menuDetailView.swipeIndicator=@"0";
@@ -445,20 +445,20 @@ imgView.clipsToBounds = NO;
     [self.view bringSubviewToFront:menuDetailView.view];
 }
 -(void)viewWillDisappear:(BOOL)animated{
-//    [tt invalidate];
-//    tt = nil;
+    //    [tt invalidate];
+    //    tt = nil;
     
 }
 -(void)onTick:(NSTimer *)timer
 {
-//    if([ShareableData sharedInstance].ViewMode==1)
-//    {
-//        addButton.hidden=YES;
-//    }
-//    else
-//    {
-//        addButton.hidden=NO;
-//    }
+    //    if([ShareableData sharedInstance].ViewMode==1)
+    //    {
+    //        addButton.hidden=YES;
+    //    }
+    //    else
+    //    {
+    //        addButton.hidden=NO;
+    //    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -469,7 +469,7 @@ imgView.clipsToBounds = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     /*============Registering to receive language change signal==============*/
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -479,16 +479,16 @@ imgView.clipsToBounds = NO;
     
     /*=====================Register to recieve Mode Change Activation======================*/
     [[TabSquareRemoteActivation remoteActivation] registerRemoteNotification:self];
-
-
-       // DLog(@"TabMainMenuDetailViewController");
+    
+    
+    // DLog(@"TabMainMenuDetailViewController");
     //[self createMenuDetailView];
     nextOrPrev=0;
-//    tt=[NSTimer scheduledTimerWithTimeInterval:1.0
-//                                        target:self
-//                                      selector:@selector(onTick:)
-//                                      userInfo:nil
-//                                       repeats:YES];
+    //    tt=[NSTimer scheduledTimerWithTimeInterval:1.0
+    //                                        target:self
+    //                                      selector:@selector(onTick:)
+    //                                      userInfo:nil
+    //                                       repeats:YES];
     
     // imageArray = [[NSArray alloc] initWithObjects:@"callwater.png",@"callbill_selected.png",@"callBill.png",@"category.png",nil];
     //NSLOG(@"selectedImageAtMenu==%d",selectedImageAtMenu);
@@ -498,20 +498,20 @@ imgView.clipsToBounds = NO;
     hFlowView.pageControl = hPageControl;
     hFlowView.minimumPageAlpha = 0.3;
     hFlowView.minimumPageScale = 0.9;
-   
+    
     [self.view addSubview:addButton];
     [self.view bringSubviewToFront:addButton];
-
+    
     [self.view addSubview:mcloseButton];
     [self.view bringSubviewToFront:mcloseButton];
-
+    
     currentIndex=0;
     @autoreleasepool {
         
         hFlowView.layer.borderWidth=3.0;
         hFlowView.layer.borderColor=[UIColor colorWithRed:168.0f/255.0f green:49.0f/255.0f blue:19.0f/255.0f alpha:1.0].CGColor;
         nextOrPrev=0;
-             if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
+        if ([[ShareableData sharedInstance].isQuickOrder isEqualToString:@"1"]){
             bggg.hidden = YES;
         }else{
             bggg.hidden = NO;
@@ -526,10 +526,10 @@ imgView.clipsToBounds = NO;
 -(void)showDetailView:(int)selectedItem
 {
     
-   // TabSquareMenuController *tabMainDetailView =[[TabSquareMenuController alloc]init];
+    // TabSquareMenuController *tabMainDetailView =[[TabSquareMenuController alloc]init];
     //[super.TabSquareMenuController hideUnhideComponents:YES];
-
-   
+    
+    
     bgBlackView.userInteractionEnabled=NO;
     rightButton.hidden=TRUE;
     
@@ -541,14 +541,14 @@ imgView.clipsToBounds = NO;
     //loading the rate,name,description of the selected Dish
     KDishName.text=DishName[selectedItem];
     KDishName.font =[UIFont fontWithName:@"Century Gothic" size:25];
-
+    
     KDishRate.text=DishPrice[selectedItem];
     KDishRate.font =[UIFont fontWithName:@"Century Gothic" size:20];
-
+    
     KDishDescription.text=DishDescription[selectedItem];
     KDishDescription.font =[UIFont fontWithName:@"Century Gothic" size:20];
-
- //   //NSLOG(@"KDishName==%@",KDishName.text);
+    
+    //   //NSLOG(@"KDishName==%@",KDishName.text);
     //[hFlowView reloadData];
     
 }
@@ -563,10 +563,10 @@ imgView.clipsToBounds = NO;
     [ShareableData sharedInstance].swipeView.scrollEnabled=NO;
     [self.view removeFromSuperview];
     
-//    tabMainCourseMenuListViewController=(TabMainCourseMenuListViewController)self.parentViewController;//[[TabMainCourseMenuListViewController alloc]initWithNibName:@"TabMainCourseMenuListViewController" bundle:nil];
-//    
-//    
-//
+    //    tabMainCourseMenuListViewController=(TabMainCourseMenuListViewController)self.parentViewController;//[[TabMainCourseMenuListViewController alloc]initWithNibName:@"TabMainCourseMenuListViewController" bundle:nil];
+    //
+    //
+    //
     tabMainCourseMenuListViewController.menuStatus = @"0";
     
     [self.mParent unhideTheScrollerAndSubCatBgOnMenuController];
@@ -588,7 +588,7 @@ imgView.clipsToBounds = NO;
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(PagedFlowView *)flowView {
     if (pageNumber>=0) {
-       // //NSLOG(@"Scrolled to page # %d", pageNumber);
+        // //NSLOG(@"Scrolled to page # %d", pageNumber);
         
         // [KDishImage.layer setShadowOpacity:1.0];
         //[KDishImage.layer setShadowOffset:CGSizeMake(2.5, 1.5)];
@@ -597,11 +597,11 @@ imgView.clipsToBounds = NO;
         KDishName.text=DishName[pageNumber];
         KDishRate.text=DishPrice[pageNumber];
         KDishDescription.text=DishDescription[pageNumber];
-//        KDishName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
-//        KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
-//        KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:15];
+        //        KDishName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
+        //        KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
+        //        KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:15];
         
-       // //NSLOG(@"KDishName.text====%@d", KDishName.text);
+        // //NSLOG(@"KDishName.text====%@d", KDishName.text);
         
     }
     
@@ -612,17 +612,17 @@ imgView.clipsToBounds = NO;
 #pragma mark PagedFlowView Datasource
 
 - (NSInteger)numberOfPagesInFlowView:(PagedFlowView *)flowView{
-   
+    
     //NSLOG(@"DishImage count====%d", [DishImage count]);
-
+    
     if([orderScreenFlag isEqualToString:@"1"]){
         return 1;
-
+        
     }
     else{
-
+        
         return [DishImage count];
-
+        
         
     }
     
@@ -633,10 +633,10 @@ imgView.clipsToBounds = NO;
 - (UIView *)flowView:(PagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     
     ////NSLOG(@"DishImage====%@",KDishCatId);
-
+    
     imageView = (UIImageView *)[flowView dequeueReusableCell];
     
-    if ([KDishCatId isEqualToString:@"8"]) { ///////for beverages
+    if ([[TabSquareDBFile sharedDatabase] isBevCheck:KDishCatId ]) { ///////for beverages
         
         if (!imageView) {
             imageView = [[UIImageView alloc] init];
@@ -652,11 +652,90 @@ imgView.clipsToBounds = NO;
             imageView.clipsToBounds = NO;
             // imageView.layer.masksToBounds = YES;
             
-            imageView.backgroundColor =[UIColor colorWithRed:250 green:192 blue:144 alpha:0.8];
+            imageView.backgroundColor =[UIColor colorWithRed:236/255 green:26/255 blue:201/255 alpha:1];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
-
+            
             imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;
             
+        }
+        // //NSLOG(@"index flowView # %d", index);
+        ////NSLOG(@"KDishImagev== %@", KDishImage);
+        
+        if([ShareableData sharedInstance].ViewMode==1)
+        {
+            addButton.hidden=YES;
+            imageView.image = [DishImage objectAtIndex:index];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+
+        }
+        else
+        {
+            if([orderScreenFlag isEqualToString:@"1"]){
+                addButton.hidden=TRUE;
+                //                KDishName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
+                //                KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
+                //                KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:20];
+                KDishName.frame=CGRectMake(90, 518,354,62);
+                //  KDishRate.frame=CGRectMake(448,528,112,452);
+                
+                imageView.image = KDishImage;
+            }
+            else{
+                addButton.hidden=FALSE;
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                imageView.image = [DishImage objectAtIndex:index];
+                imageView.backgroundColor =[UIColor colorWithRed:236/255 green:26/255 blue:201/255 alpha:1];
+            }
+            
+            
+        }
+        
+        
+    }
+    else{
+        if ([[TabSquareDBFile sharedDatabase] isBevCheck:[DishCatId objectAtIndex:index] ]) { ///////for beverages
+            
+            
+            if (!imageView ) {
+                imageView = [[UIImageView alloc] init];
+                // imageView.layer.cornerRadius = 6;
+                imageView.layer.borderWidth=6;
+                
+                // setup shadow layer and corner
+                imageView.layer.shadowColor = [UIColor grayColor].CGColor;
+                imageView.layer.shadowOffset = CGSizeMake(0, 1);
+                imageView.layer.shadowOpacity = 1;
+                imageView.layer.shadowRadius = 9.0;
+                // imageView.layer.cornerRadius = 9.0;
+                imageView.clipsToBounds = NO;
+                imageView.contentMode = UIViewContentModeScaleAspectFit;
+                
+                imageView.backgroundColor =[UIColor colorWithRed:236/255 green:26/255 blue:201/255 alpha:1];
+                
+                imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;
+                
+            }        }
+        
+        else{
+            if (!imageView ) {
+                imageView = [[UIImageView alloc] init];
+                // imageView.layer.cornerRadius = 6;
+                imageView.layer.borderWidth=6;
+                
+                // setup shadow layer and corner
+                imageView.layer.shadowColor = [UIColor grayColor].CGColor;
+                imageView.layer.shadowOffset = CGSizeMake(0, 1);
+                imageView.layer.shadowOpacity = 1;
+                imageView.layer.shadowRadius = 9.0;
+                // imageView.layer.cornerRadius = 9.0;
+                imageView.clipsToBounds = NO;
+                imageView.contentMode = UIViewContentModeScaleToFill;
+                
+                imageView.backgroundColor =[UIColor colorWithRed:236/255 green:26/255 blue:201/255 alpha:1];
+                
+                imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;
+                
+            }
         }
         // //NSLOG(@"index flowView # %d", index);
         ////NSLOG(@"KDishImagev== %@", KDishImage);
@@ -671,78 +750,31 @@ imgView.clipsToBounds = NO;
         {
             if([orderScreenFlag isEqualToString:@"1"]){
                 addButton.hidden=TRUE;
-//                KDishName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
-//                KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
-//                KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:20];
+                //            KDishName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
+                //            KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
+                //            KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:20];
                 KDishName.frame=CGRectMake(90, 518,354,62);
-              //  KDishRate.frame=CGRectMake(448,528,112,452);
-
+                //KDishRate.frame=CGRectMake(448,528,112,452);
                 imageView.image = KDishImage;
+                imageView.backgroundColor =[UIColor colorWithRed:236/255 green:26/255 blue:201/255 alpha:1];
+                
             }
             else{
                 addButton.hidden=FALSE;
+                // imageView.contentMode = UIViewContentModeScaleAspectFit;
                 
                 imageView.image = [DishImage objectAtIndex:index];
+                imageView.backgroundColor =[UIColor colorWithRed:236/255 green:26/255 blue:201/255 alpha:1];
+                
                 
             }
             
             
         }
-
-        
-    }
-    else{
-    if (!imageView) {
-        imageView = [[UIImageView alloc] init];
-       // imageView.layer.cornerRadius = 6;
-        imageView.layer.borderWidth=6;
-        
-        // setup shadow layer and corner
-        imageView.layer.shadowColor = [UIColor grayColor].CGColor;
-        imageView.layer.shadowOffset = CGSizeMake(0, 1);
-        imageView.layer.shadowOpacity = 1;
-        imageView.layer.shadowRadius = 9.0;
-       // imageView.layer.cornerRadius = 9.0;
-        imageView.clipsToBounds = NO;
-       // imageView.layer.masksToBounds = YES;
-
-
-        imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;
-
-    }
-   // //NSLOG(@"index flowView # %d", index);
-    ////NSLOG(@"KDishImagev== %@", KDishImage);
-    
-    if([ShareableData sharedInstance].ViewMode==1)
-    {
-        addButton.hidden=YES;
-        imageView.image = [DishImage objectAtIndex:index];
-
-    }
-    else
-    {
-        if([orderScreenFlag isEqualToString:@"1"]){
-            addButton.hidden=TRUE;
-//            KDishName.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
-//            KDishRate.font =[UIFont fontWithName:@"Lucida Calligraphy" size:25];
-//            KDishDescription.font =[UIFont fontWithName:@"Lucida Calligraphy" size:20];
-            KDishName.frame=CGRectMake(90, 518,354,62);
-            //KDishRate.frame=CGRectMake(448,528,112,452);
-            imageView.image = KDishImage;
-        }
-        else{
-            addButton.hidden=FALSE;
-            
-            imageView.image = [DishImage objectAtIndex:index];
-            
-        }
-
         
     }
     
-    }
     
-        
     return imageView;
     
 }

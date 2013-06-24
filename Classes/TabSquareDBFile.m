@@ -256,12 +256,12 @@ int enableClose = 1;
     NSString *catName= [NSString stringWithFormat:@"%@",dataitem[@"name"]];
     NSString *catSeq= [NSString stringWithFormat:@"%@",dataitem[@"sequence"]];
     NSString *catImage = [NSString stringWithFormat:@"%@",dataitem[@"image"]];
-
+ NSString *isBev = [NSString stringWithFormat:@"%@",dataitem[@"is_beverage"]];
     [self saveImage:catImage];
     catName = [catName stringByReplacingOccurrencesOfString:@"'" withString:@""];
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
    // NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"INSERT INTO Categories(id,name,sequence) VALUES (?,?,?);" withValues: Id,catName,catSeq, nil];
-     NSString *statement = [NSString stringWithFormat:@"INSERT INTO Categories(id,name,sequence,'image', 'ch_name','fr_name','in_name','ja_name','ko_name') VALUES (%@,'%@',%@,'%@','%@','%@','%@','%@','%@');",Id,catName,catSeq,catImage, dataitem[@"ch_name"], dataitem[@"fr_name"], dataitem[@"in_name"], dataitem[@"ja_name"], dataitem[@"ko_name"]];
+     NSString *statement = [NSString stringWithFormat:@"INSERT INTO Categories(id,name,sequence,'image',is_beverage, 'ch_name','fr_name','in_name','ja_name','ko_name') VALUES (%@,'%@',%@,'%@','%@','%@','%@','%@','%@','%@');",Id,catName,catSeq,catImage,isBev, dataitem[@"ch_name"], dataitem[@"fr_name"], dataitem[@"in_name"], dataitem[@"ja_name"], dataitem[@"ko_name"]];
     ////NSLOG(@"query Logg 1 = %@", statement);
     
     [connection execute: statement];
@@ -378,6 +378,36 @@ int enableClose = 1;
 
 
 //-(void)updateCategoryRecordTable:(NSString*)Id categoryName:(NSString*)catName categorySequence:(NSString*)catSeq catImage:(NSString *)catImage
+
+-(BOOL)isBevCheck: (NSString*) catID{
+    ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
+    NSString *statement = [NSString stringWithFormat:@"SELECT is_beverage from Categories where id='%@'",catID];
+    // NSString *beverageId=@"";
+    NSArray *records = [connection query: statement];
+    //  NSMutableArray *CategoryData=[[NSMutableArray alloc]init];
+    BOOL isBev = FALSE;
+    for (id element in records){
+        //NSString *optionId=(NSString*)[element objectForKey:@"id"];//[NSString
+        // NSMutableDictionary *SkuDic=[NSMutableDictionary dictionary];
+        //NSString *skuId=(NSString*)[element objectForKey:@"id"];//[NSString
+        //  NSMutableDictionary *dishDic=[NSMutableDictionary dictionary];
+        //NSString *dishId=(NSString*)[element objectForKey:@"id"];//[NSString
+        
+        
+        NSString *isBeverage=(NSString*)[element objectForKey:@"is_beverage"];
+        
+        
+        if ([isBeverage intValue] ==1){
+            isBev=TRUE;
+        }
+        
+        
+    }
+    
+  	return isBev;
+    
+}
+
 -(void)updateCategoryRecordTable:(NSMutableDictionary *)dataitem
 {
     
@@ -385,12 +415,12 @@ int enableClose = 1;
     NSString *catName= [NSString stringWithFormat:@"%@",dataitem[@"name"]];
     NSString *catSeq= [NSString stringWithFormat:@"%@",dataitem[@"sequence"]];
     NSString *catImage = [NSString stringWithFormat:@"%@",dataitem[@"image"]];
-
+ NSString *isBev = [NSString stringWithFormat:@"%@",dataitem[@"is_beverage"]];
     [self saveImage:catImage];
     catName = [catName stringByReplacingOccurrencesOfString:@"'" withString:@""];
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];
     //NSString *statement = [ZIMSqlPreparedStatement preparedStatement: @"Update Categories set name = ?,sequence = ? where id = ? ;" withValues: catName,catSeq,Id, nil];
-    NSString *statement = [NSString stringWithFormat:@"Update Categories set name = '%@',sequence = %@,image = '%@', ch_name = '%@', fr_name = '%@', in_name = '%@', ja_name = '%@', ko_name = '%@' where id = %@ ;",catName,catSeq, catImage, dataitem[@"ch_name"], dataitem[@"fr_name"], dataitem[@"in_name"], dataitem[@"ja_name"], dataitem[@"ko_name"],Id ];
+    NSString *statement = [NSString stringWithFormat:@"Update Categories set name = '%@',sequence = %@,image = '%@',is_beverage = '%@', ch_name = '%@', fr_name = '%@', in_name = '%@', ja_name = '%@', ko_name = '%@' where id = %@ ;",catName,catSeq, catImage,isBev, dataitem[@"ch_name"], dataitem[@"fr_name"], dataitem[@"in_name"], dataitem[@"ja_name"], dataitem[@"ko_name"],Id ];
     [connection execute: statement];
     
     
@@ -3946,7 +3976,6 @@ int enableClose = 1;
 }
 
 
-
 -(NSMutableArray *)getActiveDishNames:(NSMutableArray *)array
 {
     NSString *dishes = @"";
@@ -4014,7 +4043,7 @@ int enableClose = 1;
     //NSLOG(@"Query Records = %@", records);
 }
 
-
+///best seller language fetching from the database
 -(NSMutableDictionary *)bestSellerNames:(NSString *)name
 {
     ZIMDbConnection *connection = [[ZIMDbConnectionPool sharedInstance] connection: @"live"];

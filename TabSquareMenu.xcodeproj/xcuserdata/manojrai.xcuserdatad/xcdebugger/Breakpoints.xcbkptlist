@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1891"
-         endingLineNumber = "1891"
+         startingLineNumber = "1688"
+         endingLineNumber = "1688"
          landmarkName = "-scrollViewDidEndScrollingAnimation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393150483.032343"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1532"
-         endingLineNumber = "1532"
+         startingLineNumber = "1548"
+         endingLineNumber = "1548"
          landmarkName = "-tableView:heightForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -53,19 +53,6 @@
          startingLineNumber = "224"
          endingLineNumber = "224"
          landmarkName = "-getBillNumber:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareTableStatus.m"
-         timestampString = "385631083.27726"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251"
-         landmarkName = "-getTableDetails:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -143,7 +130,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "599"
          endingLineNumber = "599"
-         landmarkName = "-getCustomerDetails:"
+         landmarkName = "-showIndicator"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -156,7 +143,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "595"
          endingLineNumber = "595"
-         landmarkName = "-getCustomerDetails:"
+         landmarkName = "-showIndicator"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -177,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393150483.032343"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1645"
-         endingLineNumber = "1645"
+         startingLineNumber = "1662"
+         endingLineNumber = "1662"
          landmarkName = "-myTask"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,11 +177,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393150483.032343"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1606"
-         endingLineNumber = "1606"
+         startingLineNumber = "1623"
+         endingLineNumber = "1623"
          landmarkName = "-myTask"
          landmarkType = "5">
       </FileBreakpoint>
@@ -222,19 +209,6 @@
          startingLineNumber = "47"
          endingLineNumber = "47"
          landmarkName = "-setParent:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "NewScrollVC/TabSquareNewBeerScrollController.m"
-         timestampString = "392217655.585407"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "334"
-         endingLineNumber = "334"
-         landmarkName = "-loadBeverageData:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -268,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "760"
-         endingLineNumber = "760"
+         startingLineNumber = "774"
+         endingLineNumber = "774"
          landmarkName = "-insertInItemRaptor:OperatorNo:TableNo:SalesNo:SplitNo:PLUNo:Qty:ItemRemark:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -281,11 +255,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "702"
-         endingLineNumber = "702"
+         startingLineNumber = "713"
+         endingLineNumber = "713"
          landmarkName = "-recallTableRaptor:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -294,11 +268,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1428"
-         endingLineNumber = "1428"
+         startingLineNumber = "1433"
+         endingLineNumber = "1433"
          landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -307,11 +281,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1426"
-         endingLineNumber = "1426"
+         startingLineNumber = "1431"
+         endingLineNumber = "1431"
          landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -320,11 +294,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1398"
-         endingLineNumber = "1398"
+         startingLineNumber = "1403"
+         endingLineNumber = "1403"
          landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -333,11 +307,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393315531.463646"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "778"
-         endingLineNumber = "778"
+         startingLineNumber = "779"
+         endingLineNumber = "779"
          landmarkName = "-KinaracreateSubCategoryScrollView:frame:scrollView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -346,11 +320,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393315852.847856"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "835"
-         endingLineNumber = "835"
+         startingLineNumber = "837"
+         endingLineNumber = "837"
          landmarkName = "-KinaracreateSubCategoryScrollView:frame:scrollView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -368,54 +342,15 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "387947149.39571"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1003"
-         endingLineNumber = "1003"
-         landmarkName = "-updateDishRecordTable:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "387947149.39571"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1155"
-         endingLineNumber = "1155"
-         landmarkName = "-insertIntoOptionTableWithRecord:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "387947149.39571"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1144"
-         endingLineNumber = "1144"
-         landmarkName = "-updateCustomizationRecordTable:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "734"
-         endingLineNumber = "734"
+         startingLineNumber = "748"
+         endingLineNumber = "748"
          landmarkName = "-insertInOpenItemRaptor:OperatorNo:TableNo:SalesNo:SplitNo:PLUNo:Qty:PLUName:Amount:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -424,11 +359,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "721"
-         endingLineNumber = "721"
+         startingLineNumber = "735"
+         endingLineNumber = "735"
          landmarkName = "@implementation TabSquareOrderSummaryController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -476,11 +411,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2021"
-         endingLineNumber = "2021"
+         startingLineNumber = "1818"
+         endingLineNumber = "1818"
          landmarkName = "-KinarasetCategoryClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -489,26 +424,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1474"
-         endingLineNumber = "1474"
+         startingLineNumber = "1480"
+         endingLineNumber = "1480"
          landmarkName = "-KinarafindingSelectedCategory:"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1711"
-         endingLineNumber = "1711"
-         landmarkName = "@implementation TabSquareMenuController"
-         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -541,11 +463,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1455"
-         endingLineNumber = "1455"
+         startingLineNumber = "1460"
+         endingLineNumber = "1460"
          landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -554,11 +476,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1263"
-         endingLineNumber = "1263"
+         startingLineNumber = "1279"
+         endingLineNumber = "1279"
          landmarkName = "-minusBtnClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -567,11 +489,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2027"
-         endingLineNumber = "2027"
+         startingLineNumber = "1824"
+         endingLineNumber = "1824"
          landmarkName = "-KinarasetCategoryClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -606,11 +528,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393150483.032343"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1569"
-         endingLineNumber = "1569"
+         startingLineNumber = "1585"
+         endingLineNumber = "1585"
          landmarkName = "-showIndicator:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -677,19 +599,6 @@
          startingLineNumber = "441"
          endingLineNumber = "441"
          landmarkName = "-LoginButtonClick:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareFavouriteViewController.m"
-         timestampString = "393234609.813672"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "370"
-         endingLineNumber = "370"
-         landmarkName = "-UserRegistration:emailid:password:tableId:name:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -866,11 +775,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393164407.561766"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2786"
-         endingLineNumber = "2786"
+         startingLineNumber = "2583"
+         endingLineNumber = "2583"
          landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -879,25 +788,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393150483.032343"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1838"
-         endingLineNumber = "1838"
+         startingLineNumber = "1855"
+         endingLineNumber = "1855"
          landmarkName = "-getTotalCustomizationRate:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "387947149.39571"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1213"
-         endingLineNumber = "1213"
-         landmarkName = "-deleteOptionRecordTable:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1035,11 +931,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "406"
-         endingLineNumber = "406"
+         startingLineNumber = "408"
+         endingLineNumber = "408"
          landmarkName = "-confirmOrder"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1087,11 +983,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "779"
-         endingLineNumber = "779"
+         startingLineNumber = "793"
+         endingLineNumber = "793"
          landmarkName = "-insertInItemRaptor:OperatorNo:TableNo:SalesNo:SplitNo:PLUNo:Qty:ItemRemark:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1100,11 +996,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "903"
-         endingLineNumber = "903"
+         startingLineNumber = "917"
+         endingLineNumber = "917"
          landmarkName = "-addRecommendation"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1113,11 +1009,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1425"
-         endingLineNumber = "1425"
+         startingLineNumber = "1441"
+         endingLineNumber = "1441"
          landmarkName = "-gettotalCustomization:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1178,11 +1074,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "819"
-         endingLineNumber = "819"
+         startingLineNumber = "833"
+         endingLineNumber = "833"
          landmarkName = "-insertInTempOrderService:DishID:DishName:DishQuantity:DishRate:OrderSpecialRequest:OrderCustomizationDetail:OrderBeverageContainerId:OrderCatId:confirmOrder:IsOrderCustomization:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1217,11 +1113,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "405"
-         endingLineNumber = "405"
+         startingLineNumber = "407"
+         endingLineNumber = "407"
          landmarkName = "-confirmOrder"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1229,90 +1125,12 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareHomeController.m"
-         timestampString = "384192026.240897"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "441"
-         endingLineNumber = "441"
-         landmarkName = "-insertDishData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareHomeController.m"
-         timestampString = "384192026.240897"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "459"
-         endingLineNumber = "459"
-         landmarkName = "-insertDishData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareHomeController.m"
-         timestampString = "384192026.240897"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "455"
-         endingLineNumber = "455"
-         landmarkName = "-insertDishData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareHomeController.m"
-         timestampString = "384192026.240897"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "485"
-         endingLineNumber = "485"
-         landmarkName = "-insertDishData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareHomeController.m"
-         timestampString = "384192026.240897"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "498"
-         endingLineNumber = "498"
-         landmarkName = "-insertDishData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareHomeController.m"
-         timestampString = "384192026.240897"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "494"
-         endingLineNumber = "494"
-         landmarkName = "-insertDishData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "698"
-         endingLineNumber = "698"
+         startingLineNumber = "709"
+         endingLineNumber = "709"
          landmarkName = "-recallTableRaptor:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1320,25 +1138,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "387947149.39571"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2070"
-         endingLineNumber = "2070"
-         landmarkName = "@implementation TabSquareDBFile"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "905"
-         endingLineNumber = "905"
+         startingLineNumber = "919"
+         endingLineNumber = "919"
          landmarkName = "-addRecommendation"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1347,11 +1152,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1010"
-         endingLineNumber = "1010"
+         startingLineNumber = "1024"
+         endingLineNumber = "1024"
          landmarkName = "-DishCategorized"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1360,11 +1165,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1032"
-         endingLineNumber = "1032"
+         startingLineNumber = "1046"
+         endingLineNumber = "1046"
          landmarkName = "-getSectionIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1373,11 +1178,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/AppDelegate.m"
-         timestampString = "392027451.64269"
+         timestampString = "393528384.925085"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "228"
-         endingLineNumber = "228"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
          landmarkName = "-defaultsChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1386,25 +1191,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/AppDelegate.m"
-         timestampString = "392027451.64269"
+         timestampString = "393528384.925085"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "273"
-         endingLineNumber = "273"
+         startingLineNumber = "275"
+         endingLineNumber = "275"
          landmarkName = "-configureTextField:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1025"
-         endingLineNumber = "1025"
-         landmarkName = "-gotoDishViewMode:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1490,11 +1282,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "392106238.124745"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "706"
-         endingLineNumber = "706"
+         startingLineNumber = "717"
+         endingLineNumber = "717"
          landmarkName = "-recallTableRaptor:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1534,7 +1326,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "589"
          endingLineNumber = "589"
-         landmarkName = "-getCustomerDetails:"
+         landmarkName = "-gotoDishMenuLIst:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1542,11 +1334,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393246703.661258"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3096"
-         endingLineNumber = "3096"
+         startingLineNumber = "2894"
+         endingLineNumber = "2894"
          landmarkName = "-searchClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1555,11 +1347,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393246703.661258"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3242"
-         endingLineNumber = "3242"
+         startingLineNumber = "3040"
+         endingLineNumber = "3040"
          landmarkName = "-EnterTableNumber:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1607,12 +1399,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393169747.67124"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "848"
-         endingLineNumber = "848"
-         landmarkName = "-quickOrderSwitch:"
+         startingLineNumber = "849"
+         endingLineNumber = "849"
+         landmarkName = "-addTabledataImage:indexRow:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1620,11 +1412,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1086"
-         endingLineNumber = "1086"
+         startingLineNumber = "1087"
+         endingLineNumber = "1087"
          landmarkName = "-gotoDishMenuLIst:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1646,11 +1438,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1841"
-         endingLineNumber = "1841"
+         startingLineNumber = "1847"
+         endingLineNumber = "1847"
          landmarkName = "-getTableDetails:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1672,38 +1464,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "832"
-         endingLineNumber = "832"
-         landmarkName = "-KinaracreateSubCategoryScrollView:frame:scrollView:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393163165.048368"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1053"
-         endingLineNumber = "1053"
-         landmarkName = "-KinaraCategoryClicked:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393246703.661258"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3237"
-         endingLineNumber = "3237"
-         landmarkName = "-EnterTableNumber:"
+         startingLineNumber = "3035"
+         endingLineNumber = "3035"
+         landmarkName = "-clearSubViews"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1724,11 +1490,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/AppDelegate.m"
-         timestampString = "392027451.64269"
+         timestampString = "393528384.925085"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "205"
+         endingLineNumber = "205"
          landmarkName = "-setupByPreferences"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1737,16 +1503,16 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/AppDelegate.m"
-         timestampString = "392027451.64269"
+         timestampString = "393528384.925085"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
+         startingLineNumber = "185"
+         endingLineNumber = "185"
          landmarkName = "-setupByPreferences"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuDetailController.m"
@@ -1772,7 +1538,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NewScrollVC/TabSquareNewBeerScrollController.m"
@@ -1798,7 +1564,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuDetailController.m"
@@ -1824,7 +1590,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabMainCourseMenuListViewController.m"
@@ -1837,7 +1603,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NewScrollVC/TabSquareNewBeerScrollController.m"
@@ -1848,58 +1614,6 @@
          endingLineNumber = "255"
          landmarkName = "-addBeerListView:"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "392224652.464682"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2359"
-         endingLineNumber = "2359"
-         landmarkName = "-getDishData:subCatId:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "392224680.432318"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2464"
-         endingLineNumber = "2464"
-         landmarkName = "-getDishData:subCatId:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareDBFile.m"
-         timestampString = "392224816.070641"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3972"
-         endingLineNumber = "3972"
-         landmarkName = "-getActiveDishNames:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393246703.661258"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3332"
-         endingLineNumber = "3332"
-         landmarkName = "@implementation TabSquareMenuController"
-         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -1967,68 +1681,16 @@
          landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareFriendListController.m"
-         timestampString = "393243708.185853"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "274"
-         endingLineNumber = "274"
-         landmarkName = "-showIndicator"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393164407.561766"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2952"
-         endingLineNumber = "2952"
+         startingLineNumber = "2750"
+         endingLineNumber = "2750"
          landmarkName = "-orderSummaryClicked:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Third-party/FBConnect/FBDialog.m"
-         timestampString = "392898498.801081"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "629"
-         endingLineNumber = "629"
-         landmarkName = "-dialogWillDisappear"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Third-party/FBConnect/FBDialog.m"
-         timestampString = "392898498.801081"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "616"
-         endingLineNumber = "616"
-         landmarkName = "-dismissWithError:animated:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Third-party/FBConnect/FBDialog.m"
-         timestampString = "392898498.801081"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "602"
-         endingLineNumber = "602"
-         landmarkName = "-dismissWithSuccess:animated:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2042,32 +1704,6 @@
          startingLineNumber = "54"
          endingLineNumber = "54"
          landmarkName = "-login"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Third-party/FBConnect/FBDialog.m"
-         timestampString = "392898498.801081"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "624"
-         endingLineNumber = "624"
-         landmarkName = "-dialogWillAppear"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Third-party/FBConnect/FBDialog.m"
-         timestampString = "392898498.801081"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "633"
-         endingLineNumber = "633"
-         landmarkName = "-removeWindowOfFB"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2088,37 +1724,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
+         timestampString = "393516386.342618"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1222"
-         endingLineNumber = "1222"
+         startingLineNumber = "1227"
+         endingLineNumber = "1227"
          landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393164407.561766"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2903"
-         endingLineNumber = "2903"
-         landmarkName = "-showMenuHighlight"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393169747.67124"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1919"
-         endingLineNumber = "1919"
+         startingLineNumber = "1936"
+         endingLineNumber = "1936"
          landmarkName = "-filterData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2126,25 +1749,12 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareRemoteActivation.m"
-         timestampString = "393165202.053567"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "287"
-         endingLineNumber = "287"
-         landmarkName = "-switchToViewMode"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
-         timestampString = "393169747.67124"
+         timestampString = "393519161.010771"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1982"
-         endingLineNumber = "1982"
+         startingLineNumber = "1999"
+         endingLineNumber = "1999"
          landmarkName = "-view:willRemoveSubview:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2165,25 +1775,12 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareTableManagement.m"
-         timestampString = "393238123.9964"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "969"
-         endingLineNumber = "969"
-         landmarkName = "-gotoDishViewMode:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393164407.561766"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2606"
-         endingLineNumber = "2606"
+         startingLineNumber = "2403"
+         endingLineNumber = "2403"
          landmarkName = "-viewDidDisappear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2227,7 +1824,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuDetailController.m"
@@ -2266,7 +1863,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuDetailController.m"
@@ -2283,16 +1880,16 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393231811.441903"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2371"
-         endingLineNumber = "2371"
-         landmarkName = "-viewDidAppear:"
+         startingLineNumber = "2168"
+         endingLineNumber = "2168"
+         landmarkName = "-setpageIndexInBeverage:UperNum:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareOrderSummaryController.m"
@@ -2322,71 +1919,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareFavouriteViewController.m"
-         timestampString = "393234609.813672"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareFavouriteViewController.m"
-         timestampString = "393234312.51199"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareFavouriteViewController.m"
-         timestampString = "393234489.571747"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "61"
-         endingLineNumber = "61"
-         landmarkName = "-createFacebookView"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393245615.228776"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2968"
-         endingLineNumber = "2968"
-         landmarkName = "-favouriteClicked:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393246319.883397"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1126"
-         endingLineNumber = "1126"
-         landmarkName = "-displayOverview"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/TabSquareFavouriteViewController.m"
          timestampString = "393246408.336338"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
@@ -2400,12 +1932,584 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/TabSquareMenuController.m"
-         timestampString = "393246763.705444"
+         timestampString = "393316026.111349"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "3022"
-         endingLineNumber = "3022"
+         startingLineNumber = "2820"
+         endingLineNumber = "2820"
          landmarkName = "-favouriteClicked:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareDBFile.m"
+         timestampString = "393257899.198606"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "2309"
+         endingLineNumber = "2309"
+         landmarkName = "-getDishData:subCatId:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareDBFile.m"
+         timestampString = "393257903.334746"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "2545"
+         endingLineNumber = "2545"
+         landmarkName = "-getDishDataDetail:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "NewScrollVC/ViewController.m"
+         timestampString = "393260492.096381"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "633"
+         endingLineNumber = "633"
+         landmarkName = "-flowView:cellForPageAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "NewScrollVC/TabSquareNewBeerScrollController.m"
+         timestampString = "393260833.359743"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "334"
+         endingLineNumber = "334"
+         landmarkName = "-loadBeverageData:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393316026.111349"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "2687"
+         endingLineNumber = "2687"
+         landmarkName = "-myTask1"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393316026.111349"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "2593"
+         endingLineNumber = "2593"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Third-party/FBConnect/FBDialog.m"
+         timestampString = "393305423.323217"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "633"
+         endingLineNumber = "633"
+         landmarkName = "-removeWindowOfFB"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareLastOrderedViewController.m"
+         timestampString = "393305946.719394"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "607"
+         endingLineNumber = "607"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393306408.972933"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-viewDidAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393306411.046157"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393306682.436633"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
+         landmarkName = "-loadFriendList"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393310164.66763"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "262"
+         endingLineNumber = "262"
+         landmarkName = "-loadlastOrdereddata"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393306768.916979"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "166"
+         endingLineNumber = "166"
+         landmarkName = "-getlastOrderedDataList:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393310225.467104"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "190"
+         endingLineNumber = "190"
+         landmarkName = "-getlastOrderedDataList:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1545"
+         endingLineNumber = "1545"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1552"
+         endingLineNumber = "1552"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1136"
+         endingLineNumber = "1136"
+         landmarkName = "-showIndicator"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393311918.568844"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
+         landmarkName = "-getEmailID:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFavouriteViewController.m"
+         timestampString = "393312033.49813"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "370"
+         endingLineNumber = "370"
+         landmarkName = "-UserRegistration:emailid:password:tableId:name:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFavouriteViewController.m"
+         timestampString = "393312037.276898"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "410"
+         endingLineNumber = "410"
+         landmarkName = "-UserRegistration:emailid:password:tableId:name:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFavouriteViewController.m"
+         timestampString = "393312042.268898"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "419"
+         endingLineNumber = "419"
+         landmarkName = "-UserRegistration:emailid:password:tableId:name:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393313185.655423"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "460"
+         endingLineNumber = "460"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393316026.111349"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1450"
+         endingLineNumber = "1450"
+         landmarkName = "-KinaraSubCategoryClicked2:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393316026.111349"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1411"
+         endingLineNumber = "1411"
+         landmarkName = "-KinaraSubCategoryClicked:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareHomeController.m"
+         timestampString = "393316836.286111"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "914"
+         endingLineNumber = "914"
+         landmarkName = "-CheckDatabase"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareHomeController.m"
+         timestampString = "393316872.155852"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "991"
+         endingLineNumber = "991"
+         landmarkName = "-GetDishTableData:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393511816.268235"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "421"
+         endingLineNumber = "421"
+         landmarkName = "-assignTK:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "762"
+         endingLineNumber = "762"
+         landmarkName = "-checkTABtns"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393511816.268235"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "596"
+         endingLineNumber = "596"
+         landmarkName = "-tableDetailView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393511816.268235"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "621"
+         endingLineNumber = "621"
+         landmarkName = "-tableDetailView2:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1123"
+         endingLineNumber = "1123"
+         landmarkName = "-showIndicator"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "2036"
+         endingLineNumber = "2036"
+         landmarkName = "-myTask"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1142"
+         endingLineNumber = "1142"
+         landmarkName = "-recallTableRaptor:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393516386.342618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1750"
+         endingLineNumber = "1750"
+         landmarkName = "-getTableDetails:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableStatus.m"
+         timestampString = "393515033.802701"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "251"
+         endingLineNumber = "251"
+         landmarkName = "-getTableDetails:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareFriendListController.m"
+         timestampString = "393515979.814465"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "798"
+         endingLineNumber = "798"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareOrderSummaryController.m"
+         timestampString = "393519161.010771"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "389"
+         endingLineNumber = "389"
+         landmarkName = "-confirmOrder"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/ShareableData.m"
+         timestampString = "393520887.118066"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "353"
+         endingLineNumber = "353"
+         landmarkName = "-saveBestsellers"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393521018.046385"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "3182"
+         endingLineNumber = "3182"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareDBFile.m"
+         timestampString = "393522010.457726"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "4050"
+         endingLineNumber = "4050"
+         landmarkName = "-bestSellerNames:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareMenuController.m"
+         timestampString = "393521633.147425"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "461"
+         endingLineNumber = "461"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareTableManagement.m"
+         timestampString = "393525959.918482"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "479"
+         endingLineNumber = "479"
+         landmarkName = "-myTask2:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareOrderSummaryController.m"
+         timestampString = "393526068.277787"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "771"
+         endingLineNumber = "771"
+         landmarkName = "-insertInItemRaptor:OperatorNo:TableNo:SalesNo:SplitNo:PLUNo:Qty:ItemRemark:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/TabSquareDBFile.m"
+         timestampString = "393527903.824207"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "4047"
+         endingLineNumber = "4047"
+         landmarkName = "-bestSellerNames:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

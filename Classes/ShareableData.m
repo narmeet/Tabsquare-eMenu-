@@ -358,8 +358,15 @@ static ShareableData *abc;
     /*=======This comes from CMS========*/
     NSString *key_in_db = @"Bestseller";
     NSMutableDictionary *dict = [[TabSquareDBFile sharedDatabase] bestSellerNames:key_in_db];
-    if(dict != nil)
+    if(dict != nil){
         [[NSUserDefaults standardUserDefaults] setObject:dict forKey:BEST_SELLER_DATA];
+    }
+    else{
+        //[self saveBestsellers];
+      //  [self performSelector:@selector(saveBestsellers:) withObject:nil afterDelay:0.8];
+        //[self performSelector:@selector(saveBestsellers) withObject:nil afterDelay:0.3];
+
+    }
 }
 
 

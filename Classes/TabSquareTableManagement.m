@@ -121,32 +121,29 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     //NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     //DLog(@"Data :%@",data);
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
    // ////NSLOG(@"json = %@",json);
-    
-  
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
+
+    if ([json count]==0) {
+        [self getTables];
+        
+    }else{
       
+
     
-   // NSMutableArray* temp = [TotalFreeTables copy];
-   // NSDictionary* node = [returnVal objectAtIndex:0];
-    // [node objectForKey:@"ErrCode"];
-    @try{
          NSArray* returnVal = [json objectForKey:@"returnVal"];
         if ([TotalFreeTables count]>0){
         [TotalFreeTables replaceObjectsInRange:(NSMakeRange(0, [TotalFreeTables count])) withObjectsFromArray:returnVal range:(NSMakeRange(0, [returnVal count]))];
         }else{
             [TotalFreeTables addObjectsFromArray:returnVal];
         }
+    }
   /*  for(int i=0;i<[resultFromPost count];i++)
     {
         [TotalFreeTables addObject:[NSString stringWithFormat:@"%@",resultFromPost[i]]];
     }*/
    
-    } @catch (NSException* ex) {
-        
-        
-    }
-    
+       
     [ShareableData sharedInstance].totalFreeTables = TotalFreeTables;
     ////NSLOG(@"Total Free Tables = %@", TotalFreeTables);
 }
@@ -259,12 +256,14 @@ bool funcCalled = NO;
     [self checkForWIFIConnection];
 
     //[self performSelector:@selector(changeData) withObject:nil afterDelay:25.0];
+        tt =[NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(onTick)
+                                           userInfo:nil
+                                            repeats:YES];
+
+   
     
-    tt =[NSTimer scheduledTimerWithTimeInterval:1.0
-                                         target:self
-                                       selector:@selector(onTick)
-                                       userInfo:nil
-                                        repeats:YES];
     [ShareableData sharedInstance].isQuickOrder =@"0";
     //add alert box to ask if user would like to cancel
     [self createViews];
@@ -272,9 +271,9 @@ bool funcCalled = NO;
     NSString *libraryDirectory = [paths lastObject];
     NSString *location = [libraryDirectory stringByAppendingString:@"/orderarrays.plist"];
     
-    [[NSFileManager defaultManager] removeItemAtPath:location error: nil];
+   // [[NSFileManager defaultManager] removeItemAtPath:location error: nil];
     
-    //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"orderarrays" ofType:@"plist"];
+     //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"orderarrays" ofType:@"plist"];
     // NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     NSArray *array = [[NSArray alloc] initWithContentsOfFile:location];
     
@@ -346,7 +345,7 @@ bool funcCalled = NO;
         [self.navigationController pushViewController:homeView animated:YES];
         
     }
-[self setSection2:3];///previous value =1
+[self setSection2:1];///previous value =3
 }
 
 
@@ -400,42 +399,28 @@ bool funcCalled = NO;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
    // NSString *data=[[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding]stringByTrimmingCharactersInSet:
                    // [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-   
-    
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
+
+    if ([json count]==0) {
+        [self checkSections];
+    }
+    else{
     // ////NSLOG(@"json = %@",json);
     
     
     NSArray* returnVal = [json objectForKey:@"returnVal"];
     
     
-    // NSDictionary* node = [returnVal objectAtIndex:0];
-    // [node objectForKey:@"ErrCode"];
-   // [TotalFreeTables removeAllObjects];
-    /*  for(int i=0;i<[resultFromPost count];i++)
-     {
-     [TotalFreeTables addObject:[NSString stringWithFormat:@"%@",resultFromPost[i]]];
-     }*/
-     [TATables removeAllObjects];
-   // [TotalFreeTables addObjectsFromArray:returnVal];
-   // [TATables addObjectsFromArray:[data componentsSeparatedByString:@","]];
-[TATables addObjectsFromArray:returnVal];
+        [TATables removeAllObjects];
+  
+     [TATables addObjectsFromArray:returnVal];
+    }
     
-   // return [data componentsSeparatedByString:@","];
     
 }
 -(IBAction)assignTK:(id)btn{
     
-   // UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(0,187, self.view.frame.size.width, self.view.frame.size.height)];
-  //  progressHud= [[MBProgressHUD alloc] initWithView:progressView];
-   // [self.view addSubview:progressHud];
-   // [self.view bringSubviewToFront:progressHud];
-    //progressHud.dimBackground = YES;
-   // progressHud.delegate = self;
-    //progressHud.labelText = @"loading....";
     
-   // [progressHud showWhileExecuting:@selector(myTask2:) onTarget:self withObject:btn animated:YES];
     Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
     
     NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
@@ -450,7 +435,15 @@ bool funcCalled = NO;
     }
    
     else{
-        
+//        UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(0,187, self.view.frame.size.width, self.view.frame.size.height)];
+//        progressHud= [[MBProgressHUD alloc] initWithView:progressView];
+//        [self.view addSubview:progressHud];
+//        [self.view bringSubviewToFront:progressHud];
+//        progressHud.dimBackground = YES;
+//        progressHud.delegate = self;
+//        progressHud.labelText = @"loading....";
+//        
+//        [progressHud showWhileExecuting:@selector(myTask2:) onTarget:self withObject:btn animated:YES];
     [self myTask2:btn];
         
         
@@ -549,36 +542,44 @@ bool funcCalled = NO;
 }
 
 -(void)onTick{
-    if (funcCalled == NO){
-       funcCalled = YES;
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-       // [self getTotalNumberofTable];
-        
-    //if([[[NSUserDefaults standardUserDefaults] objectForKey:@"test"] intValue] != 1) {
-    [self getTables];
-    //}
-       // [self getTableStatusView];
-       // [TATables removeAllObjects];
-        //[TATables addObjectsFromArray:[[self checkTakeaway] copy]];
-        
-        /*================Update UI=================*/
-        [[TabSquareRemoteActivation remoteActivation] tablesUpdated];
-        /*==========================================*/
-
-        
-        [self checkSections];
-        
-        
-        dispatch_async( dispatch_get_main_queue(), ^{
-            //[self checkTABtns];
-            [tableNoView reloadData];
-            funcCalled = NO;
-        });
-    });
     
+    @try {
+        if (funcCalled == NO){
+            funcCalled = YES;
+            dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // [self getTotalNumberofTable];
+                
+                //if([[[NSUserDefaults standardUserDefaults] objectForKey:@"test"] intValue] != 1) {
+                [self getTables];
+                //}
+                // [self getTableStatusView];
+                // [TATables removeAllObjects];
+                //[TATables addObjectsFromArray:[[self checkTakeaway] copy]];
+                
+                /*================Update UI=================*/
+                [[TabSquareRemoteActivation remoteActivation] tablesUpdated];
+                /*==========================================*/
+                
+                
+                [self checkSections];
+                
+                
+                dispatch_async( dispatch_get_main_queue(), ^{
+                    //[self checkTABtns];
+                    [tableNoView reloadData];
+                    funcCalled = NO;
+                });
+            });
+            
+        }
+        
+
+    }
+    @catch (NSException *exception) {
+        
     }
     
-    //[self getTaxesList];
+       //[self getTaxesList];
     
     //[tableStatusView reloadData];
    // [self.view setNeedsDisplay];
@@ -663,11 +664,15 @@ bool funcCalled = NO;
         }
         
     }
-    if (sectionID.intValue == 4){/////previous value=3
+    //[ShareableData sharedInstance].categoryID=@"1";////for RP & BV
+    
+    ////for BananaLeaf & MM
+    if (sectionID.intValue == 3){/////previous value=4
         [ShareableData sharedInstance].categoryID=@"3";/////previous value=3
     }else{
         [ShareableData sharedInstance].categoryID=@"1";/////previous value=1
     }
+     
     [self onTick];
     
     
@@ -686,11 +691,15 @@ bool funcCalled = NO;
         }
         
     }
-    if (sectionID.intValue == 4){/////previous value=3
-        [ShareableData sharedInstance].categoryID=@"3";/////previous value=3
-    }else{
-        [ShareableData sharedInstance].categoryID=@"1";/////previous value=1
-    }
+   // [ShareableData sharedInstance].categoryID=@"1";////for RP & BV
+    
+    ////for BananaLeaf & MM
+     if (sectionID.intValue == 3){/////previous value=4
+     [ShareableData sharedInstance].categoryID=@"3";/////previous value=3
+     }else{
+     [ShareableData sharedInstance].categoryID=@"1";/////previous value=1
+     }
+     
     [self onTick];
     
     
@@ -699,7 +708,7 @@ bool funcCalled = NO;
 
 -(void)initTABtns
 {
-    sectionID=@"3";/////previous value=1
+    sectionID=@"1";/////previous value=1
     
    // CGRect frame=CGRectMake(0,10, 103,100);
     //int i=0;
@@ -1134,12 +1143,16 @@ bool funcCalled = NO;
     
     NSArray* returnVal;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/RecallTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
+
+    if ([json count]==0) {
+        [self recallTableRaptor:table];
+    }
+    else{
    // ////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
@@ -1153,7 +1166,7 @@ bool funcCalled = NO;
     [self holdTableRaptor:table];
     
     return node;
-    
+    }
 }
 
 -(BOOL)tableExists:(NSString *)obj
@@ -1476,12 +1489,13 @@ bool funcCalled = NO;
         UITextField *guests = [alertView textFieldAtIndex:0];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeCover.php?POSID=POS002&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewCover=%@",[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,guests.text]]];
         
         NSError *error;
         NSURLResponse *response;
         NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        
+            
+            
         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
         
         
@@ -1631,7 +1645,7 @@ bool funcCalled = NO;
             
         [self getSalesNumber:[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"]];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS011&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
+       [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/ChangeTable.php?POSID=POS002&OperatorNo=1&TableNo=%@&SalesNo=%@&SplitNo=0&NewTableNo=%@",[[TotalFreeTables objectAtIndex:oldTableNumber.intValue] objectForKey:@"TBLNo"], [ShareableData sharedInstance].salesNo,[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]]]];
         
         NSError *error;
         NSURLResponse *response;
@@ -1970,8 +1984,12 @@ bool funcCalled = NO;
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    //  NSString *data=[[NSString alloc]initWithData:uData encoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:uData options:kNilOptions error:&error];
+
+    if ([json count]==0) {
+        [self assignTableRaptor:user];
+    }
+    else{
     //////NSLOG(@"json = %@",json);
     
     if ([json count]!=0){
@@ -1985,13 +2003,14 @@ bool funcCalled = NO;
     [self holdTableRaptor:[[TotalFreeTables objectAtIndex:tableNumber.intValue] objectForKey:@"TBLNo"]];
     
     return returnVal;
+    }
     
 }
 -(NSArray*)holdTableRaptor:(NSString*)table{
     NSArray* returnVal;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS011",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:kURL@"Raptor/HoldTable.php?POSID=%@&OperatorNo=%@&TableNo=%@&SalesNo=%@&SplitNo=%@",@"POS002",@"1",table,[ShareableData sharedInstance].salesNo,[ShareableData sharedInstance].splitNo]]];
     NSError *error;
     NSURLResponse *response;
     NSData *uData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];

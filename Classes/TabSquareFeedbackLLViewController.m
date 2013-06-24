@@ -56,14 +56,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
-    NSString *libraryDirectory = [paths lastObject];
-    NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
-    
-    UIImage *img1 = [UIImage imageWithContentsOfFile:location];
-    
-    bgImage.image = img1;
+//    NSString *img_name1 = [NSString stringWithFormat:@"%@%@_%@", PRE_NAME, POPUP_IMAGE,[ShareableData appKey]];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);;
+//    NSString *libraryDirectory = [paths lastObject];
+//    NSString *location = [NSString stringWithFormat:@"%@/%@%@",libraryDirectory,img_name1,@".png"];
+//    
+//    UIImage *img1 = [UIImage imageWithContentsOfFile:location];
+//    
+//    bgImage.image = img1;
     
     NSLog(@"View will appear in FeedBackLLView View Controller");
 }

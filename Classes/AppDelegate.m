@@ -82,6 +82,8 @@ NSString *kNameColorKey= @"nameColorKey";
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [[ShareableData sharedInstance] allocateArray];
+    [[ShareableData sharedInstance] saveBestsellers];
+    
     //copy database
     [[TabSquareDBFile sharedDatabase]createEditableCopyOfDatabaseIfNeeded];
     [[ShareableData sharedInstance].IsDBUpdated addObject:@"0"];

@@ -160,7 +160,7 @@
   // [DishList reloadData];
 }
 -(void)reloadDataOfSubCat2:(NSString *)sub cat:(NSString *)CatID{
-    [self reloadDataOfSubCat:sub cat:CatID];
+   ///manoj pre opened [self reloadDataOfSubCat:sub cat:CatID];
   //  [menuview KinarasetCategoryClicked:CatID.intValue];
     //[menuview KinarasetSubCategoryClicked:sub.intValue];
     //[menuview KinaraCategoryClicked2:CatID.intValue];
@@ -183,10 +183,10 @@
         float _green = [arr[1] floatValue];
         float _blue  = [arr[2] floatValue];
         
-        fontColor = [UIColor whiteColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
+        fontColor = [UIColor blackColor];//[UIColor colorWithRed:223/255.0 green:209/255.0 blue:196/255.0 alpha:1.0];
     }
     else {
-        fontName = @"Copperplate-Light";
+        fontName = @"Futura";
         fontSize = 42.0;
         fontColor = [UIColor blackColor];
     }
@@ -567,7 +567,7 @@
     NSString *dishCatId2 = DishCategoryId[selectedItem];
 
     
-    BOOL bev = [dishCatId2 isEqualToString:@"8"];
+    BOOL bev = [[TabSquareDBFile sharedDatabase] isBevCheck:dishCatId2];//[dishCatId2 isEqualToString:@"8"];
     
     if(!bev && [[isSetType objectAtIndex:selectedItem] intValue] == 1) {
         TabSquareComboSet *combo = [[TabSquareComboSet alloc] init];
@@ -584,7 +584,7 @@
     NSString *dishSubCatId2 = DishSubCategoryId[selectedItem];
     int bevDisplay = 0;
    // TabSquareBeerController* beveragesBeerView=[[TabSquareBeerController alloc]initWithNibName:@"TabSquareBeerController" bundle:nil];
-    if(![dishCatId2 isEqualToString:@"8"]){
+    if(![[TabSquareDBFile sharedDatabase] isBevCheck:dishCatId2]==TRUE){
         NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:@"8"];
         for(int i=0;i<[subCategoryData count];++i){
             NSMutableDictionary *subCategory=subCategoryData[i];
@@ -782,7 +782,7 @@
         headerLabel.backgroundColor = [UIColor clearColor];
         headerLabel.opaque = NO;
         headerLabel.textColor = [UIColor blackColor];
-        headerLabel.font =[UIFont fontWithName:@"Copperplate-Light" size:30];
+        headerLabel.font =[UIFont fontWithName:@"Futura" size:30];
         //headerLabel.frame = CGRectMake(7,-4,tableView.bounds.size.width, 30.0);
         [headerLabel setFrame:CGRectMake(0.0, 5.0,tableView.bounds.size.width, 28)];
         [headerLabel setTextAlignment:NSTextAlignmentCenter];
@@ -897,7 +897,7 @@
                 x_axis = 38.0;
             
             UIButton *img_btn = [[UIButton alloc] initWithFrame:CGRectMake(x_axis, 15, 129, 98)];
-            if (cat ==8){
+            if ([[TabSquareDBFile sharedDatabase] isBevCheck: [NSString stringWithFormat:@"%d",cat] ]){
                 img_btn.frame= [ self setImageInFrame:img_btn.frame :img ].frame;
             }
             
@@ -950,7 +950,7 @@
             titleLabel.numberOfLines = 2;
             titleLabel.backgroundColor=[UIColor clearColor];
             titleLabel.text = DishDescription[sortIndex];
-            titleLabel.font=[UIFont fontWithName:@"Century Gothic" size:18];
+            titleLabel.font=[UIFont fontWithName:@"Century Gothic" size:16];
             [titleLabel setTextColor:fontColor];
             [cell.contentView addSubview:titleLabel];
             cell.DishName=DishName[sortIndex];
@@ -1085,7 +1085,7 @@
     NSString *dishSubCatId2 = DishSubCategoryId[selectedItem];
     int bevDisplay = 0;
 
-    BOOL bev = [dishCatId2 isEqualToString:@"8"];
+    BOOL bev = [[TabSquareDBFile sharedDatabase] isBevCheck:dishCatId2];
     if(!bev && [[isSetType objectAtIndex:selectedItem] intValue] == 1) {
         [[NSUserDefaults standardUserDefaults] setObject:isSetType forKey:@"set_array"];
         [TabSquareCommonClass setValueInUserDefault:@"is_set_type" value:@"1"];

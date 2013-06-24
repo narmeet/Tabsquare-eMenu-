@@ -71,9 +71,9 @@ int orderSubmit = 0;
         //lblQuantity.layer.backgroundColor=[UIColor colorWithRed:246.0f/255.0f green:208.0f/255.0f blue:161.0f/255.0f alpha:0.0].CGColor;
     }
 
-    UIImage *bg_img = [UIImage imageNamed:@"quantity.png"];
-    bg_img = [TabSquareCommonClass resizeImage:bg_img scaledToSize:lblQuantity.frame.size];
-    [lblQuantity setBackgroundColor:[UIColor colorWithPatternImage:bg_img]];
+//    UIImage *bg_img = [UIImage imageNamed:@"quantity.png"];
+//    bg_img = [TabSquareCommonClass resizeImage:bg_img scaledToSize:lblQuantity.frame.size];
+//    [lblQuantity setBackgroundColor:[UIColor colorWithPatternImage:bg_img]];
 }
 
 -(void)setDishName:(NSString *)newDishName

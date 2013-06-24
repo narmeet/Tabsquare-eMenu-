@@ -34,7 +34,7 @@
     
     if([self.dishType isEqualToString:@"0"]) {
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.titleLabel setFont:[UIFont fontWithName:@"Copperplate-Light" size:25.0]];
+        [self.titleLabel setFont:[UIFont fontWithName:@"Century Gothic" size:25.0]];
         [self setTitleEdgeInsets:UIEdgeInsetsMake(100, 6, 100, 6)];
     }
     else {

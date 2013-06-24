@@ -112,7 +112,7 @@
 -(void)saveImage:(NSString *)dishImage;
 -(UIImage *)getImage:(NSString *)image_name;
 -(void)deleteImage:(NSString *)image;
-
+-(BOOL)isBevCheck: (NSString*) catID;
 -(NSMutableArray *)getCombodata:(NSString *)sub_cat_id;
 -(NSMutableDictionary *)getComboDataById:(int)combo_id;
 -(NSMutableDictionary *)getGroupDataById:(int)group_id;

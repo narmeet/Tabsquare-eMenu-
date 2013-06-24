@@ -45,12 +45,12 @@
 						<reference key="NSSuperview" ref="33950120"/>
 						<reference key="NSNextKeyView" ref="891869352"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+						</object>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">menu_back.png</string>
-						</object>
 					</object>
 					<object class="IBUILabel" id="903123990">
 						<reference key="NSNextResponder" ref="33950120"/>
@@ -317,6 +317,7 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{214, 666}, {315, 48}}</string>
 						<reference key="NSSuperview" ref="33950120"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -645,7 +646,6 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="facebooksignin.png">{400, 67}</string>
 			<string key="login.png">{170, 60}</string>
-			<string key="menu_back.png">{1478, 1390}</string>
 			<string key="ragister.png">{170, 60}</string>
 			<string key="tabsquare1Logo.png">{1181, 367}</string>
 			<string key="twitter_signin.png">{400, 66}</string>

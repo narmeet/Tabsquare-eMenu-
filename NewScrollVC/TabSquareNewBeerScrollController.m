@@ -550,7 +550,7 @@
         imageView.layer.shadowRadius = 9.0;
         // imageView.layer.cornerRadius = 9.0;
         imageView.clipsToBounds = NO;
-         imageView.backgroundColor =[UIColor colorWithRed:250 green:192 blue:144 alpha:0.8];
+         imageView.backgroundColor =[UIColor colorWithRed:236/255 green:216/255 blue:201/255 alpha:1];
         
         
         imageView.layer.borderColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0].CGColor;

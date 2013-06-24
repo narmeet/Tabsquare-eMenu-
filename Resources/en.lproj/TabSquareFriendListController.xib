@@ -43,22 +43,20 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, -15}, {757, 740}}</string>
 						<reference key="NSSuperview" ref="1026262812"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="905415472"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+						</object>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">menu_back.png</string>
-						</object>
 					</object>
 					<object class="IBUIButton" id="905415472">
 						<reference key="NSNextResponder" ref="1026262812"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{616, 19}, {97, 37}}</string>
 						<reference key="NSSuperview" ref="1026262812"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="546573938"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -67,7 +65,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">LogOut</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="270266294">
+						<object class="NSColor" key="IBUIHighlightedTitleColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -94,8 +92,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{152, 457}, {470, 263}}</string>
 						<reference key="NSSuperview" ref="1026262812"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="71600467">
 							<int key="NSColorSpace">3</int>
@@ -116,7 +112,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{298, 418}, {178, 21}}</string>
 						<reference key="NSSuperview" ref="1026262812"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="8439634"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -125,7 +120,11 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Friend List</string>
-						<reference key="IBUITextColor" ref="270266294"/>
+						<object class="NSColor" key="IBUITextColor" id="885681037">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
+							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -144,7 +143,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{250, 81}, {247, 47}}</string>
 						<reference key="NSSuperview" ref="1026262812"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="715561835"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -153,7 +151,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Last Ordered List</string>
-						<reference key="IBUITextColor" ref="270266294"/>
+						<reference key="IBUITextColor" ref="885681037"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -172,7 +170,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{57, 136}, {628, 267}}</string>
 						<reference key="NSSuperview" ref="1026262812"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="399856891"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="71600467"/>
@@ -189,7 +186,6 @@
 				</array>
 				<string key="NSFrameSize">{741, 720}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="629874277"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -361,56 +357,11 @@
 			<nil key="sourceID"/>
 			<int key="maxID">24</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">TabSquareFriendListController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">logOutClicked:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">logOutClicked:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">logOutClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="bgImage">UIImageView</string>
-						<string key="friendlistView">UITableView</string>
-						<string key="lastOrderedView">UITableView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="bgImage">
-							<string key="name">bgImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="friendlistView">
-							<string key="name">friendlistView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lastOrderedView">
-							<string key="name">lastOrderedView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TabSquareFriendListController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">menu_back.png</string>
-			<string key="NS.object.0">{1478, 1390}</string>
-		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

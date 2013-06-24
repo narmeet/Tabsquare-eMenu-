@@ -126,8 +126,8 @@
         
         // [[TabSquareDBFile sharedDatabase]openDatabaseConnection];
         
-        if([DishCatId isEqualToString:@"8"]){
-            NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:@"8"];
+        if([[TabSquareDBFile sharedDatabase] isBevCheck:DishCatId]){
+            NSMutableArray *subCategoryData=[[TabSquareDBFile sharedDatabase]getSubCategoryData:DishCatId];
             for(int i=0;i<[subCategoryData count];++i){
                 NSMutableDictionary *subCategory=subCategoryData[i];
                 NSString *subId=subCategory[@"id"];

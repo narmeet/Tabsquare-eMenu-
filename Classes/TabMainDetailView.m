@@ -125,7 +125,7 @@
     currentindex=selectedItem;
     currIndex = [NSString stringWithFormat:@"%d", currentindex];
     selectedID=[[NSString alloc]initWithFormat:@"%d",selectedItem];
-    KDishName.font=[UIFont fontWithName:@"Copperplate-Light" size:23];
+    KDishName.font=[UIFont fontWithName:@"Century Gothic" size:23];
     KDishName.text=DishName[selectedItem];
     KDishImage.image=DishImage[selectedItem];
     [KDishImage.layer setShadowOpacity:1.0];
@@ -134,12 +134,12 @@
     KDishName.frame=CGRectMake(KDishName.frame.origin.x, KDishName.frame.origin.y, newsize.width+5, newsize.height);
     KDishName.numberOfLines = 3;
     KDishRate.text=[NSString stringWithFormat:@"$%@",DishPrice[selectedItem]];
-    KDishRate.font=[UIFont fontWithName:@"Copperplate-Light" size:20];
+    KDishRate.font=[UIFont fontWithName:@"Century Gothic" size:20];
     KDishDescription.text=DishDescription[selectedItem];
     KDishDescription.frame =CGRectMake(0, 0, 481, 120);
     [KDishDescription sizeToFit];
     descriptionScroll.contentSize=CGSizeMake(descriptionScroll.contentSize.width, KDishDescription.frame.size.height);
-    KDishDescription.font=[UIFont fontWithName:@"Copperplate-Light" size:19];
+    KDishDescription.font=[UIFont fontWithName:@"Century Gothic" size:19];
     IshideAddButton=@"0";
     Viewtype=@"1";
     if([ShareableData sharedInstance].ViewMode==1)

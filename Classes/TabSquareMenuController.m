@@ -459,22 +459,23 @@
     
     if(fontDictionary != nil) {
         
-        NSMutableDictionary *categoryFont = [fontDictionary objectForKey:@"Category"];
-        fontName = [NSString stringWithFormat:@"%@", [categoryFont objectForKey:@"font"]];
-        fontSize = [[NSString stringWithFormat:@"%@", [categoryFont objectForKey:@"size"]] floatValue];
+//        NSMutableDictionary *categoryFont = [fontDictionary objectForKey:@"Category"];
+//        fontName = [NSString stringWithFormat:@"%@", [categoryFont objectForKey:@"font"]];
+//        fontSize = [[NSString stringWithFormat:@"%@", [categoryFont objectForKey:@"size"]] floatValue];
+//        
+//        NSString *colors = [NSString stringWithFormat:@"%@", [categoryFont objectForKey:@"color"]];
+//        NSArray *arr = [colors componentsSeparatedByString:@","];
+//        float _red = [arr[0] floatValue];
+//        float _green = [arr[1] floatValue];
+//        float _blue = [arr[2] floatValue];
         
-        NSString *colors = [NSString stringWithFormat:@"%@", [categoryFont objectForKey:@"color"]];
-        NSArray *arr = [colors componentsSeparatedByString:@","];
-        float _red = [arr[0] floatValue];
-        float _green = [arr[1] floatValue];
-        float _blue = [arr[2] floatValue];
-        
-        fontColor = [UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
+        fontColor = [UIColor colorWithRed:160/255.0 green:125/255.0 blue:53/255.0 alpha:1.0];
+        fontSize = 70.0;
     }
     else {
-        fontName = @"Copperplate-Light";
-        fontSize = 35.0;
-        fontColor = [UIColor colorWithRed:96.0/255.0 green:37.0/255.0 blue:36.0/255.0 alpha:1.0];
+        fontName = @"Century Gothic";
+        fontSize = 70.0;
+        fontColor = [UIColor colorWithRed:160/255.0 green:125/255.0 blue:53/255.0 alpha:1.0];
     }
     /*=====================================================================*/
     
@@ -799,6 +800,7 @@
             [title setText:[self filterString:title.text pattern:@"[1-9]-"]];
             [btn setTitle:title.text forState:UIControlStateNormal];
             [title setFont:[UIFont fontWithName:@"Copperplate" size:17.0]];
+            title.textColor=[UIColor colorWithRed:160/255.0 green:125/255.0 blue:53/255.0 alpha:1.0];
             [ScrollView addSubview:btn];
             frame1.origin.x = i*(frame1.size.width);
             
@@ -954,7 +956,7 @@
 
     
     UIButton *_temp_btn = (UIButton *)sender;
-    
+
     [self zoomButton:_temp_btn];
     
     UIButton *btn = nil;
@@ -990,15 +992,16 @@
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.1];
+    
     temp_btn.transform = CGAffineTransformMakeScale(scaleSize, scaleSize);
-    [ temp_btn setTitleColor:COLOR_DARK_GRAY forState:UIControlStateNormal ] ;
+    [ temp_btn setTitleColor:[UIColor colorWithRed:160/255.0 green:125/255.0 blue:53/255.0 alpha:1.0] forState:UIControlStateNormal ] ;
     [UIView commitAnimations];
     // } else {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.1];
     if (prev_btn !=nil){
         prev_btn.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        [ prev_btn setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal ] ;
+        [ prev_btn setTitleColor:[UIColor colorWithRed:160/255.0 green:125/255.0 blue:53/255.0 alpha:1.0] forState:UIControlStateNormal ] ;
     }
     [UIView commitAnimations];
     //   }
@@ -1248,6 +1251,8 @@
     UIButton *btn=(UIButton *)[self.view viewWithTag:sender];
    // [KinaraCategory setContentOffset:KinaraOriginalScrollPositionPoint animated:YES];
   //  KinaraCurrentScrollPositionPoint=KinaraCategory.contentOffset;
+   
+    
     for(id subview in subviews ){
         
         if ([subview isKindOfClass:[UIButton class]] && [subview tag] ==btn.tag && [subview frame].origin.x >764){
@@ -1331,9 +1336,10 @@
         [KinaraSubCategory setHidden:TRUE];
         [self KinarafindingSelectedCategory:KinaraSubCategory];
         
-        [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
+        
         
         if([self.subcategoryList count]>0)
+            [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
             [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
         
     }
@@ -1584,7 +1590,7 @@
         NSInteger upperNumber = lowerNumber + 1;
         int CatID=KinaraSelectedCategoryID;
         int subtag=[self getSubCategoryArrayIndex:KinaraSelectedSubCategoryID];
-        if(CatID==8&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
+        if([[TabSquareDBFile sharedDatabase] isBevCheck: [NSString stringWithFormat:@"%d",CatID] ]&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
         {
             [self setpageIndexInBeverage:lowerNumber UperNum:upperNumber];
         }
@@ -1597,215 +1603,6 @@
     
 }
 
-/*- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    
-    if(scrollView==swipeView)
-    {
-        CGFloat pageWidth = swipeView.frame.size.width; 
-        float fractionalPage = swipeView.contentOffset.x / pageWidth;
-        NSInteger nearestNumber = lround(fractionalPage);
-        int catId= KinaraSelectedCategoryID;
-        if(catId==8&&flag==false)
-        {
-            if(beveragesBeerView1.pageIndex!=nearestNumber)
-            {
-                currentSubTag=beveragesBeerView2.pageIndex;
-                KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                [self KinaraStartSubCategory:KinaraSubCategory subID:[subcategoryIdList objectAtIndex:currentSubTag]];
-                [self swapBeverageView];
-            }
-            //code for circular
-             else 
-             {
-                 if(nearestNumber==[subcategoryList count]-1)
-                 {
-                     
-                     categorytag++;
-                     if(categorytag==[categoryIdList count])
-                     {
-                         categorytag=0;
-                     }
-                     KinaraSelectedCategoryID=[[categoryIdList objectAtIndex:categorytag]intValue];
-                     [self KinaraGetSubCategoryData:[categoryIdList objectAtIndex:categorytag]];
-                     //[self KinaraRollCategory:KinaraCategory subID:selectedCategoryID];
-                     if([subcategoryIdList count]!=0)
-                     {
-                         currentSubTag=0;
-                         KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                         KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                         [self removeSwipeSubviews];
-                         [self setSwipeView];
-                         //[self applyNewIndex:0 pageController:menulistView1];
-                         [self applyNewIndex:0 pageController:menulistView2];
-                         [self mainSubCategoryClicked:0 sub:[NSString stringWithFormat:@"%d",KinaraSelectedSubCategoryID]];
-                     }
-                                    
-                 }
-        
-             }
-        }
-        else 
-        {
-            if (menulistView1.pageIndex != nearestNumber)
-            {
-                if([subcategoryIdList count]==0)
-                {
-                    categorytag++;
-                    if(categorytag==[categoryIdList count])
-                    {
-                        categorytag=0;
-                    }
-                    KinaraSelectedCategoryID=[[categoryIdList objectAtIndex:categorytag]intValue];
-                    [self KinaraGetSubCategoryData:[categoryIdList objectAtIndex:categorytag]];
-                    //[self KinaraRollCategory:KinaraCategory subID:selectedCategoryID];
-                    if([subcategoryIdList count]!=0)
-                    {
-                        currentSubTag=0;
-                        KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                        KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                        //[self removeSwipeSubviews];
-                        [self setSwipeView];
-                        if([self.selectedCategoryID isEqualToString:@"8"])
-                        {
-                            [self removeSwipeSubviews];
-                            [self setSwipeView];
-                            [self applyNewIndex1:0 pageController:beveragesBeerView1];
-                            [self applyNewIndex1:1 pageController:beveragesBeerView2];
-                            [self beveragesSubCategoryClicked:0 sub:[NSString stringWithFormat:@"%d",KinaraSelectedSubCategoryID]];
-                        }
-                        else 
-                        {
-                            [self applyNewIndex:0 pageController:menulistView2];
-                            [self swapMenuView];
-
-                        }
-                    }
-                    else
-                    {
-                        [self setSwipeView];
-                        //[self applyNewIndex:0 pageController:menulistView1];
-                        [self applyNewIndex:0 pageController:menulistView2];
-                        [self swapMenuView1];
-                        
-                    }
-                }
-                else 
-                {
-                    currentSubTag=menulistView2.pageIndex;
-                    KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                    KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                    [self KinaraStartSubCategory:KinaraSubCategory subID:[subcategoryIdList objectAtIndex:currentSubTag]];
-                    [self swapMenuView];
-
-                }
-                
-                //this is for slow move from current position
-                //[KinaraSubCategory setContentOffset:CGPointMake(KinaraCurrentScrollPositionPointSub.x+180,KinaraCurrentScrollPositionPointSub.y) animated:YES];
-                //KinaraCurrentScrollPositionPointSub=KinaraSubCategory.contentOffset;
-                
-            }
-            else
-            {
-                if(nearestNumber==[subcategoryIdList count]-1)
-                {
-                     categorytag++;
-                    if(categorytag==[categoryIdList count])
-                    {
-                        categorytag=0;
-                    }
-                     self.selectedCategoryID=[categoryIdList objectAtIndex:categorytag];
-                    [self KinaraGetSubCategoryData:[categoryIdList objectAtIndex:categorytag]];
-                    [self KinaraRollCategory:KinaraCategory subID:selectedCategoryID];
-                    if([subcategoryIdList count]!=0)
-                    {
-                        currentSubTag=0;
-                        KinaraSelectedSubCategoryID=[[subcategoryIdList objectAtIndex:currentSubTag]intValue];
-                        KinaraSelectedSubCategoryName=[subcategoryList objectAtIndex:currentSubTag];
-                        //[self removeSwipeSubviews];
-                        [self setSwipeView];
-                        [self applyNewIndex:0 pageController:menulistView2];
-                        [self swapMenuView];
-                    }
-                    else
-                    {
-                        [self setSwipeView];
-                        //[self applyNewIndex:0 pageController:menulistView1];
-                        [self applyNewIndex:0 pageController:menulistView2];
-                        [self swapMenuView1];
-
-                    }
-                                     
-                    
-                }
-            }
-            
-        }
-        
-    }
-    else if(scrollView==KinaraCategory)
-    {
-        KinaraSubcategoryBtnClick=false;
-        @try 
-        {
-            [KinaraSubCategory removeFromSuperview]; 
-            [KinaraSelectorSubCategory removeFromSuperview];
-        }
-        @catch (NSException *exception)
-        {
-            DLog(@"Exception");
-        }
-        @finally
-        {
-            
-            [self KinarafindingSelectedCategory:scrollView];
-            
-            [self KinaraGetSubCategoryData:self.selectedCategoryID];
-            
-            KinaraSelectorSubCategory=[UIButton buttonWithType:UIButtonTypeCustom];
-            [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected.png"] forState:UIControlStateNormal];
-            [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected.png"] forState:UIControlStateHighlighted];
-            [KinaraSelectorSubCategory setImage:[UIImage imageNamed:@"subcategory_selected.png"] forState:UIControlStateSelected];
-            
-            if([self.subcategoryList count]>0)
-            {
-                KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-90, KinaraCategory.frame.origin.y+65, 180, 50);
-                KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(0, KinaraCategory.frame.origin.y+65,[UIScreen mainScreen].bounds.size.width, 50)];
-                [self KinaracreateSubCategoryScrollView:KinaraNumberOfButton frame:CGRectMake(0,0, 180,50) scrollView:KinaraSubCategory];
-            }
-            else
-            {
-                KinaraSubCategory = [[UIScrollView alloc] initWithFrame:CGRectMake(0,KinaraCategory.frame.origin.y+65,0, 0)];
-                [self KinaracreateSubCategoryScrollView:0  frame:CGRectMake(0,0, 0,0) scrollView:KinaraSubCategory];
-                KinaraSelectorSubCategory.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-90,  KinaraCategory.frame.origin.y+65, 0, 0);
-            }
-            
-            
-            [self.view bringSubviewToFront:KinaraSelectorSubCategory];
-            [self.view addSubview:KinaraSelectorSubCategory];
-            
-            [self KinarafindingSelectedCategory:KinaraSubCategory];
-            
-            [self KinarasetCategoryClicked:KinaraSelectedCategoryID];
-            
-            if([self.subcategoryList count]>0)
-                [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
-            
-        }
-        
-        if(KinaraSelectorCategory.hidden)
-        {
-            KinaraSelectorCategory.hidden=NO;
-            [self UnselectedBottomMenu];
-        }
-    }
-    else if(scrollView==KinaraSubCategory)
-    {
-        [self KinarafindingSelectedCategory:scrollView];
-        [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
-    }
-}*/
 
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
@@ -1817,7 +1614,7 @@
         NSInteger nearestNumber = lround(fractionalPage);
         int catId= KinaraSelectedCategoryID;
         int subtag=[self getSubCategoryArrayIndex:KinaraSelectedSubCategoryID];
-        if(catId==8&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
+        if([[TabSquareDBFile sharedDatabase] isBevCheck: [NSString stringWithFormat:@"%d",catId] ]&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
         {
             if(beveragesBeerView1.pageIndex!=nearestNumber)
             {
@@ -1951,7 +1748,7 @@
             if([self.subcategoryList count]>0)
             {
                 ////NSLOG(@"selected sub_cat_id = %d", KinaraSelectedSubCategoryID);
-                [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
+                 [self KinarasetSubCategoryClicked:KinaraSelectedSubCategoryID];
             }
             
             ////NSLOG(@"Log xx 7");
@@ -1996,9 +1793,9 @@
     [ShareableData sharedInstance].TaskType=@"1";
     [self removeSwipeSubviews];
     
-    int CatID= (int)categoryIdList[categorytag];
+    int CatID= [categoryIdList[categorytag]integerValue];
     int subtag=[self getSubCategoryArrayIndex:KinaraSelectedSubCategoryID];
-    if( CatID==8&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
+    if( [[TabSquareDBFile sharedDatabase] isBevCheck: [NSString stringWithFormat:@"%d",CatID] ]&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
     {
         if([[ShareableData sharedInstance].IsViewPage count]==0)
         {
@@ -2043,7 +1840,7 @@
         [self setSwipeView];
         [self applyNewIndex:0 pageController:menulistView1];
         [self applyNewIndex:1 pageController:menulistView2];
-        [self applyNewIndex:2 pageController:menulistView3];
+         [self applyNewIndex:2 pageController:menulistView3];
         [self removeAllView];
         
         int cc=[subcategoryIdList count];
@@ -2054,7 +1851,7 @@
         }
         else
         {
-            [self mainSubCategoryClicked:0 sub:@"0"];    
+            [self mainSubCategoryClicked:0 sub:@"0"];
         }
     }
 }
@@ -2086,7 +1883,7 @@
     {
         [menulistView.menudetailView.view removeFromSuperview];
     }
-    else if(CatID==8&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
+    else if([[TabSquareDBFile sharedDatabase] isBevCheck: [NSString stringWithFormat:@"%d",CatID] ]&&[subcategoryDisplayList[subtag]isEqualToString:@"1"])
     {
         [self beveragesSubCategoryClicked:0 sub:subcategoryIdList[subtag]];
         [menulistView.menudetailView.view removeFromSuperview];
@@ -2094,7 +1891,7 @@
         beveragesBeerView1.view.hidden = NO;
         beveragesBeerView2.view.hidden = NO;
     }
-    else if(CatID==8&&[subcategoryDisplayList[subtag]isEqualToString:@"0"])
+    else if([[TabSquareDBFile sharedDatabase] isBevCheck: [NSString stringWithFormat:@"%d",CatID] ]&&[subcategoryDisplayList[subtag]isEqualToString:@"0"])
     {
         currentSubTag=[self getSubCategoryArrayIndex:tag];
         [self mainSubCategoryClicked:0 sub:subcategoryIdList[subtag]];
@@ -2268,30 +2065,36 @@
 }
 
 -(void)onTick:(NSTimer *)timer
-{    
-    [self badgeRefresh];
-    ////NSLOG(@"mode value = %d", [ShareableData sharedInstance].ViewMode);
-    if([ShareableData sharedInstance].ViewMode==1)
-    {
-        OrderSummaryButton.hidden=YES;
-        favourite.enabled=FALSE;
+{
+    @try {
+        [self badgeRefresh];
+        ////NSLOG(@"mode value = %d", [ShareableData sharedInstance].ViewMode);
+        if([ShareableData sharedInstance].ViewMode==1)
+        {
+            OrderSummaryButton.hidden=YES;
+            favourite.enabled=FALSE;
+        }
+        else
+        {
+            OrderSummaryButton.hidden=NO;
+            favourite.enabled=YES;
+        }
+        feedback.enabled=[ShareableData sharedInstance].isConfermOrder;
+        if(feedback.enabled)
+        {
+            FeedbackDisabled.enabled=NO;
+        }
+        else
+        {
+            FeedbackDisabled.enabled=YES;
+        }
+        //  CGPoint point = CGPointMake(0, 936);
+        
+
     }
-    else
-    {
-        OrderSummaryButton.hidden=NO;
-        favourite.enabled=YES;
+    @catch (NSException *exception) {
+        
     }
-    feedback.enabled=[ShareableData sharedInstance].isConfermOrder;
-    if(feedback.enabled)
-    {
-        FeedbackDisabled.enabled=NO;
-    }
-    else
-    {
-        FeedbackDisabled.enabled=YES;
-    }
-  //  CGPoint point = CGPointMake(0, 936);
-    
     
 }
 
@@ -2803,10 +2606,11 @@
     [menulistView3.menudetailView.view removeFromSuperview];
     [menulistView3.menudetailView.menuDetailView.view removeFromSuperview];
     [menulistView1 reloadDataOfSubCat:subId cat:self.selectedCategoryID];
-    [menulistView1.DishList reloadData];
+    //[menulistView1.DishList reloadData];
     
     if(![prevSubId isEqualToString:sub]) {
-        [self loadAnimation:menulistView1.DishList];
+       // [self loadAnimation:menulistView1.DishList];
+        [menulistView1.DishList reloadData];
     }
 
     [swipeView addSubview:menulistView1.view];
@@ -3364,7 +3168,7 @@
     
     /*=========================Category Name=========================*/
     UILabel *category_lbl = [[UILabel alloc] initWithFrame:CGRectMake(145.0, 35.0, 498.0, 50.0)];
-    [category_lbl setFont:[UIFont fontWithName:fontName size:fontSize]];
+    [category_lbl setFont:[UIFont fontWithName:@"Futura" size:40]];
     NSString *str = [tempCategoryList objectAtIndex:indexPath.row];
     NSString *category = [self filterString:str pattern:@"[1-9]-"];
     
@@ -3399,6 +3203,8 @@
     [dish_image.layer setShadowOpacity:1.0];
     [dish_image.layer setMasksToBounds:NO];
     [dish_image.layer setShadowOffset:CGSizeMake(4.0, 2.0)];
+    //dish_image.contentMode = UIViewContentModeScaleAspectFit;
+        
 	[cell.contentView addSubview:dish_image];
     
 
@@ -3444,7 +3250,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     /*=========Locking Touch=========*/
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+   // [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
 
     NSLog(@"Log 1111");
     beveragesBeerView.mParent=self;
@@ -3452,9 +3258,7 @@
     UILabel *label = cell.textLabel;// [menuLabels objectAtIndex: button.tag];
     UIColor *targetColor = COLOR_LIGHT_GRAY;
     UIColor *currentColor = label.textColor;
-    
-    
-    [UIView animateWithDuration:0.1
+       [UIView animateWithDuration:0.1
                           delay:0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{

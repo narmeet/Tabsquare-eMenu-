@@ -35,7 +35,7 @@
         
       //  UIColor *fontColor = [UIColor whiteColor];//[UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
         
-        UIColor *fontColor = [UIColor colorWithRed:_red/255.0 green:_green/255.0 blue:_blue/255.0 alpha:1.0];
+        UIColor *fontColor =[UIColor blackColor];// [UIColor colorWithRed:223/255.0 green:209/255.0 blue:196/255.0 alpha:1.0];
 
         [lbl setTextColor:fontColor];
     }
@@ -66,9 +66,8 @@
 {
     [super setDishName:newDishName];
     lblDishName.text=newDishName;
-    lblDishName.font=[UIFont fontWithName:FONT_NAME size:25];
-    lblDishName.backgroundColor = [UIColor redColor];
-
+    lblDishName.font=[UIFont fontWithName:FONT_NAME size:21];
+    
     [self setLabelColor:lblDishName];
 }
 
@@ -77,7 +76,7 @@
     [super setDiscription:newDiscription];
     lblDiscription.text=newDiscription;
     lblDiscription.hidden=YES;
-    lblDiscription.font=[UIFont fontWithName:FONT_NAME size:15];
+    lblDiscription.font=[UIFont fontWithName:@"Copperplate-Light" size:16];
 }
 
 -(void)setBtnTag:(NSString *)newbtnTag

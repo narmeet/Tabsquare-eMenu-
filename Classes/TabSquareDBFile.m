@@ -2325,7 +2325,7 @@ int enableClose = 1;
     
     NSString *query = [NSString stringWithFormat:@"SELECT id, %@,image, category, sub_category, price, %@, customization, sub_sub_category, tags,0 AS jugaad from dishes WHERE category=%@ AND sub_category=%@ UNION ALL SELECT id, %@,image, category, sub_category, price, %@,0 AS customization, sub_sub_category, tags,1 AS jugad from combos WHERE category=%@ AND sub_category=%@ order by sub_sub_category,%@;", [LanguageControler activeLanguage:@"name"], [LanguageControler activeLanguage:@"description"], catId, subCatId, [LanguageControler activeLanguage:@"name"], [LanguageControler activeLanguage:@"description"], catId, subCatId, [LanguageControler activeLanguage:@"name"]];
     
-    if([catId intValue] == 8)
+    if ([self isBevCheck:catId])//if([catId intValue] == 8)
         statement = [NSString stringWithFormat:@"select * from Dishes where category = %@ and sub_category = %@ order by sub_sub_category,%@;", catId,subCatId, [LanguageControler activeLanguage:@"name"]];
     else
         statement = [NSString stringWithFormat:@"%@", query];
@@ -2343,7 +2343,7 @@ int enableClose = 1;
     
     ////NSLOG(@"Query = %@\n\n, records = %@", query, records);
     
-    if([catId intValue] == 8)
+    if ([self isBevCheck:catId])//if([catId intValue] == 8)
     {
         NSMutableArray *dishData=[[NSMutableArray alloc]init];
         for (id element in records){

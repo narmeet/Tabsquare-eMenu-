@@ -26,7 +26,7 @@ int selectedImageAtMenu;
 ///////////////////////////API URL//////////////////////////////////////////////////
 
 
-#define kURL                    @"http://10.40.181.10/"//192.168.1.90///bananaracecourse
+#define kURL                    @"http://25.29.194.35/"//192.168.1.90///bananaracecourse
                                                       //192.168.1.99///bananaLittleinda
                                                       //10.40.181.10 ////Moguhal Mahal
                                                       //192.168.1.10 //BayView
